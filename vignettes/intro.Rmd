@@ -1,0 +1,874 @@
+---
+title: "Towards a statistical measure for durable solutions to internal displacement: a simulation to assess indicator and metric choice"
+author: "Sigrid Weber (sweber1@worldbank.org)"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    toc: yes
+    theme: cayman
+    highlight: github
+vignette: >
+  %\VignetteIndexEntry{Towards a statistical measure for durable solutions to internal displacement: a simulation to assess indicator and metric choice}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+_DRAFT VERSION FOR INTERNAL DISCUSSION IN EGRIS SUBGROUP 3_
+
+
+
+# Introduction
+
+The _International Recommendations on IDP Statistics_ (IRIS), developed by the _Expert Group on Refugee and IDP Statistics_ (EGRIS), provide a framework for capturing a country&#39;s stock of IDPs for statistical purposes. In order to correctly calculate the stock, it is crucial to define when an individual enters the stock and when they exit the stock. This note relates to the latter, and specifically to the way by which individuals exit the stock by overcoming key displacement-related vulnerabilities – sometimes referred to colloquially as the &quot;solutions measure&quot;.
+
+It is important to note that the purpose of a statistical definition for the &quot;end of displacement&quot; is explicitly not to identify specific households or individuals that are no longer displaced (e.g. for programming or assistance purposes) but only to enable aggregate statistics on the amount of internal displacement in each country that can be compared globally.
+
+It is also important to note that, separate from the &quot;solutions measure&quot;, IRIS also proposes a distinct but related framework to assess progress towards the achievement of durable solutions – colloquially referred to as the &quot;progress measure&quot;. The progress measure aims to allow decision makers &quot;to understand at a glance in which aspects of vulnerability IDPs are struggling compared to others […] and in which they are doing relatively well&quot; (IRIS, page 55). While progress and solution can likely be measured with similar statistical indicators, their aims and application are very different: informing decisions on policy areas that need attention as well as more granular assistance-related decisions (through the IRIS progress measure) vs informing aggregate statistics on IDP stocks (IRIS solutions measure).
+
+This note focuses on the IRIS solutions measure and the question how this measure can be implemented in practice. The IRIS has advanced the debate on a statistical measure on solutions considerably, including in the following ways:
+
+ * Specification of 5 priority criteria and 10 priority sub-criteria that should form the basis of a statistical measure
+ * Specification of 5 priority criteria and 10 priority sub-criteria that should form Recommendation of quality criteria to assess the suitability of indicators to measure each sub-criterion
+ * Move to a context-dependent assessment of durable solutions rather than an absolute approach whilst maintaining a level of comparison
+ * Narrowing of benchmark options (to national averages or host community averages)
+
+Nevertheless, as stated in the recommendations themselves, the above achievements do not result in a final and applicable statistical measure for solutions. The IRIS falls short of 1) specifying the selection of statistical indicators for each of the priority criteria / sub-criteria and 2) identifying a fully workable methodology of combining these indicators into an overall statistical measure that can be compared to a national or host community benchmark. While other methodological issues may also need further attention (i.e. the final definition of a comparator group, addressing statistical uncertainty and missing data points), the aim of this technical note is to inform solutions to these two outstanding methodological challenges.
+
+This methodological note first outlines the solutions measure as suggested by the IRIS and demonstrates the remaining methodological challenges. The main body of the note then simulates how the selection of statistical indicators and the choice of a statistical framework to combine them affect the results of a solutions measure, i.e. the magnitude of exit from IDP stocks. To conduct these simulations, two empirical datasets from Nigeria and Hargeisa are used. The note concludes with a summary of findings to improve the solutions metrics.
+
+# The IRIS &quot;solutions measure&quot;
+
+Based on the _Framework for Durable Solutions by the Inter-Agency Standing Committee_ (IASC), the IRIS specifies a set of 5 priority criteria and 10 sub-criteria that need to be measured in every displacement context to take IDPs out of the national stock as having overcome their displacement-related vulnerabilities (see Table 1). The indicators for each of the 10 sub-criteria should be collected at the household or individual level.
+
+To then assess how many displaced individuals in a specific context have progressed towards a durable solution, the situation of IDPs must be compared with that of the comparator population (national average or &quot;host community&quot; average). The logic is that IDPs that perform similar or better than the comparator population are no longer considered displaced for the purpose of statistics.
+
+_Table 1: IASC durable solution criteria and identified sub-criteria_
+
+| **Criteria** | **Sub-criteria** |
+| --- | --- |
+| 1. Safety and security | 1.1 Victims of violence |
+|   |  1.2 Freedom of movement |
+| 2. Adequate standard of living | 2.1 Food security |
+|   | 2.2 Shelter and housing |
+|   | 2.3 Medical services |
+|   | 2.4 Education |
+| 3. Access to livelihoods | 3.1 Employment and livelihoods |
+|   | 3.2 Economic security |
+| 4. Restoration of housing, land and property | 4.1 Property restitution and compensation |
+| 5. Access to documentation | 5.1 Documentation |
+
+Regarding the methodology that is used to decide whether a household has ended its displacement, IRIS writes:
+
+> The methodology used for calculating the composite measure is a simple pass/no pass (or binary) scenario at sub-criteria level that is then accumulated to produce a score at criteria level, and ultimately an overall score for the measure.[…] To determine if a sub-criterion has been overcome or not, for each household, a target needs to be set […] It is foreseen that target setting will be more complex with categorical or binary indicators […] If all sub-criteria receive a ´pass´ mark, then that criterion […] has been overcome. For criteria with multiple sub-criteria,_ _ **all sub-criteria would need to receive a &#39;pass&#39; mark for the criteria to be overcome. All of the five key-displacement related vulnerabilities (the five criteria) need to achieve a &#39;pass&#39; mark for the composite measure to be fulfilled.[…] It is recommended to use the general/national population as the comparison group when deciding on the targets or thresholds for scoring each sub-criteria […] In specific circumstances, thresholds can be set through a comparison with the average situation of a subset of the general population. (IRIS, page 58-61)
+
+Table 2 provides an example to understand the framework. Household A passes the criteria _1. Safety &amp; security,__4. Restoration of HLP rights,_ and _5. Documentation_. However, because it has not passed the two sub-criteria in _3. Access to livelihood_, it does not pass this criterion. The household also does not pass the criterion _2. Adequate standard of living_ because it has not passed the sub-criterion _2.4 Education_ and the framework requires to pass all sub-criteria. Overall, no durable solution has been achieved in this example.
+
+_Table 2: Example household in the IRIS framework_
+
+|
+ | **Sub-criterion (compared to a benchmark)** | **Result on criterion level** |
+| --- | --- | --- |
+| **Household A** | 1.1 Victims of violence | Pass | 2/2 (Passed) |
+|   | 1.2 Freedom of movement | Pass |
+|   |  2.1 Food security | Pass | 3/4 (Not passed) |
+|   |  2.2 Shelter and housing | Pass |
+|   |  2.3 Medical services | Pass |
+|   |  2.4 Education | No pass |
+|   |  3.1 Employment &amp; livelihoods | No pass | 0/2 (Not passed) |
+|   |  3.2 Economic security | No pass |
+|   |  4.1 Property restitution &amp; compensation | Pass | 1/1 (Passed) |
+|   |  5.1 Documentation | Pass | 1/1 (Passed |
+|
+| **Overall:** No durable solution achieved: displacement not ended |
+
+## Remaining methodological challenges
+
+While this framework appears intuitive, there are several challenges and methodological gaps when implementing it in practice.
+
+The first methodological challenge is that **no set of statistical indicators have been agreed on to capture the 10 sub-criteria**. The lack of an agreed, measurable set of indicators presents a real challenge in operationalizing the IRIS framework. While this methodological assessment aims to shed some light on how specific indicators affect the exit from the IDP stock, further empirical work will be needed to assess how the indicator choice affects the aggregate stock of IDPs in a displacement context. Eventually, more suitable datasets will need to be produced to facilitate this.
+
+The second methodological challenge arises from the above-cited assumption that it is possible to set a comparator target/benchmark for each sub-criterion which a household needs to match or surpass. The IRIS states that &quot;target setting will be more complex with categorical or binary indicators&quot;; however, **such benchmark comparison is not just complex but indeed technically meaningless for binary and categorical indicators. Binary and categorical household-level data points cannot be directly compared with average/distribution values in the comparator population**. To illustrate this problem, imagine a binary indicator &quot;household has access to medical services&quot; was selected to operationalize sub-criterion _2.3 Medical services_. The value for any given household can only be yes or no, 1 or 0. The target value derived from the comparator population, in contrast, would be a percentage on a scale, let&#39;s assume 5% of the comparator population have access to medical services. Achieving a pass for any given household in comparison with the target value can only be achieved by achieving a &quot;yes&quot; in this indicator – despite the fact that access to medical services is extremely low in the comparator population. In effect, the value of the comparator population is irrelevant, because the condition for achieving a pass would not have changed if the comparator value had been, say, 1% or 90%. In other words, the entire idea of a contextualized target/benchmark that underlies the IRIS approach is devalued for binary or categorical indicators. Unfortunately, such types of indicators appear the pragmatic and thematically most valid choice of metric under the vast majority of sub-criteria.
+
+A third methodological challenge not yet addressed by IRIS arises if the **comparator value comes with a level of statistical uncertainty**. Assume the benchmark value for the national/host population was produced using a sample survey – it would thereby come with a confidence interval around the comparator point estimate. Would a displaced household comparing against benchmark need to compare favorably against the point estimate itself or against the lower bound of the confidence interval?
+
+Even if a set of statistical indicators can be agreed on to operationalize the 10 sub-criteria, it is unlikely that data will be available for all selected indicators in all situations. The IRIS specifies that if data is missing an assessment of whether displacement has been overcome cannot be made. Further empirical work provides an opportunity to assess and further explore the feasibility of this approach and gain greater insight on the aggregate **effects of missing data points** (and potentially of imputation-based methods for dealing with them).
+
+A fifth area left open by IRIS is the **definition of the comparator population** itself – national or &quot;host&quot;. If a host community is to be used as comparator, a clear definition of the term will need to be developed. While it may be preferable for IRIS to not provide a standardized recommendation on this and leave flexibility to data producers, further empirical work is recommended to at least assess how the choice of the comparator population affects the aggregate results across different context, and facilitate an evidence-informed decision.
+
+Related to the definition of a comparator population is the question how to deal with **changing benchmark values over time.** If for example unemployment in the host community/ national population drops from one stock assessment to the next due to improving economic conditions in a country, this increases the benchmark value, and IDPs that have previously been taken out of the stock as having overcome their vulnerabilities may fall under the comparator benchmark again, re-entering and thereby enlarging the stock without the occurrence of new displacement-causing events.
+
+Finally, the IRIS solution measure should address to what extent **assistance received should be &quot;factored out / imputed out&quot; before an assessment is made** of how many IDPs exit the stock. For example, if IDPs overcome key-displacement related vulnerabilities because their shelter and housing is provided through humanitarian assistance, they may exit the stock without actually having overcome their housing-related vulnerabilities. While the solutions measure only produces an aggregate number, the measure should ensure that the overall exit from the IDP stock is not based on the overcoming of vulnerabilities through humanitarian assistance but through sustainable solutions.
+
+Box 1 summarizes the methodological challenges that need to be addressed to establish a workable solutions metrics. The following sections of this note respond to challenge 1 and 2.
+
+_Box 1: Remaining Challenges for a Workable Solutions Metrics_
+
+| **Challenge 1** : Specifying one or several statistical indicators for each of the 10 sub-criteria 
+
+**Challenge 2** : Find a way to make the &quot;contextualized&quot; approach (comparing against target/benchmark population) statistically applicable 
+
+**Challenge 3** : Address how to deal with statistical uncertainty in the target/benchmark values 
+
+**Challenge 4** : Specify how missing data points should be dealt with 
+
+**Challenge 5** : Define the comparator population 
+
+**Challenge 6:** Address changing benchmark values over time 
+
+**Challenge 7** : Specify how assistance is factored into the solutions measure |
+| --- |
+
+This note aims to advance the debate on the above-listed challenges 1 and 2.
+
+## Ways forward for indicator and metric choice
+
+One next step to advance the solutions measure is to identify the indicators that should be used to measure the 10 sub-criteria for a durable solution (&quot;challenge 1&quot; above). The choice of the right indicators is complex. Political sensitivities, contextual differences between displacement situations, comparability across different contexts and comparator populations as well as availability of data to measure the indicators may play a role in the final decision to operationalize the 10 sub-criteria. According to IRIS, possible indicators should be **commonly used** (e.g. the indicator is required for SDG reporting); an indicator should be **tested and evaluated** to satisfy quality criteria and comply with international standards; and an indicator should **cover the population in question** (i.e. school enrolment is widely recognized as a good indicator for measuring access to education, but it would not give any information on IDP households which do not have children).
+
+While recommending the &#39;best&#39; indicators to measure the 10 sub-criteria is beyond the scope of this note, this note takes an empirical approach to simulate how the choice of indicators affects the outcome of the solutions measure, that is the number of IDPs that would leave a national stock in different displacement contexts. Importantly, this is a technical assessment that generates practical information on 1) the extent to which the indicator choice for each sub-criterion matters and 2) the statistical characteristics or quality standards that an indicator should fulfil to be suitable from a statistical perspective. This can inform dialogue on higher political levels on the right indicator choice, but it does not lead to a final set of indicators that should be used.
+
+Another necessary next step towards a full metric is to address how the different indicators are combined and then compared to the national population or the host community in a statistically applicable way (&quot;challenge 2&quot; in the above list). Different metrics, or combinations of indicators and comparisons with a benchmark population, are possible to implement the current IRIS solution measure. The overall aim is to be able to compare an IDP household to a benchmark on all 10 sub-criteria to decide whether a household performs the same or even better than the national average or the host community and should hence no longer be counted as IDP household in official statistics. As this comparability is currently not technically applicable in the IRIS solutions metric, different options are available to revise the proposed measure:
+
+_Pass/fail measure: Implementing the IRIS without a comparator population_
+
+The current measure described in IRIS does not allow for a meaningful comparison between IDPs and host communities/national averages. One could make the decision to fully focus on a pass/fail decision on the sub-criterion level (as demonstrated in table 2 above) by only assessing whether a household achieves the sub-criterion. This is not a desirable option because no comparison takes place, and it thereby fails to comply with the fundamental logic set out in IRIS for a solutions measure, which is that it should be assessed relative to a host/national benchmark. A consequence of a context-blind pass/fail approach is that this option is likely to produce very low numbers of IDPs overcoming their vulnerabilities because achieving a &#39;one&#39; for all 10 indicators is a hard threshold in many displacement contexts.
+
+_Option 1: An actual composite metric across all criteria_
+
+The approach currently outlined in IRIS is described therein as a &quot;composite&quot; measure, which strictly speaking it is not, considering that a single indicator per sub-criterion is implicitly assumed and a pass needs to be achieved in each sub-criterion/indicator. One option to explore that aligns with the contextualized approach would be to redefine the overall framework as an actual composite index. A composite index groups together indicators across all criteria to one score. This household level index could then be more readily compared to the average value of the same composite index in the comparator population. The shortcoming of this approach is that a household may be taken out of the IDP stock despite underperformance on a specific key criterion or sub-criterion (which is a deviation from the IRIS requirement that a pass needs to be achieved at the sub-criterion level).
+
+_Option 1: A full composite metric for all sub-criteria_
+
+|
+ | **Sub-criterion** | **Indicator** |
+ |
+| --- | --- | --- | --- |
+| **Household A** | 1.1 Victims of violence | Indicator 1.1.a | 1 |
+| 1.2 Freedom of movement | Indicator 1.2.a | 1 |
+| 2.1 Food security | Indicator 2.1.a | 1 |
+| 2.2 Shelter and housing | Indicator 2.2.a | 1 |
+| 2.3 Medical services | Indicator 2.3.a | 1 |
+| 2.4 Education | Indicator 2.4.a | 0 |
+| 3.1 Employment &amp; livelihoods | Indicator 3.1.a | 0 |
+| 3.2 Economic security | Indicator 3.2.a | 0 |
+| 4.1 Property restitution &amp; compensation | Indicator 4.1.a | 1 |
+| 5.1 Documentation | Indicator 5.1.a | 1 |
+|
+ | Total composite index for the household | 7 / 10 |
+| Benchmark value |
+ | 8.6 / 10 |
+| Decision |
+ | The household has not overcome displacement as the composite index is below the benchmark average. |
+
+_Option 2: A set of composite indices at the criterion level_
+
+Rather than construct a single index across all criteria, one could define composite indices for each criterion. For example, the composite index for the criterion _on 2. Adequate standard of living_ could consist of four or more equally weighted indicators corresponding to the four related sub-criteria (_2.1. Food security, 2.2 Shelter and housing, 2.3 Medical services, 2. 4 Education_). A household could then score values of 0-4 on this sub-criterion index (or 0%, 25%, 50%, 75%, 100%). This score can be compared with a distribution average in the comparator population for the same composite index. As with option 1 above, this would constitute a deviation from IRIS, which explicitly states that a pass needs to be achieved at the sub-criterion level; under this option a household may be taken out of the IDP stock despite underperformance on a specific sub-criterion. In order to construct an index in each criterion, at least 2 binary indicators per criterion would be required, but more would be recommended. A small number of indicators per criterion would result in a cruder measure, thereby barely overcoming challenge 2 (as we will still be comparing discrete values – e.g. 0;1;2 in the case of 2 indicators for a given criterion - with a continuous distribution average; so for a given household to perform on par or better than the benchmark, it would be irrelevant whether the benchmark valuer was, say, 0.1 or 0.9 – in either case the household in question would need to score a 1 to achieve a pass on this criterion). Assuming at least 3 indicators per each of the 5 criteria (and 4 indicators in the case of criterion 2, in alignment with its 4 sub-criteria), this would result in an overall computation based on at least 16 indicators.
+
+_Option 2: A composite metric at the criterion level_
+
+|
+ | **Criterion** | **Sub-criterion** | **Indicator** | **Composite** | **Comparison to benchmark** |
+| --- | --- | --- | --- | --- | --- |
+| **House-hold A** | 1. Safety and security | 1.1 Victims of violence | Indicator 1.1.a | 2/3 | 1.9 | Pass |
+| --- | --- | --- | --- | --- | --- | --- |
+|
+ | Indicator 1.1.b |
+| 1.2 Freedom of movement | Indicator 1.2.a |
+| --- | --- |
+| 2. Adequate standard of living | 2.1 Food security | Indicator 2.1.a | 3/4 | 3.5 | No pass |
+| --- | --- | --- | --- | --- | --- |
+| 2.2 Shelter and housing | Indicator 2.2.a |
+| --- | --- |
+| 2.3 Medical services | Indicator 2.3.a |
+| --- | --- |
+| 2.4 Education | Indicator 2.4.a |
+| --- | --- |
+| 3. Access to livelihoods | 3.1 Employment &amp; livelihoods | Indicator 3.1.a | 2/3 | 1.9 | Pass |
+| --- | --- | --- | --- | --- | --- |
+| Indicator 3.1.b |
+| 3.2 Economic security | Indicator 3.2.a |
+| --- | --- |
+| 4. Restoration of housing, land and property | 4.1 Property restitution &amp; compensation | Indicator 4.1.aIndicator 4.1.bIndicator 4.1.c | 1/3 | 0.9 | Pass |
+| --- | --- | --- | --- | --- | --- |
+| 5. Access to documentation | 5.1 Documentation | Indicator 5.1.aIndicator 5.1.bIndicator 5.1.c | 0/3 | 0.9 | No pass |
+| --- | --- | --- | --- | --- | --- |
+|
+ |
+ |
+|
+ |
+ |
+|
+ |
+ | Decision | The household has not overcome displacement as the composite index for some criteria is lower than the benchmark |
+| --- | --- | --- | --- |
+
+_Option 3: A set of composite sub-indices at the sub-criterion level_
+
+Very similar to the second approach, one could define composite indices within each sub-criterion. For example, the composite index for sub-criterion _2.1 Food security_ could be associated with 3 equally weighted binary indicators. A household could then score values of 0-3 on this sub-criterion index (or 0%, 33%, 66%, 100%). This score can be compared with a distribution average in the comparator population for the same composite index. The major difference between this option and options 1&amp;2 above is that this option would not constitute a methodological deviation from IRIS, in that it would ensure that a pass is achieved at the sub-criterion level for a household to be taken out of the IDP stock. However, there is a serious feasibility issue with this option. As with the preceding option, at least 2 binary indicators are required per sub-criterion to construct an index, but more would be recommended. A small number of indicators per sub-criterion would result in a cruder measure, thereby barely overcoming challenge 2 (as we will still be comparing discrete values – e.g. 0;1;2 in the case of 2 indicators for a given sub-criterion - with a continuous distribution average; so for a given household to perform on par or better than the benchmark, it would be irrelevant whether the benchmark valuer was, say, 0.1 or 0.9 – in either case the household in question would need to score a 1 to achieve a pass on this criterion). Assuming at least 3 indicators per each of the 10 sub-criteria, this would result in an overall computation based on at least 30 indicators – which appears overly burdensome for widespread application.
+
+_Option 3: A composite metric at the sub-criterion level_
+
+|
+ | **Sub-criterion** | **Indicators** |
+ | **Composite** | **Comparison to benchmark** |
+| --- | --- | --- | --- | --- | --- |
+| **Household A** | 1.1 Victims of violence | Indicator 1.1.aIndicator 1.1.bIndicator 1.1.c | 111 | 3 | 2.8 | Pass |
+| 1.2 Freedom of movement | Indicator 1.2.aIndicator 1.2.bIndicator 1.2.c | 111 | 3 | 2.5 | Pass |
+| 2.1 Food security | Indicator 2.1.aIndicator 2.1.bIndicator 2.1.c | 101 | 2 | 1.1 | Pass |
+| 2.2 Shelter and housing | Indicator 2.2.aIndicator 2.2.bIndicator 2.2.c | 101 | 2 | 1.9 | Pass |
+| 2.3 Medical services | Indicator 2.3.aIndicator 2.3.bIndicator 2.3.c | 111 | 3 | 3 | Pass |
+| 2.4 Education | Indicator 2.4.aIndicator 2.4.bIndicator 2.4.c | 100 | 1 | 3.5 | No pass |
+| 3.1 Employment &amp; livelihoods | Indicator 3.1.aIndicator 3.1.bIndicator 3.1.c | 000 | 0 | 1.5 | No pass |
+| 3.2 Economic security | Indicator 3.2.aIndicator 3.2.bIndicator 3.2.c | 001 | 1 | 2.9 | No pass |
+| 4.1 Property restitution &amp; compensation | Indicator 4.1.aIndicator 4.1.bIndicator 4.1.c | 111 | 3 | 2.5 | Pass |
+| 5.1 Documentation | Indicator 5.1.aIndicator 5.1.bIndicator 5.1.c | 011 | 2 | 1.8 | Pass |
+|
+ | Decision |
+ | The household has not overcome displacement as some composite metrics on the sub-criterion level are lower than the benchmark average. |
+
+_Option 4 - Comparison of homogenous cells:_
+
+Rather than trying to create a continuous indicator value at the household level through composite indices as in the first three options, an alternative approach could be to divide the IDP population into small homogenous &quot;cells&quot; – for example by location of displacement, area of habitual residence and year of arrival. Even if selecting just one indicator per sub-criterion (i.e. 10 indicators for the measure overall), for each cell an average value could be calculated which subsequently can be compared against the distribution average in the comparator benchmark. The decision whether displacement has ended is no longer made on the individual household level but on the cell level. If an IDP cell has achieved a durable solution in comparison to the benchmark, all IDPs in this group are taken out of the stock of IDPs. If the cell has not achieved a durable solution, all IDPs remain as IDPs in the stock. The advantage of this option is that it is the only one to truly overcome challenge 2 and fully deliver to the contextualized approach proposed by IRIS, in that it would be comparing continuous cell values with benchmark continuous values. The shortcoming of this option is that the aggregate results may depend heavily on the criteria chosen for dividing IDP populations into cells. A strong assumption of homogeneity in the cells is necessary.
+
+_Option 4: Comparison of homogenous cells_
+
+|
+ | **Sub-criterion** | **Indicator** | **Percentages in cell Z** | **Comparison to benchmark** |
+| --- | --- | --- | --- | --- |
+| **Household A is classified into cell Z (e.g. current location, area of origin &amp; year of arrival)** | 1.1 Victims of violence | Indicator 1.1.a | 29% | 28 % | Pass |
+| 1.2 Freedom of movement | Indicator 1.2.a | 26% | 25% | Pass |
+| 2.1 Food security | Indicator 2.1.a | 2.2% | 2% | Pass |
+| 2.2 Shelter and housing | Indicator 2.2.a | 19% | 19% | Pass |
+| 2.3 Medical services | Indicator 2.3.a | 3.5% | 3% | Pass |
+| 2.4 Education | Indicator 2.4.a | 1% | 3.5% | No pass |
+| 3.1 Employment &amp; livelihoods | Indicator 3.1.a | 12% | 15% | No pass |
+| 3.2 Economic security | Indicator 3.2.a | 25% | 29% | No pass |
+| 4.1 Property restitution &amp; compensation | Indicator 4.1.a | 31% | 25% | Pass |
+| 5.1 Documentation | Indicator 5.1.a | 35% | 18% | Pass |
+|
+ | Decision |
+ | All households in cell Z (that includes household A) have not overcome displacement as their average distribution in some sub-criteria is lower than the average in the benchmark population. |
+
+_Option 5 – Classifier/ regression-based approach:_
+
+Another option for the &quot;solutions measure&quot; could be to take a regression-based approach in which the 10 sub-criteria are used as covariates to predict whether a household should still be classified as an IDP household or not. A probabilistic classifier, such as a logistic regression, would estimate whether an IDP household is distinct from the host community (i.e. high probability to be an IDP) or whether an IDP household is very similar to households in the host community (i.e. low probability to be an IDP). Important decisions to make before implementing this option are which classifier to select, how to select probability cut-off points to determine whether a specific household is similar to IDPs or to hosts, and how to deal with sample imbalance in the data. While this approach would overcome the challenge of comparing IDP households with host community households, this approach needs further clarifications and is not sensible to underperformance on specific indicators.
+
+_Option 5: A classifier/regression-based approach_
+
+|
+ | **Sub-criterion** | **Indicator** |
+ | **Regression weights** |
+| --- | --- | --- | --- | --- |
+| **Household A** | 1.1 Victims of violence | Indicator 1.1.a | 1 | -1.58 |
+| 1.2 Freedom of movement | Indicator 1.2.a | 1 | -0.04 |
+| 2.1 Food security | Indicator 2.1.a | 1 | 1.59 |
+| 2.2 Shelter and housing | Indicator 2.2.a | 1 | -2.24 |
+| 2.3 Medical services | Indicator 2.3.a | 1 | 0.48 |
+| 2.4 Education | Indicator 2.4.a | 0 | 4.48 |
+| 3.1 Employment &amp; livelihoods | Indicator 3.1.a | 0 | 6.72 |
+| 3.2 Economic security | Indicator 3.2.a | 0 | 2.13 |
+| 4.1 Property restitution &amp; compensation | Indicator 4.1.a | 1 | 4.32 |
+| 5.1 Documentation | Indicator 5.1.a | 1 | -0.22 |
+|
+ | Predicted probability for household (e.g. logit transformed) |
+ | 0.439 |
+| Cut-off point |
+ |
+ | 0.5 |
+| Decision |
+ | The household has not overcome displacement as the predicted probability of being similar to the host community is below the cut-off point. |
+
+Box 2 summarizes the main advantages and disadvantages of the different metrics. The note going forward aims to provide empirical information how these metrics perform (that is how many IDPs they count as having overcome their displacement-related vulnerabilities).
+
+_Box 2: Main Advantage and Disadvantage of Different Metrics_
+
+|
+
+| **Metrics option** | **Main advantage &amp; disadvantage** |
+| --- | --- |
+| Pass/fail measure (no comparison!) | ✓Sensitivity to underperformance on the sub-criteria level **X** No comparison between IDP and comparator households; Potentially restrictive |
+| --- | --- |
+| 1. Composite metrics across all criteria | ✓Comparability of scores with few indicators needed **X** No sensibility to underperformance on specific (sub-)criteria |
+| --- | --- |
+| 2. Composite metrics at the criterion level | ✓Comparability of scores **X** No sensibility to underperformance on specific sub-criteria; higher data needs (at least 16 indicators needed) |
+| --- | --- |
+| 3. Composite metrics at the sub-criterion level | ✓Comparability of scores and sensibility to underperformance on sub-criteria level **X** Very high data needs (many indicators needed) |
+| --- | --- |
+| 4. Homogenous cells | ✓Full contextualization, comparison of continuous values **X** Depends on assumption of homogenous IDPs within cells; may be highly sensitive to boundaries of cells |
+| --- | --- |
+| 5. Classifier/regression-based | ✓Full contextualization possible **X** Depends on regression assumptions; no sensibility to underperformance on specific sub-criteria |
+| --- | --- |
+
+
+ |
+| --- |
+
+# Methodology
+
+This note follows a purely technical and empirical approach to assess how different indicators and different metrics to combine these indicators perform and result in IDPs overcoming their displacement-related vulnerabilities, thereby exiting the IDP stock in statistical terms. Overall, the assessment follows four steps: The first step was to identify the universe of potential indicators that could be used to measure the 10 sub-criteria. The second step was to identify suitable empirical datasets that contain enough statistical indicators from this theoretical universe to compare their performance against each other. In a third step, the relevant indicators in the datasets were prepared for the analysis by turning all indicators into binary variables and by creating composite indices. Finally, the selected datasets were used to assess the indicators and the different metric options in simulations. This final simulation step means that for each metric option, it was assessed how many IDPs exit the dataset for each possible indicator combination. The simulated results provide information on the performance of indicators and metrics that can inform the process of developing a fully applicable measure for durable solutions. The following sections outline the details of the methodology.
+
+## Step 1: Identifying the universe of potential indicators
+
+The first methodological step was to map out the universe of potential indicators that could be used to operationalize the 10 sub-criteria on the basis of the Durable Solutions Library.
+
+ For each sub-criterion, multiple statistical indicators exist but there is no comprehensive list of all theoretically possible indicators. However, this is important to guide the selection of suitable datasets for this assessment. The universe of potential indicators should be a realistic list of indicators that are often used in surveys while also covering multiple potential operationalizations of the 10 sub-criteria.
+
+As one of the most comprehensive collection of often-used statistical indicators for durable solutions, the list of indicators contained in the Durable Solutions Library was mapped on to the 10 sub-criteria. To demonstrate, the library specifies the indicator &quot;Target population residing in durable housing structures&quot; which was mapped on to the sub-criterion _2.2 Shelter and housing_. Overall, 52 possible indicators were mapped on to the 10 sub-criteria. While the library only contains one possible indicator for some of the sub-criteria, up to 10 possible operationalizations for _3.2 Economic Security_ are covered.
+
+ See table 3 for a break down of the possible indicators per sub-criterion.
+
+This universe of potential indicators forms a theoretical baseline to identify empirical datasets that cover many of these indicators in practice. It should also be noted that the Durable Solutions Library identifies general indicators defined in broad terms. Empirical datasets can contain a plurality of more concrete, specific and narrower indicators that can be associated with one of the statistical indicators in the Durable Solutions Library.
+
+## Step 2: Selecting empirical datasets on IDP vulnerabilities &amp; solutions
+
+In a second step, the aim was to identify and select empirical datasets that cover many potential indicators to measure the 10 sub-criteria defined in the IRIS and that are contained in the mapped-out universe of statistical indicators from the Durable Solutions Library.
+
+The first dataset selected for this simulation exercise is the _Internal Displacement Profiling in Hargeisa_
+_# 6_ that was conducted by UNHCR with support of JIPS and the Protection Cluster&#39;s Profiling Task Force in 2015. The second dataset stems from the World Bank _Profile of Internally Displaced Persons in North-East Nigeria_
+_# 7_ in 2018. Both datasets were readily available in the Humanitarian Data Exchange and the World Bank Microdata Library and were chosen because they cover a wide range of possible indicators for durable solutions and because they cover IDPs and host communities.
+
+The datasets were then checked to identify whether they contained the relevant 52 indicators from the Durable Solutions Library. Table 3 summarizes how many indicators for each sub-criterion were present in the empirical datasets. As previously mentioned, the datasets can cover multiple more detailed indicators than the mapping from the Durable Solutions Library which lists general indicators. See the appendix for a full table of all indicators in the Durable Solutions library mapped to a sub-criterion and complemented with the indicators available in the empirical datasets.
+
+ For example, the Durable Solutions Library identifies 6 potential indicators for _4.1 Property restitution and compensation_ but only three of them were collected in the IDP profiling in Hargeisa and only two of them in the IDP profiling in Nigeria.
+
+_Table 3: Potential and empirically existent indicators for durable solutions_
+
+| **Sub-criteria (IRIS)** | **Indicators from the inter-agency Durable Solutions Library** | **Of which, available in…** |
+| --- | --- | --- |
+| **IDP Profiling in Hargeisa (UNHCR 2015)** | **IDP Profiling in Nigeria (World Bank 2018)** |
+| **1.1 Victims of violence ** | 7 | 3 | 8 |
+| **1.2 Freedom of movement ** | 1 | 1 | 1 |
+| **2.1 Food security ** | 1 | 2 | 1 |
+| **2.2 Shelter and housing ** | 8 | 6 | 9 |
+| **2.3 Medical services ** | 4 | 3 | 2 |
+| **2.4 Education ** | 3 | 5 | 2 |
+| **3.1 Employment and livelihoods ** | 8 | 1 | 1 |
+| **3.2 Economic security ** | 10 | 3 | 7 |
+| **4.1 Property restitution and compensation ** | 6 | 3 | 2 |
+| **5.1. Documentation ** | 4 | 3 | 1 |
+| **Number of possible combinations of indicators:** |
+ | 14,580 | 4,032 |
+
+This identification of indicators is crucial as it builds the baseline for the following simulations. In Hargeisa, 30 indicators could be identified. For example, the dataset contains 3 possible indicators for measuring _2.3 Medical services_ as the survey asked respondents for access to child vaccinations and basic services, as well as for attendance of births by medical personnel. For the two sub-criteria _1.2 Freedom of movement_ and _3.1 Employment and livelihoods_, the data only contained one possible indicator and an indicator choice cannot be evaluated for these two dimensions. As the indicators are not used individually but in a combination of at least 10 (for the 10 sub-criteria), this leads to a total of 14,580 possible indicator combinations that can be assessed in simulations.
+
+In Nigeria, 34 indicators could be identified. However, since the indicators in Nigeria are more concentrated on 2 sub-criteria, only 4,032 possible combinations for simulations exist. The dimensions _1.2 Freedom of movement, 2.1 Food security, 3.1 Employment and livelihoods_, and _5.1 Documentation_ are only covered with one possible indicator. The dataset in Nigeria is particularly rich covering whether IDPs were victims of violence, their shelter and housing conditions as well as their economic security.
+
+## Step 3: Preparing the indicators and indices for simulation
+
+After having identified all relevant indicators in the data, the aim is to apply the above outlined metric options to the datasets to identify how many IDPs exit the IDP stock in each of the metrics. Additionally, this should not only be done for one set of 10 indicators but for all possible indicator combinations in the data. To iterate through all indicators and all metric options, the indicators were first prepared for these simulations. Importantly, all indicators were coded as binary indicators that are coded as 1 if a displacement-related vulnerability was overcome and coded as 0 if the vulnerability persists for a specific household. For example, not reporting a security incident is a 1 as this is a positive achievement for durable solutions.
+
+Furthermore, the different metric options follow three distinct logics that require different preparatory steps and/or methodological decisions: The simple pass/fail measure as well as the metric options 1, 2, and 3 (different composite metrics) do not require further preparatory steps as all indicators already have a numeric value that can be flexibly combined to composites (and can then be compared to host community averages). Regarding metric option 2 and 3, the composite indices were built by combining three indicators at the (sub-)criterion level (where possible).
+
+Metric option 4 is based on homogenous IDP population cells that first have to be defined before they can be assessed as a group average. The IDP population was split into subgroups based on core demographics, their timing of displacement and their places of displacement and origin. However, the assessment did not pick one variable to group the population but iterated through different ways to split the IDP population to be able to make a judgment to what extent the different groupings affect the overall results (i.e. how many IDPs exit the stock). In Hargeisa, 10 different groupings were tested based on using three of the grouping variables below. For example, one population split was based on the gender, the clan, and the departure period of a household (e.g. one grouping consists of female-headed households that belong to the Isa clan and were displaced after 2010). In Nigeria, 8 different groupings were tested based on picking three of the grouping variables below. The following cell variables were used to split the IDP population in Hargeisa into subgroups:
+
+| **Hargeisa:**
+- **Gender of the household head** (female, male)
+- **Clan of the household** (Haw, Isa, Rah. Dar, Dir, Gab, Other, Unknown)
+- **Origin district**
+ **# 11**
+- **Region of origin** (Displaced from South Central, Displaced from Somaliland, Displaced from South Central OoS)
+- **Departure period** (Before 1990, Between 1990 and 2000, Between 2000 and 2010, After 2010)
+ | **Nigeria:**
+- **Year of displacement** (ranging from 1998 to 2018)
+- **Month-Year of displacement** (ranging from 1998-08 to 2018-08)
+- **Year of arrival** (ranging from 1998 to 2018)
+- **Month-Year of arrival** (ranging from 1998-08 to 2018-08)
+- **Region of displacement** (Adamawa, Bauchi, Borno, Gombe, Taraba, Yobe)
+- **Region of origin** (Different state in Nigeria, Outside Nigeria, Same local government area, Same state, Same ward)
+
+ |
+| --- | --- |
+
+Finally, a regression-based approach does not require additional preparatory steps but requires a methodological decision how to classify an IDP household as more similar to other IDPs (and hence as still vulnerable) or more similar to host households (hence exiting the IDP stock). In this assessment a logistic classifier was fitted to determine whether a household is similar to an IDP household or a host community household. After fitting a regression, households with a predicted probability above 0.5 were classified as still being vulnerable. IDP households with a predicted probability below 0.5 were classified as having overcome their vulnerabilities as they are more similar to the host community. Further assessments are needed to refine this cut-off point.
+
+## Step 4: Iteratively simulating the indicator and metric choice
+
+After identifying the indicators for this assessment in each survey and preparing the indicators for analysis, iterative simulations following the scheme in Figure 1 were run. For each dataset, each possible combination of 10 indicators (one for each of the sub-criteria) was assessed using all five metric options outlined above. To be able to compare the five possible metric options to a simple pass/fail approach, the simulations also included this option.
+
+In each simulation (given a set of indicators and the chosen metric), we report the number of IDPs overcoming their displacement-related vulnerabilities. After all combinations of indicators and metrics were analyzed, it is possible to assess to what extent a single indicator affects the number of IDPs exciting the stock in each metric type by running linear regressions.
+
+_Figure 1: Simulation approach_
+
+
+
+Assess effect of indicator and metric selection in linear regressions
+
+
+
+# Findings
+
+## Simulation results for Hargeisa (UNHCR 2015)
+
+The IDP profiling in Hargeisa covered a total of 4,780 IDPs that could be compared directly to their hosts. On average across all simulated indicators and metrics, 505.36 IDPs have overcome their vulnerabilities and exit the IDP stock. According to this assessment, an average of 10.57% of the sampled IDP population in Hargeisa could exit the stock for statistical purposes. This percentage includes some IDP households that could not be assessed as the IRIS recommends that no assessment should take place if data is missing for at least one of the 10 sub-criteria. This was the case for 1.8% of the data in the IDP profiling in Hargeisa.
+
+_Importance of indicator selection_
+
+The first question this assessment aims to address is how much difference there is between using different operationalizations of the 10 sub-criteria. To address the question of selecting statistical indicators, table 4 summarizes the relevance of the indicator choice in Hargeisa. The table lists all indicators that are present in the data and provides information on the average effect of choosing one indicator over the other across all metrics. For example, choosing an indicator that covers the ability to pay for food as opposed to an indicator that counts whether an IDP household had more meals than the average IDP household decreases the percentage of IDPs exiting the stock by an average of 0.19 percentage points across all metrics in this simulation. Expressed differently, the ability to pay for one&#39;s own food is a higher bar to pass than consuming above-average meals, which means that less IDPs will overcome their vulnerabilities. The last column of the table gives a verbal summary of the average effect of indicator selections across all metrics.
+
+_Table 4: Average relevance of indicator choice across metrics (Hargeisa)_
+
+| **Sub-criteria** **(IRIS)** | **Indicators from Hargeisa (UNHCR 2015)** | **Average effect size on stock** | **Description of variation** |
+| --- | --- | --- | --- |
+| **1.1 Victims of violence ** | 1. Experience of security incident (baseline)2. Feeling of safety 3. Worried about security incidents | -0.12 to 0 percentage points | Hardly any discernable difference between different indicators for victimization and violence. |
+| **1.2 Freedom of movement ** | Only available indicator was whether IDPs are free to visit public places. No assessment of indicator choice. |
+| **2.1 Food security ** | 1. More meals per day than average (baseline)2. Ability to pay for food | -0.13 percentage points | Hardly any discernable difference between using different indicators for food security. |
+| **2.2 Shelter and housing ** | 1. Access to bathroom (baseline)2. Electricity in house 3. Inadequate housing (in risk zones)4. Living in overcrowded space5. Access to water from a tank6. Access to toilet
+ | -0.02 to 1.3 percentage points | Hardly any discernable difference between access to bathroom or toilet and overcrowded housing. Some difference when using electricity and adequate housing. A **notable difference when using access to water** as an overage of 1.3 percentage points more IDPs overcome their vulnerabilities. |
+| **2.3 Medical services ** | 1. Access to medical services if ill (baseline)2. Birth attended by medical staff3. Child vaccinated | -0.46 to 0.65 percentage points | Some difference between indicators for medical services. |
+| **2.4 Education ** | 1. Child currently attends school (baseline)2. Child able to read and write3. Child ever attended school4. Household owns mobile phone 5. Child attends secondary school | -0.1 to -0.03 percentage points | Hardly any discernable difference between indicators for education. |
+| **3.1 Employment and livelihoods ** | Only available indicator was whether IDP household has a breadwinner or not. No assessment of indicator choice. |
+| **3.2 Economic security ** | 1. Number of durable assets above average (baseline)2. Problems paying rent3. Able to cover unexpected expenses
+ | 0.03 to 0.48 percentage points) | Hardly any discernable difference between number of durable assets and ability to cover unexpected expenses. Some difference when using an indicator for problems paying rent. |
+| **4.1 Property restitution and compensation ** | 1. Access to recompensating mechanism for lost HLP (baseline)2. Documentation for HLP3. Access to HLP restored | 0.72 to 0.74 percentage points) | Some differences between indicators for property restitution and compensation. |
+| **5.1. Documentation ** | 1. Possession of birth certificate (baseline) 2. Possession of ID documents3. Ability to restore ID documents | -0.06 to 1.18 percentage points | Hardly any difference between possession of birth certificates and ability to restore ID. A **notable difference when using the possession of any ID document** as an overage of 1.8 percentage points more IDPs overcome their vulnerabilities. |
+
+As the table summarizes, for most of the 10 sub-criteria, the exact indicator choice does not matter across the different metrics. There is no discernable difference in the indicators for _1.1. Victims of violence_, _2.1. Food security_, and _2.4. Education_. For the sub-_criteria 2.3. Medical services_, _3.2. Economic security_, and _4.1. Property restitution and compensation_, there are some differences between the choice between one indicator over the other. However, in substantive terms, the difference between these indicators increases or decreases the exit from the IDP stock by less than 1 percentage points. The difference can hence also be seen as neglectable.
+
+For two sub-criteria, the simulations reveal some notable differences between indicators that can increase or decrease the exit from the IDP by more than 1 percentage point. This is the case for _2.2. Shelter and housing_. When using an indicator of access to water from a tank, 1.3 percentage point more IDPs overcome their vulnerabilities as this is a lower threshold than other indicators for shelter and housing. For example, when a composite index across all sub-criteria is used, up to 132 more IDPs overcome their vulnerabilities and exit the IDP stock if they only require access to water rather than access to adequate and non-crowded housing. Measuring whether IDPs are in the possession of an ID document is also a more lenient indicator for _5.1. Documentation_ than the requirement to have a birth certificate or to be able to restore documentation. Using the possession of any ID document can lead to an average 1.8 percentage point increase in the number of IDPs exiting the stock as opposed to other indicators. In a volatile metric, for example when using one composite index across all sub-criteria, this can lead to up to 1078 more IDPs exiting the stock.
+
+To visualize the results of this indicator assessment, figure 2 displays the average effect of choosing one indicator over the other averaged across all assessed metric options. To facilitate the interpretation, the effects indicated in green are hardly discernable from one another, meaning that the indicator choice does not matter in practical terms. The two cases where the indicator choice may lead to more than one percentage point increase in the IDP exit are marked in blue. All effects must be understood in relation to a reference indicator (see table 4).
+
+
+_Figure 2: Average effect of indicator selection across metrics in Hargeisa on percentage of IDPs exiting the stock_
+
+Overall, even if there are some differences in these two sub-criteria, and the indicator selection tends to matter more, the simulations in the context of Hargeisa suggests that the average effect of choosing one indicator over the other is often neglectable in practice. In this indicator assessment, the most relevant choice was whether to use all kinds of IDs as proof of documentation and whether to use water tanks as indication for safe housing conditions.
+
+_Importance of metric selection_
+
+The simulation approach is also intended to answer a second question that is to what extent the different metric options differ and produce varying estimates of the exit from the IDP stock. Table 5 summarizes the key findings related to the range of IDPs that exit the stock across all metrics (how much variation there is in results), and how important the choice of individual indicators is in each approach. The table also provides the mean number of IDPs exiting the stock. It can be generally said that the choice which indicators are used matters in some metrics more than in others as some metrics are more volatile than others.
+
+_Table 5: Summary of simulation results for Hargeisa across all metrics_
+
+_(Total sample of IDPs: 4,780 households)_
+
+|
+ | **Pass/fail (no comparison to hosts!)** | **Option 1: Composite metric across all criteria** | **Option 2: Composite metric at the criterion level** | **Option 3: Composite metric at sub-criterion level** | **Option 4: homogenous cells** | **Option 5: regression-based** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Simulations/ combinations** | 14,580 | 14,580 | 14,580 | 200 | 40,000
+ | 14,580 |
+| **Mean of IDPs exiting the stock** | 24.61 IDPs (0.51% of stock) | 1324.84 IDPs (27.72% of stock) | 129.23 IDPs (2.7% of stock) | 0 IDPs (0% of stock) | 5.34 IDPs (0.11% of stock) | 1921.43 IDPs (40.2% of stock) |
+| **Range of IDPs exiting the stock** | 0 to 943 IDPs (0 to 19.73% of stock) | 42 to 2778 IDPs (0.88 to 58.12% of stock) | 0 to 1440 IDPs (0 to 30.13% of stock) | 0 IDPs (0% of stock) | 0 to 693 IDPs (0 to 14.5% of stock)
+ | 113 to 4071 IDPs (2.36 to 85.16% of stock) |
+| **Variation in how many IDPs exit the stock** | Low (SD: 76) | High (SD: 641.02) | Middle (SD: 237.89) | No variation | Very low (SD: 27.25) | Very high (SD: 1311.93) |
+| **Effect of most important indicator** | Low (choosing between water and other housing indicators increases exit by more than 1.3 percentage points) | High (choosing between HLP document and other property indicators increases exit by more than 22.56 percentage points) | Middle (choosing between ID possession and other document indicators increases exit by more than 6.17 percentage points) | No differences across simulations | Very low (choosing between ID possession and other document indicators increases exit by 0.21 percentage points) | Very high (choosing restoration of HLP rights over other property indicators increases exit by 56.15 percentage points) |
+
+When using one composite metric across all criteria (all 10 indicators for each sub-criterion are summarized into one index) and when using a regression-based approach, the choice of indicators matters the most and the metric yields high variation. In the case of one composite metric, measuring the sub-criterion _4.1. Property restitution and compensation_ by assessing the documentation and restoration of property rather than the access to compensation mechanisms increases the percentage of IDPs overcoming their vulnerabilities by almost 23 percentage points. In the case of a regression-based assessment whether an IDP household is more likely to be similar to other IDPs vs. the host communities, the same indicator can even increase the percentage of IDPs overcoming their vulnerabilities by almost 57 percentage points. Albeit less strongly, the choice which indicators are used is also more severe in the case of a composite metric at the criterion level (as up to 6.17 percentage point difference can be between different indicators). For options 1, 2 and 5, it is hence important to note that these metric options create varying estimates of exits from the stock and are very sensitive to the indicator selection.
+
+For other metric options, the importance of choosing the right indicator is very diminished as the metrics produce very similar estimates of the exit from IDP stocks across all indicators. As multiple indicators are combined at the sub-criterion level, option 3 indicates that none of the IDPs exit the stock. The option performs very similar to a pass/fail scenario in which no comparison with the host community takes place. When IDPs are divided into subgroups and then compared with the host population, the simulation also revealed that very few IDP subgroups exit the IDP stock (see details in Box 3).
+
+_Box 3: Effect of grouping of cells (option 4) in Hargeisa_
+
+| **Different groupings of homogenous cells in Hargeisa** do not strongly affect the exit from the IDP stock. Further assessments of the homogeneity amongst grouped cells would be necessary to fully conclude whether grouping variables have a big impact on a potential solutions measure.
+
+| **Grouping variable 1** | **Grouping variable 2** | **Grouping variable 3** | **Average number of IDPs exiting the stock** | **Average percentage of IDPs exiting the stock** |
+| --- | --- | --- | --- | --- |
+| Region of origin | Clan | Departure period | 2.17 | 0.05 |
+| --- | --- | --- | --- | --- |
+| Region of origin | Gender | Clan | 5.2 | 0.11 |
+| --- | --- | --- | --- | --- |
+| Region of origin | Gender | Departure period | 0 | 0 |
+| --- | --- | --- | --- | --- |
+| Region of origin | Gender | Origin district | 5.87 | 0.12 |
+| --- | --- | --- | --- | --- |
+| Region of origin | Origin district | Clan | 10.66 | 0.22 |
+| --- | --- | --- | --- | --- |
+| Region of origin | Origin district | Departure period | 3.95 | 0.08 |
+| --- | --- | --- | --- | --- |
+| Gender | Clan | Departure period | 0.86 | 0.02 |
+| --- | --- | --- | --- | --- |
+| Gender | Origin district | Clan | 7.27 | 0.15 |
+| --- | --- | --- | --- | --- |
+| Gender | Origin district | Departure period | 6.54 | 0.14 |
+| --- | --- | --- | --- | --- |
+| Origin district | Clan | Departure period | 10.89 | 0.23 |
+| --- | --- | --- | --- | --- |
+
+
+ |
+| --- |
+
+_Overall feasibility and application of metric options_
+
+Figure 3 displays the density of the conducted simulations for the 5 identified metric options. To allow comparisons, a simple pass/fail measure on the sub-criterion level has been added but readers should note that this does not enable any comparisons with hosts. The graph displays on the x-axis what percentage of the IDP population in the dataset has overcome vulnerabilities and exits the stock. The y-axis displays the density of simulations or how many of the simulations shared the same outcome (number of IDPs exiting the stock).
+
+Note that the y-axis in the different graphs have their own scaling to make visualization easier and because the number of simulations was not always identical (as combining indicators to indices can increase and decrease the number of possible combinations).While the x-axis is more comparable, the axis is also slightly adjusted for visualization.
+
+The first observation from these density plots is that the option to use composite measures at the criterion level has a clear peak around 0 percentage of IDPs. For a composite measure at the sub-criterion level, there is no variation and all simulations indicate that no IDP exits the stock. This means that both composite metric options are not strongly dependent on the selected indicators. It also indicates that the metrics are relatively restrictive and classify few IDPs as having overcome their key vulnerabilities. Because of their high threshold to exit IDPs from the stock, they behave like a pass/fail measure that does not compare IDPs with a comparator population.
+
+Making a regression-based assessment whether a specific household is predicted to be an IDP household or a host community household is an option that has the highest variability, which means that depending on the indicator combination chosen, the resulting number of IDPs exiting the stock can be considerably higher or lower. Keeping all other indicators constant, using an indicator whether IDPs have restored their access to property can classify around 2684 more IDPs as exiting the stock as opposed to measuring this sub-criterion as access to restoration mechanisms. The simulations reveal a bimodal distribution: many simulations cluster around 0.1-0.2% of the IDP population overcoming their vulnerabilities. At the same time, many simulations center around 0.55% of IDPs overcoming their vulnerabilities. From this distribution, it is hence difficult to assess what the true percentage of IDPs having achieved a solution in statistical terms might be.
+
+_Figure 3: Density of simulations in possible metrics (Hargeisa)_
+
+Constructing one composite measure across all criterion (option 1) is a metric option that has the second highest variability. Keeping all other indicators constant, using an indicator whether IDPs have documentation to prove their property rights can classify around 1,079 more IDPs as exiting the stock as opposed to measuring this sub-criterion as access to restoration mechanisms. The conclusion is that if data is combined into one index across all criteria and if a regression-based approach is used, it is strongly advisable to carefully determine a final set of indicators to measure solutions to ensure that data across displacement contexts is comparable.
+
+The fourth possible option to determine how many IDPs have overcome their displacement-related vulnerabilities is to divide the overall IDP population into homogenous IDP cells. In Hargeisa, the simulations tested 10 different ways of dividing the cells based on the year IDPs departed from their home, their gender, their district of origin, their clan, and their displacement type but the grouping did not yield stark differences, ranging from 0 to 11 IDPs exiting the stock. Hence, this metric option is also not very volatile and neither the indicator choice nor the groupings strongly affect the results.
+
+Some metric options turned out to be easier to implement than others in the dataset on IDPs in Hargeisa. In terms of feasibility, the metric option 1, which showed high sensitivity to indicator selection, was easy to implement as the construction of one index is straightforward. However, a problem with this metric option is not only its variability but also that elements of the index may be collinear.
+
+Regarding the metric options 2 + 3, that both require multiple indices on the criterion and the sub-criterion level, the feasibility of this approach is much lower. First, they require more indicators than the other metrics to be able to construct additive indices. For example, in Hargeisa there were simply not more than one indicator available to measure _1.2 Freedom of movement_ and _3.1 Employment and livelihood_. It is expected that producers of official statistics may also have challenges to generate the data necessary for these more data hungry indices. Second, the theoretical conceptualization is not fully advanced yet. An &quot;ideal&quot; composite index is always made of theoretically distinct elements (i.e. we measure different dimensions of displacement-related vulnerabilities). However, when multiple indicators that measure very much the same theoretical concept are combined to one index at the sub-criterion level (e.g. similar indicators that all measure whether IDPs&#39; shelter and housing conditions are satisfactory), the different indicators are likely very much correlated. An example is that individual living in an overcrowded space very often also live in a makeshift space. This multicollinearity of elements of an index raises questions whether strongly correlated elements of an index should be weighted differently than other elements. The problem of developing a theoretically sound index also exists when an index is built on the criterion level. So far, the IRIS already identifies four distinct sub-criteria for the adequate standard of living of IDPs. However, it is not clear if we can theoretically identify more than one dimension to empirically measure the criterion _5. Documentation_. These questions of theoretical conceptualization, correlation between elements in the index, and the high data demands reduce the feasibility to implement the metric options 2 and 3 in practice.
+
+Dividing the IDP population in Hargeisa into sub-groups to assess homogenous cells that can then be compared to the host community is relatively easy to implement for National Statistical Offices. However, it goes beyond the scope of this methodological note to assess precisely how the boundaries between cells (i.e. the criteria to divide the IDP populations) affect the results. In Hargeisa, the available variables to build cells did not indicate high volatility to the grouping. However, a final selection of this metric option would need to assess 1) which delimitations should be used, 2) if the number of variables to divide the IDP population matters, 3) if the size of the cells matters, and if the 4) homogeneity or heterogeneity in a cell matters. While this option is initially easy to implement, it raises many new methodological challenges.
+
+Finally, using a regression-based approach has some disadvantages and advantages. First, further methodological work is needed to identify an easy-to-implement but also successful classifier that predicts whether an IDP household is more similar to other IDPs or to the host community. A logistic regression or linear regression seems plausible here. Furthermore, it has to be decided what the probability cut-off is, or at what predicted probability an IDP household should be no longer considered displaced. The here implemented cut-off of 0.5 seems too lenient. Another practical problem in this approach is that comparisons across contexts might be difficult. While a regression in one country might assign a lot of weight to indicators for the freedom of movement, in another country it might be much more important whether food security has been achieved. From the point of a national statistical system, it might be difficult to identify why the regression coefficients vary across contexts and sub-criteria and how different assessments can be compared between displacement situations.
+
+## Simulation results for Nigeria (World Bank 2018)
+
+The IDP profiling in Nigeria covered a total of 1,437 IDPs that could be compared to the host population. On average across all simulated indicators and metrics, 43.02 IDPs have overcome their vulnerabilities and exit the IDP stock, which corresponds to an average of 2.99% of the sampled IDP. For 1.8% of the data in the IDP profiling in Nigeria, IDP households could not be assessed due to missing data.
+
+_Importance of indicator selection_
+
+Table 6 summarizes how much the choice of one indicator over others can affect the exit from the IDP stock on average across all simulations and all metric options. In the dataset from Nigeria, it is only possible to assess the relevance of the indicator selection for four sub-criteria of the total of 10 sub-criteria because the data only contains one possible indicator for those dimensions. The table is quickly summarized by concluding that none of the average effects of indicators produces a discernable difference. That means, across all metric options assessed in this simulation, it makes no substantial difference whether one indicator is picked over another operationalization for the 10 sub-criteria.
+
+_Table 6: Average relevance of indicator choice across metrics (Nigeria)_
+
+| **Sub-criteria** **(IRIS)** | **Indicators from Nigeria (World Bank 2018)** | **Average effect size on stock** | **Description of variation** |
+| --- | --- | --- | --- |
+| **1.1 Victims of violence ** | 1. Feeling of safety at day (baseline)2. Easy access to dispute resolution3. Effective access to dispute resolution 4. Formal dispute resolution mechanisms5. Experience of security incident6. Feeling of safety at night7. Reporting a security incident8. General feeling of safety | -0.09 to 0 percentage points | Hardly any discernable difference between different indicators for victimization and violence. |
+| **1.2 Freedom of movement ** | Only available indicator was whether IDPs feel free to move. No assessment of indicator choice. |
+| **2.1 Food security ** | Only available indicator was whether IDPs score higher than average on Food Security Scale. No assessment of indicator choice. |
+| **2.2 Shelter and housing ** | 1. Non-durable living arrangement (baseline)2. Living in overcrowded space3. Owning or renting house4. Squatting in house5. Living in temporary shelter6. Owning or renting house legally7. Access to improved sanitation8. No obstacles to accessing water9. Drinking water from improved sources
+ | -0.1 to 0 percentage points | Hardly any discernable difference between using different indicators for shelter and housing. |
+| **2.3 Medical services ** | 1. Access to medical services as needed (baseline)2. Distance to health facility
+ | 0 percentage points | Hardly any discernable difference between using different indicators for medical services. |
+| **2.4 Education ** | 1. Duration to next education facility (baseline)2. Satisfaction with schools | -0.05 percentage points | Hardly any discernable difference between using different indicators for education. |
+| **3.1 Employment and livelihoods ** | Only available indicator was whether IDP household generated income from wages, salaries, own business or a pension. No assessment of indicator choice. |
+| **3.2 Economic security ** | 1. Having a bank account (baseline)2. Being below 1.9 USD PPP 2011 Poverty Line3. Being below 1.25 USD PPP 2011 poverty line4. Being below 3.1 USD PPP 2011 poverty line5. Having low ratio of food vs total consumption6. Consuming more than average7. Distance to market | -0.05 to 0.13 percentage points | Hardly any discernable difference between using different indicators for economic security. |
+| **4.1 Property restitution and compensation ** | 1. Access to recompensating mechanism for lost HLP (baseline)2. Legally recognized owner of dwelling | 0.04 percentage points | Hardly any discernable difference between using different indicators for property. |
+| **5.1. Document-ation ** | Only available indicator was if IDPs had documents or access to replace missing documents if lost. No assessment of indicator choice. |
+
+To visualize the results of this indicator assessment, figure 4 displays the average effect of choosing one indicator over the other averaged across all assessed metric options. The same coloring is used as in the figure 2 for Hargeisa. Indicators with an effect that is smaller than 0.5 percentage points are marked in green. One can see that all indicators in the dataset from Nigeria fall into this category. In conclusion, the indicator selection does not matter strongly on average.
+
+_Figure 4: Average effect of indicator selection across metrics in Nigeria on percentage of IDPs exiting the stock_
+
+_Importance of metric selection_
+
+So far, the assessment in Nigeria has shown that the indicator selection matters little across all metric options. The results section now focuses on differences between different metric options and their production of varying estimates for the exit from the IDP stock.
+
+Similar to the assessment in Hargeisa, which metric is used to combine the different indicators matters as the importance of selecting the right indicators varies. As already seen in the dataset on Somaliland, using a regression-based approach or one composite metric across all criteria are the most sensitive to the exact indicators used for an assessment of the statistical end of displacement. In the case of a full composite metric the selection of an indicator can in some instances make up to 19.91 percentage point difference in the outcome of a simulation. That means that over 283 IDPs may be classified as having overcome their vulnerabilities when one indicator to measure _4.1. Property restitution and compensation_ is used while those households do not exit the IDP stock when another indicator is used. In the case of the regression-based classification of IDPs, using an indicator whether a household is the legally recognized owner of their property can on average, when all other indicators stay the same, increase the number of IDPs achieving a durable solution by 36.4 percentage points compared to an indicator capturing the access to compensation mechanisms.
+
+However, for all other metric options presented in this note, the choice of indicators seems to be of very minor relevance for the Nigerian case as less than 1 percentage point difference is made by selection one indicator over the other. Table 7 summarizes the key findings related to variation across indicators and metrics.
+
+_Table 7: Summary of simulation results for Nigeria across all metrics_
+
+_(Total sample of IDPs: 1,437 households)_
+
+|
+ | **Pass/fail (no comparison to hosts!)** | **Option 1: Composite metric across all criteria** | **Option 2: Composite metric at the criterion level** | **Option 3: Composite metric at sub-criterion level** | **Option 4: homogenous cells** | **Option 5: regression-based** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Simulations/ combinations** | 4,032 | 4,032 | 4,032 | 10,000
+ | 32,256
+
+ | 4,032 |
+| **Mean of IDPs exiting the stock** | 0.87 IDPs (0.06% of stock) | 309.50 IDPs (21.54% of stock) | 10.23 IDPs (0.71% of stock) | 0 IDPs (0% of stock) | 0.22 IDPs (0.02% of stock) | 300.58 IDPs (20.91% of stock) |
+| **Range of IDPs exiting the stock** | 0 to 10 IDPs (0 to 0.67% of stock) | 23 to 867 IDPs (1.6 to 60.33% of stock) | 0 to 44 IDPs (0 to 3.06% of stock | 0 IDPs (0% of stock) | 0 to 11 IDPs (0 to 0.77% of stock) | 27 to 747 IDPs (1.87 to 51.98% of stock) |
+| **Variation in how many IDPs exit the stock** | Very low (SD: 1.71) | Middle (SD: 187.87) | Low (SD: 8.57) | No variation | Very low (SD: 0.74) | High (SD: 266.29) |
+| **Effect of most important indicator** | Very low (choosing between distance to market and other indicators for economic security increases exit by 0.14 percentage points) | High (choosing between legal ownership of dwelling and other property indicators increases exit by 19.91 percentage points) | Very low (choosing between consumption and other indicators for economic security increases exit by 0.72 percentage points) | No differences across simulations | Very low (choosing between distance to market and other indicators for economic security increases exit by 0.38 percentage points) | High (choosing between legal ownership of dwelling and other property indicators increases exit by 36.4 percentage points) |
+
+Finally, the simulations also show that the groupings of the IDP population into different homogenous cells to then make a group-level assessment does not yield a strong volatility regarding the variables used for grouping. It should be noted that the grouping in Nigeria was based on date of arrival, date of displacement and the origin and displacement location of IDPs as the dataset contained few other variables useful for classification of IDPs into sub-groups. It is realistic that other groupings could be more sensitive and could produce more variation in the number of subgroups exiting the stock of IDPs (see box 3 for details).
+
+_Box 3: Effect of grouping of cells (option 4) in Nigeria_
+
+| **Different groupings of homogenous cells in Nigeria** do not strongly affect the exit from the IDP stock. Further assessments of the homogeneity within groups, the heterogeneity across groups and the group sizes would be necessary to fully conclude whether grouping variables have a big impact on the results of a solutions measure based on homogenous population cells.
+
+| **Grouping variable 1** | **Grouping variable 2** | **Grouping variable 3** | **Average number of IDPs exiting the stock** | **Average percentage of IDPs exiting the stock** |
+| --- | --- | --- | --- | --- |
+| Month of arrival | Month of displacement | Origin | 0.4 | 0.03 |
+| --- | --- | --- | --- | --- |
+| Month of arrival | Month of displacement | Region of displacement | 0.21 | 0.01 |
+| --- | --- | --- | --- | --- |
+| Month of arrival | Year of displacement | Origin | 0.27 | 0.02 |
+| --- | --- | --- | --- | --- |
+| Month of arrival | Year of displacement | Region of displacement | 0.25 | 0.02 |
+| --- | --- | --- | --- | --- |
+| Year of arrival | Month of displacement | Origin | 0.35 | 0.02 |
+| --- | --- | --- | --- | --- |
+| Year of arrival | Month of displacement | Region of displacement | 0.14 | 0.01 |
+| --- | --- | --- | --- | --- |
+| Year of arrival | Year of displacement | Origin | 0.07 | 0.01 |
+| --- | --- | --- | --- | --- |
+| Year of arrival | Year of displacement | Region of displacement | 0.04 | 0.0 |
+| --- | --- | --- | --- | --- |
+
+
+ |
+| --- |
+
+_Overall feasibility and application of metric options_
+
+Figure 5 displays the density of the conducted simulations for the 5 different metric options that could be used to implement the IRIS solutions measure in practice. The five options are compared to a simple pass/fail measure which does not implement a comparison to host communities. As a reminder, the graphs show which outcome (i.e. number of IDPs exciting the stock) is particularly common in the simulations across indicator combinations.
+
+The same pattern as in Hargeisa can be detected in Nigeria. The composite measure at the criterion level, the composite measure at the sub-criterion level and a comparison of homogenous cells yield an average number of IDPs exiting the stock close to 0. In fact, the metric option 3 results in 0 IDPs overcoming their key displacement-related vulnerabilities across all indicator simulations. These three metric options essentially generate similar results to a simple pass/fail measure without comparisons to hosts.
+
+_Figure 5: Density of simulations in possible metrics (Nigeria)_
+
+In the case of the full composite measure (option 1), the density plots show higher variability and up to 60 percent of the IDP population assessed in Nigeria may have overcome their displacement-related vulnerabilities according to this measure. The average number of simulations in this metric framework is close to 20% of the IDP population. For a regression-based approach, the assessment again yielded a bimodal distribution. The full composite measure and the regression-based approach are characterized by a much higher variability and the indicator selection is more sensitive in this context. We have seen the same behavior in Hargeisa.
+
+Regarding the feasibility of implementing the different metric options in practice and with the capacities of a National Statistical Office in mind, it can be said that the patterns are similar to Hargeisa: The composite measure across all indicators is the easiest to implement. Dividing the IDP population into cells that can then be compared is also fairly easy to implement but may require clearer guidance on the criteria to delimitate different IDP sub-groups. Similarly, a regression-based approach is feasible to implement but requires clarification on probability cut-off, classifier used, and comparisons across contexts. Implementing indices on the criterion or sub-criterion level was more difficult to implement. This problem was even more severe in the dataset used in Nigeria compared to the data in Hargeisa because the dataset did not contain enough possible indicators to form indices for 6 out of 10 sub-criteria. Future assessments of how the IRIS solutions measure can be implemented should use datasets that provide a solid number of different indicators.
+
+## Limitations
+
+This note set out to provide evidence to what extent the choice of a set of statistical indicators to measure solutions (&quot;challenge 1&quot;) and the choice of a method to combine these indicators into one statistical metric (&quot;challenge 2&quot;) affect a &quot;solutions measure&quot; for internal displacement. While the next sections will summarize the key insights from this assessment, it is important to acknowledge some key limitation in this simulation study:
+
+1. **Sample:** Only two datasets were used to test the solutions measure due to time constraints. It was necessary to focus on a household-level IDP-specific survey that includes host community households in order to allow comparison. Given limited data available of comparable socio-economic micro-data on internal displacement, the surveys were not specifically selected to diversify context or policy relevance. Main issues with the selection are that no data from IDP contexts with a natural disaster are used, the datasets are not necessarily nationally representative or do not cover a large proportion of the IDP population, and the data collections were not part of an exercise to generate official statistics or feed into SDG reporting. Future assessments should identify other displacement contexts and samples that may be useful to analyze with the IRIS solution measure in mind.
+2. **Data quality:** While both datasets were useful because they included multiple indicators that could be used to operationalize the IRIS solutions measure, there are some concerns about data quality, in particular in terms of comparability across contexts. Additionally, the survey in Hargeisa included more significant data gaps related to the employment of respondents. Another concern is that indicators coded from the data to measure the 10 sub-criteria are not necessarily in full compliance with SDG indicators. For the solutions measure, it would be beneficial to streamline the elements needed to form a solutions measure with SDG indicators, to increase the likelihood that indicators are already available in various displacement contexts, to increase comparability across contexts, and to reduce the needs to collect new data in order to implement the IRIS solutions measure. Future analyses could define a set of potential indicators guided by more statistical standards.
+3. **Analysis:** Ideally, the work on operationalizing the relevant sub-criteria from the IRIS solutions metric would be done in close cooperation with different experts and organizations to ensure that the work aligns with other efforts, to be guided by statistical standards and common practices, to allow more context-specific knowledge and to cross-compare simulation results as the way statistical indicators are defined may vary depending on the coder. Additionally, the analysis had to retrofit potential indicators for the solutions measure from existing datasets. This is problematic as the indicators are hence not necessarily standardized and there are not always enough indicators to compare thoroughly. Options for future analyses include to fully simulate theoretical data on how much indicators matter in different metric options or to use datasets that are pre-designed for this methodological assessment. In addition, more information is necessary to understand to what extent the different metric options pick up the same IDP populations exiting the stock.
+
+# Conclusions and key recommendations
+
+## Informing the selection of indicators
+
+The first insight from this simulation study is that the **choice of a set of indicators to measure the 10 sub-criteria may matter less**** than the data quality and the metric chosen to combine these indicators**. On average across all simulations and metric options, very few indicators had a large effect on the exit of IDPs from the stock. In the dataset from Nigeria, choosing one indicator over another on average resulted in less than 1 percentage point change in the stock of IDPs when all metric options are taken together. This finding may facilitate and de-politicize the debate as EGRIS moves towards defining concrete statistical indicators against the IASC (sub-)criteria of the solutions measure.
+
+The process of running the simulations re-emphasized the quality standards IRIS already promotes for the statistical indicators for a solutions measure: It is indeed crucial that indicators are commonly used, tested and evaluated and cover the population in question. It is indeed important that the final solutions measure is constructed of **indicators that maximize coverage in the IDP population**. While it may be permissible to measure access to education in IDP populations with school attendance rates of children, the indicator does not provide information about IDP households that do not have children. As such, this may not be a problem because one can argue that they did not suffer from this vulnerability in the first place. However, if a large amount of the 10 indicators is only applicable to subsets of the IDP population, one risks that the count of IDPs exiting a national stock is based on only a small proportion of &quot;real assessments&quot; while a huge part of the IDP population is just not seen as vulnerable on the dimensions measured.
+
+Regarding the indicator choice, the process of running these simulations also revealed that there may a need to **further**** clarify the scope of dimensions **_** 3.1 Employment &amp; livelihoods **_** and **_** 3.2 Economic security **_. In some instances, it is not easy to discern if a potential indicator falls into 3.1 or 3.2. Furthermore,** many indicators found in the Durable Solutions library for these two sub-criteria are unclear regarding the question what constitutes a durable solution and what not**.
+
+Finally, the indicator choice across all simulations seemed to matter the most for the sub-criteria _5.1. Documentation, 4.1. Property restitution and compensation,_ and _3.2. Economic security_. This was the case across displacement contexts (Hargeisa, Nigeria) and across metric options. The first two of the above sub-criteria, which often drove variation in the simulations, are **rights-based indicators. It seems crucial to decide whether these indicators should be measured based on factual compensation or only on access to compensation mechanism or only documentation of property rights.** Furthermore, a decision is required whether general identification documents or specific documents or even mechanisms to restore documents should be assessed in durable solution profiling. Once this decision is made, the variation found across metrics may be drastically diminished.
+
+## Informing the selection of a metric
+
+Given that the individual indicators are on average less relevant for the final number of IDPs exiting the stock, the discussion around the solutions measure should focus perhaps more deeply on the selection of a model/metric by which the indicators are then combined and analyzed in a way that complies with the wider IRIS framework and principles. How the 10 different sub-criteria are combined and compared to a comparator population drives more of the variation than the exact definition of each statistical indicator.
+
+The assessment shows that the different available options to implement the contextualized approach that IRIS promotes and to find a workable measure have different strengths and weaknesses. Table 8 summarizes these insights.
+
+Option 1, a composite metric across all criteria, has shown high variability in the simulation. This means that this way of combining the indicators and comparing one score to the host population is very sensitive to the indicators chosen. It is hence not necessarily advisable to use one unified metric across all criteria, which also violates the IRIS principle that all sub-criteria must be met, because it is highly sensitive to the exact combination of indicators, and because it is hence likely that a comparison across displacement contexts is flawed.
+
+_Table 8: Summary of metric advantages and disadvantages_
+
+|
+ | **IRIS framework** | **Option 1: Composite metric across all criteria** | **Option 2: Composite metric at the criterion level** | **Option 3: Composite metric at sub-criterion level** | **Option 4: homogenous cells** | **Option 5: regression-based** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Aggregation of indicators to indices** | No aggregation | High-level aggregation | Medium-level aggregation | Low-level aggregation | No aggregation | No aggregation |
+| **Crudeness of (sub-)indices** | Not applicable, no index | Low (consists of 10 elements) | Medium to high (each criterion can be measured with multiple elements) | High (realistically each sub-criterion can only be measured with 3-4 elements) | Not applicable, no index | Not applicable, no index |
+| **Importance of indicator choice** | Very low to low | High to medium | Medium to low | No variation | Very low to no importance | High to very high |
+| **Characteristics of the metric** | Easy to implement; no comparison between IDPs and hosts | High variability of index likely reduces comparability across contexts | Need to define multiple indicators for each of the criteria | High data demands; potentially sensitive to the crudeness of the index | Potential challenges in defining the cells | Potential challenges in defining cut-off points and comparing across contexts |
+
+Option 2 has merits as it is not overly sensitive to the choice of indicators in the composite metrices at the criterion level. However, it is necessary to define enough indicators for each criterion to ensure that the indices are not too crude. This increases the data demands to implement these options. Option 3 is based on a similar approach as option 2 but is focused on indices on the sub-criterion level. This yielded no variation in the results as zero IDPs were classified as exiting the stock. Moerover, option 3 will often be infeasible in practical terms as the datasets used simply do not contain enough indicators to fully implement indices at the sub-criterion level. The recommendation is that further analysis and better data is needed to first fully implement these two composite metrics and to then assess how they behave comparatively. A first indication is that a composite metric at the criterion level may be more realistic although it also violates the IRIS principle that all sub-criteria must be met.
+
+The simulations assessed whether a division of the IDP stock into sub-groups that can then be compared to the host population may be a feasible option. The analysis delivered generally favorable findings but is not fully conclusive on this option 4. On the one hand, the homogenous cell approach is easy to implement, comes with manageable data needs, is relatively straightforward to communicate, and does not appear overly sensitive to indicator choice. On the other hand, it might be sensitive to how the IDP population is divided into cells. This assessment did not find any stark differences between different ways of dividing the IDP stock into cells. Nevertheless, more analysis is needed to be sure and clear guidance would need to be developed by EGRIS for producers of IDP statistics on how to segment the population under analysis into smaller cells while maintaining cross-context comparability.
+
+Eventually, it may also be possible to use a regression-based approach classifying IDP households as being more similar or dissimilar with other IDP households and the host community. However, this approach is highly sensitive to the indicator selection, with the highest variability across indicator combinations. Similar to option 1, it is not necessarily advisable to use one regression-based approach because: (a) it violates the IRIS principle that all sub-criteria must be met, (b) it is sensitive to the indicator selection, and (c) it might be difficult to compare different displacement situations. This option requires further methodological work to assess how the choice of a probability cut-off point, and the choice of a classifying framework affect the results. Further work is also needed to investigate how the regression coefficients for the 10 different sub-criteria may vary across contexts and how this affects the comparability between countries and displacement situations. Another issue with this option is that it yields a multimodal distribution (i.e. two peaks) which raises the question what the true average population of IDPs that has achieved a durable solution is.
+
+_Box 4: Key conclusions and recommendations_
+
+| **Indicator selection**
+- Indicator selection may matter less for aggregate outcomes than data quality &amp; metric selection
+- Focus on indicators that maximize coverage of the IDP population
+- Focus on indicators that are commonly available and clearly defined (e.g. SDG indicators)
+- Clarify the scope of sub-criteria _3.1 Employment &amp; livelihoods_ and _3.2 Economic security_
+- Address rights-based indicators that could be measured based on documentation for rights, access to compensation mechanisms/replacements or factual compensation/replacement
+
+**Metric selection**
+- Concerns about one full composite metric (option 1) and a regression-based approach (option 5) due to high variability and lack of alignment with IRIS principle of achieving a solution in each (sub-)criteria.
+- Excessive data demands and too little variability to implement a composite metric at the sub-criterion level (option 3)
+- Further analysis needed to fully implement and assess a composite metric at the criterion level (option 2) or homogenous cells (option 4).
+ |
+| --- |
+
+As stated in the introductory sections of this note, at least 7 challenges remain in turning the IRIS solutions measure into a fully workable and robust statistical metric. This note explored only the first two of these challenges. The other challenges will also need to be discussed.
+
+# Annexes
+
+## Annex A: Mapping of all indicators available to measure IASC criteria
+
+| **Sub-criteria (IRIS)** | **Potential indicators from the inter-agency Durable Solution Library** | **Of which, available in…** |
+| --- | --- | --- |
+| **IDP Profiling in Hargeisa (UNHCR 2015)** | **IDP Profiling in Nigeria (World Bank 2018)** |
+ |
+| --- | --- | --- |
+| **1.1 Victims of violence ** | Target population who think it likely they will experience serious consequences due to armed conflict and other situations of social instability or tension which are subject to international humanitarian law, human rights violations and national legislation. |
+ |
+ |
+ |
+| Target population who think it likely they will experience serious consequences due to a hazard. | Target population is worried about being exposed to theft, crime or vandalism in their place of residence. |
+ |
+ |
+| Target population who feel safe walking alone around the area they live (during day or night). | Target population is feeling unsafe or insecure in their place of residence. | Target population feeling very or moderately safe. Target population feeling very or moderately safe walking at night.Target population feeling very or moderately safe walking during the day. |
+ |
+| Target population who were subjected to physical, psychological or sexual violence in the previous 12 months (or since time of displacement, if displaced for less than 12 months). |
+ | Target population experiencing non-physical or physical harm in the last 12 months. |
+ |
+| Target population who have experienced other safety or security incidents in the previous 12 months (or since time of displacement, if displaced for less than 12 months). | Target population who experienced victimizing events in their place of residence in the past 12 months. | Target population who have experienced harm and have reported it in the last 12 months. |
+ |
+| Target population who were affected by hazard in the previous 12 months (or since time of displacement, if displaced for less than 12 months). |
+ |
+ |
+ |
+| Target population who experienced violence in the previous 12 months, who reported their victimization to competent authorities or other officially recognized conflict resolution mechanism. |
+ | Target population who report thefts or disputes to formal conflict resolution mechanisms. Target population who find it very easy or somewhat easy to access dispute resolution mechanisms. Target population that find dispute resolution very or moderately effective |
+ |
+| **1.2 Freedom of movement ** | Target population facing restrictions to their freedom of movement. | Target population who face legal or administrative restrictions of their freedom of movement (i.e. lack of documentation, restricted movements in living area). | Target population feeling free to move in and out of their area. |
+ |
+| **2.1 Food security ** | Target population by prevalence of moderate or severe food insecurity in the past year, based on the Food Insecurity Experience Scale (FIES) | Target population unable to pay for food in the last 6 months.Number of meals eaten per day | Index of food insecurity from a combination of indicators |
+ |
+| **2.2 Shelter and housing ** | Target population with secure tenure rights to land, with legally recognized documentation, and who perceive their rights to land as secure. |
+ | Target population having access to land and renting or owning it legally |
+ |
+| Target population having been forcibly evicted over the past 12 months. |
+ |
+ |
+ |
+| Target population, not being evicted in the past 12 months, but living in constant fear of eviction (population who do not perceive their current tenure rights a secure). |
+ |
+ |
+ |
+| Target population residing in sufficient living space. | Target population living in overcrowded housing/shelter (\&gt; X persons per room)Target population living in inadequate housing conditions (risk of landslide, near trash receptacles or industry)Target population with access to electricity or other modern energy services. | Target population living in overcrowded housing/shelter (\&gt; X persons per sleeping room)
+
+ |
+ |
+| Target population residing in durable housing structures. |
+ | Target population living in non-durable housing conditions (incomplete, not intended or makeshift housing)Target population squatting or living in temporary shelterTarget population owning or renting housing |
+ |
+| Target urban population living in slums, informal settlements, or inadequate housing. |
+ | Target population squatting |
+ |
+| Target population with access to basic drinking water services. | Target population with access to adequate source of drinking water (tanks) | Target population with access to safe drinking waterTarget population with no obstacles for water access |
+ |
+| Target population with access to basic sanitation facilities including a hand-washing facility on premises with soap and water. | Target population with flushing toilet in householdTarget population with bath/shower in household | Target population with improved sanitation facilities |
+ |
+| **2.3 Medical services ** | Target population covered by essential health services. |
+ | Distance to health facilities in hours |
+ |
+| Target population who accessed essential health care services (including mental health care) the last time they needed it in the past 12 months. | Target population with access to essential health care when needed. | Target population that access essential health care when needed. |
+ |
+| Births within target population attended by skilled health personnel within the past 12 months (% of total births taken place within the past 12 months). | Target population with births or pregnancies attended by skilled health personnel. |
+ |
+ |
+| Children under the age of one in the target population covered by all vaccines included in their national programme (% of total child population under one in the target population). | Target population with immunized children.
+ |
+ |
+ |
+| **2.4 Education ** | Primary school net attendance ratio in targeted population (% of children of primary school age in target population). | Target population of school age that can read and writeTarget population of school age that has ever attended school (primary and secondary)Target population of school age that is currently attending school | Time to next education facility Target population being satisfied with primary education |
+ |
+| Secondary school net attendance ration in target population (% of children of secondary school age in target population). | Target population of school age that is currently attending or have completed secondary school or university |
+ |
+ |
+| Target population who own a mobile phone. | Target population which owns a mobile phone |
+ |
+ |
+| **3.1 Employ-ment and livelihoods ** | Target population employed in formal and informal sector (employment rate). | Target population with a breadwinner in household | Target population whose primary income are wages, salary, own businesses, or pension |
+ |
+| Employed and self-employed target population in informal employment in non-agriculture employment (% of total employed target population). |
+ |
+ |
+ |
+| Employed and self-employed target population that is underemployed. |
+ |
+ |
+ |
+| Target population undertaking pendular or seasonal movement due to work. |
+ |
+ |
+ |
+| Target population aged 5-17 engaged in child labour (% of total child population 5-17 years of age). |
+ |
+ |
+ |
+| Target population aged 15-24 years not in education, employment or training. |
+ |
+ |
+ |
+| Self-employed target population employing others (% of total self-employed target pop). |
+ |
+ |
+ |
+| Labor force population who are unemployed (unemployment rate). |
+ |
+ |
+ |
+| **3.2 Economic security ** | Unemployed target population covered under social security schemes (public or private). |
+ |
+ |
+ |
+| Target population relying primarily on sustainable income sources over the last 30 days. | Target population capable of managing unexpected expenses without borrowing money or receiving help from others. |
+ |
+ |
+| Target population who in the last 12 months was not able to pay for basic expenses. | Target population who was not able to pay house rental / services in the last 6 months |
+ |
+ |
+| Target population who in the last 12 months obtained a loan to cover basic expenses. |
+ |
+ |
+ |
+| Target population&#39;s average expenditure against average total expenditures, per capita. |
+ | Target population consuming more than average |
+ |
+| Ratio of average food expenditures against average total expenditures, per capita. |
+ | Ratio of food consumption against total consumption |
+ |
+| Target population below the poverty line. |
+ | Target population below 1.9 USD PPP 2011 Poverty LineTarget population below 1.25 USD PPP 2011 Poverty LineTarget population below 3.1 USD PPP 2011 Poverty Line |
+ |
+| Target population who own productive assets by type of assets. | Average number of assets owned by target population. |
+ |
+ |
+| Target population with access to markets. |
+ | Distance to market in hours |
+ |
+| Target population where at least one person in household has a bank account. |
+ | Target population with access to a bank account |
+ |
+| **4.1 Property restitution and compens-ation ** | Target population with documents to prove ownership/tenancy of housing, land and property left behind (% of total target population who left behind HLP). | Target population with documents to prove ownership of their lost HLP. | Target population that is legally recognized owner of dwelling |
+ |
+| Target population with housing, land and property left behind who successfully accessed restitution or compensation mechanism (% of target population with HLP left behind) – if relevant to context. | Target population with lost HLP who have accessed restitution or compensation mechanisms. | Target population with access to compensation mechanisms |
+ |
+| Target population with housing, land and property left behind who have had their claims to assets (incl. land and property) resolved. | Target population with lost HLP who have had their claims resolved and enforced. |
+ |
+ |
+| Target population with housing, land and property left behind who have had their claims to assets (incl. land and property) enforced. |
+ |
+ |
+ |
+| Agricultural target population with ownership or secure rights over agricultural land. |
+ |
+ |
+ |
+| Agricultural target population with use rights to agricultural land. |
+ |
+ |
+ |
+| **5.1. Docu-mentation ** | Target population currently in possession of valid birth certificates, national ID cards or other personal identification documents relevant to the context. | Target population in possession of birth certificates.
+ |
+ |
+ |
+| Target population with other personal documentation necessary to accessing their rights. | Target population with personal documentation or access to mechanisms to replace them if they are lost. | Target population that have not lost their documents and know how to replace them if missing |
+ |
+| Target population registered by authorities as Internally Displaced Persons – if relevant to context. |
+ |
+ |
+ |
+| Children under 5 years of age in target population whose births have been registered with a civil authority. | Children in target population with a birth certificate or registration. |
+ |
+ |
+
+[1](#sdfootnote1anc) The definition of priority criteria and sub-criteria is relevant to the IRIS recommended progress and solutions measure as they should be based on a similar or the same set of indicators.
+
+[2](#sdfootnote2anc) Note that this framework is used to count the aggregate number of IDPs in a given context. It is not used to assess the allocation of aid to an individual or household.
+
+[3](#sdfootnote3anc) For completeness and to allow comparisons with other metric options, this note also demonstrates simulations based on this approach but will not discuss the suitability of a pass/fail measure as option going forward.
+
+[4](#sdfootnote4anc) The Durable Solutions Library is an interagency project led by the Special Rapporteur on the Human Rights of IDPs, coordinated by JIPS, and technically steered by a broad group of partners engaged in durable solutions work.
+
+[5](#sdfootnote5anc) The DS library also includes indicators on distributions (e.g. Target population who experienced moderate or severe food insecurity in the last year, _by main obstacle to obtaining sufficient food_.). In the case of these indicators it is not clear what constitutes a solution to displacement (Which obstacle to obtaining food is tolerable for IDPs and which one is not?) and how hosts and IDPs can be compared. These disaggregated indicators were dropped from the mapping.
+
+[6](#sdfootnote6anc) UNHCR, 2015, &quot;Internal Displacement Profiling in Hargeisa&quot;, [https://reliefweb.int/report/somalia/internal-displacement-profiling-hargeisa-december-2015](https://reliefweb.int/report/somalia/internal-displacement-profiling-hargeisa-december-2015)
+
+[7](#sdfootnote7anc) World Bank, 2018, &quot;Profile of Internally Displaced Persons in North-East Nigeria 2018&quot;, [https://microdata.worldbank.org/index.php/catalog/3410](https://microdata.worldbank.org/index.php/catalog/3410)
+
+[8](#sdfootnote8anc) Covering hosts and IDPs is crucial for this methodological assessment to facilitate the task of finding a comparator population.
+
+[9](#sdfootnote9anc) When identifying available indicators in the datasets, the aim was to be as inclusive as possible and to use as much information present in the data as possible. However, some indicators had to be dropped because of too many missing values or no variance at all.
+
+[10](#sdfootnote10anc) In the case of having only one or two empirical indicators for a sub-criterion or a criterion and not enough empirical indicators to build an index in the dataset, the single indicator was used for this specific (sub)-criterion while the other (sub-)criteria while more indicators were turned into indices. The indices for option 2 and 3 were built with three elements. In a final metric development, it would be necessary to have enough indicators to build a complete composite index with 3 or more elements.
+
+[11](#sdfootnote11anc) Variable levels: Ila, Hargeisa, Balegubadle, Burao, Bakool, Harardhere, Lower Shabelle, Odweyne, Erigavo, Anod, Borama, Galguduud, Berbera, Gabiley, Galkayo, Mudug, Bay, Kismayo, Hobyo, Zeila, Buale, Godinlabe, Bosaso, Garbahaarreey, Unknown
+
+[12](#sdfootnote12anc) Future assessments will not only identify how many IDPs exit the stock for each metric option and indicator selection but also whether the different options classify the same IDP households as exiting the stock or different population subgroups.
+
+[13](#sdfootnote13anc) 14,580 combinations are possible for each of the 10 different groupings, amounting to a total of 145,800 permutations. A random sample of 4000 indicator combinations was drawn to speed up calculations, resulting in 40,000 simulations (4000 for each of the 10 different groupings).
+
+[14](#sdfootnote14anc) Due to the many possible indicators for 3 sub-criteria that can be combined to different indices, 164,640 possible permutations exist. A random sample of 10,000 simulations were drawn to speed up calculations.
+
+[15](#sdfootnote15anc) 4,032 combinations are possible for each of the 8 different groupings, amounting to a total of 32,256 permutations.

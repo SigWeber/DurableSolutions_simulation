@@ -1,0 +1,202 @@
+---
+title: "Dry Data"
+author: "Sigrid Weber (sweber1@worldbank.org)"
+date: "November 3, 2020"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+vignette: >
+  %\VignetteIndexEntry{Dry Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Preparations
+
+
+```{r}
+# Dry data
+
+
+# preparations ---------------------------------------------------------
+
+# load required packages
+library(tidyverse)
+library(doParallel)
+library(hrbrthemes)
+library(patchwork)
+library(DurableSolutionsSimulation)
+
+# load functions
+#source("functions.R")
+
+
+data <- data.frame(
+  ID = rep(c(0,1), each = 1000),
+  group = rep(c("A","B","C","D"),250),
+  I1_0 = c(rep(0,1000),rep(1,1000)),
+  I1_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I1_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I1_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I2_0 = c(rep(0,1000),rep(1,1000)),
+  I2_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I2_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I2_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I3_0 = c(rep(0,1000),rep(1,1000)),
+  I3_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I3_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I3_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I4_0 = c(rep(0,1000),rep(1,1000)),
+  I4_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I4_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I4_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I5_0 = c(rep(0,1000),rep(1,1000)),
+  I5_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I5_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I5_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I6_0 = c(rep(0,1000),rep(1,1000)),
+  I6_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I6_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I6_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I7_0 = c(rep(0,1000),rep(1,1000)),
+  I7_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I7_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I7_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I8_0 = c(rep(0,1000),rep(1,1000)),
+  I8_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I8_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I8_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I9_0 = c(rep(0,1000),rep(1,1000)),
+  I9_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I9_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I9_75 = c(rep(1,750),rep(0,250),rep(1,1000)),
+  I10_0 = c(rep(0,1000),rep(1,1000)),
+  I10_25 = c(rep(1,250),rep(0,750),rep(1,1000)),
+  I10_50 = c(rep(1,500),rep(0,500),rep(1,1000)),
+  I10_75 = c(rep(1,750),rep(0,250),rep(1,1000))
+)
+
+ 
+benchmarks <- data %>% filter(ID == 0)
+data <- data %>% filter(ID == 1)
+
+```
+
+# define the indicators
+
+```{r}
+# define the indicators
+indicators <- list(
+  I1 = names(data %>% select(contains("I1_"))),
+  I2 = names(data %>% select(contains("I2_"))),
+  I3 = names(data %>% select(contains("I3_"))),
+  I4 = names(data %>% select(contains("I4_"))),
+  I5 = names(data %>% select(contains("I5_"))),
+  I6 = names(data %>% select(contains("I6_"))),
+  I7 = names(data %>% select(contains("I7_"))),
+  I8 = names(data %>% select(contains("I8_"))),
+  I9 = names(data %>% select(contains("I9_"))),
+  I10 = names(data %>% select(contains("I10_")))
+)
+
+# identify all possible combinations
+combinations <- expand.grid(indicators)%>% 
+  mutate_all(~as.character(.))
+```
+
+#  SIMULATIONS
+
+
+```{r}
+
+# SIMULATIONS ############################################
+
+# Original framework ----------------------------------------------------------
+cl <- parallel::makeCluster(4)
+registerDoParallel(cl)
+Durable_Solutions <- foreach(i = 1:nrow(combinations), 
+                             .packages = "tidyverse") %dopar% {
+                               DurableSolutionsSimulation::use_IRIS_metric(x = i,
+                                                data = data,
+                                                sim_data = combinations)
+                             }
+
+stopCluster(cl)
+
+
+```
+
+# Save for analysis and plotting
+
+```{r}
+# Save for analysis and plotting
+Durable_Solutions <- unlist(Durable_Solutions)
+DS_original <- combinations %>% 
+  mutate(DS = Durable_Solutions,
+         DS_perc = DS/ nrow(data))
+
+```
+
+# Plot result
+
+```{r}
+# Plot result 
+plot_original <- DS_original %>% 
+  ggplot(aes(x=DS_perc))+
+  geom_density(fill="#0073C2FF", color="#e9ecef", alpha=0.8)+
+  theme_ipsum(plot_title_size = 13, base_size = 10)+
+  geom_vline(aes(xintercept = mean(DS_perc)), 
+             linetype = "dashed", size = 0.6, alpha = 0.5)+
+  ggtitle("Pass/fail measure")+
+  xlab("Simulated proportion overcoming vulnerabilities")+
+  ylab("Simulation density")
+
+plot_original
+
+```
+
+## Option 1: Full composite
+
+```{r}
+# Option 1: Full composite ---------------------------------------------------
+cl <- parallel::makeCluster(4)
+registerDoParallel(cl)
+Durable_Solutions <- foreach(i = 1:nrow(combinations), 
+                             .packages = "tidyverse") %dopar% {
+                               DurableSolutionsSimulation::use_composite(x = i,
+                                               data = data,
+                                               sim_data = combinations,
+                                               benchmark= benchmarks)
+                             }
+
+stopCluster(cl)
+
+Durable_Solutions <- unlist(Durable_Solutions)
+DS_option1 <- combinations %>% 
+  mutate(DS = Durable_Solutions,
+         DS_perc = DS/ nrow(data))
+
+# Plot result 
+plot_option1 <- DS_option1 %>% 
+  ggplot(aes(x=DS_perc))+
+  geom_density(fill="#0073C2FF", color="#e9ecef", alpha=0.8)+
+  theme_ipsum(plot_title_size = 13, base_size = 10)+
+  geom_vline(aes(xintercept = mean(DS_perc)), 
+             linetype = "dashed", size = 0.6, alpha = 0.5)+
+  ggtitle("1: Full composite")+
+  xlab("Simulated proportion overcoming vulnerabilities")+
+  ylab("Simulation density")+
+  xlim(0,0.6)
+
+plot_option1
+
+```
+
+## Option 2: composite indices at the criterion level
+
+```{r}
+# Option 2: composite indices at the criterion level ###########################################
+
+```
+
