@@ -46,5 +46,5 @@ This is a list of to-do steps that I would like to implement before we can be ce
 + Bosnia or Kosovo
 + Ukraine
 + Sudan 
-+ Natural disasters: two IOM/Brookings studies in Haiti and Philippine 
++ Natural disasters: two IOM/Brookings studies in [Haiti](https://www.brookings.edu/research/supporting-durable-solutions-to-urban-post-disaster-displacement-challenges-and-opportunities-in-haiti/) and [Philippine](https://www.brookings.edu/research/resolving-post-disaster-displacement-insights-from-the-philippines-after-typhoon-haiyan-yolanda/)
 
