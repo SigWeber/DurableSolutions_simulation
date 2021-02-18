@@ -43,7 +43,7 @@ This is a list of to-do steps that I would like to implement before we can be ce
 + Darfur, Somalia, South Sudan
 + Survey of Syrian Refugees and Host Community Members in Kurdistan, KRI
 + JIPS IDP profiling in Honduras (Spanish only), with similar datasets from Belize and El Salvador 
-+ Colombian government's LSMS survey 
++ [Colombian government's LSMS survey](http://microdatos.dane.gov.co/index.php/catalog/678/study-description) 
 + Bosnia or Kosovo
 + Ukraine
 + Sudan 
