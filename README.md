@@ -6,9 +6,25 @@ This project simulates how different indicators and metric options to implement 
 
 ## Structure of this repository
 
+The repository will soon be fully restructured to have a more collaborative structure and to extend the analysis more easily. For the moment, all data that is used is stored in the *Data* folder, including documentation to better understand the datasets. The R code that generates the preliminary findings is based on the scripts *Analysis_Hargeisa.R* and *Analysis_Nigeria.R*. The scripts are currently fully independent of each other (but should later be merged into one master script). Both R scripts depend on the file *functions.R*. *functions.R* saves functions to implement all of the different metric options. 
+
+In principle, if you would want to use the functions on a new dataset that includes IDPs and host, you would have to follow these steps:
+
+1. Create an ID column that takes the value 1 for IDP households and 0 for host community households. 
+2. Name all indicators as according to the following principle: If an indicator could be used to measure subcriterion 1, it should be coded as "I1_ANYOTHERLETTERS". If an indicator could be used to measure subcriterion 10, it should be coded as "I10_ANYOTHERLETTERS". And so on. 
+3. Turn all indicators into binary indicators that take the value 1 for overcoming a vulnerability and 0 for not overcoming it (e.g. school attandance should be a 1 but experiencing a security incident should be a 0).
+4. Separate the dataset into two datasets: one for the IDPs, one for host households (call this dataset "benchmarks).
+5. Define the list of indicators and the list of possible combinations (by expanding to a matrix)
+6. Apply the function to the dataset by iterating through all possible combinations and comparing to the benchmarks. 
+
+The script *dry_data_run.R* can be ignored for now as this is work in progress. 
 
 ## To Dos and next steps
+
+This is a list of to-do steps that I would like to implement before we can be certain of the results. 
+
 + Write related note as an Rmarkdown to facilitate updating of numbers
 + Rewrite functions for increased efficiency (in particular for option 2!)
++ Double-check functions as some results are still quirky
 + Implement a tracking of WHICH IDPs are classified as overcoming vulnerabilities (Do the different metric options identify the same IDPs as no longer vulnerable?)
-+ Simulate synthetic data to test the metrics options and functions without empirical data (i.e. create enough indicators of varying "difficulty" to fully implement all options)
++ Simulate synthetic data to test the metrics options and functions without empirical data (i.e. create enough indicators of varying "difficulty" to fully implement all options) - this is started in the script *dry_data_run.R* but is not finalised yet
