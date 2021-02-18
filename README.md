@@ -32,6 +32,7 @@ This is a list of to-do steps that I would like to implement before we can be ce
 + Construction of homogenous cells: further explorations needed (!!!), could benefit from implementing a clustering algorithm to increase similiarity within IDP groups and dissimilarity betwen IDP groups
 + Regression-based approach: further explorations needed, could use a lasso regularization, would need to test different cut-off points (!!!)
 + Create synergies with Kari-Anne's work on HLP indicators
++ Write a paragraph on taking out the HLP indicators
 + More information on relation to progress measure and which indicators to use
 + Add communication that we should not choose a too lenient or too strict indicator set/metric
 + Think harder about case selection!
