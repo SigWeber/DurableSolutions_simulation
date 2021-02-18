@@ -16,7 +16,7 @@ In principle, if you would want to use the functions on a new dataset that inclu
 4. Separate the dataset into two datasets: one for the IDPs, one for host households (call this dataset "benchmarks).
 5. Define the list of indicators and the list of possible combinations (by expanding to a matrix)
 6. Apply the function to the dataset by iterating through all possible combinations and comparing to the benchmarks. 
-7. Write separate paragraphs on relevance of "rights-based indicators" in the statistical assessment
+7. Assess metric and indicator choice
 
 The script *dry_data_run.R* can be ignored for now as this is work in progress. 
 
