@@ -28,3 +28,12 @@ This is a list of to-do steps that I would like to implement before we can be ce
 + Double-check functions as some results are still quirky
 + Implement a tracking of WHICH IDPs are classified as overcoming vulnerabilities (Do the different metric options identify the same IDPs as no longer vulnerable?)
 + Simulate synthetic data to test the metrics options and functions without empirical data (i.e. create enough indicators of varying "difficulty" to fully implement all options) - this is started in the script *dry_data_run.R* but is not finalised yet
++ Construction of homogenous cells: further explorations needed, could benefit from implementing a clustering algorithm to increase similiarity within IDP groups and dissimilarity betwen IDP groups
++ Regression-based approach: further explorations needed, could use a lasso regularization, would need to test different cut-off points
+
+## Possible next datasets to extend the analysis:
++ Darfur, Somalia, South Sudan
++ Survey of Syrian Refugees and Host Community Members in Kurdistan
++ JIPS IDP profiling in Honduras (Spanish only), with similar datasets from Belize and El Salvador 
++ Colombian government's LSMS survey 
+
