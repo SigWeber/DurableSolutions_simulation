@@ -4,6 +4,7 @@ author: "Sigrid Weber (sweber1@worldbank.org)"
 date: "November 3, 2020"
 output:
   prettydoc::html_pretty:
+    toc: yes
     theme: cayman
     highlight: github
 vignette: >
@@ -101,8 +102,8 @@ indicators <- list(
 )
 
 # identify all possible combinations
-combinations <- expand.grid(indicators)%>% 
-  mutate_all(~as.character(.))
+combinations <- expand.grid(indicators) %>% 
+                mutate_all(~as.character(.))
 ```
 
 #  SIMULATIONS
@@ -113,7 +114,7 @@ combinations <- expand.grid(indicators)%>%
 # SIMULATIONS ############################################
 
 # Original framework ----------------------------------------------------------
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 Durable_Solutions <- foreach(i = 1:nrow(combinations), 
                              .packages = "tidyverse") %dopar% {
@@ -160,7 +161,7 @@ plot_original
 
 ```{r}
 # Option 1: Full composite ---------------------------------------------------
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 Durable_Solutions <- foreach(i = 1:nrow(combinations), 
                              .packages = "tidyverse") %dopar% {
@@ -173,9 +174,10 @@ Durable_Solutions <- foreach(i = 1:nrow(combinations),
 stopCluster(cl)
 
 Durable_Solutions <- unlist(Durable_Solutions)
+
 DS_option1 <- combinations %>% 
-  mutate(DS = Durable_Solutions,
-         DS_perc = DS/ nrow(data))
+              mutate(DS = Durable_Solutions,
+                     DS_perc = DS/ nrow(data))
 
 # Plot result 
 plot_option1 <- DS_option1 %>% 

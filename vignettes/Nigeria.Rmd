@@ -4,6 +4,7 @@ author: "Sigrid Weber (sweber1@worldbank.org)"
 date: "November 27, 2020"
 output:
   prettydoc::html_pretty:
+    toc: yes
     theme: cayman
     highlight: github
 vignette: >
@@ -577,7 +578,7 @@ set.seed(2020)
 combinations <- sample_n(combinations, 10000)
 
 # run parallel as otherwise slow
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 Durable_Solutions <- foreach(i = 1:nrow(combinations), 
                              .packages = "tidyverse") %dopar% {
@@ -645,7 +646,7 @@ combinations1 <- expand.grid(indicators)%>%
   mutate_all(~as.character(.))
 
 # run simulation
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 
 Durable_Solutions <- foreach(i = 1:nrow(combinations1), .packages = "tidyverse") %dopar% {
@@ -727,7 +728,7 @@ combinations <- expand.grid(indicators)%>%
 
 # Identify durable solution 
 # run parallel as otherwise slow
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 Durable_Solutions <- foreach(i = 1:nrow(combinations), 
                              .packages = "tidyverse") %dopar% {
@@ -777,8 +778,7 @@ model5 <- model5 %>%
 (plot_original + plot_option1) / 
   (plot_option2 + plot_option3)/ 
   (plot_option4 + plot_option5)
-ggsave("inst/Nigeria_option.png",
-       width = 11, height = 8)
+#ggsave("inst/Nigeria_option.png",   width = 11, height = 8)
 
 indicator_data <- data.frame(
   term = model$term,
@@ -830,7 +830,7 @@ ggplot(indicator_data,
   theme_ipsum(plot_title_size = 13, base_size = 10)+
   theme(legend.position = "none")
 
-ggsave("inst/Nigeria_indicators.png",width = 8, height = 5)
+#ggsave("inst/Nigeria_indicators.png",width = 8, height = 5)
 
 
 ```

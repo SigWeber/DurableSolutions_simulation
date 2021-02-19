@@ -4,6 +4,7 @@ author: "Sigrid Weber (sweber1@worldbank.org)"
 date: "November 3, 2020"
 output:
   prettydoc::html_pretty:
+    toc: yes
     theme: cayman
     highlight: github
 vignette: >
@@ -538,11 +539,11 @@ combinations <- expand.grid(indicators_sub)%>%
 
 
 # run parallel as otherwise slow
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 Durable_Solutions <- foreach(i = 1:nrow(combinations), 
                              .packages = "tidyverse") %dopar% {
-                               use_subcriterion(x = i,
+                               DurableSolutionsSimulation::use_subcriterion(x = i,
                                                 data = hargeisa,
                                                 sim_data = combinations,
                                                 benchmark = benchmarks)
@@ -613,7 +614,7 @@ set.seed(2020)
 combinations1 <- sample_n(combinations1, 4000)
 
 # run simulation
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 
 Durable_Solutions <- foreach(i = 1:nrow(combinations1), .packages = "tidyverse") %dopar% {
@@ -695,7 +696,7 @@ combinations <- expand.grid(indicators)%>%
 
 # Identify durable solution 
 # run parallel as otherwise slow
-cl <- parallel::makeCluster(4)
+cl <- parallel::makeCluster(parallel::detectCores())
 registerDoParallel(cl)
 Durable_Solutions <- foreach(i = 1:nrow(combinations), 
                              .packages = "tidyverse") %dopar% {
@@ -741,8 +742,7 @@ model5 <- model5 %>%
 (plot_original + plot_option1) / 
   (plot_option2 + plot_option3)/ 
   (plot_option4 + plot_option5)
-ggsave("inst/Hargeisa_option.png",
-       width = 11, height = 8)
+# ggsave("inst/Hargeisa_option.png", width = 11, height = 8)
 
 
 indicator_data <- data.frame(

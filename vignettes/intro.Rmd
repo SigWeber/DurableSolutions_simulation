@@ -663,7 +663,7 @@ _Box 4: Key conclusions and recommendations_
 **Metric selection**
 - Concerns about one full composite metric (option 1) and a regression-based approach (option 5) due to high variability and lack of alignment with IRIS principle of achieving a solution in each (sub-)criteria.
 - Excessive data demands and too little variability to implement a composite metric at the sub-criterion level (option 3)
-- Further analysis needed to fully implement and assess a composite metric at the criterion level (option 2) or homogenous cells (option 4).
+- Further analysis needed to fully implement and assess a composite metric at the criterion level (option 2) or homogeneous cells (option 4).
  |
 | --- |
 
