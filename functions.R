@@ -4,10 +4,8 @@
 
 library(tidyverse)
 
-
-
 # Original framework function --------------------------------------
-use_IRIS_metric <- function(data, sim_data, x){
+use_IRIS_metric <- function(data, sim_data, benchmark, x){
   # first only select the relevant variable for this simulation
   select_var = data[,as.character(sim_data[x,])]
   # then check whether any of them is zero (not passed)
@@ -160,18 +158,16 @@ use_subcriterion <- function(data, sim_data, benchmark, x){
 
 # Option 4: Use population cells ------------------------------------------------------
 
-use_cells <- function(x, y, data, benchmark, combination_cells,combination_indicators){
+use_cells <- function(x, y, data, benchmark, combination_cells, sim_data){
+  combination_indicators <- sim_data
   
   averages_per_cell = data %>% 
-    filter(ID == 1) %>% 
     select(-ID) %>% 
     group_by_at(vars(one_of(as.character(combination_cells[x,])))) %>% 
-    mutate( n = n()) %>%  
-    summarise_all(.,mean,na.rm = T) %>% 
-    ungroup() %>% 
+    summarise(across(-starts_with("HH_"), mean, na.rm = T), n = n(), .groups = "drop") %>% 
     select(as.character(combination_indicators[y,]),n) 
   
-  benchmark = benchmark %>% select(as.character(combination_indicators[y,])) 
+  benchmark = benchmark %>% select(as.character(combination_indicators[y,])) %>% summarise_all(mean, na.rm = T)
   
   # make comparison
   assessment_per_cell = averages_per_cell %>% 
@@ -191,10 +187,10 @@ use_cells <- function(x, y, data, benchmark, combination_cells,combination_indic
 }
 
 # Option 5: Use a classifier ------------------------------------------------------------
-use_classifier <- function(data,sim_data,x){
+use_classifier <- function(data,sim_data,benchmark,x){
   
   # select the right variables per iteration
-  data = data %>% select(ID, as.character(sim_data[x,]))
+  data = bind_rows(data, benchmark) %>% select(ID, as.character(sim_data[x,]))
   names(data) = sub("\\_.*", "", names(data))
   
   # fit the model to classify
@@ -212,12 +208,5 @@ use_classifier <- function(data,sim_data,x){
     TRUE ~ 1))
   
   # identify how many leave the stock of IDPs
-  sum(data$ID)-sum(data$IDP_pred)
-
+  as.integer(sum(data$ID-data$IDP_pred))
 }
-
-
-
-
-
-
