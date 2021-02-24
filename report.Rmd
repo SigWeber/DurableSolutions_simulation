@@ -1,0 +1,89 @@
+---
+title: "IRIS Solutions Measures Simulations"
+subtitle: "Hargeisa dataset"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(hrbrthemes)
+library(patchwork)
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+```{r data}
+targets::tar_load(contains("hargeisa"))
+
+DS_Options <- list("Pass/fail measure" = DS_Original_hargeisa,
+                   "1: Full composite" = DS_Option1_hargeisa,
+                   "2: Composite at criterion level" = DS_Option2_hargeisa,
+                   "3: Composite at sub-criterion level" = DS_Option3_hargeisa,
+                   "4: Comparison of homogenous cells" = DS_Option4_hargeisa,
+                   "5: Classifier/regression-based" = DS_Option5_hargeisa)
+
+dict <- readxl::read_excel("Data/dict.xlsx", sheet = "hargeisa")
+```
+
+# Missingness plot
+
+```{r missing}
+naniar::vis_miss(data_hargeisa)
+```
+
+# Density simulations
+
+```{r density, fig.width=11, fig.height=8}
+DS_Options %>% 
+  imap(~ggplot(.x, aes(x=DS_perc))+
+         geom_density(fill="#0073C2FF", color="#e9ecef", alpha=0.8)+
+         geom_vline(aes(xintercept = mean(DS_perc)), 
+                    linetype = "dashed", size = 0.6, alpha = 0.5)+
+         theme_ipsum(plot_title_size = 13, base_size = 10)+
+         ggtitle(.y)+
+         xlab("Simulated proportion overcoming vulnerabilities")+
+         ylab("Simulation density")) %>% 
+  wrap_plots(ncol = 2)
+```
+
+# Indicators plot
+
+```{r indicators, fig.width=8, fig.height=5}
+indicator_data <- 
+  DS_Options[-4] %>% 
+  map(~lm(DS_perc*100 ~ ., 
+          data = select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))), DS_perc))) %>% 
+  map(broom::tidy, conf.int = TRUE) %>% 
+  bind_rows() %>% 
+  group_by(term) %>% 
+  summarize(across(c(estimate, conf.low, conf.high), mean)) %>% 
+  filter(term != "(Intercept)")
+
+indicator_data <- 
+  indicator_data %>% 
+  mutate(term = str_replace(term, "^(I\\d+)", "")) %>% 
+  left_join(dict, by = c(term = "variable")) %>% 
+  mutate(term1 = str_c(indicator, label, sep = ": ") %>% fct_rev())
+
+ggplot(indicator_data, 
+       aes(x=term1, y=estimate)) + 
+  geom_hline(yintercept=0, colour="#8C2318", size=1) +  # Line at 0
+  geom_pointrange(aes(ymin=conf.low, ymax=conf.high)) + 
+  labs(x="Indicator", y="Average effect estimate across metrices (in percentages of IDP stock)") +  # Labels
+  viridis::scale_color_viridis(discrete = TRUE)+
+  # FIXME: what's the rational behind these magic constants?
+  geom_rect(aes(ymin=0.4, ymax= 0.82, xmin=0, xmax=Inf),
+            fill= "lightskyblue3",
+            alpha = 0.01) +
+  geom_rect(aes(ymin=-0.21, ymax= 0.23, xmin=0, xmax=Inf),
+            fill= "lightskyblue4",
+            alpha = 0.01) +
+  geom_rect(aes(ymin=1.1, ymax= 1.43, xmin=0, xmax=Inf),
+            fill= "lightskyblue",
+            alpha = 0.01) + 
+  coord_flip() +  # Rotate the plot
+  theme_ipsum(plot_title_size = 13, base_size = 10)+
+  theme(legend.position = "none")
+```
+
