@@ -9,7 +9,7 @@ source("functions.R")
 future::plan(future::multisession)
 
 extract_indicators <- function(data) {
-  str_c("I", 1:10) %>% set_names() %>% map(~names(select(data, starts_with(paste0(., "_")))))
+  str_c("I", 1:10) %>% set_names() %>% map(~names(select(data, starts_with(paste0(., "_"))))) %>% discard(is_empty)
 }
 
 generate_combinations <- function(indicators) {
