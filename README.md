@@ -22,18 +22,12 @@ To run the analysis, run `targets::tar_make()` from the console. `targets` will 
 
 Once ready, the results of the simulations can be accessed from the console/scripts/Rmds using `targets::tar_load()` which loads everything into the current workspace/environment. For example: `targets::tar_load(contains("hargeisa"))` will load the results for the Hargeisa simulations into your workspace. These come as five data-frames named `DS_OptionN_hargeisa` where N is the number of the metric option plus another data-frame `DS_Original_hargeisa` holding the data for the IRIS pass/fail metric. If you'd rather exercise more control over where the data ends up, you can use `mydata <- targets::tar_read("DS_Option1_hargeisa")`, for example, to read that single dataset into the variable named `mydata`.
 
-The script *dry_data_run.R* can be ignored for now as this is work in progress. 
-
 ## To Dos and next steps
 
 This is a list of to-do steps that I would like to implement before we can be certain of the results. 
 
-+ Write related note as an Rmarkdown to facilitate updating of numbers
-+ Rewrite functions for increased efficiency (in particular for option 2!)
-+ Double-check functions as some results are still quirky
 + Weighted calculations
 + Implement a tracking of WHICH IDPs are classified as overcoming vulnerabilities (Do the different metric options identify the same IDPs as no longer vulnerable?)
-+ Simulate synthetic data to test the metrics options and functions without empirical data (i.e. create enough indicators of varying "difficulty" to fully implement all options) - this is started in the script *dry_data_run.R* but is not finalised yet
 + Construction of homogenous cells: further explorations needed (!!!), could benefit from implementing a clustering algorithm to increase similiarity within IDP groups and dissimilarity betwen IDP groups
 + Regression-based approach: further explorations needed, could use a lasso regularization, would need to test different cut-off points (!!!)
 + Create synergies with Kari-Anne's work on HLP indicators
@@ -48,9 +42,9 @@ This is a list of to-do steps that I would like to implement before we can be ce
 + Darfur, Somalia, South Sudan
 + Survey of Syrian Refugees and Host Community Members in Kurdistan, KRI
 + JIPS IDP profiling in Honduras (Spanish only), with similar datasets from Belize and El Salvador 
-+ [Colombian government's LSMS survey](http://microdatos.dane.gov.co/index.php/catalog/678/study-description) 
++ [Colombian government's LSMS survey](http://microdatos.dane.gov.co/index.php/catalog/678/study-description) (work-in-progress)
 + Bosnia or Kosovo
-+ Ukraine
++ Ukraine (work-in-progress)
 + Sudan 
 + Natural disasters: two IOM/Brookings studies in [Haiti](https://www.brookings.edu/research/supporting-durable-solutions-to-urban-post-disaster-displacement-challenges-and-opportunities-in-haiti/) and [Philippine](https://www.brookings.edu/research/resolving-post-disaster-displacement-insights-from-the-philippines-after-typhoon-haiyan-yolanda/)
 
