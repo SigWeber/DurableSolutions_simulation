@@ -26,7 +26,14 @@ library(DiagrammeR)
 knitr::opts_chunk$set(echo = F, message = F, warning = F, results = 'asis', cache = T, fig.align="center")
 ```
 
+```{r loop, results = 'asis'}
+datasets <- fs::dir_ls("Data", glob = "*.R") %>% fs::path_file() %>% fs::path_ext_remove()
+targets::tar_load(contains("nigeria"))
+targets::tar_load(contains("hargeisa"))
+```
+
 \newpage 
+
 
 # Introduction
 
@@ -413,19 +420,12 @@ This universe of potential indicators forms a theoretical baseline to identify e
 
 ```{r load_data}
 source("simulations.R")
-source("Data/nigeria.R")
-source("Data/hargeisa.R")
-
-indicators_nigeria <- extract_indicators(nigeria)
-indicators_hargeisa <- extract_indicators(hargeisa)
+indicators_nigeria <- extract_indicators(data_nigeria)
+indicators_hargeisa <- extract_indicators(data_hargeisa)
 
 
 DS <- data.frame(
-  "Subcriteria in IRIS" = c("1.1 Victims of violence","1.2 Freedom of movement",
-                     "2.1 Food security", "2.2 Shelter and housing", 
-                     "2.3 Medical services", "2.4 Education",
-                     "3.1 Employment and livelihoods", "3.2 Economic security",
-                     "4.1 Property restitution and compensation", "5.1 Documentation",
+  "Subcriteria in IRIS" = c(IASC$Subcriteria,
                      "Number of possible combinations"),
   "Durable Solutions \nLibrary" = c(7,1,1,8,4,3,8,10,6,4, " "),
    "IDP Profiling \nin Hargeisa" = 
@@ -435,6 +435,7 @@ DS <- data.frame(
   
 )
 ```
+
 
 ## Step 2: Selecting empirical datasets on IDP vulnerabilities & solutions
 
@@ -456,10 +457,11 @@ knitr::kable(DS, booktabs = T,
   add_header_above(c("  " = 1,
                      "Indicators from the " = 1, 
                      "Of which, available in ..." = 2))%>%
-    column_spec(2, width = "10em") %>% 
-    column_spec(3, width = "8em") %>% 
+  column_spec(2, width = "10em") %>% 
+  column_spec(3, width = "8em") %>% 
   column_spec(4, width = "8em")
 ```
+
 
 This identification of indicators is crucial as it builds the baseline for the following simulations. In Hargeisa, `r sum(sapply(indicators_hargeisa,length))` indicators could be identified. For example, the dataset contains `r DS[5,3]` possible indicators for measuring *2.3 Medical services* as the survey asked respondents for access to child vaccinations and basic services, as well as for attendance of births by medical personnel. For the two sub-criteria *1.2 Freedom of movement* and *3.1 Employment and livelihoods*, the data only contained one possible indicator and an indicator choice cannot be evaluated for these two dimensions. As the indicators are not used individually but in a combination of at least 10 (for the 10 sub-criteria), this leads to a total of `r nrow(expand.grid(indicators_hargeisa))` possible indicator combinations that can be assessed in simulations. 
 
@@ -472,13 +474,15 @@ After having identified all relevant indicators in the data, the aim is to apply
 Furthermore, the different metric options follow three distinct logics that require different preparatory steps and/or methodological decisions: The simple pass/fail measure as well as the metric options 1, 2, and 3 (different composite metrics) do not require further preparatory steps as all indicators already have a numeric value that can be flexibly combined to composites (and can then be compared to host community averages). Regarding metric option 2 and 3, the composite indices were built by combining three indicators at the (sub-)criterion level (where possible).^[In the case of having only one or two empirical indicators for a sub-criterion or a criterion and not enough empirical indicators to build an index in the dataset, the single indicator was used for this specific (sub)-criterion while the other (sub-)criteria while more indicators were turned into indices. The indices for option 2 and 3 were built with three elements. In a final metric development, it would be necessary to have enough indicators to build a complete composite index with 3 or more elements.]
 
 ```{r cell_options}
-cell_comb_hargeisa <- combn(names(select(hargeisa, starts_with("HH"))),3) %>% t()
-cell_comb_nigeria <- combn(names(select(nigeria, starts_with("HH"))),3) %>% t()
+cells_hargeisa <- combn(names(select(data_hargeisa, starts_with("HH"))),3) %>% t()
+cells_nigeria <- combn(names(select(data_nigeria, starts_with("HH"))),3) %>% t()
 ```
 
-Metric option 4 is based on homogeneous IDP population cells that first have to be defined before they can be assessed as a group average. The IDP population was split into subgroups based on core demographics, their timing of displacement and their places of displacement and origin. However, the assessment did not pick one variable to group the population but iterated through different ways to split the IDP population to be able to make a judgement to what extent the different groupings affect the overall results (i.e. how many IDPs exit the stock). In Hargeisa, `r nrow(cell_comb_hargeisa)` different groupings were tested based on using three of the grouping variables below. For example, one population split was based on the gender, the clan, and the departure period of a household (e.g. one grouping consists of female-headed households that belong to the Isa clan and were displaced after 2010). In Nigeria, `r nrow(cell_comb_nigeria)`  different groupings were tested based on picking three of the grouping variables below. The following cell variables were used to split the IDP population in Hargeisa into subgroups:
 
-\bigskip
+
+Metric option 4 is based on homogeneous IDP population cells that first have to be defined before they can be assessed as a group average. The IDP population was split into subgroups based on core demographics, their timing of displacement and their places of displacement and origin. However, the assessment did not pick one variable to group the population but iterated through different ways to split the IDP population to be able to make a judgement to what extent the different groupings affect the overall results (i.e. how many IDPs exit the stock). In Hargeisa, `r nrow(cells_hargeisa)` different groupings were tested based on using three of the grouping variables below. For example, one population split was based on the gender, the clan, and the departure period of a household (e.g. one grouping consists of female-headed households that belong to the Isa clan and were displaced after 2010). In Nigeria, `r nrow(cells_nigeria)`  different groupings were tested based on picking three of the grouping variables below. The following cell variables were used to split the IDP population in Hargeisa into subgroups:
+  
+  \bigskip
 \begin{minipage}{0.45\textwidth}
 \footnotesize
 \begin{tabular}{p{\textwidth}}
@@ -582,42 +586,215 @@ l -> {t}
 
 ## Simulation results for Hargeisa (UNHCR 2015)
 
-```{r simulate_hargeisa}
-DS_Original <- simulate_IRIS_metric(hargeisa)
-DS_Option1 <- simulate_composite(hargeisa)
-DS_Option2 <- simulate_criterion(hargeisa)
-DS_Option3 <- simulate_subcriterion(hargeisa)
-DS_Option4 <- simulate_cells(hargeisa)
-DS_Option5 <- simulate_classifier(hargeisa)
-```
+```{r simulation_results_hargeisa}
+DS_mean_hargeisa <- mean(c(DS_Original_hargeisa$DS,
+                           DS_Option1_hargeisa$DS,
+                           DS_Option2_hargeisa$DS, 
+                           DS_Option3_hargeisa$DS, 
+                           DS_Option4_hargeisa$DS, 
+                           DS_Option5_hargeisa$DS))
 
-
-```{r simulation_results}
-DS_mean_hargeisa <- mean(c(DS_Original$DS,
-                           DS_Option1$DS,
-                           DS_Option2$DS, 
-                           DS_Option3$DS, 
-                           DS_Option4$DS, 
-                           DS_Option5$DS))
-
-DS_perc_mean_hargeisa <- mean(c(DS_Original$DS_perc,
-                           DS_Option1$DS_perc,
-                           DS_Option2$DS_perc, 
-                           DS_Option3$DS_perc, 
-                           DS_Option4$DS_perc, 
-                           DS_Option5$DS_perc))
+DS_perc_mean_hargeisa <- mean(c(DS_Original_hargeisa$DS_perc,
+                                DS_Option1_hargeisa$DS_perc,
+                                DS_Option2_hargeisa$DS_perc, 
+                                DS_Option3_hargeisa$DS_perc, 
+                                DS_Option4_hargeisa$DS_perc, 
+                                DS_Option5_hargeisa$DS_perc))
 
 ```
 
-The IDP profiling in Hargeisa covered a total of `r sum(hargeisa$ID)` IDPs that could be compared directly to their hosts. On average across all simulated indicators and metrics, `r round(DS_mean_hargeisa,2)` IDPs have overcome their vulnerabilities and exit the IDP stock. According to this assessment, an average of  `r round(DS_perc_mean_hargeisa*100,2)`% of the sampled IDP population in Hargeisa could exit the stock for statistical purposes. This percentage includes some IDP households that could not be assessed as the IRIS recommends that no assessment should take place if data is missing for at least one of the 10 sub-criteria. This was the case for `r round(mean(is.na(hargeisa %>% filter(ID ==1)))*100,2)`% of the data in the IDP profiling in Hargeisa. 
+The IDP profiling in Hargeisa covered a total of `r sum(data_hargeisa$ID)` IDPs that could be compared directly to their hosts. On average across all simulated indicators and metrics, `r round(DS_mean_hargeisa,2)` IDPs have overcome their vulnerabilities and exit the IDP stock. According to this assessment, an average of  `r round(DS_perc_mean_hargeisa*100,2)`% of the sampled IDP population in Hargeisa could exit the stock for statistical purposes. This percentage includes some IDP households that could not be assessed as the IRIS recommends that no assessment should take place if data is missing for at least one of the 10 sub-criteria. This was the case for `r round(mean(is.na(data_hargeisa %>% filter(ID ==1)))*100,2)`% of the data in the IDP profiling in Hargeisa. 
 
 ### Importance of indicator selection
 
+The first question this assessment aims to address is how much difference there is between using different operationalizations of the 10 sub-criteria. To address the question of selecting statistical indicators, Table \ref{tab:HAR} summarizes the relevance of the indicator choice in Hargeisa. The table lists all indicators that are present in the data and provides information on the average effect of choosing one indicator over the other across all metrics. For example, choosing an indicator that covers the ability to pay for food as opposed to an indicator that counts whether an IDP household had more meals than the average IDP household increases the percentage of IDPs exiting the stock by an average of 0.3 percentage points across all metrics in this simulation. Expressed differently, the ability to pay for one’s own food is a slightly lower bar to pass than consuming above-average meals, which means that more IDPs will overcome their vulnerabilities. The last column of the table gives a verbal summary of the average effect of indicator selections across all metrics. 
+
+It should be noted that for most of the 10 sub-criteria, the exact indicator choice does not matter strongly across the different metric option. There is no discernable difference in the indicators for *1.1. Victims of violence*, *2.1. Food security*, *2.2 Shelter and housing*, *2.4. Education*, *3.2 Economic security* and *5.1 Documentation* as the percentage point change is on average smaller than 1. 
+
+```{r ind_hargeisa_table}
+
+dict_hargeisa <- readxl::read_excel("Data/dict.xlsx", sheet = "hargeisa")
+
+run_OLS <- function(data){
+  lm(DS_perc*100 ~ .,
+     data %>% 
+       select(., starts_with("I"), -any_of("iteration"), 
+              -where(~all(.==first(.))),DS_perc)) %>% 
+    broom::tidy(.,conf.int = TRUE)
+}
+
+indicator_OLS_hargeisa <- bind_rows(
+  run_OLS(DS_Original_hargeisa),
+  run_OLS(DS_Option1_hargeisa),
+  run_OLS(DS_Option2_hargeisa),
+  run_OLS(DS_Option3_hargeisa),
+  run_OLS(DS_Option4_hargeisa),
+  run_OLS(DS_Option5_hargeisa)
+) %>%
+  group_by(term) %>%
+  summarize(across(c(estimate, conf.low, conf.high), mean)) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(term = str_replace(term, "^(I\\d+)", "")) %>%
+  left_join(dict_hargeisa, by = c(term = "variable")) %>%
+  mutate(term1 = str_c(indicator, label, sep = ": ") %>% fct_rev(),
+         subcriterion = substr(term1,1,3))
+
+temp_har <- indicator_OLS_hargeisa%>%
+  group_by(subcriterion) %>%
+  summarise(text=paste(label,collapse=', \n'),
+            estimate_h = round(max(estimate,na.rm=T),2),
+            estimate_l = round(min(estimate,na.rm=T),2)) %>% 
+  mutate(effect_size = paste(estimate_l,"to",estimate_h, "percentage points", sep= " "))
+
+temp_har$text <- paste(c("Experience of security incident (baseline),",
+        "More meals than average (baseline),",
+        "Bathroom access (baseline),",
+        "Access to medical service if needed (baseline),",
+        "Child ever attended school (baseline),",
+        "Durable assets (baseline),",
+        "Recompensation mechanisms accessible (baseline),",
+        "Possession of birth certificate (baseline),"), temp_har$text)
+
+
+HAR <- data.frame(
+  "Subcriteria (IRIS)" = IASC$Subcriteria,
+  "Indicators in Hargeisa (UNHCR 2015)" = c(temp_har$text[1],"Only available indicator was whether IDPs are free to visit public places.",
+                                            temp_har$text[2:5],"Only available indicator was whether IDP household has a breadwinner or not.",
+                                            temp_har$text[6:8]),
+  "Average effect size on stock" = c(temp_har$effect_size[1],"No other indicator",
+                                            temp_har$effect_size[2:5],"No other indicator",
+                                            temp_har$effect_size[6:8]),
+  "Description of variation" = c(
+    "Hardly any discernable difference between different indicators",
+    " ",
+     "Hardly any discernable difference between different indicators",
+     "Hardly any discernable difference between different indicators",
+     "Some difference between different indicators",
+     "Hardly any discernable difference between different indicators",
+     " ",
+    "Hardly any discernable difference between different indicators",
+     "Notable difference between different indicators for HLP rights",
+     "Hardly any discernable difference between different indicators"
+  ))
+
+
+knitr::kable(HAR,"latex", booktabs = TRUE,
+              linesep = "",
+             row.names = F,
+             col.names = gsub("[.]", " ", names(HAR)),
+             caption= "\\label{tab:HAR}Average relevance of indicator choice across metrics (Hargeisa)") %>%
+  kable_styling(latex_options = "hold_position", font_size=10)%>%
+  column_spec(1, width = "10em") %>% 
+  column_spec(2, width = "14em") %>% 
+  column_spec(3, width = "9em") %>% 
+  column_spec(4, width = "10em") %>% 
+  row_spec(1:9, hline_after = TRUE)
+
+```
+
+For the sub-criteria *2.3. Medical services*, there is some differences between using access to medical services, birth attendance by skilled health personnel and child vaccinations with access to medical services being the most restrictive indicator. However, in substantive terms, the difference between these indicators increases or decreases the exit from the IDP stock by only around `r temp_har$effect_size[4]`. 
+
+Most importantly, there is a strong and notable difference between the different indicators for *4.1 Property restitution and compensation*. It is observable that having access to documentation for housing, land and property (HLP) or having HLP access restored is more permissive, allowing more IDPs to exit the stock than the presence of recompensation mechanisms. Recompensation mechanisms seem to be hardly present for IDPs in the Hargeisa case, leading to a decrease in IDP exits from the stock by `r temp_har$effect_size[7]`, if such an indicator is chosen. 
+
+To visualize the results of this indicator assessment, Figure \ref{fig:indicator_hargiesa} displays the average effect of choosing one indicator over the other averaged across all assessed metric options. The shown effect sizes must be understood in comparison to the baseline indicator (see ref{tag:HAR}). The effect plot displays clearly that HLP indicaotrs for access to property or documentation for property are crucial indicators that drive a lot of variation in the simulations compared to other indicators for sub-criteria. This means, that if a decision is made on which indicator to choose for measuring *4.1 Property restitution and compensation*, the selection of other indicators is changing the amount of IDPs exiting the stock significantly less.
+
+```{r indicator_plots_hargeisa, fig.cap="\\label{fig:indicator_hargeisa}Average effect of indicator selection across metrics on IDPs exiting the stock (Hargeisa)", out.width="85%"}
+
+ggplot(indicator_OLS_hargeisa %>% filter(is.na(label)==F),
+       aes(x=term1, y=estimate)) +
+  geom_hline(yintercept=0, colour="#8C2318", size=1) +  # Line at 0
+  geom_pointrange(aes(ymin=conf.low, ymax=conf.high), 
+                  position = position_dodge(1)) +
+  labs(x="Indicator", 
+       y="Average effect estimate across metrices (in % of IDP stock)") +  
+  coord_flip() +  # Rotate the plot
+  theme_bw()+
+  theme(legend.position = "bottom")
+```
+
+Overall, even if there are some differences in the operationalization of the 10 sub-criteria, and the indicator selection tends to matter more, the simulations in the context of Hargeisa suggests that the average effect of choosing one indicator over the other is often neglectable in practice. In this indicator assessment, the most relevant choice is clearly related to HLP rights.
+
+### Importance of metric selection
+
+The simulation approach is also intended to answer a second question that is to what extent the different metric options differ and produce varying estimates of the exit from the IDP stock. Table \ref{tab:HAR_metric} summarizes the key findings related to the range of IDPs that exit the stock across all metrics (how much variation there is in results), and how important the choice of individual indicators is in each approach. The table also provides the mean number of IDPs exiting the stock. It can be generally said that the choice which indicators are used matters in some metrics more than in others as some metrics are more volatile than others. 
+
+```{r Har_metric}
+options <- c("Pass/fail measure (no comparison!)","1: Full composite",
+             "2: Composite at criterion level", "3: Composite at sub-criterion level",
+             "4: Comparison of homogeneous cells","5: Classifier/ regression-based")
+
+data_str <- c("DS_Original_hargeisa",paste0("DS_Option",1:5, "_hargeisa"))
+
+
+columns <- c(" ","Mean of IDPs exiting the stock",
+             "Range of IDPs exiting the stock",
+             "Variation in how many IDPs exit the stock")
+ 
+HAR_metric <- data.frame(
+  Var1 = options,
+  mean = sapply(data_str, function(x){round(mean(get(x)$DS),2)}),
+  mean_p = sapply(data_str, function(x){round(mean(get(x)$DS_perc),2)}),
+  range =  sapply(data_str, function(x){paste(range(get(x)$DS),collapse = " to ")}),
+  range_p = sapply(data_str, function(x){paste(round(range(get(x)$DS_perc*100),2),collapse = " to ")}),
+  var = sapply(data_str, function(x){round(sd(get(x)$DS),2)})
+) %>% 
+  mutate(range = paste0(range, " IDPs (" , range_p, "% of stock)"),
+         mean = paste0(mean, " IDPs (",mean_p,"% of stock)"),
+         var = paste(c("Low (SD:", "High (SD:","Middle (SD:",
+                       "No variation (SD:","Very low (SD:", "Very high (SD:"),
+                     var,")")) %>% 
+  select(-range_p, -mean_p) %>% t()
+
+# get row and colnames in order
+rownames(HAR_metric) <- columns
+colnames(HAR_metric) <- HAR_metric[1,]
+
+knitr::kable(HAR_metric[-1,], "latex",
+             booktabs = TRUE, linesep = "",
+             caption= "\\label{tab:HAR_metric}Summary of simulation results for Hargeisa across all metrics (Total sample of IDPs: 4780 households)") %>%
+  kable_styling(latex_options = "hold_position", font_size=10)%>%
+  column_spec(1, width = "5em") %>% 
+  column_spec(2:3, width = "5.7em") %>% 
+  column_spec(4:7, width = "6.2em")
+```
+
+When using one composite metric across all criteria (all 10 indicators for each sub-criterion are summarized into one index) and when using a regression-based approach, the choice of indicators matters the most and the metric yields high variation. In the case of one composite metric, measuring the sub-criterion *4.1. Property restitution and compensation* by assessing the documentation and restoration of property rather than the access to compensation mechanisms increases the percentage of IDPs overcoming their vulnerabilities by around `r round(max(run_OLS(DS_Option1_hargeisa)$estimate),2)` percentage points. In the case of a regression-based assessment whether an IDP household is more likely to be similar to other IDPs vs. the host communities, the same indicator can even increase the percentage of IDPs overcoming their vulnerabilities by `r round(max(run_OLS(DS_Option5_hargeisa)$estimate),2)` percentage points. Albeit less strongly, the choice which indicators are used is also more severe in the case of a composite metric at the criterion level (as up to `r round(max(run_OLS(DS_Option2_hargeisa)$estimate),2)` percentage point difference can be between different indicators). For options 1, 2 and 5, it is hence important to note that these metric options create varying estimates of exits from the stock and are very sensitive to the indicator selection. 
+
+For other metric options, the importance of choosing the right indicator is very diminished as the metrics produce very similar estimates of the exit from IDP stocks across all indicators. As multiple indicators are combined at the sub-criterion level, option 3 indicates that none of the IDPs exit the stock. The option performs very similar to a pass/fail scenario in which no comparison with the host community takes place. Finally, when IDPs are divided into subgroups and then compared with the host population, the simulation also revealed that very few IDP subgroups exit the IDP stock. In the simulations, `r nrow(cells_hargeisa)` different groupings for IDPs were tried based on the region of orign, the clan, gender, and depature period of IDPs in Hargeisa. However, none of the groupings yielded significantly different results compared to other groupings. 
+
+```{r cells_hargeisa, eval = F}
+# Do not include as the differences are marginal!!!
+
+DS_Option4_hargeisa %>% 
+  group_by(cell_1,cell_2,cell_3) %>% 
+  summarise('Average number of IDPs exiting the stock' = round(mean(DS),2),
+            'Average percentage of IDPs exciting the stock' = round(mean(DS_perc)*100,2)) %>% ungroup %>% 
+  mutate(cell_1 = factor(cell_1,labels = c("Region of origin","Gender","Origin district")),
+         cell_2 = factor(cell_2,labels = c("Clan","Gender","Origin district")),
+         cell_3 = factor(cell_3,labels = c("Clan","Departure period","Origin district")))%>% 
+  rename('Grouping variable 1'=cell_1,'Grouping variable 2'=cell_2,'Grouping variable 3'=cell_3)
+```
 
 ### Overall feasibility and application of metric options
 
-```{r density_plots_hargeisa, fig.cap="\\label{fig:density_hargeisa}Density of simulations for all possible metrics (Hargeisa)"}
+Figure \ref{fig:density_hargeisa} displays the density of the conducted simulations for the 5 identified metric options. To allow comparisons, a simple pass/fail measure on the sub-criterion level has been added but readers should note that this does not enable any comparisons with hosts. The graph displays on the x-axis what percentage of the IDP population in the dataset has overcome vulnerabilities and exits the stock. The y-axis displays the density of simulations or how many of the simulations shared the same outcome (number of IDPs exiting the stock). Note that the y-axis and the x-axis in the different graphs have their own scaling to make visualization easier. 
+
+```{r density_plots_hargeisa, fig.cap="\\label{fig:density_hargeisa}Density of simulations for all possible metrics (Hargeisa)", out.width= "90%"}
 plot_density <- function(data,title){
+  ggplot(data)+
+    geom_density(aes(x = DS_perc), fill="dodgerblue",alpha = 0.5)+
+    geom_vline(aes(xintercept = mean(DS_perc)), 
+               linetype = "dashed")+
+    scale_x_continuous(labels = scales::label_percent(), limits = c(-0.001,0.9)) +
+    labs(x = "Simulated proportion overcoming vulnerabilities", 
+         y = "Simulation density",
+         title = title)+
+    theme_bw()+
+    theme(title = element_text(size=8), text = element_text(size= 8),
+          axis.title = element_text(size=8))
+}
+
+plot_density_no_variation <- function(data,title){
   ggplot(data)+
     geom_density(aes(x = DS_perc), fill="dodgerblue",alpha = 0.5)+
     geom_vline(aes(xintercept = mean(DS_perc)), 
@@ -631,15 +808,384 @@ plot_density <- function(data,title){
           axis.title = element_text(size=8))
 }
 
-(plot_density(DS_Original, "Pass/fail measure") + 
-    plot_density(DS_Option1,"1: Full composite"))/
-(plot_density(DS_Option2,"2: Composite at criterion level") + 
-   plot_density(DS_Option3, "3: Composite at sub-criterion level"))/  
-(plot_density(DS_Option4, "4: Comparison of homogeneous cells") + 
-   plot_density(DS_Option5, "5: Classifier/regression-based"))
+(plot_density(DS_Original_hargeisa, "Pass/fail measure") + 
+    plot_density(DS_Option1_hargeisa,"1: Full composite"))/
+  (plot_density(DS_Option2_hargeisa,"2: Composite at criterion level") + 
+     plot_density_no_variation(DS_Option3_hargeisa, "3: Composite at sub-criterion level"))/  
+  (plot_density(DS_Option4_hargeisa, "4: Comparison of homogeneous cells") + 
+     plot_density(DS_Option5_hargeisa, "5: Classifier/regression-based"))
 ```
 
+The first observation from these density plots is that the pass/fail measure, the composite measure at criterion level, the composite measure at sub-criterion level, and the comparison of cells all yield similar results: most of the simulations based on these metric options result in 0 IDPs overcoming their vulnerabilities and exiting the stock.
+For example, simulations based on a composite measures at the criterion level has a clear peak around 0 percentage of IDPs - that means that most simulations show that no IDPs exit the stock - while the average simulation suggests that `r round(mean(DS_Option2_hargeisa$DS))` IDPs overcome their vulnerabilities (`r round(mean(DS_Option2_hargeisa$DS_perc)*100,2)`% of the stock). For a composite measure at the sub-criterion level, there is no variation and all simulations indicate that no IDP exits the stock. This means that both composite metric options are not strongly dependent on the selected indicators. It also indicates that the metrics are relatively restrictive and classify few IDPs as having overcome their key vulnerabilities. Because of their high threshold to exit IDPs from the stock, they behave like a pass/fail measure that does not compare IDPs with a comparator population.  divide the overall IDP population into homogenous IDP cells. Similarly, the cell-based metric option showed low volatility to the selection of indicators and the selection of grouping variables in the case of Hargeisa.
+
+Making a regression-based assessment whether a specific household is predicted to be an IDP household or a host community household is an option that has the highest variability, which means that depending on the indicator combination chosen, the resulting number of IDPs exiting the stock can be considerably higher or lower. Keeping all other indicators constant, using an indicator whether IDPs have restored their access to property can classify around `r round(max((lm(DS ~ .,DS_Option5_hargeisa %>% select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))),DS)) %>% broom::tidy(.,conf.int = TRUE))$estimate))` more IDPs as exiting the stock as opposed to measuring this sub-criterion as access to restoration mechanisms. The simulations reveal a bimodal distribution: many simulations cluster around 0-5% of the IDP population overcoming their vulnerabilities. At the same time, many simulations center around 0.55% of IDPs overcoming their vulnerabilities. From this distribution, it is hence difficult to assess what the true percentage of IDPs having achieved a solution in statistical terms might be. 
+
+Constructing one composite measure across all criterion (option 1) is a metric option that has the second highest variability. Keeping all other indicators constant, using an indicator whether IDPs have documentation to prove their property rights can classify around `r round(max((lm(DS ~ .,DS_Option1_hargeisa %>% select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))),DS)) %>% broom::tidy(.,conf.int = TRUE))$estimate))` more IDPs as exiting the stock as opposed to measuring this sub-criterion as access to restoration mechanisms. The conclusion is that if data is combined into one index across all criteria and if a regression-based approach is used, it is strongly advisable to carefully determine a final set of indicators to measure solutions to ensure that data across displacement contexts is comparable. 
+
+Some metric options turned out to be easier to implement than others in the dataset on IDPs in Hargeisa. In terms of feasibility, the metric option 1, which showed high sensitivity to indicator selection, was easy to implement as the construction of one index is straightforward. However, a problem with this metric option is not only its variability but also that elements of the index may be collinear. 
+
+Regarding the metric options 2 + 3, that both require multiple indices on the criterion and the sub-criterion level, the feasibility of this approach is much lower. First, they require more indicators than the other metrics to be able to construct additive indices. For example, in Hargeisa there were simply not more than one indicator available to measure *1.2 Freedom of movement* and *3.1 Employment and livelihood*. It is expected that producers of official statistics may also have challenges to generate the data necessary for these more data hungry indices. Second, the theoretical conceptualization is not fully advanced yet. An “ideal” composite index is always made of theoretically distinct elements (i.e. we measure different dimensions of displacement-related vulnerabilities). However, when multiple indicators that measure very much the same theoretical concept are combined to one index at the sub-criterion level (e.g. similar indicators that all measure whether IDPs’ shelter and housing conditions are satisfactory), the different indicators are likely very much correlated. An example is that individual living in an overcrowded space very often also live in a makeshift space. This multicollinearity of elements of an index raises questions whether strongly correlated elements of an index should be weighted differently than other elements. The problem of developing a theoretically sound index also exists when an index is built on the criterion level. So far, the IRIS already identifies four distinct sub-criteria for the adequate standard of living of IDPs. However, it is not clear if we can theoretically identify more than one dimension to empirically measure the criterion *5. Documentation*. These questions of theoretical conceptualization, correlation between elements in the index, and the high data demands reduce the feasibility to implement the metric options 2 and 3 in practice. 
+
+Dividing the IDP population in Hargeisa into sub-groups to assess homogenous cells that can then be compared to the host community is relatively easy to implement for National Statistical Offices. However, it goes beyond the scope of this methodological note to assess precisely how the boundaries between cells (i.e. the criteria to divide the IDP populations) affect the results. In Hargeisa, the available variables to build cells did not indicate high volatility to the grouping. However, a final selection of this metric option would need to assess 1) which delimitations should be used, 2) if the number of variables to divide the IDP population matters, 3) if the size of the cells matters, and if the 4) homogeneity or heterogeneity in a cell matters. While this option is initially easy to implement, it raises many new methodological challenges.
+
+Finally, using a regression-based approach has some disadvantages and advantages. First, further methodological work is needed to identify an easy-to-implement but also successful classifier that predicts whether an IDP household is more similar to other IDPs or to the host community. A logistic regression or linear regression seems plausible here. Furthermore, it has to be decided what the probability cut-off is, or at what predicted probability an IDP household should be no longer considered displaced. The here implemented cut-off of 0.5 seems too lenient. Another practical problem in this approach is that comparisons across contexts might be difficult. While a regression in one country might assign a lot of weight to indicators for the freedom of movement, in another country it might be much more important whether food security has been achieved. From the point of a national statistical system, it might be difficult to identify why the regression coefficients vary across contexts and sub-criteria and how different assessments can be compared between displacement situations. 
+
+## Simulation results for Nigeria (World Bank 2018)
+
+```{r simulation_results_nigeria}
+DS_mean_nigeria <- mean(c(DS_Original_nigeria$DS,
+                           DS_Option1_nigeria$DS,
+                           DS_Option2_nigeria$DS, 
+                           DS_Option3_nigeria$DS, 
+                           DS_Option4_nigeria$DS, 
+                           DS_Option5_nigeria$DS))
+
+DS_perc_mean_nigeria <- mean(c(DS_Original_nigeria$DS_perc,
+                                DS_Option1_nigeria$DS_perc,
+                                DS_Option2_nigeria$DS_perc, 
+                                DS_Option3_nigeria$DS_perc, 
+                                DS_Option4_nigeria$DS_perc, 
+                                DS_Option5_nigeria$DS_perc))
+
+```
+
+The IDP profiling in Nigeria covered a total of `r sum(data_nigeria$ID)` IDPs that could be compared to the host population. On average across all simulated indicators and metrics, `r round(DS_mean_nigeria,2)`  IDPs have overcome their vulnerabilities and exit the IDP stock, which corresponds to an average of `r round(DS_perc_mean_nigeria*100,2)`% of the sampled IDP. For `r round(mean(is.na(data_nigeria %>% filter(ID ==1)))*100,2)`% of the data in the IDP profiling in Nigeria, IDP households could not be assessed due to missing data.  
+
+### Importance of indicator selection
+
+Table \ref{tab:NIG} summarizes how much the choice of one indicator over others can affect the exit from the IDP stock on average across all simulations and all metric options. In the dataset from Nigeria, it is only possible to assess the relevance of the indicator selection for four sub-criteria of the total of 10 sub-criteria because the data only contains one possible indicator for those dimensions. The table is quickly summarized by concluding that only the indicator choice in *4.1. Property restitution and compensation* matters strongly. For the majority of the other indicator choices, the difference between indicators only increases or decreases the IDP stock by less thant 1 percentage point.
+
+```{r ind_nigeria_table, out.width="98%"}
+
+dict_nigeria <- readxl::read_excel("Data/dict.xlsx", sheet = "nigeria")
+
+indicator_OLS_nigeria <- bind_rows(
+  run_OLS(DS_Original_nigeria),
+  run_OLS(DS_Option1_nigeria),
+  run_OLS(DS_Option2_nigeria),
+  run_OLS(DS_Option3_nigeria),
+  run_OLS(DS_Option4_nigeria),
+  run_OLS(DS_Option5_nigeria)
+) %>%
+  group_by(term) %>%
+  summarize(across(c(estimate, conf.low, conf.high), mean)) %>%
+  filter(term != "(Intercept)") %>%
+  mutate(term = str_replace(term, "^(I\\d+)", "")) %>%
+  left_join(dict_nigeria, by = c(term = "variable")) %>%
+  mutate(term1 = str_c(indicator, label, sep = ": ") %>% fct_rev(),
+         subcriterion = substr(term1,1,3))
+
+temp_nig <- indicator_OLS_nigeria%>%
+  group_by(subcriterion) %>%
+  summarise(text=paste(label,collapse=', \n'),
+            estimate_h = round(max(estimate,na.rm=T),2),
+            estimate_l = round(min(estimate,na.rm=T),2)) %>% 
+  mutate(effect_size = paste(estimate_l,"to",estimate_h, "percentage points", sep= " "))
+
+temp_nig$text <- paste(c("Feeling of safety at day (baseline),",
+                         "Non-durable living arrangement (baseline),",
+                         "Access to medical services as needed (baseline),",
+                         "Duration to next education facility (baseline)",
+                         "Having a bank account (baseline)",
+                         "Access to recompensating mechanism for lost HLP (baseline)"), temp_nig$text)
 
 
+NIG <- data.frame(
+  "Subcriteria (IRIS)" = IASC$Subcriteria,
+  "Indicators in Nigeria World Bank 2018" = 
+    c(temp_nig$text[1],"Only available indicator was whether IDPs feel free to move","Only available indicator was whether IDPs score higher than average on Food Security Scale.",
+      temp_nig$text[2:4],"Only available indicator was income generation.",temp_nig$text[5:6],
+      "Only available indicator was if IDPs had documents/access to replace missing documents if lost."),
+  "Average effect size on stock" = 
+    c(temp_nig$effect_size[1],"No other indicator","No other indicator",
+      temp_nig$effect_size[2:4],"No other indicator",
+      temp_nig$effect_size[5:6], "No other indicator"),
+  "Description of variation" = c(
+    "Hardly any discernable difference between different indicators",
+    " ",
+     " ",
+         "Some difference between different indicators",
+     "Hardly any discernable difference between different indicators",
+     "Hardly any discernable difference between different indicators",
+     " ",
+    "Some difference between different indicators",
+     "Notable difference between different indicators for HLP rights",
+     " "
+  ))
+
+knitr::kable(NIG,"latex", booktabs = TRUE,
+              linesep = "",
+             row.names = F,
+             col.names = gsub("[.]", " ", names(NIG)),
+             caption= "\\label{tab:NIG}Average relevance of indicator choice across metrics (Nigeria)") %>%
+  kable_styling(latex_options = "hold_position", font_size=10)%>%
+  column_spec(1, width = "8.5em") %>% 
+  column_spec(2, width = "17em") %>% 
+  column_spec(3, width = "9em") %>% 
+  column_spec(4, width = "9em") %>% 
+  row_spec(1:9, hline_after = TRUE)
+
+```
+
+However, for *4.1 Property restitution and compensation*,  choosing an indicator that measures legally owning the dwelling in comparison to having access to recompensation mechanisms for lost HLP is a more permissive indicator, allowing more IDPs to exit the stock. Recompensation mechanisms seem to be hardly present for IDPs in Nigeria, leading to a decrease in IDP exits from the stock by `r temp_nig$effect_size[6]`, if such an indicator is chosen. 
+
+To visualize the results of this indicator assessment, Figure \ref{fig:indicator_nigeria} displays the average effect of choosing one indicator over the other averaged across all assessed metric options. Again, the difference between the effect size of the HLP indicators in comparison to the other indicators is striking. While the indicator selection does not matter strongly for the subcriteria 1-8 and 10, *4.1 property restitution and compensation* requires a careful assessment to determine how to best measure this for the purpose of the "solutions measure".
+
+```{r indicator_plots_nigeria, fig.cap="\\label{fig:indicator_nigeria}Average effect of indicator selection across metrics on IDPs exiting the stock (nigeria)", out.width="85%"}
+
+ggplot(indicator_OLS_nigeria %>% filter(is.na(label)==F),
+       aes(x=term1, y=estimate)) +
+  geom_hline(yintercept=0, colour="#8C2318", size=1) +  # Line at 0
+  geom_pointrange(aes(ymin=conf.low, ymax=conf.high), 
+                  position = position_dodge(1)) +
+  labs(x="Indicator", 
+       y="Average effect estimate across metrices (in % of IDP stock)") +  
+  coord_flip() +  # Rotate the plot
+  theme_bw()+
+  theme(legend.position = "bottom")
+```
+
+### Importance of metric selection
+
+So far, the assessment in Nigeria has shown that the indicator selection matters little across all metric options, except for HLP indicators. The results section now focuses on differences between different metric options and their production of varying estimates for the exit from the IDP stock. 
+
+```{r Nig_metric}
+data_str_n <- c("DS_Original_nigeria",paste0("DS_Option",1:5, "_nigeria"))
+ 
+NIG_metric <- data.frame(
+  Var1 = options,
+  mean = sapply(data_str_n, function(x){round(mean(get(x)$DS),2)}),
+  mean_p = sapply(data_str_n, function(x){round(mean(get(x)$DS_perc),2)}),
+  range =  sapply(data_str_n, function(x){paste(range(get(x)$DS),collapse = " to ")}),
+  range_p = sapply(data_str_n, function(x){paste(round(range(get(x)$DS_perc*100),2),collapse = " to ")}),
+  var = sapply(data_str_n, function(x){round(sd(get(x)$DS),2)})
+) %>% 
+  mutate(range = paste0(range, " IDPs (" , range_p, "% of stock)"),
+         mean = paste0(mean, " IDPs (",mean_p,"% of stock)"),
+         var = paste(c("Low (SD:", "Middle (SD:","Low (SD:",
+                       "No variation (SD:","No variation (SD:", "Middle (SD:"),
+                     var,")")) %>% 
+  select(-range_p, -mean_p) %>% t()
+
+# get row and colnames in order
+rownames(NIG_metric) <- columns
+colnames(NIG_metric) <- NIG_metric[1,]
+
+knitr::kable(NIG_metric[-1,], "latex",
+             booktabs = TRUE, linesep = "",
+             caption= "\\label{tab:NIG_metric}Summary of simulation results for Nigeria across all metrics (Total sample of IDPs: 1437 households)") %>%
+  kable_styling(latex_options = "hold_position", font_size=10)%>%
+  column_spec(1, width = "5.2em") %>% 
+  column_spec(2:3, width = "5.7em") %>% 
+  column_spec(4:7, width = "6.1em")
+```
+
+Similar to the assessment in Hargeisa, which metric is used to combine the different indicators matters as the importance of selecting the right indicators varies. As already seen in the dataset on Somaliland, using a regression-based approach or one composite metric across all criteria are the most sensitive to the exact indicators used for an assessment of the statistical end of displacement. 
+
+In the case of a full composite metric the selection of an indicator can in some instances make up to `r round(max(run_OLS(DS_Option1_nigeria)$estimate),2)` percentage point difference in the outcome of a simulation. That means that over `r round(max((lm(DS ~ .,DS_Option1_nigeria %>% select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))),DS)) %>% broom::tidy(.,conf.int = TRUE))$estimate))` IDPs may be classified as having overcome their vulnerabilities when one indicator to measure *4.1. Property restitution and compensation* is used while those households do not exit the IDP stock when another indicator is used. In the case of the regression-based classification of IDPs, using an indicator whether a household is the legally recognized owner of their property can on average, when all other indicators stay the same, increase the number of IDPs achieving a durable solution by  `r round(max(run_OLS(DS_Option5_nigeria)$estimate),2)` percentage points compared to an indicator capturing the access to compensation mechanisms. 
+
+However, for all other metric options presented in this note, the choice of indicators seems to be of very minor relevance for the Nigerian case as less than 1 percentage point difference is made by selection one indicator over the other. Table \ref{tab:NIG_metric} summarizes the key findings related to variation across indicators and metrics. Most importantly, we find no variation in the number of IDPs exiting the stock for composite measure at the sub-criterion level and for homogeneous cells.
+
+The simulations also show that the groupings of the IDP population into different homogeneous cells to then make a group-level assessment does not yield any volatility regarding the variables used for grouping. It should be noted that the grouping in Nigeria was based on date of arrival, date of displacement and the origin and displacement location of IDPs as the dataset contained few other variables useful for classification of IDPs into sub-groups. It is realistic that other groupings could be more sensitive and could produce more variation in the number of subgroups exiting the stock of IDPs.
+
+### Overall feasibility and application of metric options
+
+Figure \ref{fig:density_nigeria} displays the density of the conducted simulations for the 5 different metric options that could be used to implement the IRIS solutions measure in practice. The five options are compared to a simple pass/fail measure which does not implement a comparison to host communities. As a reminder, the graphs show which outcome (i.e. number of IDPs exciting the stock) is particularly common in the simulations across indicator combinations.
+
+```{r density_plots_nigeria, fig.cap="\\label{fig:density_nigeria}Density of simulations for all possible metrics (Nigeria)", out.width= "90%"}
+
+(plot_density(DS_Original_nigeria, "Pass/fail measure") + 
+    plot_density(DS_Option1_nigeria,"1: Full composite"))/
+  (plot_density(DS_Option2_nigeria,"2: Composite at criterion level") + 
+     plot_density_no_variation(DS_Option3_nigeria, "3: Composite at sub-criterion level"))/  
+  (plot_density_no_variation(DS_Option4_nigeria, "4: Comparison of homogeneous cells") + 
+     plot_density(DS_Option5_nigeria, "5: Classifier/regression-based"))
+```
+
+The same pattern as in Hargeisa can be detected in Nigeria. The composite measure at the criterion level, the composite measure at the sub-criterion level and a comparison of homogeneous cells yield an average number of IDPs exiting the stock close to 0. In fact, the metric option 3 and 4 results in 0 IDPs overcoming their key displacement-related vulnerabilities across all indicator simulations. These three metric options essentially generate similar results to a simple pass/fail measure without comparisons to hosts. 
+
+In the case of the full composite measure (option 1), the density plots show higher variability and up to `r round(mean(DS_Option1_nigeria$DS_perc)*100,2)` percent of the IDP population assessed in Nigeria may have overcome their displacement-related vulnerabilities according to this measure. For a regression-based approach, the assessment again yielded a bimodal distribution. The full composite measure and the regression-based approach are characterized by a much higher variability and the indicator selection is more sensitive in this context. We have seen the same behavior of the different metric options in Hargeisa. 
+
+Regarding the feasibility of implementing the different metric options in practice and with the capacities of a National Statistical Office in mind, it can be said that the patterns are similar to Hargeisa: The composite measure across all indicators is the easiest to implement. Dividing the IDP population into cells that can then be compared is also fairly easy to implement but may require clearer guidance on the criteria to delimitate different IDP sub-groups. Similarly, a regression-based approach is feasible to implement but requires clarification on probability cut-off, classifier used, and comparisons across contexts. Implementing indices on the criterion or sub-criterion level was more difficult to implement. This problem was even more severe in the dataset used in Nigeria compared to the data in Hargeisa because the dataset did not contain enough possible indicators to form indices for 6 out of 10 sub-criteria. Future assessments of how the IRIS solutions measure can be implemented should use datasets that provide a solid number of different indicators. 
+
+## Simulation results for Colombia (DANE 2019)
+
+## Simulation results for Ukraine ()
+
+## Discussion of housing, land, and property rights indicators
+
+Amongst other results, the simulations have shown that the choice of indicators matters the most in regard to the sub-criterion *4.1 Property restitution and compensation*. This was the case in Hargeisa and Nigeria, where most indicator selections did not affect more than 1 percentage point difference in the number of IDPs exiting the stock. However, we have seen that choosing a more permissive HLP indicator can affect large percentages of the IDP stock. To further investigate how the HLP indicators affect the overall simulation results, the figures \ref{fig:hlp_har} and \ref{fig:hlp:nig} plot the simulation densities for an assessment of all 10 sub-criteria and for an assessment based on 9 sub-criteria (excluding the HLP indicators). The blue shaded curves exclude the HLP indicators; the grey shaded curves are the original assessment.
+
+```{r hlp_hargeisa, fig.cap="\\label{fig:hlp_har}Density of simulations when including and excluding HLP indicators (Hargeisa)", out.width= "90%"}
+ds_options <- 
+  tribble(~label,                                ~opt,                    ~opt_nohlp,
+          "Pass/fail measure",                   DS_Original_hargeisa, DS_Original_nohlp_hargeisa,
+          "1: Full composite",                   DS_Option1_hargeisa,  DS_Option1_nohlp_hargeisa,
+          "2: Composite at criterion level",     DS_Option2_hargeisa,  DS_Option2_nohlp_hargeisa,
+          "3: Composite at sub-criterion level", DS_Option3_hargeisa,  DS_Option3_nohlp_hargeisa,
+          "4: Comparison of homogenous cells",   DS_Option4_hargeisa,  DS_Option4_nohlp_hargeisa,
+          "5: Classifier/regression-based",      DS_Option5_hargeisa,  DS_Option5_nohlp_hargeisa)
+
+pmap(ds_options,
+     ~ggplot(bind_rows("w/HLP" = ..2, "w/o HLP" = ..3, .id = "hlp"))+
+       geom_density(aes(x = DS_perc, fill = hlp), alpha = 0.5)+
+         scale_fill_manual(values=c("#999999", "dodgerblue2"))+
+       geom_vline(aes(xintercept = mean_exited, color = hlp), 
+                  linetype = "dashed", size = 1, color=c("#999999","dodgerblue2"),
+                  data = function(x) {x %>% group_by(hlp) %>% summarize(mean_exited = mean(DS_perc))})+
+       scale_x_continuous(labels = scales::label_percent())+
+       theme_bw()+ 
+    theme(title = element_text(size=8), 
+          text = element_text(size= 8),
+          axis.title = element_text(size=8))+
+       labs(x = "Simulated proportion overcoming vulnerabilities", y = "Simulation density", 
+            fill = NULL, color = NULL,
+            title = ..1)) %>% 
+  wrap_plots(ncol = 2) + plot_layout(guides = "collect") & theme(legend.position = "bottom")
+```
+
+```{r hlp_nigeria, fig.cap="\\label{fig:hlp_nig}Density of simulations when including and excluding HLP indicators (Nigeria)", out.width= "90%"}
+ds_options_n <- 
+  tribble(~label,                                ~opt,                    ~opt_nohlp,
+          "Pass/fail measure",                   DS_Original_nigeria, DS_Original_nohlp_nigeria,
+          "1: Full composite",                   DS_Option1_nigeria,  DS_Option1_nohlp_nigeria,
+          "2: Composite at criterion level",     DS_Option2_nigeria,  DS_Option2_nohlp_nigeria,
+          "3: Composite at sub-criterion level", DS_Option3_nigeria,  DS_Option3_nohlp_nigeria,
+          "4: Comparison of homogenous cells",   DS_Option4_nigeria,  DS_Option4_nohlp_nigeria,
+          "5: Classifier/regression-based",      DS_Option5_nigeria,  DS_Option5_nohlp_nigeria)
+
+pmap(ds_options_n,
+     ~ggplot(bind_rows("w/HLP" = ..2, "w/o HLP" = ..3, .id = "hlp"))+
+       geom_density(aes(x = DS_perc, fill = hlp), alpha = 0.5)+
+         scale_fill_manual(values=c("#999999", "dodgerblue2"))+
+       geom_vline(aes(xintercept = mean_exited, color = hlp), 
+                  linetype = "dashed", size = 1, color=c("#999999","dodgerblue2"),
+                  data = function(x) {x %>% group_by(hlp) %>% summarize(mean_exited = mean(DS_perc))})+
+       scale_x_continuous(labels = scales::label_percent())+
+       theme_bw()+ 
+    theme(title = element_text(size=8), 
+          text = element_text(size= 8),
+          axis.title = element_text(size=8))+
+       labs(x = "Simulated proportion overcoming vulnerabilities", y = "Simulation density", 
+            fill = NULL, color = NULL,
+            title = ..1)) %>% 
+  wrap_plots(ncol = 2) + plot_layout(guides = "collect") & theme(legend.position = "bottom")
+```
+
+There are several important insights to gain from these plots: First, the dashed vertical lines represent the mean percentage of IDPs exiting the stock. Across both displacement contexts, one can observe that the mean exit from the IDP stock is higher if the HLP indicators are excluded from the assessment. This means that, overall, there seems to be little access to property rights restitution or compensation mechanisms in the assessed displacement contexts. If HLP indicators are then included in the assessment, very few IDPs can pass the bar and can be considered as no longer suffering from key-displacement related vulnerabilities. Only assessing the other 9 dimensions is more permissive.
+
+Related to this, excluding HLP indicators also has an effect on the different composite measures assessed in this study (options 1, 2, and 3). From the plots, we can see that the distribution of simulations moves towards the right (more IDPs exiting the stock) and we can observe more variation across indicators. This is the cleares in the composite metric at the sub-criterion level. While the original assessment based on all 10 sub-criteria did not yield any variation, we find more variation if the HLP indicators are excluded as too restrictive. 
+
+For the purpose of providing guidance on the further development of the IRIS "solutions measure", the lesson learnt from this assessment is two-folded: First, the policy community should be aware that HLP rights are critical and are often lacking for IDPs. However, for a statistical assessment how many IDPs overcome displacement-related vulnerabilities, the presence  of restitution and compensation mechanisms is a very high bar that effectively hinders that IDPs can be taken out of the stock. One consideration could be to assess the IDP stock without the subcriterion *4.1. Property restitution* and to engage in separate but important policy work to ensure that IDPs can regain or prove their property after flights.
+
+The second lesson learnt is that if *4.1. Property restitution* is to remain part of the "solutions measure", an indicator should be chosen that can plausibly also be achieved by IDPs. For example, secured ownership over the current housing or having proof for housing, land, and property in the form of documentation are more easily achievable indicators than access to formal restitution processes. 
 
 
+## Limitations
+
+This note set out to provide evidence to what extent the choice of a set of statistical indicators to measure solutions ("challenge 1") and the choice of a method to combine these indicators into one statistical metric ("challenge 2") affect a "solutions measure" for internal displacement. While the next sections will summarize the key insights from this assessment, it is important to acknowledge some key limitation in this simulation study: 
+  
+  1. **Sample:** Only two datasets were used to test the solutions measure due to time constraints. It was necessary to focus on a household-level IDP-specific survey that includes host community households in order to allow comparison. Given limited data available of comparable socio-economic micro-data on internal displacement, the surveys were not specifically selected to diversify context or policy relevance.  Main issues with the selection are that no data from IDP contexts with a natural disaster are used, the datasets are not necessarily nationally representative or do not cover a large proportion of the IDP population, and the data collections were not part of an exercise to generate official statistics or feed into SDG reporting. Future assessments should identify other displacement contexts and samples that may be useful to analyze with the IRIS solution measure in mind.
+2. **Data quality:** While both datasets were useful because they included multiple indicators that could be used to operationalize the IRIS solutions measure, there are some concerns about data quality, in particular in terms of comparability across contexts. Additionally, the survey in Hargeisa included more significant data gaps related to the employment of respondents. Another concern is that indicators coded from the data to measure the 10 sub-criteria are not necessarily in full compliance with SDG indicators. For the solutions measure, it would be beneficial to streamline the elements needed to form a solutions measure with SDG indicators, to increase the likelihood that indicators are already available in various displacement contexts, to increase comparability across contexts, and to reduce the needs to collect new data in order to implement the IRIS solutions measure. Future analyses could define a set of potential indicators guided by more statistical standards. 
+2. **Analysis:** Ideally, the work on operationalizing the relevant sub-criteria from the IRIS solutions metric would be done in close cooperation with different experts and organizations to ensure that the work aligns with other efforts, to be guided by statistical standards and common practices, to allow more context-specific knowledge and to cross-compare simulation results as the way statistical indicators are defined may vary depending on the coder. Additionally, the analysis had to retrofit potential indicators for the solutions measure from existing datasets. This is problematic as the indicators are hence not necessarily standardized and there are not always enough indicators to compare thoroughly. Options for future analyses include to fully simulate theoretical data on how much indicators matter in different metric options or to use datasets that are pre-designed for this methodological assessment. In addition, more information is necessary to understand to what extent the different metric options pick up the same IDP populations exiting the stock. 
+
+# Conclusions and key recommendations
+
+## Informing the selection of indicators
+
+The first insight from this simulation study is that the **choice of a set of indicators to measure the 10 sub-criteria may matter less than the data quality and the metric chosen to combine these indicators**. On average across all simulations and metric options, very few indicators had a large effect on the exit of IDPs from the stock. This finding may facilitate and de-politicize the debate as EGRIS moves towards defining concrete statistical indicators against the IASC (sub-)criteria of the solutions measure. However, as discussed in a separate section, the selection of suitable HLP indicators is crucial to develop a robust "solutions measure".
+
+The process of running the simulations re-emphasized the quality standards IRIS already promotes for the statistical indicators for a solutions measure: It is indeed crucial that indicators are commonly used, tested and evaluated and cover the population in question. It is indeed important that the final "solutions measure" is constructed of *indicators that maximize coverage in the IDP population*. While it may be permissible to measure access to education in IDP populations with school attendance rates of children, the indicator does not provide information about IDP households that do not have children. As such, this may not be a problem because one can argue that they did not suffer from this vulnerability in the first place. However, if a large amount of the 10 indicators is only applicable to subsets of the IDP population, one risks that the count of IDPs exiting a national stock is based on only a small proportion of “real assessments” while a huge part of the IDP population is just not seen as vulnerable on the dimensions measured. 
+
+Regarding the indicator choice, the process of running these simulations also revealed that there may a need to further **clarify the scope of dimensions *3.1 Employment & livelihoods* and *3.2 Economic security*. ** In some instances, it is not easy to discern if a potential indicator falls into 3.1 or 3.2. Furthermore, **many indicators found in the Durable Solutions library for these two sub-criteria are unclear regarding the question what constitutes a durable solution and what not**. 
+
+Finally, the indicator choice across all simulations seemed to matter the most for the sub-criterion *4.1. Property restitution and compensation*. This was the case across displacement contexts (Hargeisa, Nigeria) and across metric options. Given that 4.1. is a rights-based indicator, it seems crucial to decide whether these indicators should be measured based on factual compensation or only on access to compensation mechanism or only documentation of property rights. An alternative is to take out HLP rights from the durable solutions assessment and monitor them in separate work streams. Once this decision is made, the variation found across metrics may be drastically diminished. 
+
+## Informing the selection of a metric
+
+Given that the individual indicators are on average less relevant for the final number of IDPs exiting the stock, the discussion around the solutions measure should focus perhaps more deeply on the selection of a model/metric by which the indicators are then combined and analyzed in a way  that complies with the wider IRIS framework and principles. How the 10 different sub-criteria are combined and compared to a comparator population drives more of the variation than the exact definition of each statistical indicator. 
+
+The assessment shows that the different available options to implement the contextualized approach that IRIS promotes and to find a workable measure have different strengths and weaknesses. Table \ref{tab:summary} summarizes these insights. 
+
+
+\begin{table}[!htp]
+\caption{\label{tab:summary}Summary of metric advantages and disadvantages}
+\centering
+\scriptsize
+\begin{tabularx}{\textwidth}{XXXXXXX}
+\toprule
+ & Pass/fail measure & 1: Composite metric across all criteria & 2: Composite metric at criterion level & 3: Composite metric at sub-criterion level & 4: Homogeneous cells & 5: Classifier/ regression-based approach \\
+\midrule
+Aggregation of indicators to indices & No aggregation & High-level aggregation & Medium-level aggregation & Low-level aggregation & No aggregation & No aggregation \\
+Crudeness of (sub-)indices & Not applicable, no index & Low (consists of 10 elements) & Medium to high (each criterion can be measured with multiple elements) & High (realistically each sub-criterion can only be measured with 3-4 elements) & Not applicable, no index & Not applicable, no index \\
+Importance of indicator choice & Very low to low & High to medium & Medium to low & No variation & Very low to no importance & High to very high \\
+Characteristics of the metric & Easy to implement; no comparison between IDPs and hosts & High variability of index likely reduces comparability across contexts & Need to define multiple indicators for each criteria & High data demands; potentially sensitive to crudeness of index & Potential challenges in defining the cells & Potential challenges in defining cut-off points and comparing across contexts \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Option 1, a composite metric across all criteria, has shown high variability in the simulation. This means that this way of combining the indicators and comparing one score to the host population is very sensitive to the indicators chosen. It is hence not necessarily advisable to use one unified metric across all criteria, which also violates the IRIS principle that all sub-criteria must be met, because it is highly sensitive to the exact combination of indicators, and because it is hence likely that a comparison across displacement contexts is flawed. 
+
+Option 2 has merits as it is not overly sensitive to the choice of indicators in the composite metrices at the criterion level. However, it is necessary to define enough indicators for each criterion to ensure that the indices are not too crude. This increases the data demands to implement these options. 
+
+Option 3 is based on a similar approach as option 2 but is focused on indices on the sub-criterion level. This yielded no variation in the results as zero IDPs were classified as exiting the stock. Moreover, option 3 will often be infeasible in practical terms as the datasets used simply do not contain enough indicators to fully implement indices at the sub-criterion level. 
+
+The recommendation is that further analysis and better data is needed to first fully implement these two composite metrics and to then assess how they behave comparatively. A first indication is that a composite metric at the criterion level may be more realistic although it also violates the IRIS principle that all sub-criteria must be met. 
+
+The simulations assessed whether a division of the IDP stock into sub-groups that can then be compared to the host population may be a feasible option. The analysis delivered generally favorable findings but is not fully conclusive on this option 4. On the one hand, the homogeneous cell approach is easy to implement, comes with manageable data needs, is relatively straightforward to communicate, and does not appear overly sensitive to indicator choice. On the other hand, it might be sensitive to how the IDP population is divided into cells. This assessment did not find any differences between different ways of dividing the IDP stock into cells. Nevertheless, more analysis is needed to be sure and clear guidance would need to be developed by EGRIS for producers of IDP statistics on how to segment the population under analysis into smaller cells while maintaining cross-context comparability. 
+
+Eventually, it may also be possible to use a regression-based approach classifying IDP households as being more similar or dissimilar with other IDP households and the host community. However, this approach is highly sensitive to the indicator selection, with the highest variability across indicator combinations. Similar to option 1, it is not necessarily advisable to use one regression-based approach because: (a) it violates the IRIS principle that all sub-criteria must be met, (b) it is sensitive to the indicator selection, and (c) it might be difficult to compare different displacement situations. This option requires further methodological work to assess how the choice of a probability cut-off point, and the choice of a classifying framework affect the results. Further work is also needed to investigate how the regression coefficients for the 10 different sub-criteria may vary across contexts and how this affects the comparability between countries and displacement situations. Another issue with this option is that it yields a multimodal distribution (i.e. two peaks) which raises the question what the true average population of IDPs that has overcome their vulnerabilities is. 
+
+\begin{story}[ht]
+\framedbox{
+\textbf{\textcolor{DodgerBlue!50!Black}{Indicator selection}}
+\begin{itemize}
+\item Indicator selection may matter less for aggregate outcomes than data quality and metric selection
+\item Focus on indicators that maximize coverage of the IDP population
+\item Focus on indicators that are commonly available and clearly defined (e.g. SDG indicators)
+\item Clarify the scope of sub-criteria \textit{3.1 Employment and livelihoods} and \textit{3.2 Economic security}
+\item Address the rights-based sub-criterion \textit{4.1. Property restitution and compensation} that could be measured based on documentation for rights, access to compensation mechanisms/replacements or factual compensation/replacement: either take HLP indicator out of the assessment or define a lenient and achievable indicator
+\end{itemize}
+\textbf{\textcolor{DodgerBlue!50!Black}{Metric selection}}
+\begin{itemize}
+\item Concerns about one full composite metric (option 1) and a regression-based approach (option 5) due to high variability and lack of alignment with IRIS principle of achieving a solution in each (sub-)criteria
+\item Excessive data demands and too little variability to implement a composite metric at the sub-criterion level (option 3)
+\item Further analysis needed to fully implement and assess a composite metric at the criterion level (option 2) or homogeneous cells (option 4)
+\end{itemize}
+
+}
+  \caption[]{Key conclusions and recommendations}
+  \label{box:summary}
+\end{story}
+
+
+As stated in the introductory sections of this note, at least 7 challenges remain in turning the IRIS solutions measure into a fully workable and robust statistical metric. This note explored only the first two of these challenges. The other challenges will also need to be discussed. 
+
+
+\newpage
+\blandscape
+\appendix
+
+# Annexes 
+
+
+```{r appendix_mapping}
+options(knitr.kable.NA = '')
+appendix <- read_csv("Indicator_mapping.csv") %>% select(-X5)
+appendix <- appendix[-c(70:75),]
+kable(appendix, 
+      "latex",
+      booktabs=T,
+      linesep = "",
+      longtable = T,
+      row.names = F,
+      #col.names = gsub("[.]", " ", names(HAR)),
+      caption= "\\label{tab:appendix}Mapping of all indicators available to measure IASC criteria") %>%
+  kable_styling(latex_options = "hold_position", font_size=10)%>%
+  column_spec(1, width = "10em")%>%
+  column_spec(2:5, width = "18em") %>% 
+    row_spec(c(12,13,15,30,34,39,47,59,65), hline_after = TRUE)
+```
+
+\elandscape
