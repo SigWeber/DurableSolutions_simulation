@@ -2,7 +2,7 @@
 
 This project simulates how different indicators and metric options to implement a measure of IDPs overcoming displacement related vulnerabilities (*IRIS solutions measure*) perform comparatively. To do so, two empirical datasets are used. The project identifies all suitable possible indicators for measuring one of the 10 sub-criteria in the IRIS solutions measure in the datasets. Then, the project iterates through all possible combinations of indicators and implements different metric options to combine them and compare them to the host community as comparator population. This generates a measure of how many IDPs exit the stock depending on different indicators and metric options. This information can be used to inform policy decisions to finalise the IRIS solutions measure and fully implement it. 
 
-**PLEASE NOTE THAT THIS PROJECT IS AT A VERY EARLY STAGE AND THAT THE CODE REQUIRES MULTIPLE REVISIONS BEFORE WE CAN BE FULLY CERTAIN OF THE RESULTS!** If you have feedback or would like to contribute to the project, please contact Sigrid Weber (sweber1@worldbank.org / s.weber.17@ucl.ac.uk). 
+If you have feedback or would like to contribute to the project, please contact Sigrid Weber (sweber1@worldbank.org / s.weber.17@ucl.ac.uk). 
 
 ## Structure of this repository
 
@@ -31,12 +31,15 @@ This is a list of to-do steps that I would like to implement before we can be ce
 + Construction of homogenous cells: further explorations needed (!!!), could benefit from implementing a clustering algorithm to increase similiarity within IDP groups and dissimilarity betwen IDP groups
 + Regression-based approach: further explorations needed, could use a lasso regularization, would need to test different cut-off points (!!!)
 + Create synergies with Kari-Anne's work on HLP indicators
-+ Write a paragraph on taking out the HLP indicators
 + More information on relation to progress measure and which indicators to use
 + Add communication that we should not choose a too lenient or too strict indicator set/metric
 + Think harder about case selection!
 + Enhance focus on NSOs and simplicity for them to implement
 + Ask Felix about a workshop with NSOs on what would be possible
++ Fixme in simulations.R on homogenous cells/also: what to do about the fact that there are no differences between cell groupings? r we sure this is performing as intended?
++ Do we need a different reporting structure (i.e. does it make sense to go country-by-country)???	
++ Started to include colombia but still working on it: data structure is confusing
++ How is the Ukraine mapping progressing?
 
 ## Possible next datasets to extend the analysis:
 + Darfur, Somalia, South Sudan
