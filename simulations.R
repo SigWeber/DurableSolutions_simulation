@@ -106,7 +106,18 @@ simulate_cells <- function(data) {
   cells %>% mutate(iteration = as.character(row_number())) %>% left_join(DS, by = "iteration")
 }
 
+# Option 4: Comparison of homogenous cells w/hclust ###########################################
+simulate_hclust <- function(data, method = "complete", maxdiff = 2) {
+  run_simulation(data, use_hclust, method = method, maxdiff = maxdiff)
+}
+
 # Option 5: Use a classifier ------------------------------------------------------------
 simulate_classifier <- function(data) {
   run_simulation(data, use_classifier)
+}
+
+# Option 5b: Use a classifier w/Lasso regularization  ----------------------------------------------------
+simulate_lasso <- function(data) {
+  tibble(DS = data %>% select(starts_with("I")) %>% use_lasso(),
+         DS_perc = DS/sum(data$ID))
 }

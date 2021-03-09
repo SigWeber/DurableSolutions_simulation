@@ -24,7 +24,13 @@ tar_map(
   tar_target(DS_Option2, simulate_criterion(data)),
   tar_target(DS_Option3, simulate_subcriterion(data)),
   tar_target(DS_Option4, simulate_cells(data)),
+  tar_target(DS_Option4b, simulate_hclust(data)),
+  # tar_target(DS_Option4b_complete1, simulate_hclust(data, method = "complete", maxdiff = 1)),
+  # tar_target(DS_Option4b_complete2, simulate_hclust(data, method = "complete", maxdiff = 2)),
+  # tar_target(DS_Option4b_average1, simulate_hclust(data, method = "average", maxdiff = 1)),
+  # tar_target(DS_Option4b_average2, simulate_hclust(data, method = "average", maxdiff = 2)),
   tar_target(DS_Option5, simulate_classifier(data)),
+  tar_target(DS_Option5b, simulate_lasso(data)),
   
   # And again without the HLP indicators
   tar_target(data_nohlp, select(data, -starts_with("I9"))),
@@ -33,4 +39,10 @@ tar_map(
   tar_target(DS_Option2_nohlp, simulate_criterion(data_nohlp)),
   tar_target(DS_Option3_nohlp, simulate_subcriterion(data_nohlp)),
   tar_target(DS_Option4_nohlp, simulate_cells(data_nohlp)),
-  tar_target(DS_Option5_nohlp, simulate_classifier(data_nohlp)))
+  tar_target(DS_Option4b_nohlp, simulate_hclust(data_nohlp)),
+  # tar_target(DS_Option4b_nohlp_complete1, simulate_hclust(data_nohlp, method = "complete", maxdiff = 1)),
+  # tar_target(DS_Option4b_nohlp_complete2, simulate_hclust(data_nohlp, method = "complete", maxdiff = 2)),
+  # tar_target(DS_Option4b_nohlp_average1, simulate_hclust(data_nohlp, method = "average", maxdiff = 1)),
+  # tar_target(DS_Option4b_nohlp_average2, simulate_hclust(data_nohlp, method = "average", maxdiff = 2)),
+  tar_target(DS_Option5_nohlp, simulate_classifier(data_nohlp)),
+  tar_target(DS_Option5b_nohlp, simulate_lasso(data_nohlp)))

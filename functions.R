@@ -28,6 +28,16 @@ calculate_composite <- function(data, sim_data, benchmark, x, grouping) {
   sum(idps$exited, na.rm = TRUE)
 }
 
+optimum_threshold <- function(ID, p) {
+  roc_curve <- tibble(threshold = unique(p),
+                      sensitivity = map_dbl(threshold, ~sum((p>.)*ID)/sum(ID)),
+                      specificity = map_dbl(threshold, ~sum((p<.)*(!ID))/sum(!ID)))
+  
+  roc_curve %>% 
+    arrange(desc(sensitivity+specificity)) %>% 
+    pluck("threshold", 1)
+}
+
 # Original framework function --------------------------------------
 use_IRIS_metric <- function(data, sim_data, benchmark, x){
   # first only select the relevant variable for this simulation
@@ -64,7 +74,6 @@ use_subcriterion <- function(data, sim_data, benchmark, x){
 }
 
 # Option 4: Use population cells ------------------------------------------------------
-
 use_cells <- function(x, y, data, benchmark, combination_cells, sim_data){
   combination_indicators <- sim_data
   
@@ -83,25 +92,57 @@ use_cells <- function(x, y, data, benchmark, combination_cells, sim_data){
   sum(assessment_per_cell$n, na.rm =T)
 }
 
+# Option 4b: Use population cells w/hclust ------------------------------------------
+use_hclust <- function(data, sim_data, benchmark, x, method, maxdiff) {
+  benchmark <- benchmark %>% select(as.character(sim_data[x,])) %>% summarize(across(everything(), mean, na.rm = TRUE))
+  data <- data %>% select(as.character(sim_data[x,])) %>% drop_na()
+  
+  h <- data %>% dist(method = "binary") %>% hclust(method = method)
+  
+  data <- data %>% mutate(cell = cutree(h, h = maxdiff/ncol(data)))
+  
+  averages_per_cell <- data %>% group_by(cell) %>% summarize(across(everything(), mean), n = n())
+  
+  assessment_per_cell <- averages_per_cell %>% 
+    filter(across(starts_with("I"), ~. >= as.numeric(benchmark[,cur_column()])))
+  
+  sum(assessment_per_cell$n)
+}
+
 # Option 5: Use a classifier ------------------------------------------------------------
 use_classifier <- function(data,sim_data,benchmark,x){
   
   # select the right variables per iteration
-  data = bind_rows(data, benchmark) %>% select(ID, as.character(sim_data[x,]))
+  data = bind_rows(data, benchmark) %>% select(ID, as.character(sim_data[x,])) %>% drop_na()
   names(data) = sub("\\_.*", "", names(data))
   
   # fit the model to classify
   model = glm(ID ~ ., family = "binomial", data = data %>% select(starts_with("I")))
   
-  # predict whether IDP or non-displaced (cut-off: 0.5)
+  # predict whether IDP or non-displaced
   data$IDP_prob <- predict(model, data, type= "response")
+  threshold <- optimum_threshold(data$ID, data$IDP_prob)
   data <- data %>% 
   mutate(IDP_pred = case_when(
     ID == 0 ~ 0,
-    IDP_prob > 0.5 ~ 1, 
-    IDP_prob < 0.5 ~ 0,
+    IDP_prob > threshold ~ 1, 
+    IDP_prob < threshold ~ 0,
     TRUE ~ 1))
   
   # identify how many leave the stock of IDPs
   as.integer(sum(data$ID-data$IDP_pred))
+}
+
+# Option 5b: Use a classifier w/Lasso regularization ----------------------------------
+use_lasso <- function(data) {
+  x <- data %>% drop_na() %>% select(-ID) %>% data.matrix()
+  y <- data %>% drop_na() %>% pull(ID)
+  
+  m <- glmnet::cv.glmnet(x, y, family = "binomial")
+  
+  p <- predict(m, newx = x, s = "lambda.1se", type = "response")[,1]
+
+  t <- optimum_threshold(y, p)
+  
+  sum((p<t)*y)
 }
