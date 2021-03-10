@@ -28,8 +28,8 @@ This is a list of to-do steps that I would like to implement before we can be ce
 
 + Weighted calculations
 + Implement a tracking of WHICH IDPs are classified as overcoming vulnerabilities (Do the different metric options identify the same IDPs as no longer vulnerable?)
-+ Construction of homogenous cells: further explorations needed (!!!), could benefit from implementing a clustering algorithm to increase similiarity within IDP groups and dissimilarity betwen IDP groups
-+ Regression-based approach: further explorations needed, could use a lasso regularization, would need to test different cut-off points (!!!)
++ Construction of homogenous cells: further explorations needed (!!!)
++ Use bootstrap variance estimation to overcome challenge #3 (comparing IDPs to the survey point-estimate and using the bootstrap to estimate a confidence interval around the number of IDPs exiting the stock - only feasibly once there's some agreement on the choice of indicators, otherwise the simulations will take forever to run)
 + Create synergies with Kari-Anne's work on HLP indicators
 + More information on relation to progress measure and which indicators to use
 + Add communication that we should not choose a too lenient or too strict indicator set/metric

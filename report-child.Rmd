@@ -10,7 +10,9 @@ ds_options <-
           "2: Composite at criterion level",     DS_Option2_{{dataset}},  DS_Option2_nohlp_{{dataset}},
           "3: Composite at sub-criterion level", DS_Option3_{{dataset}},  DS_Option3_nohlp_{{dataset}},
           "4: Comparison of homogenous cells",   DS_Option4_{{dataset}},  DS_Option4_nohlp_{{dataset}},
-          "5: Classifier/regression-based",      DS_Option5_{{dataset}},  DS_Option5_nohlp_{{dataset}})
+          "4b: Algorithmic clustering",          DS_Option4b_{{dataset}}, DS_Option4b_nohlp_{{dataset}},
+          "5: Classifier/regression-based",      DS_Option5_{{dataset}},  DS_Option5_nohlp_{{dataset}},
+          "5b: Lasso classifier",                DS_Option5b_{{dataset}}, DS_Option5b_nohlp_{{dataset}})
 
 dict <- readxl::read_excel("Data/dict.xlsx", sheet = "{{dataset}}")
 ```
@@ -42,7 +44,9 @@ pmap(ds_options,
 
 ```{r indicators-{{dataset}}, fig.width=8, fig.height=6}
 indicator_hlp <-
-  ds_options$opt[-4] %>%
+  ds_options %>% 
+  filter(!str_detect(label, "(3|5b):")) %>% 
+  pull(opt) %>% 
   map(~lm(DS_perc*100 ~ .,
           data = select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))), DS_perc))) %>%
   map(broom::tidy, conf.int = TRUE) %>%
@@ -52,7 +56,9 @@ indicator_hlp <-
   filter(term != "(Intercept)")
 
 indicator_nohlp <-
-  ds_options$opt_nohlp[-4] %>%
+  ds_options %>% 
+  filter(!str_detect(label, "(3|5b):")) %>% 
+  pull(opt) %>% 
   map(~lm(DS_perc*100 ~ .,
           data = select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))), DS_perc))) %>%
   map(broom::tidy, conf.int = TRUE) %>%
@@ -91,18 +97,18 @@ ggplot(indicator_data,
 ### Breakdown by Option
 
 ```{r indicators-options-{{dataset}}, fig.width=8, fig.height=30}
-ds_options %>% 
-  filter(label != "3: Composite at sub-criterion level") %>% 
-  pmap(~list("w/ HLP" = ..2, "w/o HLP" = ..3) %>% 
+ds_options %>%
+  filter(!str_detect(label, "(3|5b):")) %>% 
+  pmap(~list("w/ HLP" = ..2, "w/o HLP" = ..3) %>%
          map(~lm(DS_perc*100 ~ .,
-                 data = select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))), DS_perc))) %>% 
-         map(broom::tidy, conf.int = TRUE)) %>% 
-  map(~bind_rows(., .id = "hlp") %>% 
-        filter(term != "(Intercept)") %>% 
+                 data = select(., starts_with("I"), -any_of("iteration"), -where(~all(.==first(.))), DS_perc))) %>%
+         map(broom::tidy, conf.int = TRUE)) %>%
+  map(~bind_rows(., .id = "hlp") %>%
+        filter(term != "(Intercept)") %>%
         mutate(term = str_replace(term, "^(I\\d+)", "")) %>%
         left_join(dict, by = c(term = "variable")) %>%
-        mutate(term1 = str_c(indicator, label, sep = ": ") %>% fct_rev())) %>% 
-  set_names(ds_options %>% filter(label != "3: Composite at sub-criterion level") %>% pull(label)) %>% 
+        mutate(term1 = str_c(indicator, label, sep = ": ") %>% fct_rev())) %>%
+  set_names(ds_options %>% filter(!str_detect(label, "(3|5b):")) %>% pull(label)) %>%
   imap(~ggplot(.x, aes(x=term1, y=estimate)) +
          geom_hline(yintercept=0, colour="#8C2318", size=1) +  # Line at 0
          geom_pointrange(aes(ymin=conf.low, ymax=conf.high, color = hlp), position = position_dodge(1)) +
@@ -117,6 +123,6 @@ ds_options %>%
                    fill= "lightskyblue", alpha = 0.01) +
          coord_flip() +  # Rotate the plot
          theme_ipsum(plot_title_size = 13, base_size = 10)+
-         theme(legend.position = "bottom")) %>% 
+         theme(legend.position = "bottom")) %>%
   wrap_plots(ncol = 1) + plot_layout(guides = "collect") & theme(legend.position = "bottom")
 ```
