@@ -14,7 +14,9 @@ In principle, if you would want to use the functions on a new dataset that inclu
 a. If the variable is an indicator that could be used to measure subcriterion 1, it should be coded as `I1_ANYOTHERLETTERS`. If an indicator could be used to measure subcriterion 10, it should be coded as `I10_ANYOTHERLETTERS`. And so on.
 b. If the variable contains information on household characteristics that could be used to group households for the construction of homogenous cells under option #4, then it should be prefixed with `HH_`, example: `HH_Location`.
 3. Turns all indicators into binary indicators that take the value `1` for overcoming a vulnerability and `0` for not overcoming it (e.g. school attandance should be a `1` but experiencing a security incident should be a `0`).
-4. Outputs the final dataset to the console before exiting.
+4. Adds a column called `HHID` with a unique case identifier. This can be a simple call to `row_number()` or (preferably) a case identifier from the original dataset so that the simulation results could be merged with the rest of the data for further analysis.
+5. Stores the case weights in `WT`. If the original dataset doesn't include weights, then `WT` should be set to `1`.
+6. Outputs the final dataset to the console before exiting.
 
 Once that's done, create a new worksheet in `Data/dict.xlsx` documenting the mapping of variables from your dataset to the solutions indicators following the structure in the other worksheets. This basically serves as a mapping of terse variable names to human-readable variable labels to be used in plotting so do make sure to use labels that are clear and concise.
 
@@ -26,17 +28,14 @@ Once ready, the results of the simulations can be accessed from the console/scri
 
 This is a list of to-do steps that I would like to implement before we can be certain of the results. 
 
-+ Weighted calculations
-+ Implement a tracking of WHICH IDPs are classified as overcoming vulnerabilities (Do the different metric options identify the same IDPs as no longer vulnerable?)
 + Construction of homogenous cells: further explorations needed (!!!)
-+ Use bootstrap variance estimation to overcome challenge #3 (comparing IDPs to the survey point-estimate and using the bootstrap to estimate a confidence interval around the number of IDPs exiting the stock - only feasibly once there's some agreement on the choice of indicators, otherwise the simulations will take forever to run)
++ Use bootstrap variance estimation to overcome challenge #3 (comparing IDPs to the survey point-estimate and using the bootstrap to construct a confidence interval around the number of IDPs exiting the stock - only feasibly once there's some agreement on the choice of indicators, otherwise the simulations will take forever to run)
 + Create synergies with Kari-Anne's work on HLP indicators
 + More information on relation to progress measure and which indicators to use
 + Add communication that we should not choose a too lenient or too strict indicator set/metric
 + Think harder about case selection!
 + Enhance focus on NSOs and simplicity for them to implement
 + Ask Felix about a workshop with NSOs on what would be possible
-+ Fixme in simulations.R on homogenous cells/also: what to do about the fact that there are no differences between cell groupings? r we sure this is performing as intended?
 + Do we need a different reporting structure (i.e. does it make sense to go country-by-country)???	
 + Started to include colombia but still working on it: data structure is confusing
 + How is the Ukraine mapping progressing?

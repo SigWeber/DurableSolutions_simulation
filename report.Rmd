@@ -9,6 +9,8 @@ library(tidyverse)
 library(hrbrthemes)
 library(patchwork)
 
+source("simulations.R")
+
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 knitr::opts_chunk$set(fig.align = "center")
 ```

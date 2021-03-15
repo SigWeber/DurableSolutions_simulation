@@ -31,10 +31,15 @@ run_simulation <- function(data, metric, ..., combinations = NULL) {
   # number of IDPs exiting the stock according to the chosen metric
   Durable_Solutions <- 
     1:nrow(combinations) %>% 
-    furrr::future_map_int(metric, data = idps, benchmark = host_community, ..., sim_data = combinations)
+    furrr::future_map(metric, data = idps, benchmark = host_community, ..., sim_data = combinations)
   
   # result for analysis and plotting
-  combinations %>% mutate(DS = Durable_Solutions, DS_perc = DS/nrow(idps))
+  combinations %>% 
+    mutate(Durable_Solutions = Durable_Solutions,
+           DS = map_dbl(Durable_Solutions, 
+                        ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)}),
+           DS_perc = map_dbl(Durable_Solutions, 
+                             ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)/sum(.$WT)}))
 }
 
 # SIMULATIONS ############################################
@@ -57,7 +62,9 @@ simulate_criterion <- function(data) {
 # Option 3: composite indices at the subcriterion level ###########################################
 simulate_subcriterion <- function(data) {
   # aggregate indices for the levels with few indicators available
-  tmp <- data %>% select(starts_with("I"), -ID) %>% as.matrix() %>% t() %>% as_tibble(rownames = "var")
+  tmp <- 
+    data %>% select(starts_with("I"), -ID) %>% as.matrix() %>% t() %>% 
+    as_tibble(rownames = "var", .name_repair = ~vctrs::vec_as_names(., repair = "universal", quiet = TRUE))
   
   tmp <- tmp %>% mutate(ind = str_match(var, "I(\\d+)_")[,2])
   
@@ -70,8 +77,8 @@ simulate_subcriterion <- function(data) {
   
   tmp <- tmp %>% remove_rownames() %>% column_to_rownames(var = "grp") %>% as.matrix() %>% t() %>% as_tibble()
   
-  # recover ID field that was lost during aggregation
-  tmp <- tmp %>% mutate(ID = data$ID)
+  # recover ID fields that were lost during aggregation
+  tmp <- tmp %>% mutate(ID = data$ID, HHID = data$HHID, WT = data$WT)
   
   # define the new indicators
   indicators_sub <- 
@@ -91,10 +98,7 @@ simulate_subcriterion <- function(data) {
 # Option 4: Comparison of homogenous cells ###########################################
 simulate_cells <- function(data) {
   cells <- 
-    apply((combn(names(data %>% select(starts_with("HH_"))),3)) %>% t(),1, paste,collapse= ";") %>% 
-    # FIXME: the call to expand.grid() below has no effect. Is this intentional?
-    # expand.grid() %>%
-    # mutate_all(~as.character(.)) %>%
+    apply((combn(names(data %>% select(starts_with("HH_"))),3)) %>% t(),1, paste, collapse= ";") %>% 
     as_tibble_col(column_name = "Var1") %>% 
     separate(col = Var1, into = c("cell_1", "cell_2","cell_3"), sep = ";")
   
@@ -103,7 +107,7 @@ simulate_cells <- function(data) {
     map_dfr(~run_simulation(data, use_cells, combination_cells = cells, y = .), 
             .id = "iteration")
   
-  cells %>% mutate(iteration = as.character(row_number())) %>% left_join(DS, by = "iteration")
+  cells %>% mutate(iteration = as.character(row_number())) %>% left_join(DS, by = "iteration") %>% select(-iteration)
 }
 
 # Option 4: Comparison of homogenous cells w/hclust ###########################################
@@ -118,6 +122,7 @@ simulate_classifier <- function(data) {
 
 # Option 5b: Use a classifier w/Lasso regularization  ----------------------------------------------------
 simulate_lasso <- function(data) {
-  tibble(DS = data %>% select(starts_with("I")) %>% use_lasso(),
-         DS_perc = DS/sum(data$ID))
+  tibble(Durable_Solutions = data %>% select(HHID, starts_with("I")) %>% use_lasso() %>% list(),
+         DS = left_join(Durable_Solutions[[1]], data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)},
+         DS_perc = left_join(Durable_Solutions[[1]], data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)/sum(.$WT)})
 }
