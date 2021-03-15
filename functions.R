@@ -6,32 +6,32 @@ library(tidyverse)
 
 # Utility functions ----
 calculate_composite <- function(data, sim_data, benchmark, x, grouping) {
-  data <- bind_rows(data, benchmark) %>% select(ID, all_of(as.character(sim_data[x,]))) %>% mutate(hhid = row_number())
+  data <- bind_rows(data, benchmark) %>% select(ID, HHID, WT, all_of(as.character(sim_data[x,])))
   
   newdata <- 
     data %>% 
-    pivot_longer(-c(ID, hhid), names_to = "ind", values_to = "val") %>% 
+    pivot_longer(-c(ID, HHID, WT), names_to = "ind", values_to = "val") %>% 
     mutate(ind = str_match(ind, "^(I\\d+)")[,2],
            grp = grouping[ind]) %>% 
-    group_by(ID, hhid, grp) %>% 
+    group_by(ID, HHID, WT, grp) %>% 
     summarize(val = sum(val), .groups = "drop")
   
-  benchmark <- newdata %>% filter(ID == 0) %>% group_by(grp) %>% summarize(benchmark = mean(val, na.rm = TRUE))
+  benchmark <- newdata %>% filter(ID == 0) %>% group_by(grp) %>% summarize(benchmark = weighted.mean(val, WT, na.rm = TRUE))
   
   idps <- 
     newdata %>% 
     filter(ID == 1) %>% 
     left_join(benchmark, by = "grp") %>% 
-    group_by(hhid) %>% 
+    group_by(HHID) %>% 
     summarize(exited = all(val >= benchmark))
   
-  sum(idps$exited, na.rm = TRUE)
+  idps %>% select(HHID, exited)
 }
 
 optimum_threshold <- function(ID, p) {
   roc_curve <- tibble(threshold = unique(p),
-                      sensitivity = map_dbl(threshold, ~sum((p>.)*ID)/sum(ID)),
-                      specificity = map_dbl(threshold, ~sum((p<.)*(!ID))/sum(!ID)))
+                      sensitivity = map_dbl(threshold, ~sum((p>.)*ID,na.rm=TRUE)/sum(ID)),
+                      specificity = map_dbl(threshold, ~sum((p<.)*(!ID),na.rm=TRUE)/sum(!ID)))
   
   roc_curve %>% 
     arrange(desc(sensitivity+specificity)) %>% 
@@ -39,13 +39,10 @@ optimum_threshold <- function(ID, p) {
 }
 
 # Original framework function --------------------------------------
-use_IRIS_metric <- function(data, sim_data, benchmark, x){
-  # first only select the relevant variable for this simulation
-  select_var = data[,as.character(sim_data[x,])]
-  # then check whether any of them is zero (not passed)
-  passed = select_var %>% filter(across(everything(), ~ .==1))
-  # then count how many have passed on all dimensions
-  nrow(passed)
+use_IRIS_metric <- function(data, sim_data, benchmark, x) {
+  data%>% 
+    transmute(HHID,
+              exited = data %>% select(as.character(sim_data[x,])) %>% reduce(~.x&.y))
 }
 
 # Option 1: Full composite ------------------------------------------
@@ -56,7 +53,7 @@ use_composite <- function(data, sim_data, benchmark, x) {
 }
 
 # Option 2: Composite measure at criterion level -----------------------------------
-use_criterion <- function(data, sim_data, benchmark, x){
+use_criterion <- function(data, sim_data, benchmark, x) {
   grouping <- c(I1 = "C1", I2 = "C2",
                 I3 = "C2", I4 = "C2", I5 = "C2", I6 = "C2",
                 I7 = "C3", I8 = "C3",
@@ -74,75 +71,72 @@ use_subcriterion <- function(data, sim_data, benchmark, x){
 }
 
 # Option 4: Use population cells ------------------------------------------------------
-use_cells <- function(x, y, data, benchmark, combination_cells, sim_data){
+use_cells <- function(x, y, data, benchmark, combination_cells, sim_data) {
   combination_indicators <- sim_data
   
-  averages_per_cell = data %>% 
-    select(-ID) %>% 
-    group_by_at(vars(one_of(as.character(combination_cells[x,])))) %>% 
-    summarise(across(-starts_with("HH_"), mean, na.rm = T), n = n(), .groups = "drop") %>% 
-    select(as.character(combination_indicators[y,]),n) 
+  undecided_cases <- data %>% select(HHID, as.character(combination_indicators[x,])) %>% filter(!complete.cases(.))
+  data <- data %>% select(HHID, WT, as.character(combination_indicators[x,]), as.character(combination_cells[y,])) %>% drop_na()
   
-  benchmark = benchmark %>% select(as.character(combination_indicators[y,])) %>% summarise_all(mean, na.rm = T)
+  averages_per_cell = data %>% 
+    group_by(across(as.character(combination_cells[y,]))) %>% 
+    summarise(across(as.character(combination_indicators[x,]), ~weighted.mean(., WT)), .groups = "drop")
+  
+  benchmark = benchmark %>% summarise(across(as.character(combination_indicators[x,]), ~weighted.mean(., WT, na.rm = TRUE)))
   
   # make comparison
-  assessment_per_cell = averages_per_cell %>% 
-    filter(across(starts_with("I"), ~. >= as.numeric(benchmark[,cur_column()])))
+  exiting_cells = averages_per_cell %>% 
+    filter(across(as.character(combination_indicators[x,]), ~. >= as.numeric(benchmark[,cur_column()]))) %>% 
+    select(as.character(combination_cells[y,]))
   
-  sum(assessment_per_cell$n, na.rm =T)
+  bind_rows(data %>% semi_join(exiting_cells, by = names(exiting_cells)) %>% transmute(HHID, exited = TRUE),
+            data %>% anti_join(exiting_cells, by = names(exiting_cells)) %>% transmute(HHID, exited = FALSE),
+            undecided_cases %>% transmute(HHID, exited = NA))
 }
 
 # Option 4b: Use population cells w/hclust ------------------------------------------
 use_hclust <- function(data, sim_data, benchmark, x, method, maxdiff) {
-  benchmark <- benchmark %>% select(as.character(sim_data[x,])) %>% summarize(across(everything(), mean, na.rm = TRUE))
-  data <- data %>% select(as.character(sim_data[x,])) %>% drop_na()
+  benchmark <- benchmark %>% summarize(across(as.character(sim_data[x,]), ~weighted.mean(., WT, na.rm = TRUE)))
+  undecided_cases <- data %>% select(HHID, as.character(sim_data[x,])) %>% filter(!complete.cases(.))
+  data <- data %>% select(HHID, WT, as.character(sim_data[x,])) %>% drop_na()
   
-  h <- data %>% dist(method = "binary") %>% hclust(method = method)
+  h <- data %>% select(-c(HHID, WT)) %>% dist(method = "binary") %>% hclust(method = method)
   
-  data <- data %>% mutate(cell = cutree(h, h = maxdiff/ncol(data)))
+  data <- data %>% mutate(cell = cutree(h, h = maxdiff/(ncol(data)-2)))
   
-  averages_per_cell <- data %>% group_by(cell) %>% summarize(across(everything(), mean), n = n())
+  averages_per_cell <- data %>% group_by(cell) %>% summarize(across(-c(HHID, WT), ~weighted.mean(., WT)))
   
-  assessment_per_cell <- averages_per_cell %>% 
-    filter(across(starts_with("I"), ~. >= as.numeric(benchmark[,cur_column()])))
+  exiting_cells <- averages_per_cell %>% 
+    filter(across(-cell, ~. >= as.numeric(benchmark[,cur_column()]))) %>% 
+    select(cell)
   
-  sum(assessment_per_cell$n)
+  bind_rows(data %>% semi_join(exiting_cells, by = names(exiting_cells)) %>% transmute(HHID, exited = TRUE),
+            data %>% anti_join(exiting_cells, by = names(exiting_cells)) %>% transmute(HHID, exited = FALSE),
+            undecided_cases %>% transmute(HHID, exited = NA))
 }
 
 # Option 5: Use a classifier ------------------------------------------------------------
-use_classifier <- function(data,sim_data,benchmark,x){
-  
+use_classifier <- function(data, sim_data, benchmark, x) {
   # select the right variables per iteration
-  data = bind_rows(data, benchmark) %>% select(ID, as.character(sim_data[x,])) %>% drop_na()
-  names(data) = sub("\\_.*", "", names(data))
-  
+  data = bind_rows(data, benchmark) %>% select(ID, HHID, as.character(sim_data[x,]))
+
   # fit the model to classify
   model = glm(ID ~ ., family = "binomial", data = data %>% select(starts_with("I")))
   
   # predict whether IDP or non-displaced
-  data$IDP_prob <- predict(model, data, type= "response")
+  data$IDP_prob <- predict(model, data, type = "response")
   threshold <- optimum_threshold(data$ID, data$IDP_prob)
-  data <- data %>% 
-  mutate(IDP_pred = case_when(
-    ID == 0 ~ 0,
-    IDP_prob > threshold ~ 1, 
-    IDP_prob < threshold ~ 0,
-    TRUE ~ 1))
   
-  # identify how many leave the stock of IDPs
-  as.integer(sum(data$ID-data$IDP_pred))
+  data %>% filter(ID == 1) %>% transmute(HHID, exited = IDP_prob < threshold)
 }
 
 # Option 5b: Use a classifier w/Lasso regularization ----------------------------------
 use_lasso <- function(data) {
-  x <- data %>% drop_na() %>% select(-ID) %>% data.matrix()
-  y <- data %>% drop_na() %>% pull(ID)
+  m <- glmnet::cv.glmnet(x = data %>% drop_na() %>% select(-ID) %>% data.matrix(),
+                         y = data %>% drop_na() %>% pull(ID),
+                         family = "binomial")
   
-  m <- glmnet::cv.glmnet(x, y, family = "binomial")
+  data$IDP_prob <- predict(m, newx = data %>% select(-ID) %>% data.matrix(), s = "lambda.1se", type = "response")[,1]
+  threshold <- optimum_threshold(data$ID, data$IDP_prob)
   
-  p <- predict(m, newx = x, s = "lambda.1se", type = "response")[,1]
-
-  t <- optimum_threshold(y, p)
-  
-  sum((p<t)*y)
+  data %>% filter(ID == 1) %>% transmute(HHID, exited = IDP_prob < threshold)
 }

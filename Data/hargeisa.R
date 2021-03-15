@@ -10,6 +10,9 @@ hargeisa <- hargeisa %>%
   filter(hargeisa1 != "Refugee returnee") %>% 
   mutate(ID = ifelse(grepl("Displaced",hargeisa1)==T,1,0))
 
+# add household weights
+hargeisa <- hargeisa %>% rename(WT = hargeisa180)
+
 # identify potential IASC indicators for each subcriteria -------------
 
 # 1.1 Victims of violence
@@ -283,6 +286,9 @@ hargeisa <- hargeisa %>%
     I10_doc_replace = ifelse(I10_doc_replace == 1, 1, 0),
     I10_doc_birth = ifelse(I10_doc_birth == 1, 1, 0)
   )
+
+# add household ID
+hargeisa <- hargeisa %>% mutate(HHID = row_number())
 
 # final dataset ----
 hargeisa

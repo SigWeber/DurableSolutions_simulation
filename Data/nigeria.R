@@ -8,6 +8,9 @@ nigeria <- read_csv("Data/Nigeria.csv", guess_max = 10000)
 # identify idps vs hosts
 nigeria <- nigeria %>% rename(ID = migr_idp)
 
+# add household weights
+nigeria <- nigeria %>% rename(WT = weight)
+
 # identify potential IASC indicators for each subcriteria -------------
 
 
@@ -259,7 +262,7 @@ nigeria <-
          HH_region = region)
 
 # select variables
-nigeria <- nigeria %>% select(ID, starts_with("I"), -starts_with("I_"), starts_with("HH_"))
+nigeria <- nigeria %>% select(ID, starts_with("I"), -starts_with("I_"), starts_with("HH_"), WT)
 
 # unify direction of indicators: 1 for passing 
 nigeria <- nigeria %>% 
@@ -299,6 +302,9 @@ nigeria <- nigeria %>%
     I9_hlp_compensation = ifelse(I9_hlp_compensation >= 1, 1, 0),
     I10_doc_replace= ifelse(I10_doc_replace >= 1, 1, 0)
   )
+
+# add household ID
+nigeria <- nigeria %>% mutate(HHID = row_number())
 
 # final dataset ----
 nigeria
