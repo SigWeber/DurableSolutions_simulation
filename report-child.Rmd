@@ -165,7 +165,7 @@ metric_pairs <-
   cross_df(list(x = nms, y = fct_rev(nms))) %>%
   filter((row_number() - 1) %>% {. %/% length(nms) > . %% length(nms)}) %>%
   mutate(kappa = map2_dbl(x, y, 
-                          ~map2_dbl(combined_results[[.x]], combined_results[[.y]],
+                          ~furrr::future_map2_dbl(combined_results[[.x]], combined_results[[.y]],
                                     function(m1, m2) { 
                                       if (is_empty(m1) | is_empty(m2)) return(NA_real_)
                                       left_join(m1, m2, by = "HHID") %>% 
@@ -196,16 +196,22 @@ combined_results <-
   mutate(across(cell_1:cell_3, ~str_replace(., "HH_", "")),
          metric = if_else(!is.na(cell_1), glue::glue("{metric} ({cell_1},{cell_2},{cell_3})"), metric)) %>% 
   select(-DS, -DS_perc, -(cell_1:cell_3)) %>% 
-  unnest(Durable_Solutions) %>%
-  mutate(exited = as_factor(exited)) %>%
-  pivot_wider(names_from = "metric", values_from = "exited")
+  pivot_wider(names_from = "metric", values_from = "Durable_Solutions")
 
 nms <- combined_results %>% select(!!(ds_options_wDS$label[[1]]):last_col()) %>% names() %>% as_factor()
 
 metric_pairs <-
   cross_df(list(x = nms, y = fct_rev(nms))) %>%
   filter((row_number() - 1) %>% {. %/% length(nms) > . %% length(nms)}) %>%
-  mutate(kappa = map2_dbl(x, y, ~yardstick::kap_vec(combined_results[[.x]], combined_results[[.y]])))
+  mutate(kappa = map2_dbl(x, y, 
+                          ~furrr::future_map2_dbl(combined_results[[.x]], combined_results[[.y]],
+                                    function(m1, m2) { 
+                                      if (is_empty(m1) | is_empty(m2)) return(NA_real_)
+                                      left_join(m1, m2, by = "HHID") %>% 
+                                        mutate(across(exited.x:exited.y, as_factor)) %>% 
+                                        yardstick::kap(exited.x, exited.y) %>% 
+                                        pluck(".estimate")}) %>%
+                            mean(na.rm = TRUE)))
 
 metric_pairs %>% 
   ggplot() + 
