@@ -165,7 +165,7 @@ metric_pairs <-
   cross_df(list(x = nms, y = fct_rev(nms))) %>%
   filter((row_number() - 1) %>% {. %/% length(nms) > . %% length(nms)}) %>%
   mutate(kappa = map2_dbl(x, y, 
-                          ~future_map2_dbl(combined_results[[.x]], combined_results[[.y]],
+                          ~furrr::future_map2_dbl(combined_results[[.x]], combined_results[[.y]],
                                     function(m1, m2) { 
                                       if (is_empty(m1) | is_empty(m2)) return(NA_real_)
                                       left_join(m1, m2, by = "HHID") %>% 
@@ -204,7 +204,7 @@ metric_pairs <-
   cross_df(list(x = nms, y = fct_rev(nms))) %>%
   filter((row_number() - 1) %>% {. %/% length(nms) > . %% length(nms)}) %>%
   mutate(kappa = map2_dbl(x, y, 
-                          ~future_map2_dbl(combined_results[[.x]], combined_results[[.y]],
+                          ~furrr::future_map2_dbl(combined_results[[.x]], combined_results[[.y]],
                                     function(m1, m2) { 
                                       if (is_empty(m1) | is_empty(m2)) return(NA_real_)
                                       left_join(m1, m2, by = "HHID") %>% 
