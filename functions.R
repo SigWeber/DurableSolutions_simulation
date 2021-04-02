@@ -91,6 +91,7 @@ use_cells <- function(x, y, data, benchmark, combination_cells, sim_data) {
   bind_rows(data %>% semi_join(exiting_cells, by = names(exiting_cells)) %>% transmute(HHID, exited = TRUE),
             data %>% anti_join(exiting_cells, by = names(exiting_cells)) %>% transmute(HHID, exited = FALSE),
             undecided_cases %>% transmute(HHID, exited = NA))
+    
 }
 
 # Option 4b: Use population cells w/hclust ------------------------------------------
