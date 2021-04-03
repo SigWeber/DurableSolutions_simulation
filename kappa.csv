@@ -1,0 +1,283 @@
+dataset,x,y,kappa
+hargeisa,Pass/fail measure,1: Full composite,0.026481800413828464
+hargeisa,Pass/fail measure,2: Composite at criterion level,0.23527211327681194
+hargeisa,1: Full composite,2: Composite at criterion level,0.0816375270972743
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.06897310423201393
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.002053187752464702
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.01807746827374858
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.003639819341676155
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,clan)",7.175120142975874e-4
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.005645335698320988
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,gender,clan)",-2.963050428225602e-4
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.15314155298519114
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.002033488935804059
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.01594645491160113
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.18084212438329458
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.1260730965742032
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",0
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.0892371963075369
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.0035995846058318646
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.016222050520251004
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.2875718141970808
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",7.128353967377119e-4
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.2444904605012869
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.010220829526800026
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",5.2229520616723706e-5
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.0034201252096710726
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",-2.2309677887125774e-4
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.1043367953271572
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.11178676579011317
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.0023429844873589225
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.03472111418239312
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.6865058997726315
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.1055571345529255
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.11454188291958509
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.17481515689802674
+hargeisa,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.018857162454051106
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.15321695711552627
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.003666322532446881
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.027271389486092174
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.6827680758366154
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",6.721974340535967e-4
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.10770510677188057
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.33855573299945585
+hargeisa,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",-3.590344761617154e-4
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.5795672178606184
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.02003845569475432
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (gender,clan,depart_yr)",3.213634710250046e-4
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.0015494039770837472
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.0010248363265062002
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.12462766115466685
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.032270724129814396
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.022387137958085748
+hargeisa,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.06627142197165416
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",-3.610416774390172e-5
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",-5.053471139748325e-4
+hargeisa,Pass/fail measure,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.09393356061683285
+hargeisa,1: Full composite,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.003988925386425798
+hargeisa,2: Composite at criterion level,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.025965847051592734
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.0959992648507026
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.06050378517062518
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.40482180698677167
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.3775218323159786
+hargeisa,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.14365884145391572
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.16602854446008083
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.13083561769142465
+hargeisa,"4: Comparison of homogenous cells (gender,clan,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.1149494073093028
+hargeisa,Pass/fail measure,4b: Algorithmic clustering,0.04590406951875057
+hargeisa,1: Full composite,4b: Algorithmic clustering,0.021616926427959458
+hargeisa,2: Composite at criterion level,4b: Algorithmic clustering,0.032866841226921996
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",4b: Algorithmic clustering,0.011599170883431893
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)",4b: Algorithmic clustering,0.005489292748533942
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",4b: Algorithmic clustering,0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",4b: Algorithmic clustering,0.008700995479263639
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",4b: Algorithmic clustering,0.011436468042905849
+hargeisa,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",4b: Algorithmic clustering,0
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,clan)",4b: Algorithmic clustering,0.01584249352115766
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",4b: Algorithmic clustering,0.029970364338942714
+hargeisa,"4: Comparison of homogenous cells (gender,clan,depart_yr)",4b: Algorithmic clustering,0
+hargeisa,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",4b: Algorithmic clustering,0.001346926646046944
+hargeisa,Pass/fail measure,5: Classifier/regression-based,0.016818037208829188
+hargeisa,1: Full composite,5: Classifier/regression-based,0.2763557933918104
+hargeisa,2: Composite at criterion level,5: Classifier/regression-based,0.08917080776829384
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",5: Classifier/regression-based,0.0031557674396239504
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,clan)",5: Classifier/regression-based,2.573836451844572e-4
+hargeisa,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",5: Classifier/regression-based,0
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",5: Classifier/regression-based,0.0019607855564989004
+hargeisa,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",5: Classifier/regression-based,0.00121921468699893
+hargeisa,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",5: Classifier/regression-based,2.7345483624672233e-4
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,clan)",5: Classifier/regression-based,0.001843717940830763
+hargeisa,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",5: Classifier/regression-based,0.0021129798109221515
+hargeisa,"4: Comparison of homogenous cells (gender,clan,depart_yr)",5: Classifier/regression-based,2.1638333959132842e-4
+hargeisa,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",5: Classifier/regression-based,0.004403464528707824
+hargeisa,4b: Algorithmic clustering,5: Classifier/regression-based,0.02072728282582104
+hargeisa_nohlp,Pass/fail measure,1: Full composite,0.02118661230563163
+hargeisa_nohlp,Pass/fail measure,2: Composite at criterion level,0.27885103877686856
+hargeisa_nohlp,1: Full composite,2: Composite at criterion level,0.1553279343643855
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.07059251144059521
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.006921228463228342
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.023729646198856688
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.010287805080154819
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.001630483373332849
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.004730102007551943
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,gender,clan)",-0.0011038496636665218
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0.004115009180154729
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0.002108383470874935
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0.0022199268436533023
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,gender,depart_yr)",-4.442376526070834e-4
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,gender,depart_yr)",-3.990234169058774e-4
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.05602964968399036
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.006974410850328113
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.013362143136468418
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.18037634590047583
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.11785520093791295
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",-1.7099119788463e-4
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.04066922771274258
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.005775635298336194
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.019038759009234935
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.10218104868819772
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.004463600589452923
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.08646236727560354
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.1939065249860772
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.010555703851395893
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.0016996148621418105
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.005107218131112956
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",-1.1545572285697332e-4
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.03069320638212586
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.04252546613335963
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",-2.220727175807249e-4
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.09112296306169994
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.0062220176549396405
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.023637670638310387
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.6520785660672065
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.06908653014415413
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",1.2247469694598112e-4
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.24281427191603003
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.1115105441323774
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.014212910620552324
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.1404212127372754
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.011442384318884936
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.03650984652626289
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.5426027535650443
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.002916674766476771
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.060959140686629026
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.11125306676821685
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.26474456108206884
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.015964130111342196
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.4197986190355727
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.017698436096218902
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.0018552760241200982
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.004427781757795638
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,clan,depart_yr)",-3.806182966986265e-4
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.09298019273678479
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.04477834773882878
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.06007545661408146
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.015271330072941887
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.26664170329188347
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.05388788676609026
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.025176311411042866
+hargeisa_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.07457633179470835
+hargeisa_nohlp,1: Full composite,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.008871476507587446
+hargeisa_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.032483075798972735
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.07758418358899773
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.07074771651064461
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.049907155744109546
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.2916051332471805
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.28612201391015696
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.10561311811427732
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.11054511856253509
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.164946351149954
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,clan,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.16240962682925106
+hargeisa_nohlp,Pass/fail measure,4b: Algorithmic clustering,0.05673125982750807
+hargeisa_nohlp,1: Full composite,4b: Algorithmic clustering,0.015026442997861473
+hargeisa_nohlp,2: Composite at criterion level,4b: Algorithmic clustering,0.06880946234030379
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",4b: Algorithmic clustering,0.019263712585292685
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)",4b: Algorithmic clustering,0.0011952454331090718
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",4b: Algorithmic clustering,0.024013993446397645
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",4b: Algorithmic clustering,0.007588206535888364
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",4b: Algorithmic clustering,0.01803288349054768
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",4b: Algorithmic clustering,0.003881314107318195
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,clan)",4b: Algorithmic clustering,0.01349560572299673
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",4b: Algorithmic clustering,0.014864798376515847
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,clan,depart_yr)",4b: Algorithmic clustering,0.002410779057236086
+hargeisa_nohlp,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",4b: Algorithmic clustering,0.011189352170535315
+hargeisa_nohlp,Pass/fail measure,5: Classifier/regression-based,0.013254271927935048
+hargeisa_nohlp,1: Full composite,5: Classifier/regression-based,0.3905971473632792
+hargeisa_nohlp,2: Composite at criterion level,5: Classifier/regression-based,0.07533310418437042
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",5: Classifier/regression-based,0.004232082924948335
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,clan)",5: Classifier/regression-based,7.848888659540707e-4
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",5: Classifier/regression-based,0.003753297460753982
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",5: Classifier/regression-based,0.0032011967690330255
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",5: Classifier/regression-based,0.00495578815565878
+hargeisa_nohlp,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",5: Classifier/regression-based,4.046228235609042e-4
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,clan)",5: Classifier/regression-based,0.003997016072639978
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",5: Classifier/regression-based,0.006065163334614699
+hargeisa_nohlp,"4: Comparison of homogenous cells (gender,clan,depart_yr)",5: Classifier/regression-based,0.0010053157642535774
+hargeisa_nohlp,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",5: Classifier/regression-based,0.006782998839000472
+hargeisa_nohlp,4b: Algorithmic clustering,5: Classifier/regression-based,0.011633503888054477
+nigeria,Pass/fail measure,1: Full composite,0.0059658755428883695
+nigeria,Pass/fail measure,2: Composite at criterion level,0.2559667139106002
+nigeria,1: Full composite,2: Composite at criterion level,0.06736108728200753
+nigeria,Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0
+nigeria,1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0
+nigeria,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0
+nigeria,Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0
+nigeria,1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0
+nigeria,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,arriv_year,region)",NA
+nigeria,Pass/fail measure,"4: Comparison of homogenous cells (disp_year,origin,region)",0.042914960509462745
+nigeria,1: Full composite,"4: Comparison of homogenous cells (disp_year,origin,region)",8.227707791167041e-5
+nigeria,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,origin,region)",0.007305260387891894
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,origin,region)",0
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (disp_year,origin,region)",0
+nigeria,Pass/fail measure,"4: Comparison of homogenous cells (arriv_year,origin,region)",0
+nigeria,1: Full composite,"4: Comparison of homogenous cells (arriv_year,origin,region)",0
+nigeria,2: Composite at criterion level,"4: Comparison of homogenous cells (arriv_year,origin,region)",0
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (arriv_year,origin,region)",NA
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",NA
+nigeria,"4: Comparison of homogenous cells (disp_year,origin,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",0
+nigeria,Pass/fail measure,4b: Algorithmic clustering,0.03419178795488446
+nigeria,1: Full composite,4b: Algorithmic clustering,7.924124865554155e-4
+nigeria,2: Composite at criterion level,4b: Algorithmic clustering,0.012520404675109415
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",4b: Algorithmic clustering,0
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",4b: Algorithmic clustering,0
+nigeria,"4: Comparison of homogenous cells (disp_year,origin,region)",4b: Algorithmic clustering,0.12685172946249001
+nigeria,"4: Comparison of homogenous cells (arriv_year,origin,region)",4b: Algorithmic clustering,0
+nigeria,Pass/fail measure,5: Classifier/regression-based,0.01702905788822705
+nigeria,1: Full composite,5: Classifier/regression-based,0.18760397768547302
+nigeria,2: Composite at criterion level,5: Classifier/regression-based,0.12742805068020804
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",5: Classifier/regression-based,0
+nigeria,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",5: Classifier/regression-based,0
+nigeria,"4: Comparison of homogenous cells (disp_year,origin,region)",5: Classifier/regression-based,9.761114624827178e-4
+nigeria,"4: Comparison of homogenous cells (arriv_year,origin,region)",5: Classifier/regression-based,0
+nigeria,4b: Algorithmic clustering,5: Classifier/regression-based,0.0066768041676865866
+nigeria_nohlp,Pass/fail measure,1: Full composite,0.04684030486132669
+nigeria_nohlp,Pass/fail measure,2: Composite at criterion level,0.2759562300674924
+nigeria_nohlp,1: Full composite,2: Composite at criterion level,0.29905398023953517
+nigeria_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.029897804987085313
+nigeria_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.0013134536471678085
+nigeria_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.01435239496990031
+nigeria_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.03274651176724405
+nigeria_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.0018306177649555075
+nigeria_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.012634107331328272
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.30234201615365164
+nigeria_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (disp_year,origin,region)",0.05273936760130672
+nigeria_nohlp,1: Full composite,"4: Comparison of homogenous cells (disp_year,origin,region)",0.002500291252582573
+nigeria_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,origin,region)",0.011533990673996743
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,origin,region)",0.23055064884872123
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (disp_year,origin,region)",0.209916273765369
+nigeria_nohlp,Pass/fail measure,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.07184704212804933
+nigeria_nohlp,1: Full composite,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.0026095205370370456
+nigeria_nohlp,2: Composite at criterion level,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.023277912625104567
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (arriv_year,origin,region)",0.11915554976706552
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",0.36623254412381834
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,origin,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",0.3208237822146336
+nigeria_nohlp,Pass/fail measure,4b: Algorithmic clustering,0.11436886623486804
+nigeria_nohlp,1: Full composite,4b: Algorithmic clustering,0.06175249012892249
+nigeria_nohlp,2: Composite at criterion level,4b: Algorithmic clustering,0.08596214450917296
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",4b: Algorithmic clustering,0.015581769562196037
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",4b: Algorithmic clustering,0.007570714748705278
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,origin,region)",4b: Algorithmic clustering,0.013043063826402234
+nigeria_nohlp,"4: Comparison of homogenous cells (arriv_year,origin,region)",4b: Algorithmic clustering,0.015202795619873817
+nigeria_nohlp,Pass/fail measure,5: Classifier/regression-based,0.02279510730153137
+nigeria_nohlp,1: Full composite,5: Classifier/regression-based,0.23216366166892255
+nigeria_nohlp,2: Composite at criterion level,5: Classifier/regression-based,0.14156899171718157
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",5: Classifier/regression-based,0.0013179585470538197
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",5: Classifier/regression-based,8.571698192645015e-4
+nigeria_nohlp,"4: Comparison of homogenous cells (disp_year,origin,region)",5: Classifier/regression-based,0.0018809194626836234
+nigeria_nohlp,"4: Comparison of homogenous cells (arriv_year,origin,region)",5: Classifier/regression-based,0.0011293198132933274
+nigeria_nohlp,4b: Algorithmic clustering,5: Classifier/regression-based,0.02873846868101101
