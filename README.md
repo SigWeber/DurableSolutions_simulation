@@ -2,13 +2,13 @@
 
 This project simulates how different indicators and metric options to implement a measure of IDPs overcoming displacement related vulnerabilities (*IRIS solutions measure*) perform comparatively. To do so, two empirical datasets are used. The project identifies all suitable possible indicators for measuring one of the 10 sub-criteria in the IRIS solutions measure in the datasets. Then, the project iterates through all possible combinations of indicators and implements different metric options to combine them and compare them to the host community as comparator population. This generates a measure of how many IDPs exit the stock depending on different indicators and metric options. This information can be used to inform policy decisions to finalise the IRIS solutions measure and fully implement it. 
 
-If you have feedback or would like to contribute to the project, please contact Sigrid Weber (sweber1@worldbank.org / s.weber.17@ucl.ac.uk). 
+If you have feedback or would like to contribute to the project, please contact Sigrid Weber (s.weber.17@ucl.ac.uk). 
 
 ## Structure of this repository
 
-The repository will soon be fully restructured to have a more collaborative structure and to extend the analysis more easily. For the moment, all data that is used is stored in the *Data* folder, along with the data prepration scripts and documentation to better understand the datasets. The R code that generates the preliminary findings is based on the scripts *hargeisa.R* and *nigeria.R*. Both R scripts depend on the file *functions.R*. *functions.R* saves functions to implement all of the different metric options.
+All data that is used is stored in the *Data* folder, along with the data prepration scripts and documentation to better understand the datasets. The simulations itself are based on the *functions.R* script, which intoduces the different metric options, the *simulations.R* script, which applies the functions to the data and runs the simulations, and the *_targets.R* script, which sets the pipeline to iterate through all data in our folder and execute the different simulations. 
 
-In principle, if you would want to use the functions on a new dataset that includes IDPs and host, you would have to write a script that preparses the data for simulations which:
+In principle, if you would want to use the functions on a new dataset that includes IDPs and host, you would have to write a script that prepares the data for simulations which:
 1. Creates an ID column that takes the value `1` for IDP households and `0` for host community households. 
 2. Names all variables as according to the following principle:
 a. If the variable is an indicator that could be used to measure subcriterion 1, it should be coded as `I1_ANYOTHERLETTERS`. If an indicator could be used to measure subcriterion 10, it should be coded as `I10_ANYOTHERLETTERS`. And so on.
@@ -28,17 +28,11 @@ Once ready, the results of the simulations can be accessed from the console/scri
 
 This is a list of to-do steps that I would like to implement before we can be certain of the results. 
 
-+ Construction of homogenous cells: further explorations needed (!!!)
 + Use bootstrap variance estimation to overcome challenge #3 (comparing IDPs to the survey point-estimate and using the bootstrap to construct a confidence interval around the number of IDPs exiting the stock - only feasibly once there's some agreement on the choice of indicators, otherwise the simulations will take forever to run)
-+ Create synergies with Kari-Anne's work on HLP indicators
 + More information on relation to progress measure and which indicators to use
-+ Add communication that we should not choose a too lenient or too strict indicator set/metric
-+ Think harder about case selection!
 + Enhance focus on NSOs and simplicity for them to implement
-+ Ask Felix about a workshop with NSOs on what would be possible
-+ Do we need a different reporting structure (i.e. does it make sense to go country-by-country)???	
 + Started to include colombia but still working on it: data structure is confusing
-+ How is the Ukraine mapping progressing?
++
 
 ## Possible next datasets to extend the analysis:
 + Darfur, Somalia, South Sudan
