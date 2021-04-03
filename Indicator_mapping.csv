@@ -1,76 +1,70 @@
-﻿Sub-criteria (IRIS),Potential indicators from the inter-agency Durable Solution Library,IDP Profiling in Hargeisa (UNHCR 2015),IDP Profiling in Nigeria (World Bank 2018),
+﻿Sub-criteria (IRIS),Potential indicators from the inter-agency Durable Solution Library,IDP Profiling in Hargeisa (UNHCR 2015),IDP Profiling in Nigeria (World Bank 2018),IDP Profiling in El Fasher (JIPS 2019)
 1.1 Victims of violence ,"Target population who think it likely they will experience serious consequences due to armed conflict and other situations of social instability or tension which are subject to international humanitarian law, human rights violations and national legislation.",,,
 ,Target population who think it likely they will experience serious consequences due to a hazard. ,"Target population is worried about being exposed to theft, crime or vandalism in their place of residence.",,
-,Target population who feel safe walking alone around the area they live (during day or night).,Target population is feeling unsafe or insecure in their place of residence.,Target population feeling very or moderately safe. ,
-,,,Target population feeling very or moderately safe walking at night.,
-,,,Target population feeling very or moderately safe walking during the day.,
-,"Target population who were subjected to physical, psychological or sexual violence in the previous 12 months (or since time of displacement, if displaced for less than 12 months).",,Target population experiencing non-physical or physical harm in the last 12 months.,
-,"Target population who have experienced other safety or security incidents in the previous 12 months (or since time of displacement, if displaced for less than 12 months).",Target population who experienced victimizing events in their place of residence in the past 12 months.,Target population who have experienced harm and have reported it in the last 12 months.,
+,Target population who feel safe walking alone around the area they live (during day or night).,Target population is feeling unsafe or insecure in their place of residence.,Target population feeling very or moderately safe. , 
+,,,Target population feeling very or moderately safe walking at night.,Target population feeling very or moderately safe walking at night. 
+,,,Target population feeling very or moderately safe walking during the day.,Target population feeling very or moderately safe walking during the day.
+,"Target population who were subjected to physical, psychological or sexual violence in the previous 12 months (or since time of displacement, if displaced for less than 12 months).",,Target population experiencing non-physical or physical harm in the last 12 months.,Target population experiencing a robbery.
+,"Target population who have experienced other safety or security incidents in the previous 12 months (or since time of displacement, if displaced for less than 12 months).",Target population who experienced victimizing events in their place of residence in the past 12 months.,Target population who have experienced harm and have reported it in the last 12 months.,Target population who have experienced harm and have reported it to the police. 
 ,"Target population who were affected by hazard in the previous 12 months (or since time of displacement, if displaced for less than 12 months).",,,
 ,"Target population who experienced violence in the previous 12 months, who reported their victimization to competent authorities or other officially recognized conflict resolution mechanism.",,Target population who report thefts or disputes to formal conflict resolution mechanisms. ,
 ,,,Target population who find it very easy or somewhat easy to access dispute resolution mechanisms. ,
-,,,Target population that find dispute resolution very or moderately effective,
-,,,,
+,,,Target population that find dispute resolution very or moderately effective.,
 1.2 Freedom of movement ,Target population facing restrictions to their freedom of movement. ,"Target population who face legal or administrative restrictions of their freedom of movement (i.e. lack of documentation, restricted movements in living area).",Target population feeling free to move in and out of their area. ,
-2.1 Food security ,"Target population by prevalence of moderate or severe food insecurity in the past year, based on the Food Insecurity Experience Scale (FIES)",Target population unable to pay for food in the last 6 months.,Index of food insecurity from a combination of indicators,
-,,Number of meals eaten per day,,
-2.2 Shelter and housing ,"Target population with secure tenure rights to land, with legally recognized documentation, and who perceive their rights to land as secure. ",,Target population having access to land and renting or owning it legally,
+2.1 Food security ,"Target population by prevalence of moderate or severe food insecurity in the past year, based on the Food Insecurity Experience Scale (FIES).",Target population unable to pay for food in the last 6 months.,Index of food insecurity from a combination of indicators.,Target population unable to pay for food in the last 7 days.
+,,,,Target population having to borrow money for food.
+,,Number of meals eaten per day.,,
+2.2 Shelter and housing ,"Target population with secure tenure rights to land, with legally recognized documentation, and who perceive their rights to land as secure. ",,Target population having access to land and renting or owning it legally.,Target population legally owning the property.
 ,Target population having been forcibly evicted over the past 12 months. ,,,
 ,"Target population, not being evicted in the past 12 months, but living in constant fear of eviction (population who do not perceive their current tenure rights a secure).",,,
-,Target population residing in sufficient living space. ,Target population living in overcrowded housing/shelter (> X persons per room),Target population living in overcrowded housing/shelter (> X persons per sleeping room),
-,,"Target population living in inadequate housing conditions (risk of landslide, near trash receptacles or industry)",,
+,Target population residing in sufficient living space. ,Target population living in overcrowded housing/shelter (> X persons per room).,Target population living in overcrowded housing/shelter (> X persons per sleeping room).,Target population living in overcrowded housing/shelter (> X persons per sleeping room).
+,,"Target population living in inadequate housing conditions (risk of landslide, near trash receptacles or industry).",,
 ,,Target population with access to electricity or other modern energy services.,,
-,,,,
-,Target population residing in durable housing structures. ,,"Target population living in non-durable housing conditions (incomplete, not intended or makeshift housing)",
-,,,Target population squatting or living in temporary shelter,
-,,,Target population owning or renting housing,
-,"Target urban population living in slums, informal settlements, or inadequate housing.",,Target population squatting,
-,Target population with access to basic drinking water services.,Target population with access to adequate source of drinking water (tanks),Target population with access to safe drinking water,
-,,,Target population with no obstacles for water access,
-,Target population with access to basic sanitation facilities including a hand-washing facility on premises with soap and water. ,Target population with flushing toilet in household,Target population with improved sanitation facilities,
+,Target population residing in durable housing structures. ,,"Target population living in non-durable housing conditions (incomplete, not intended or makeshift housing).",
+,,,Target population squatting or living in temporary shelter.,
+,,,Target population owning or renting housing.,
+,"Target urban population living in slums, informal settlements, or inadequate housing.",,Target population squatting.,
+,Target population with access to basic drinking water services.,Target population with access to adequate source of drinking water (tanks),Target population with access to safe drinking water.,Target population with access to improved drinking water sources.
+,,,Target population with no obstacles for water access.,
+,Target population with access to basic sanitation facilities including a hand-washing facility on premises with soap and water. ,Target population with flushing toilet in household,Target population with improved sanitation facilities.,Target population with improved sanitation facilities.
 ,,Target population with bath/shower in household,,
-2.3 Medical services ,Target population covered by essential health services. , ,Distance to health facilities in hours ,
-,Target population who accessed essential health care services (including mental health care) the last time they needed it in the past 12 months. ,Target population with access to essential health care when needed. ,Target population that access essential health care when needed. ,
+2.3 Medical services ,Target population covered by essential health services. , ,Distance to health facilities in hours.,Distance to health facilities in hours.
+,Target population who accessed essential health care services (including mental health care) the last time they needed it in the past 12 months. ,Target population with access to essential health care when needed. ,Target population that access essential health care when needed. ,Target population satisfied with health care. 
 ,Births within target population attended by skilled health personnel within the past 12 months (% of total births taken place within the past 12 months).,Target population with births or pregnancies attended by skilled health personnel. ,,
 ,Children under the age of one in the target population covered by all vaccines included in their national programme (% of total child population under one in the target population). ,Target population with immunized children. ,,
-2.4 Education ,Primary school net attendance ratio in targeted population (% of children of primary school age in target population). ,Target population of school age that can read and write,Time to next education facility ,
-,,Target population of school age that has ever attended school (primary and secondary),Target population being satisfied with primary education,
-,,Target population of school age that is currently attending school,,
-,Secondary school net attendance ration in target population (% of children of secondary school age in target population). ,Target population of school age that is currently attending or have completed secondary school or university,,
-,Target population who own a mobile phone. ,Target population which owns a mobile phone,,
-3.1 Employment and livelihoods,Target population employed in formal and informal sector (employment rate).,Target population with a breadwinner in household ,"Target population whose primary income are wages, salary, own businesses, or pension",
+2.4 Education ,Primary school net attendance ratio in targeted population (% of children of primary school age in target population). ,Target population of school age that can read and write.,Time to next education facility.,Time to next education facility.
+,,Target population of school age that has ever attended school (primary and secondary).,Target population being satisfied with primary education.,Target population of school age that has ever attended school.
+,,Target population of school age that is currently attending school.,,Target population of school age that is currently attending school.
+,Secondary school net attendance ration in target population (% of children of secondary school age in target population). ,Target population of school age that is currently attending or have completed secondary school or university.,,
+,Target population who own a mobile phone. ,Target population which owns a mobile phone.,,
+3.1 Employment and livelihoods,Target population employed in formal and informal sector (employment rate).,Target population with a breadwinner in household.,"Target population whose primary income are wages, salary, own businesses, or pension.",Target population engaged in paid job.
 ,Employed and self-employed target population in informal employment in non-agriculture employment (% of total employed target population).,,,
 ,Employed and self-employed target population that is underemployed. ,,,
 ,Target population undertaking pendular or seasonal movement due to work.,,,
 ,Target population aged 5-17 engaged in child labour (% of total child population 5-17 years of age).,,,
 ,"Target population aged 15-24 years not in education, employment or training. ",,,
 ,Self-employed target population employing others (% of total self-employed target pop).,,,
-,Labor force population who are unemployed (unemployment rate).,,,
+,Labor force population who are unemployed (unemployment rate).,,,Target population that is reporting unemployment. 
 3.2 Economic security ,Unemployed target population covered under social security schemes (public or private). ,,,
 ,Target population relying primarily on sustainable income sources over the last 30 days. ,Target population capable of managing unexpected expenses without borrowing money or receiving help from others.,,
-,Target population who in the last 12 months was not able to pay for basic expenses. ,Target population who was not able to pay house rental / services in the last 6 months,,
+,Target population who in the last 12 months was not able to pay for basic expenses. ,Target population who was not able to pay house rental / services in the last 6 months.,,
 ,Target population who in the last 12 months obtained a loan to cover basic expenses. ,,,
-,"Target population’s average expenditure against average total expenditures, per capita.",,Target population consuming more than average,
-,"Ratio of average food expenditures against average total expenditures, per capita. ",,Ratio of food consumption against total consumption,
-,Target population below the poverty line.,,Target population below 1.9 USD PPP 2011 Poverty Line,
+,"Target population’s average expenditure against average total expenditures, per capita.",,Target population consuming more than average.,
+,"Ratio of average food expenditures against average total expenditures, per capita. ",,Ratio of food consumption against total consumption.,
+,Target population below the poverty line.,,Target population below 1.9 USD PPP 2011 Poverty Line.,Target population below 1.9 USD PPP 2011 Poverty Line.
 ,,,Target population below 1.25 USD PPP 2011 Poverty Line,
-,,,Target population below 3.1 USD PPP 2011 Poverty Line,
+,,,Target population below 3.1 USD PPP 2011 Poverty Line,Target population below 3.2 USD PPP 2011 Poverty Line.
 ,Target population who own productive assets by type of assets. ,Average number of assets owned by target population.,,
-,Target population with access to markets.,,Distance to market in hours,
-,Target population where at least one person in household has a bank account. ,,Target population with access to a bank account,
-4.1 Property restitution and compensation ,"Target population with documents to prove ownership/tenancy of housing, land and property left behind (% of total target population who left behind HLP).",Target population with documents to prove ownership of their lost HLP. ,Target population that is legally recognized owner of dwelling,
-,"Target population with housing, land and property left behind who successfully accessed restitution or compensation mechanism (% of target population with HLP left behind) – if relevant to context. ",Target population with lost HLP who have accessed restitution or compensation mechanisms. ,Target population with access to compensation mechanisms,
+,Target population with access to markets.,,Distance to market in hours.,Distance to market in hours.
+,Target population where at least one person in household has a bank account. ,,Target population with access to a bank account.,Target population with mobile money account.
+4.1 Property restitution and compensation ,"Target population with documents to prove ownership/tenancy of housing, land and property left behind (% of total target population who left behind HLP).",Target population with documents to prove ownership of their lost HLP. ,Target population that is legally recognized owner of dwelling.,Target population that is legally recognized owner of dwelling.
+,,,,Target population that has documentation to prove ownership. 
+,"Target population with housing, land and property left behind who successfully accessed restitution or compensation mechanism (% of target population with HLP left behind) – if relevant to context. ",Target population with lost HLP who have accessed restitution or compensation mechanisms. ,Target population with access to compensation mechanisms.,Target population with access to compensation mechanisms.
 ,"Target population with housing, land and property left behind who have had their claims to assets (incl. land and property) resolved. ",Target population with lost HLP who have had their claims resolved and enforced. ,,
 ,"Target population with housing, land and property left behind who have had their claims to assets (incl. land and property) enforced. ",,,
 ,Agricultural target population with ownership or secure rights over agricultural land. ,,,
 ,Agricultural target population with use rights to agricultural land.,,,
-5.1. Documentation ,"Target population currently in possession of valid birth certificates, national ID cards or other personal identification documents relevant to the context. ",Target population in possession of birth certificates.,,
-,Target population with other personal documentation necessary to accessing their rights. ,Target population with personal documentation or access to mechanisms to replace them if they are lost.,Target population that have not lost their documents and know how to replace them if missing,
+5.1. Documentation ,"Target population currently in possession of valid birth certificates, national ID cards or other personal identification documents relevant to the context. ",Target population in possession of birth certificates.,,Target population in possession of birth certificates.
+,Target population with other personal documentation necessary to accessing their rights. ,Target population with personal documentation or access to mechanisms to replace them if they are lost.,Target population that have not lost their documents and know how to replace them if missing.,Target population with personal documentation.
 ,Target population registered by authorities as Internally Displaced Persons – if relevant to context. ,,,
 ,Children under 5 years of age in target population whose births have been registered with a civil authority.,Children in target population with a birth certificate or registration.,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
-,,,,
