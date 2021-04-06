@@ -44,6 +44,21 @@ tar_map(
   # tar_target(DS_Option4b_nohlp_complete2, simulate_hclust(data_nohlp, method = "complete", maxdiff = 2)),
   # tar_target(DS_Option4b_nohlp_average1, simulate_hclust(data_nohlp, method = "average", maxdiff = 1)),
   # tar_target(DS_Option4b_nohlp_average2, simulate_hclust(data_nohlp, method = "average", maxdiff = 2)),
-  tar_target(DS_Option5_nohlp, simulate_classifier(data_nohlp))#,
- # tar_target(DS_Option5b_nohlp, simulate_lasso(data_nohlp))
- )
+  tar_target(DS_Option5_nohlp, simulate_classifier(data_nohlp)),
+  # tar_target(DS_Option5b_nohlp, simulate_lasso(data_nohlp))
+  
+  # Role reversal
+  tar_target(data_nohlp_host, mutate(data_nohlp, ID = 1-ID)),
+  tar_target(DS_Original_nohlp_host, simulate_IRIS_metric(data_nohlp_host)),
+  tar_target(DS_Option1_nohlp_host, simulate_composite(data_nohlp_host)),
+  tar_target(DS_Option2_nohlp_host, simulate_criterion(data_nohlp_host)),
+  tar_target(DS_Option3_nohlp_host, simulate_subcriterion(data_nohlp_host)),
+  tar_target(DS_Option4_nohlp_host, simulate_cells(data_nohlp_host)),
+  tar_target(DS_Option4b_nohlp_host, simulate_hclust(data_nohlp_host)),
+  # tar_target(DS_Option4b_nohlp_complete1_host, simulate_hclust(data_nohlp_host, method = "complete", maxdiff = 1)),
+  # tar_target(DS_Option4b_nohlp_complete2_host, simulate_hclust(data_nohlp_host, method = "complete", maxdiff = 2)),
+  # tar_target(DS_Option4b_nohlp_average1_host, simulate_hclust(data_nohlp_host, method = "average", maxdiff = 1)),
+  # tar_target(DS_Option4b_nohlp_average2_host, simulate_hclust(data_nohlp_host, method = "average", maxdiff = 2)),
+  tar_target(DS_Option5_nohlp_host, simulate_classifier(data_nohlp_host))#,
+  # tar_target(DS_Option5b_nohlp_host, simulate_lasso(data_nohlp_host))
+)
