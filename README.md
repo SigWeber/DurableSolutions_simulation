@@ -28,19 +28,14 @@ Once ready, the results of the simulations can be accessed from the console/scri
 
 This is a list of to-do steps that I would like to implement before we can be certain of the results. 
 
-+ Use bootstrap variance estimation to overcome challenge #3 (comparing IDPs to the survey point-estimate and using the bootstrap to construct a confidence interval around the number of IDPs exiting the stock - only feasibly once there's some agreement on the choice of indicators, otherwise the simulations will take forever to run)
 + More information on relation to progress measure and which indicators to use
 + Enhance focus on NSOs and simplicity for them to implement
-+ Started to include colombia but still working on it: data structure is confusing
-+
 
 ## Possible next datasets to extend the analysis:
-+ Darfur, Somalia, South Sudan
++ Somalia, South Sudan
 + Survey of Syrian Refugees and Host Community Members in Kurdistan, KRI
-+ JIPS IDP profiling in Honduras (Spanish only), with similar datasets from Belize and El Salvador 
-+ [Colombian government's LSMS survey](http://microdatos.dane.gov.co/index.php/catalog/678/study-description) (work-in-progress)
++ IDP profiling in Honduras, Belize, and El Salvador (data not publicly available)
 + Bosnia or Kosovo
-+ Ukraine (work-in-progress)
-+ Sudan 
++ Ukraine (data not publicly available)
 + Natural disasters: two IOM/Brookings studies in [Haiti](https://www.brookings.edu/research/supporting-durable-solutions-to-urban-post-disaster-displacement-challenges-and-opportunities-in-haiti/) and [Philippine](https://www.brookings.edu/research/resolving-post-disaster-displacement-insights-from-the-philippines-after-typhoon-haiyan-yolanda/)
 
