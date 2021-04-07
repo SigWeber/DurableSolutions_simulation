@@ -177,10 +177,5 @@ colombia <- colombia %>% mutate(across(where(is.logical), as.numeric))
 # add case identifier
 colombia <- colombia %>% mutate(HHID = str_c(dwelling, household, person, sep = "-")) %>% select(-dwelling, -household, -person)
 
-# downsample host community
-colombia <- 
-  bind_rows(colombia %>% filter(ID == 1),
-            colombia %>% filter(ID == 0) %>% slice_sample(n = 10000) %>% mutate(WT = sum(!colombia$ID)/10000*WT))
-
 # output final dataset ----
 colombia
