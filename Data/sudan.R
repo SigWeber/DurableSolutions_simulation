@@ -28,10 +28,10 @@ sudan <- sudan %>%
   mutate(
 
     # Proportion feeling safe at night
-    I1_sec_night = ifelse(H_3_4_safe_walking_night > 3,1,0),
+    I1_sec_night = ifelse(H_3_4_safe_walking_night < 3,1,0),
     
     # Proportion feeling safe at night
-    I1_sec_day = ifelse(H_3_5_safe_walking_day > 3,1,0),
+    I1_sec_day = ifelse(H_3_5_safe_walking_day < 3,1,0),
     
     # Proportion not experiencing a robbery
     I1_sec_inc = ifelse(C_6_1_shocks_yn__8 == 1, 0,1),
