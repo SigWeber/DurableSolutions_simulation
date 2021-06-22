@@ -44,7 +44,7 @@ $endif$
 \usepackage{array,booktabs,tabularx,longtable}
 \usepackage{graphicx,caption} 
 \usepackage{multirow}
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{s}{>{\hsize=.6\hsize}X}
 \usepackage{fancyhdr} % Needed to define custom headers/footers%
 %\pagestyle{fancy}
 %\fancyhf{}
@@ -240,14 +240,26 @@ $if(title)$
 
 \vspace*{1.5cm}
 
- Prepared for the Solutions Task Team of EGRIS subgroup 3
+Draft version for internal discussion in EGRIS subgroup 3 - version 2
 
 \bigskip
 \today
 
-\end{center}
+\vspace*{1.5cm}
+
+\footnotesize
+Sigrid Weber, Strategy \& Policy Consultant, World Bank-UNHCR Joint Data Center on Forced Displacement
+
+
+Hisham Galal, Associate Statistics and Data Analysis Officer, UNHCR 
+
+Kristine Vegard, Technical Advisor, JIPS
 
 \vfill
+\normalsize
+
+\end{center}
+
 
 \begin{figure}[h]       
     \mbox{\includegraphics[width=0.4\textwidth]{design/JDC.png}}   
@@ -310,8 +322,7 @@ $if(toc)$
 {
 \hypersetup{linkcolor=black}
 \setcounter{tocdepth}{$toc-depth$}
-{\setstretch{0.9}
-\tableofcontents}
+\tableofcontents
 }
 $endif$
 
