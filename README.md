@@ -23,19 +23,3 @@ Once that's done, create a new worksheet in `Data/dict.xlsx` documenting the map
 To run the analysis, run `targets::tar_make()` from the console. `targets` will check the code for changes since the last run and only run the parts of the simulations affected by that change. So if you've added a new dataset, it will run the simulations for that dataset alone. And if you've changed the calculation of any indicator it will run the simulations for that indicator only across all datasets. Everything else is served from cache.
 
 Once ready, the results of the simulations can be accessed from the console/scripts/Rmds using `targets::tar_load()` which loads everything into the current workspace/environment. For example: `targets::tar_load(contains("hargeisa"))` will load the results for the Hargeisa simulations into your workspace. These come as five data-frames named `DS_OptionN_hargeisa` where N is the number of the metric option plus another data-frame `DS_Original_hargeisa` holding the data for the IRIS pass/fail metric. If you'd rather exercise more control over where the data ends up, you can use `mydata <- targets::tar_read("DS_Option1_hargeisa")`, for example, to read that single dataset into the variable named `mydata`.
-
-## To Dos and next steps
-
-This is a list of to-do steps that I would like to implement before we can be certain of the results. 
-
-+ More information on relation to progress measure and which indicators to use
-+ Enhance focus on NSOs and simplicity for them to implement
-
-## Possible next datasets to extend the analysis:
-+ Somalia, South Sudan
-+ Survey of Syrian Refugees and Host Community Members in Kurdistan, KRI
-+ IDP profiling in Honduras, Belize, and El Salvador (data not publicly available)
-+ Bosnia or Kosovo
-+ Ukraine (data not publicly available)
-+ Natural disasters: two IOM/Brookings studies in [Haiti](https://www.brookings.edu/research/supporting-durable-solutions-to-urban-post-disaster-displacement-challenges-and-opportunities-in-haiti/) and [Philippine](https://www.brookings.edu/research/resolving-post-disaster-displacement-insights-from-the-philippines-after-typhoon-haiyan-yolanda/)
-
