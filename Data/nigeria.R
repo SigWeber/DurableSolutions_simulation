@@ -279,7 +279,7 @@ nigeria <- nigeria %>%
     I1_sec_easy= ifelse(I1_sec_easy >= 1, 0, 1),
     I1_sec_eff = ifelse(I1_sec_eff >= 1,1, 0),
     I2_feel_free = ifelse(I2_feel_free >= 1,1,0),
-    I3_food_insecurity_scale = ifelse(I3_food_insecurity_scale>= mean(I3_food_insecurity_scale,na.rm = T),1,0), 
+    I3_food_insecurity_scale = ifelse(I3_food_insecurity_scale <= mean(I3_food_insecurity_scale,na.rm = T),1,0), 
     I4_hous_indurable = ifelse(I4_hous_indurable <= 0, 1, 0),
     I4_hous_overcrowd = ifelse(I4_hous_overcrowd <= 0,1, 0),
     I4_hous_squat = ifelse(I4_hous_squat <= 0, 1,0),
