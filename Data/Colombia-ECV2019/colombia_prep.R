@@ -173,6 +173,9 @@ colombia <- colombia %>% mutate(across(starts_with("HH_"), compose(fct_explicit_
 # massage data into the write format
 colombia <- colombia %>% mutate(across(where(is.logical), as.numeric))
 
+# welfare-measure
+colombia <- colombia |> left_join(households |> select(dwelling, household, PERCAPITA))
+
 # add case identifier
 colombia <- colombia %>% mutate(HHID = str_c(dwelling, household, person, sep = "-")) %>% select(-dwelling, -household, -person)
 

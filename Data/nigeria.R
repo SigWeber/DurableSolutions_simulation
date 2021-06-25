@@ -261,8 +261,11 @@ nigeria <-
            TRUE ~ NA_character_),
          HH_region = region)
 
+# welfare-measure
+nigeria <- nigeria |> mutate(PERCAPITA = tc_imp)
+
 # select variables
-nigeria <- nigeria %>% select(ID, starts_with("I"), -starts_with("I_"), starts_with("HH_"), WT)
+nigeria <- nigeria %>% select(ID, starts_with("I"), -starts_with("I_"), starts_with("HH_"), PERCAPITA, WT)
 
 # unify direction of indicators: 1 for passing 
 nigeria <- nigeria %>% 

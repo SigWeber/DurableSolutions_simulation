@@ -16,7 +16,8 @@ b. If the variable contains information on household characteristics that could 
 3. Turns all indicators into binary indicators that take the value `1` for overcoming a vulnerability and `0` for not overcoming it (e.g. school attandance should be a `1` but experiencing a security incident should be a `0`).
 4. Adds a column called `HHID` with a unique case identifier. This can be a simple call to `row_number()` or (preferably) a case identifier from the original dataset so that the simulation results could be merged with the rest of the data for further analysis.
 5. Stores the case weights in `WT`. If the original dataset doesn't include weights, then `WT` should be set to `1`.
-6. Outputs the final dataset to the console before exiting.
+6. If applicable, assign per-capita income/expenditure measures to `PERCAPITA`. The variables should be set to `NA_real_` otherwise. 
+7. Outputs the final dataset to the console before exiting.
 
 Once that's done, create a new worksheet in `Data/dict.xlsx` documenting the mapping of variables from your dataset to the solutions indicators following the structure in the other worksheets. This basically serves as a mapping of terse variable names to human-readable variable labels to be used in plotting so do make sure to use labels that are clear and concise.
 

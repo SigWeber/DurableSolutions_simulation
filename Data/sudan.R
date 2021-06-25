@@ -219,8 +219,11 @@ sudan <- sudan %>%
       I_1_16_disp_comm_loc == 6 ~ "Outside Sudan")
     )
 
+# welfare-measure
+sudan <- sudan |> mutate(PERCAPITA = tc_imp)
+
 # select variables
-sudan <- sudan %>% select(ID,WT, starts_with("HH_"), starts_with("I"), -starts_with("I_"))
+sudan <- sudan %>% select(ID, WT, starts_with("HH_"), starts_with("I"), -starts_with("I_"), PERCAPITA)
 
 # add household ID
 sudan <- sudan %>% mutate(HHID = row_number())

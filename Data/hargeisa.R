@@ -287,6 +287,9 @@ hargeisa <- hargeisa %>%
     I10_doc_birth = ifelse(I10_doc_birth == 1, 1, 0)
   )
 
+# welfare-measure
+hargeisa <- hargeisa |> mutate(PERCAPITA = NA_real_)
+
 # add household ID
 hargeisa <- hargeisa %>% mutate(HHID = row_number())
 

@@ -4,7 +4,7 @@ colombia <- source("Data/Colombia-ECV2019/colombia_prep.R")$value
 
 colombia_hh <- 
   colombia %>% 
-  group_by(HHID = str_replace(HHID, "-\\d+$", ""), across(starts_with("HH_")), WT) %>% 
+  group_by(HHID = str_replace(HHID, "-\\d+$", ""), across(starts_with("HH_")), PERCAPITA, WT) %>% 
   summarize(across(starts_with("I"), compose(as.numeric, any, as.logical)), .groups = "drop")
 
 # downsample host community
