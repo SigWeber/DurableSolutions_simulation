@@ -55,7 +55,7 @@ households <-
   households %>% 
   mutate(
     # Overcrowded households
-    I4_overcrowding = CANT_PERSONAS_HOGAR/P5000 >= 3,
+    I4_overcrowding = CANT_PERSONAS_HOGAR/P5000 < 3,
     
     # Legally occupied dwelling
     I4_legal_tenure = !str_detect(P5095, "(hecho|colectiva)"))
@@ -64,10 +64,10 @@ dwellings <-
   dwellings %>% 
   mutate(
     # Access to clean water services
-    I4_water = P8520S5 == "Sí",
+    I4_water = P8520S5 != "No",
     
     # Access to improved sanitation
-    I4_sanitation = P8520S5 == "Sí")
+    I4_sanitation = P8520S5 != "No")
 
 # 2.3 Medical services 
 persons <- 
@@ -77,17 +77,17 @@ persons <-
     I5_health_satisfaction = str_detect(P1897, "([6-9]|'Totalmente satisfecho\\(a\\))"),
     
     # In possession of health insurance
-    I5_health_insurance = P6090 == "Sí")
+    I5_health_insurance = P6090 != "No")
 
 # 2.4 Education
 persons <- 
   persons %>% 
   mutate(
     # Can read and write
-    I6_literate = P6160 == "Sí",
+    I6_literate = P6160 != "No",
     
     # School attendance
-    I6_school_attend = P8586 == "Sí",
+    I6_school_attend = if_else(between(P6040, 5, 17), as.numeric(P8586 != "No"), NA_real_),
     
     # Attending official educational establishment
     I6_school_official = P5673 == " Oficial")
@@ -156,18 +156,17 @@ colombia <- colombia %>% left_join(dwellings %>% select(dwelling, starts_with("I
 # add case characteristics for grouping
 colombia <- 
   colombia %>% 
-  left_join(persons %>% 
-              transmute(dwelling, household, person,
-                        HH_gender = P6020,
-                        HH_agegrp = case_when(between(P6040, 0, 14) ~ "Children",
-                                              between(P6040, 15, 24) ~ "Youth",
-                                              between(P6040, 25, 59) ~ "Adults",
-                                              between(P6040, 60, Inf) ~ "Elderly"),
-                        HH_marital_status = P5502,
-                        HH_adm1 = P756S1,
-                        HH_disp_dur = cut(P767, breaks = seq(0, 100, 5)),
-                        HH_ethnic_minority = P6080 != "Ninguno de los anteriores",
-                        HH_peasant = P2059 == "Si" | P2061 == "Si"))
+  left_join(dwellings |> 
+              transmute(dwelling,
+                        HH_region = REGION,
+                        HH_urban = CLASE == "Cabecera")) |> 
+  left_join(persons |> 
+              filter(P6051 == "Jefe (a) del hogar") |> 
+              transmute(dwelling, household,
+                        HH_head_gender = if_else(P6020 == "Hombre", "Male", "Female"),
+                        HH_years_disp = pmin(P767, 35) |> cut_width(5, boundary = 0),
+                        HH_place_of_origin = P6076S1,
+                        HH_ethnic_minority = P6080 != "Ninguno de los anteriores"))
 
 colombia <- colombia %>% mutate(across(starts_with("HH_"), compose(fct_explicit_na, as_factor)))
 

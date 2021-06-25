@@ -1,12 +1,11 @@
 library(tidyverse)
 
-colombia <- source("Data/Colombia-ECV2019/colombia.R")$value
+colombia <- source("Data/Colombia-ECV2019/colombia_prep.R")$value
 
 colombia_hh <- 
   colombia %>% 
-  group_by(HHID = str_replace(HHID, "-\\d+$", ""), WT) %>% 
-  summarize(across(starts_with("I"), compose(as.numeric, any, as.logical)), .groups = "drop") %>% 
-  mutate(HH_placeholder1 = 1, HH_placeholder2 = 1, HH_placeholder_3 = 3)
+  group_by(HHID = str_replace(HHID, "-\\d+$", ""), across(starts_with("HH_")), WT) %>% 
+  summarize(across(starts_with("I"), compose(as.numeric, any, as.logical)), .groups = "drop")
 
 # downsample host community
 colombia_hh <- 
