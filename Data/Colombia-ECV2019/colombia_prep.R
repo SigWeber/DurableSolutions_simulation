@@ -55,7 +55,7 @@ households <-
   households %>% 
   mutate(
     # Overcrowded households
-    I4_overcrowding = CANT_PERSONAS_HOGAR/P5000 < 3,
+    I4_overcrowding = CANT_PERSONAS_HOGAR/P5000 <= 3,
     
     # Legally occupied dwelling
     I4_legal_tenure = !str_detect(P5095, "(hecho|colectiva)"))

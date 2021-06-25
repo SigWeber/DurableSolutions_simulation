@@ -95,7 +95,7 @@ use_cells <- function(x, y, data, benchmark, combination_cells, sim_data) {
 }
 
 # Option 4b: Use population cells w/hclust ------------------------------------------
-use_hclust <- function(data, sim_data, benchmark, x, method, maxdiff, ...) {
+use_hclust <- function(data, sim_data, benchmark, x, method, maxdiff) {
   benchmark <- benchmark %>% summarize(across(as.character(sim_data[x,]), ~weighted.mean(., WT, na.rm = TRUE)))
   undecided_cases <- data %>% select(HHID, as.character(sim_data[x,])) %>% filter(!complete.cases(.))
   data <- data %>% select(HHID, WT, as.character(sim_data[x,])) %>% drop_na()

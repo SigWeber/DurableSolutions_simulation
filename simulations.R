@@ -111,8 +111,8 @@ simulate_cells <- function(data) {
 }
 
 # Option 4: Comparison of homogenous cells w/hclust ###########################################
-simulate_hclust <- function(data, method = "complete", maxdiff = 2, ...) {
-  run_simulation(data, use_hclust, method = method, maxdiff = maxdiff, ...)
+simulate_hclust <- function(data, method = "complete", maxdiff = 2) {
+  run_simulation(data, use_hclust, method = method, maxdiff = maxdiff)
 }
 
 # Option 5: Use a classifier ------------------------------------------------------------
