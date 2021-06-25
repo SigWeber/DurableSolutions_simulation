@@ -95,7 +95,7 @@ use_cells <- function(x, y, data, benchmark, combination_cells, sim_data) {
 }
 
 # Option 4b: Use population cells w/hclust ------------------------------------------
-use_hclust <- function(data, sim_data, benchmark, x, method, maxdiff) {
+use_hclust <- function(data, sim_data, benchmark, x, method, maxdiff, ...) {
   benchmark <- benchmark %>% summarize(across(as.character(sim_data[x,]), ~weighted.mean(., WT, na.rm = TRUE)))
   undecided_cases <- data %>% select(HHID, as.character(sim_data[x,])) %>% filter(!complete.cases(.))
   data <- data %>% select(HHID, WT, as.character(sim_data[x,])) %>% drop_na()
@@ -125,18 +125,6 @@ use_classifier <- function(data, sim_data, benchmark, x) {
   
   # predict whether IDP or non-displaced
   data$IDP_prob <- predict(model, data, type = "response")
-  threshold <- optimum_threshold(data$ID, data$IDP_prob)
-  
-  data %>% filter(ID == 1) %>% transmute(HHID, exited = IDP_prob < threshold)
-}
-
-# Option 5b: Use a classifier w/Lasso regularization ----------------------------------
-use_lasso <- function(data) {
-  m <- glmnet::cv.glmnet(x = data %>% drop_na() %>% select(-ID) %>% data.matrix(),
-                         y = data %>% drop_na() %>% pull(ID),
-                         family = "binomial")
-  
-  data$IDP_prob <- predict(m, newx = data %>% select(-ID) %>% data.matrix(), s = "lambda.1se", type = "response")[,1]
   threshold <- optimum_threshold(data$ID, data$IDP_prob)
   
   data %>% filter(ID == 1) %>% transmute(HHID, exited = IDP_prob < threshold)
