@@ -151,10 +151,10 @@ sudan <- sudan %>%
   I8_econ_account = C_4_16_acc_mobile_money,
   
   # Proportion not being poor (190)
-  I8_poor190 = ifelse(poorPPP_190 > 0.5,1,0),
+  I8_poor190 = ifelse(poorPPP_190 < 0.5,1,0),
   
   # Proportion not being poor (190)
-  I8_poor32 =  ifelse(poorPPP_320 > 0.5,1,0)
+  I8_poor32 =  ifelse(poorPPP_320 < 0.5,1,0)
   )
          
          
