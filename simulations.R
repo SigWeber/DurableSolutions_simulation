@@ -119,10 +119,3 @@ simulate_hclust <- function(data, method = "complete", maxdiff = 2) {
 simulate_classifier <- function(data) {
   run_simulation(data, use_classifier)
 }
-
-# Option 5b: Use a classifier w/Lasso regularization  ----------------------------------------------------
-simulate_lasso <- function(data) {
-  tibble(Durable_Solutions = data %>% select(HHID, starts_with("I")) %>% use_lasso() %>% list(),
-         DS = left_join(Durable_Solutions[[1]], data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)},
-         DS_perc = left_join(Durable_Solutions[[1]], data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)/sum(.$WT)})
-}

@@ -129,15 +129,3 @@ use_classifier <- function(data, sim_data, benchmark, x) {
   
   data %>% filter(ID == 1) %>% transmute(HHID, exited = IDP_prob < threshold)
 }
-
-# Option 5b: Use a classifier w/Lasso regularization ----------------------------------
-use_lasso <- function(data) {
-  m <- glmnet::cv.glmnet(x = data %>% drop_na() %>% select(-ID) %>% data.matrix(),
-                         y = data %>% drop_na() %>% pull(ID),
-                         family = "binomial")
-  
-  data$IDP_prob <- predict(m, newx = data %>% select(-ID) %>% data.matrix(), s = "lambda.1se", type = "response")[,1]
-  threshold <- optimum_threshold(data$ID, data$IDP_prob)
-  
-  data %>% filter(ID == 1) %>% transmute(HHID, exited = IDP_prob < threshold)
-}

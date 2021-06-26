@@ -76,19 +76,12 @@ DS_Option5_nohlp_sudan <- targets::tar_read("DS_Option5_nohlp_sudan") %>% select
 ```
 
 ```{r colombia_targets}
-DS_Original_colombia_ind <- targets::tar_read("DS_Original_colombia_ind") %>% select(-Durable_Solutions)
-DS_Option2_colombia_ind <- targets::tar_read("DS_Option2_colombia_ind") %>% select(-Durable_Solutions)
-DS_Option3_colombia_ind <- targets::tar_read("DS_Option3_colombia_ind") %>% select(-Durable_Solutions)
-DS_Option4_colombia_ind <- targets::tar_read("DS_Option4_colombia_ind") %>% select(-Durable_Solutions)
-DS_Option5_colombia_ind <- targets::tar_read("DS_Option5_colombia_ind") %>% select(-Durable_Solutions)
-DS_Option1_colombia_ind <- targets::tar_read("DS_Option1_colombia_ind") %>% select(-Durable_Solutions)
-
-DS_Original_colombia_hh <- targets::tar_read("DS_Original_colombia_hh") %>% select(-Durable_Solutions)
-DS_Option2_colombia_hh <- targets::tar_read("DS_Option2_colombia_hh") %>% select(-Durable_Solutions)
-DS_Option3_colombia_hh <- targets::tar_read("DS_Option3_colombia_hh") %>% select(-Durable_Solutions)
-DS_Option4_colombia_hh <- targets::tar_read("DS_Option4_colombia_hh") %>% select(-Durable_Solutions)
-DS_Option5_colombia_hh <- targets::tar_read("DS_Option5_colombia_hh") %>% select(-Durable_Solutions)
-DS_Option1_colombia_hh <- targets::tar_read("DS_Option1_colombia_hh") %>% select(-Durable_Solutions)
+DS_Original_colombia <- targets::tar_read("DS_Original_colombia") %>% select(-Durable_Solutions)
+DS_Option2_colombia <- targets::tar_read("DS_Option2_colombia") %>% select(-Durable_Solutions)
+DS_Option3_colombia <- targets::tar_read("DS_Option3_colombia") %>% select(-Durable_Solutions)
+DS_Option4_colombia <- targets::tar_read("DS_Option4_colombia") %>% select(-Durable_Solutions)
+DS_Option5_colombia <- targets::tar_read("DS_Option5_colombia") %>% select(-Durable_Solutions)
+DS_Option1_colombia <- targets::tar_read("DS_Option1_colombia") %>% select(-Durable_Solutions)
 ```
 
 \newpage 
@@ -485,7 +478,7 @@ source("simulations.R")
 data_nigeria <- targets::tar_read("data_nigeria")
 data_hargeisa <- targets::tar_read("data_hargeisa")
 data_sudan <- targets::tar_read("data_sudan")
-data_colombia <- targets::tar_read("data_colombia_hh")
+data_colombia <- targets::tar_read("data_colombia")
 
 indicators_nigeria <- extract_indicators(data_nigeria)
 indicators_hargeisa <- extract_indicators(data_hargeisa)
@@ -1341,19 +1334,19 @@ A final word on the feasibility of the different metric options in El Fasher (Su
 ## Simulation results for Colombia (DANE 2019)
 
 ```{r simulation_results_colombia}
-DS_mean_colombia <- mean(c(DS_Original_colombia_hh$DS,
-                           DS_Option1_colombia_hh$DS,
-                           DS_Option2_colombia_hh$DS, 
-                           DS_Option3_colombia_hh$DS, 
-                           DS_Option4_colombia_hh$DS, 
-                           DS_Option5_colombia_hh$DS))
+DS_mean_colombia <- mean(c(DS_Original_colombia$DS,
+                           DS_Option1_colombia$DS,
+                           DS_Option2_colombia$DS, 
+                           DS_Option3_colombia$DS, 
+                           DS_Option4_colombia$DS, 
+                           DS_Option5_colombia$DS))
 
-DS_perc_mean_colombia <- mean(c(DS_Original_colombia_hh$DS_perc,
-                                DS_Option1_colombia_hh$DS_perc,
-                                DS_Option2_colombia_hh$DS_perc, 
-                                DS_Option3_colombia_hh$DS_perc, 
-                                DS_Option4_colombia_hh$DS_perc, 
-                                DS_Option5_colombia_hh$DS_perc))
+DS_perc_mean_colombia <- mean(c(DS_Original_colombia$DS_perc,
+                                DS_Option1_colombia$DS_perc,
+                                DS_Option2_colombia$DS_perc, 
+                                DS_Option3_colombia$DS_perc, 
+                                DS_Option4_colombia$DS_perc, 
+                                DS_Option5_colombia$DS_perc))
 
 combinations_colombia  <- data_colombia %>% extract_indicators() %>% generate_combinations()
 colombia_idps <- data_colombia %>% filter(ID ==1)
@@ -1373,14 +1366,14 @@ In the Colombian case, it was only possible to assess the importance of selectin
 
 ```{r ind_colombia_table, out.width="98%"}
 
-dict_colombia <- readxl::read_excel("Data/dict.xlsx", sheet =  "colombia_hh")
+dict_colombia <- readxl::read_excel("Data/dict.xlsx", sheet =  "colombia")
 
 indicator_OLS_col <- bind_rows(
-  run_OLS(DS_Option1_colombia_hh),
-  run_OLS(DS_Option2_colombia_hh),
-  run_OLS(DS_Option3_colombia_hh),
-  run_OLS(DS_Option4_colombia_hh),
-  run_OLS(DS_Option5_colombia_hh)
+  run_OLS(DS_Option1_colombia),
+  run_OLS(DS_Option2_colombia),
+  run_OLS(DS_Option3_colombia),
+  run_OLS(DS_Option4_colombia),
+  run_OLS(DS_Option5_colombia)
 ) %>%
   group_by(term) %>%
   summarize(across(c(estimate, conf.low, conf.high), mean)) %>%
@@ -1465,11 +1458,11 @@ The lesson learnt from this is that indicators should cover the whole population
 
 The importance of selecting the right metric to combine the different indicators is summarised in Table \ref{tab:COL_metric} and the density plots in Figure \ref{fig:density_col}^[Note that in Colombia, the homogeneous cell approach was not fully implemented: IDP households were all together assessed in comparison to the national average and not sub-divided into cells.]. Overall, the variation and standard deviation in how many IDPs exit the stock is higher in the case of Colombia but follows a similar pattern as in the other three cases: 
 
-The most permissive metric options are again a full composite index and a regression-based approach. Both approaches are the most sensitive to the chosen indicators and produce a higher estimate of IDPs exiting the stock on average across simulations. However, in the case of Colombia, we find that the composite measure at the criterion level generates the second-highest exit from the IDP stock with around `r round(mean(DS_Option2_colombia_hh$DS_perc)*100,2)` % of IDPs leaving the stock on average. This result is largely an artefact of the fact that few different indicators are available for each sub-criterion. As a result, the composite indices on the criterion-level are made of very few components and essentially behave like a composite index across all 10 criteria (similar to option 1). 
+The most permissive metric options are again a full composite index and a regression-based approach. Both approaches are the most sensitive to the chosen indicators and produce a higher estimate of IDPs exiting the stock on average across simulations. However, in the case of Colombia, we find that the composite measure at the criterion level generates the second-highest exit from the IDP stock with around `r round(mean(DS_Option2_colombia$DS_perc)*100,2)` % of IDPs leaving the stock on average. This result is largely an artefact of the fact that few different indicators are available for each sub-criterion. As a result, the composite indices on the criterion-level are made of very few components and essentially behave like a composite index across all 10 criteria (similar to option 1). 
 
 \bigskip
 ```{r Col_metric}
-data_str_c <- c("DS_Original_colombia_hh",paste0("DS_Option",1:5, "_colombia_hh"))
+data_str_c <- c("DS_Original_colombia",paste0("DS_Option",1:5, "_colombia"))
  
 COL_metric <- data.frame(
   Var1 = options,
@@ -1504,12 +1497,12 @@ The density plots also reflect this pattern and demonstrate that in the case of 
 
 ```{r  density_plots_col, fig.cap="\\label{fig:density_col}Density of simulations for all possible metrics (Colombia)", out.width= "85%"}
 
-(plot_density(DS_Original_colombia_ind, "Pass/fail measure") + 
-    plot_density( DS_Option1_colombia_ind,"1: Full composite"))/
-  (plot_density( DS_Option2_colombia_ind,"2: Composite at criterion level") + 
-     plot_density( DS_Option3_colombia_ind, "3: Composite at sub-criterion level"))/  
-  (plot_density( DS_Option4_colombia_ind, "4: Comparison of homogeneous cells") + 
-     plot_density( DS_Option5_colombia_ind, "5: Classifier/regression-based"))
+(plot_density(DS_Original_colombia, "Pass/fail measure") + 
+    plot_density( DS_Option1_colombia,"1: Full composite"))/
+  (plot_density( DS_Option2_colombia,"2: Composite at criterion level") + 
+     plot_density( DS_Option3_colombia, "3: Composite at sub-criterion level"))/  
+  (plot_density( DS_Option4_colombia, "4: Comparison of homogeneous cells") + 
+     plot_density( DS_Option5_colombia, "5: Classifier/regression-based"))
 ```
 
 
@@ -1519,7 +1512,7 @@ Plotting the inter-rater agreement between the different metric options in Colom
 
 ```{r ira_col, fig.cap="\\label{fig:kappa-col}Inter-rater agreement between different metric options for Colombia. Metric option 3 is excluded as no IDPs were classified as exiting the stock.", out.width="80%"}
 
-metric_pairs_col<- read_csv("kappa/colombia_hh.csv") %>% 
+metric_pairs_col<- read_csv("kappa/colombia.csv") %>% 
   filter(x!= "4b: Algorithmic clustering") %>% 
   filter(y!= "4b: Algorithmic clustering")  %>% 
   mutate(rows = row_number()) %>% 

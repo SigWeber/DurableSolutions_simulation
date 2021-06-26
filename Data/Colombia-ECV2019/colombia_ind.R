@@ -1,6 +1,6 @@
 library(tidyverse)
 
-colombia <- source("Data/Colombia-ECV2019/colombia.R")$value
+colombia <- source("Data/Colombia-ECV2019/colombia_prep.R")$value
 
 # downsample host community
 colombia_ind <- 

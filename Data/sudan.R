@@ -18,7 +18,8 @@ sudan <- full_join(sudan, sudan_ind)
 sudan<- sudan %>% 
   rename(ID = migr_idp,WT = weight) %>% 
   filter(is.na(ID)==F) %>% 
-  mutate(across(is.character,as.numeric))
+  mutate(year_arrival = as_factor(year_arrival),
+         across(is.character,as.numeric))
 
 
 # identify potential IASC indicators for each subcriteria -------------
@@ -55,7 +56,7 @@ sudan <- sudan  %>%
 sudan <- sudan %>% 
   mutate(
     # Proportion living in housing/shelter  that is not overcrowded (< X persons per room)
-    I4_hous_overcrowd = ifelse(household_size > C_1_3_slrooms_n, 0, 1),
+    I4_hous_overcrowd = ifelse(household_size/3 > C_1_3_slrooms_n, 0, 1),
     
     # Proportion living in housing they legally own 
     I4_hous_ownership = case_when(
@@ -150,25 +151,31 @@ sudan <- sudan %>%
   I8_econ_account = C_4_16_acc_mobile_money,
   
   # Proportion not being poor (190)
-  I8_poor190 = ifelse(poorPPP_190 > 0.5,1,0),
+  I8_poor190 = ifelse(poorPPP_190 < 0.5,1,0),
   
   # Proportion not being poor (190)
-  I8_poor32 =  ifelse(poorPPP_320 > 0.5,1,0)
+  I8_poor32 =  ifelse(poorPPP_320 < 0.5,1,0)
   )
          
          
 # 4.1 Property restitution and compensation 
 sudan <- sudan %>% 
   mutate(
-    # Proportion that own property left behind
-    I9_hlp_own = C_2_6_land_legal_main_disp,
+    # # Proportion that own property left behind
+    # I9_hlp_own = C_2_6_land_legal_main_disp,
+    # 
+    # # Proportion with access to compensation mechanisms
+    # I9_hlp_access = H_2_11_legal_access_disp,
+    # 
+    # # Proportion with documentation to prove ownership
+    # I9_hlp_doc = ifelse(C_2_7_land_legal_main_disp_d<=3,1,0)
     
-    # Proportion with access to compensation mechanisms
-    I9_hlp_access = H_2_11_legal_access_disp,
-    
-    # Proportion with documentation to prove ownership
-    I9_hlp_doc = ifelse(C_2_7_land_legal_main_disp_d<=3,1,0)
-    
+    # Proportion living in housing they legally own (same as I4_hous_ownership)
+    I9_hous_ownership = case_when(
+      is.na(C_1_6_land_legal_main) == T ~ 0,
+      C_1_6_land_legal_main == 1 ~ 1,
+      C_1_6_land_legal_main == 0 ~0,
+      TRUE ~ NA_real_)
   )
 
 # 5.1. Documentation 
@@ -199,11 +206,24 @@ sudan <- sudan %>%
     C_1_1_housingtype == 11 ~ "Incomplete structure",
     TRUE ~ "Other"),
     
-    HH_placeholder_1 = 1,
-    HH_placeholder_2 = 1)
+    HH_year_o_farrival = year_arrival,
+    HH_times_displaced = pmin(I_1_7_disp_site, 3),
+    HH_arrived_with = case_when(
+      I_1_11_disp_arrive_with == 1 ~ "Alone",
+      I_1_11_disp_arrive_with == 2 ~ "With family",
+      I_1_11_disp_arrive_with == 3 ~ "With a larger group but not the family"),
+    HH_community_location = case_when(
+      I_1_16_disp_comm_loc == 1 ~ "Same district",
+      I_1_16_disp_comm_loc == 2 ~ "Same state",
+      I_1_16_disp_comm_loc == 5 ~ "Different state",
+      I_1_16_disp_comm_loc == 6 ~ "Outside Sudan")
+    )
+
+# welfare-measure
+sudan <- sudan |> mutate(PERCAPITA = tc_imp)
 
 # select variables
-sudan <- sudan %>% select(ID,WT, starts_with("HH_"), starts_with("I"), -starts_with("I_"))
+sudan <- sudan %>% select(ID, WT, starts_with("HH_"), starts_with("I"), -starts_with("I_"), PERCAPITA)
 
 # add household ID
 sudan <- sudan %>% mutate(HHID = row_number())
