@@ -24,7 +24,7 @@ tar_map(
   tar_target(DS_Option2, simulate_criterion(data)),
   tar_target(DS_Option3, simulate_subcriterion(data)),
   tar_target(DS_Option4, simulate_cells(data)),
-  tar_target(DS_Option4b, simulate_hclust(data)),
+  # tar_target(DS_Option4b, simulate_hclust(data)),
   tar_target(DS_Option5, simulate_classifier(data)),
 
   # And again without the HLP indicators
@@ -35,7 +35,7 @@ tar_map(
   tar_target(DS_Option3_nohlp, simulate_subcriterion(data_nohlp)),
   tar_target(DS_Option4_nohlp, simulate_cells(data_nohlp)),
   tar_target(DS_Option5_nohlp, simulate_classifier(data_nohlp)),
-  
+
   # Missing data
   tar_target(data_missing, mutate(data, across(matches("^I\\d+"), replace_na, 1))),
   tar_target(DS_Original_missing, simulate_IRIS_metric(data_missing)),
@@ -43,5 +43,15 @@ tar_map(
   tar_target(DS_Option2_missing, simulate_criterion(data_missing)),
   tar_target(DS_Option3_missing, simulate_subcriterion(data_missing)),
   tar_target(DS_Option4_missing, simulate_cells(data_missing)),
-  tar_target(DS_Option5_missing, simulate_classifier(data_missing))
+  tar_target(DS_Option5_missing, simulate_classifier(data_missing)),
+  
+  # Welfare comparison
+  tar_target(data_welfare, 
+             bind_rows(data |> filter(ID == 0) |> select(-starts_with("HH_")),
+                       data |> filter(ID == 0, !is.na(PERCAPITA)) |> select(-starts_with("HH_")) |> 
+                         mutate(ID = 1, 
+                                HH_WELFARE = ntile(PERCAPITA, 5), HH_placeholder1 = 1, HH_placeholder2 = 2))),
+  tar_target(DS_Option2_welfare, simulate_criterion(data_welfare)),
+  tar_target(DS_Option3_welfare, simulate_subcriterion(data_welfare)),
+  tar_target(DS_Option4_welfare, simulate_cells(data_welfare))
 )
