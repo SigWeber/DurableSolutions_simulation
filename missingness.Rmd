@@ -1,0 +1,231 @@
+---
+title: "Missing Data in the IRIS Solutions Measure"
+subtitle: "Discussion Note"
+output: word_document
+---
+  
+```{r setup, include = FALSE}
+library(targets)
+library(tarchetypes)
+
+library(tidyverse)
+
+source("simulations.R")
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4.5, fig.retina = 2, dev = "ragg_png")
+```
+
+
+```{r data}
+tar_load(starts_with("data"))
+```
+
+# The Challenge of Missing Data
+
+The calculation of IDP stock figures requires, inter alia, the estimation of population outflows of IDPs who've overcome key displacement-related vulnerabilities. IRIS sets forth a conceptual framework for the measurement of these outflows, but the proposed "solutions measure" falls short of being a workable statistical measure. As part of the EGRIS Sub-Group 3 Task-Team on the IRIS Solutions Measure, 7 challenges were identified as methodical gaps that need to be addressed before the solutions measure could be fully operationalized. Among them is the issue of handling missing data which is the subject of this discussion note.
+
+IRIS provides that _"[t]here may be situations where data are not available for all criteria or sub-criteria. In this case the composite measure cannot be fully implemented and a complete assessment cannot be made about whether or [not] the population has overcome key-displacement related vulnerabilities". (IRIS, para. 168)_.
+
+While this conservative approach can be understood from a protection perspective, preliminary results from the simulations being run by the task-team to test the viability of different formulations of the solutions measure suggest that this strict approach excludes sizable portions of the IDP population from ever being assessed for durable solutions.
+
+```{r missingness}
+missing_data <- 
+  list(Colombia = data_colombia,
+       Hargeisa = data_hargeisa,
+       Nigeria = data_nigeria,
+       Sudan = data_sudan) %>% 
+  map_dfr(function(data) {
+    combinations <- data %>% extract_indicators() %>% generate_combinations()
+    1:nrow(combinations) %>% 
+      map_dbl(~select(data, as.character(combinations[.x,])) %>% 
+                negate(complete.cases)() %>% 
+                mean()) %>% 
+      enframe(name = NULL, value = "missing")
+  }, .id = "dataset")
+
+missing_summary <- missing_data %>% group_by(dataset) %>% summarize(missing = mean(missing))
+
+missing_data %>% 
+  ggplot() + 
+  geom_histogram(aes(missing, after_stat(density)), fill = "#0072BC", color = "white", binwidth = .1, boundary = 1) +
+  geom_vline(aes(xintercept = missing), data = missing_summary) +
+  geom_text(aes(x = missing, y = Inf, label = scales::label_percent(accuracy = .01)(missing)),
+            hjust = -.05, vjust = "inward",
+            family = "Lato",
+            data = missing_summary) +
+  scale_x_continuous(labels = scales::label_percent(), breaks = seq(0, 1, .2)) +
+  scale_y_continuous(labels = function(x) {scales::label_percent()(x/10)}, breaks = seq(0, 10, 2)) +
+  facet_wrap(vars(dataset), nrow = 2) +
+  labs(x = "% of IDP households", y = "% of simulations",
+       title = "Distribution of Missing Data",
+       subtitle = "Across different indicator combinations") +
+  # hrbrthemes::theme_ipsum() +
+  # unhcRstyle::unhcr_theme() +
+  theme_minimal(base_family = "Lato", base_size = 12) +
+  theme(plot.title.position = "plot", panel.spacing = unit(1, "lines"))
+```
+
+On average, **`r scales::label_percent(accuracy = .01)(mean(missing_summary$missing))` of IDP households cannot be assessed for durable solutions** across the different contexts and indicator combinations, . Those are households that will remain in the IDP stock in perpetuity because of definitional issues rather than any inherent vulnerabilities.
+
+Another thing that clearly stands out from the chart is that, contrary to the conclusions of the simulations that found that indicator choice had little effect on assessment results, **the choice of indicators plays an important role in determining which households can or cannot be assessed under the solutions measure** as presently formulated. This is particularly the case for Colombia and Sudan where different indicator combinations result in a bimodal distribution of households with missing data. What sets these two surveys apart from the other two is the use of household rosters where individual-level variables on access to health, education, and employment are collected from each household member before being aggregated to make an assessment at the household level. This **use of household rosters introduces more missingness into the data**. To understand why, imagine a household being asked about their ability to access education. Without a roster, the question "do all children in your household go to school?" can be answered with a simple yes/no. In the presence of a roster, however, even if all the children do go to school, the questions on education may be irrelevant for other household members and those missing values trickle up when aggregating individual data to the household level.
+
+**Missing values** normally enter survey datasets through one of two channels: (i) **by design**, i.e. when a question is not administered to a certain respondent based on the questionnaire's skip-logic; and (ii) **due to non-response**, which happens when the respondent declines to answer a certain question for any reason. The former is a common design feature of most survey datasets and not a technical problem per se. The latter can be a source of bias if the likelihood of non-response is systematically correlated with individual characteristics, but it is negligible in most cases. Yet IRIS makes no distinction between the two even though 4 of the 10 solutions measure assessment criteria introduce missing values into the assessment by design.
+
+```{r indicators}
+tribble(~"Criteria", ~"Sub-Criteria", ~"Only asked to... (i.e. these sub-criteria will have missing values \"by design\")",
+        "Safety and security", "Victims of violence", "",
+        "", "Freedom of movement", "",
+        "Adequate standard of living", "Food security", "",
+        "", "Shelter and housing", "",
+        "", "Medical services", "Households that have had a medical need within a short reference period (typically the last 30 days)",
+        "", "Education", "Households with school-aged children (and sometimes youth)",
+        "Access to livelihoods", "Employment and livelihoods", "Households with working-age members participating in the labor force",
+        "", "Economic security", "",
+        "Restoration of housing, land and property", "Property restitution and compensation", "Households that owned property prior to displacement",
+        "Access to documentation", "Documentation", "") %>% 
+  knitr::kable()
+```
+
+That is, no determination could be made for the IRIS solutions measure for a childless IDP household, for example, since their educational vulnerability is undefined.
+
+# Options for Dealing with Missing Data
+Having established that missing data impedes the application of the IRIS solutions measure for a substantial portion of IDP households, the question becomes how to deal with this challenge. Three techniques are commonly employed in the statistical literature for handling missing data.
+
+The most basic approach is to conduct **complete case analysis**. This entails maintaining the IRIS approach of only assessing households with no missing information while extrapolating the share of assessed IDPs exiting the stock to the full IDP population. While the approach is conceptually simple and stays true to the wording of the IRIS, the validity of the calculation rests on the assumption that the data are missing completely at random – i.e., that the characteristics of households with missing data are no different from those for whom complete data is available. This is clearly not the case here where questionnaire skip-logic creates missing data patterns that vary systematically based on respondent household characteristics.
+
+A variation of the complete-case analysis, which is only applicable for metric option #4 (homogeneous cells), is **available-case analysis**. Whereas IRIS precludes households with missing data from being assessed, the available case method would include those households in the construction of IDP cells and calculate cell-wise indicator averages based on the households with non-missing data for the respective indicator only. This means that different indicators will be calculated based on different subsets of households within each cell thereby allowing households with missing data to exit the stock if the whole cell performs better on average than the host population benchmarks. The method is straightforward and simple to implement. Its downsides are that it only works for a single metric option and makes the same missing at random assumption as complete-case analysis.
+
+Then there is **imputation**. A class of loosely related methods that attempt to infer plausible values for missing data points which could have been observed were the data not missing. Imputation comes with its own set of challenges. First is whether to impute the missing raw survey data or the derived binary solutions indicator. If the former, there is nothing FDP-specific about the procedure to justify its standardization in IRIS and the issue is best left for NSOs to apply the methods they deem appropriate. Second, how would the uncertainty introduced by the imputation process be reflected in the final estimate of IDPs exiting the stock? Third, and most importantly, is the difficulty of interpreting implausible imputations. To continue with the running example, what would it mean to impute a "no pass" on the education criterion for a childless household? Another challenge with imputation is that it adds analytical complexity, which will make the solutions measure more difficult to apply for low-capacity NSOs.
+
+Looking past statistical methods, EGRIS may simply opt to **reinterpret missing values as the absence of vulnerability**. The idea finds justification in the fact that a household with no school-aged children cannot experience education-related vulnerabilities. This is essentially a reversal of the IRIS approach: whereas IRIS can be seen as implicitly replacing missing data points with a "no pass" to prevent IDP households from exiting the stock, this approach would basically assign IDP households a "pass" on the missing indicators to allow them to be assessed on the other indicators for which data is available.
+
+Given the undesirable properties of the first three alternatives, only the reinterpretation of missing values as the absence of vulnerability is recommended for further consideration by EGRIS.
+
+# Simulations
+
+To allow the task-team to arrive at an evidence-informed decision on the way forward, the simulations were re-run with the proposed missing data treatment option to quantify its impact on the share of IDPs exiting the stock. Only the key highlights from the simulations are presented here. Interested readers could find the full simulation results in the Annex.
+
+```{r simulations}
+simulations_data <- 
+  tar_objects(starts_with("DS")) %>% 
+  map_dfr(~tibble(metric = str_match(., "DS_(Original|Option\\d)_(missing)?_?(\\w+)")[,2],
+                  opt = str_match(., "DS_(Original|Option\\d)_(missing)?_?(\\w+)")[,3],
+                  dataset = str_match(., "DS_(Original|Option\\d)_(missing)?_?(\\w+)")[,4],
+                  DS_perc = tar_read(!!.) %>% select(DS_perc) %>% list())) %>% 
+  replace_na(list(opt = "iris")) %>%
+  unnest(DS_perc)
+
+simulations_data <- 
+  simulations_data %>% 
+  mutate(metric = 
+           fct_relevel(metric, "Original") %>% 
+           fct_recode("Pass/fail measure" = "Original",
+                      "1: Full composite" = "Option1",
+                      "2: Composite at criterion level" = "Option2",
+                      "3: Composite at sub-criterion level" = "Option3",
+                      "4: Comparison of homogeneous cells" = "Option4",
+                      "5: Classifier/regression-based" = "Option5"),
+         opt = 
+           fct_relevel(opt, "iris", "missing") %>% 
+           fct_recode("Original IRIS approach" = "iris",
+                      "Missing as not vulnerable" = "missing"),
+         dataset = str_to_sentence(dataset))
+
+simulations_summary <- 
+  simulations_data %>% group_by(dataset, opt, metric) %>% summarize(DS_perc = mean(DS_perc), .groups = "drop")
+```
+
+```{r simulations-bycountry}
+simulations_summary %>% 
+  group_by(dataset, opt) %>% 
+  summarize(DS_perc = mean(DS_perc), .groups = "drop") %>% 
+  pivot_wider(names_from = opt, values_from = DS_perc) %>% 
+  left_join(missing_summary) %>% 
+  relocate(missing, .after = dataset) %>% 
+  arrange(desc(missing)) %>% 
+  rename("Dataset" = dataset, "% Missing (avg.)" = missing) %>% 
+  bind_rows(summarize(., Dataset = "Average", across(-Dataset, mean))) |> 
+  mutate(across(-Dataset, scales::label_percent(accuracy = .01))) %>% 
+  knitr::kable(caption = "Average percentage of IDPs exiting the stock across metric and indicator combinations")
+```
+
+As expected, assessing households that would normally be excluded under IRIS because of missing data has a positive effect on the share of IDPs exiting the stock. The greater the share of missing data, the larger the gains from the application of missing-data treatments. The finding is also consistent across all metric options.
+
+```{r simulations-bymetric}
+
+simulations_summary %>% 
+  group_by(metric, opt) %>% 
+  summarize(DS_perc = mean(DS_perc), .groups = "drop") %>% 
+  pivot_wider(names_from = opt, values_from = DS_perc) %>% 
+  rename("Metric" = metric) %>% 
+  mutate(across(-Metric, scales::label_percent(accuracy = .01))) %>% 
+  knitr::kable(caption = "Average percentage of IDPs exiting the stock across datasets and indicator combinations")
+```
+
+The metric showing the highest increase (in relative terms) is the composite index at sub-criterion level. Since this option requires the aggregation of multiple indicators per sub-criterion, the presence of missing data in any of those indicators would automatically exclude the household from assessment under original IRIS approach. Reinterpreting missing data as the absence of vulnerability would allow all households in the stock to be assessed resulting in a three-fold increase in the exit rate.
+
+# Recommendations on the Way Forward
+
+In order to advance the work on the formulation of the solutions measure, it is recommended that the final formulation of the measure:
+
+* Distinguish between data that is missing by design and data that is missing due to non-response. The latter of which should be explicitly left to the NSOs' own missing data treatment procedures. In the absence of such procedures, or where certain households continue to have missing data after the application of said procedures, then those households should be excluded from assessment under the solutions measure.
+* Specify how missing data should be handled when aggregating individual-level data to the household-level, where appropriate.
+* Replace the IRIS restriction on the assessment of households with missing data under the solutions measure with a provision providing that data points that are missing by design should be interpreted as the absence of vulnerability.
+
+\newpage
+
+# Annex
+
+```{r simulations-plotter}
+plot_sim <- function(country) {
+  simulations_data %>% 
+    filter(dataset == country) %>% 
+    ggplot() + 
+    geom_density(aes(DS_perc, fill = opt), alpha = .5) + 
+    geom_vline(aes(xintercept = DS_perc, color = opt),
+               linetype = 1, size = 1,
+               data = function(x) {x %>% group_by(metric, opt) %>% summarize(DS_perc = mean(DS_perc))}) +
+    scale_x_continuous(labels = scales::label_percent()) +
+    scale_color_manual(values = c("grey50", "#0072BC", "#FAEB00"),
+                       aesthetics = c("color", "fill")) +
+    facet_wrap(vars(metric), scales = "free", ncol = 2) +
+    labs(x = "% of IDP households", y = "density",
+         color = NULL, fill = NULL,
+         title = "Distribuition of IDP Households Exiting the Stock",
+         subtite = "Across different indicator combinations") +
+    theme_minimal(base_family = "Lato", base_size = 12) +
+    theme(plot.title.position = "plot", panel.spacing = unit(1, "lines"),
+          legend.position = "top")
+}
+```
+
+## Colombia
+
+```{r colombia-plot}
+plot_sim("Colombia")
+```
+
+\newpage
+
+## Hargeisa
+
+```{r hargeisa-plot}
+plot_sim("Hargeisa")
+```
+
+\newpage
+
+## Nigeria
+
+```{r nigeria-plot}
+plot_sim("Nigeria")
+```
+
+\newpage
+
+## Sudan
+
+```{r sudan-plot}
+plot_sim("Sudan")
+```
