@@ -1,0 +1,153 @@
+---
+title: "Revisiting the IRIS Solutions Measure's Layered Methodology"
+subtitle: "Discussion Note"
+output: word_document
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+library(targets)
+
+set.seed(1)
+
+source("simulations.R")
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(fig.width = 6, dpi = 300)
+```
+
+# A simple, but flawed, layered methodology
+
+IRIS outlines what it refers to as "a simple, layered methodology" for estimating the size of IDP populations that have overcome key displacement-related vulnerabilities.
+
+> _The methodology used for calculating the composite measure is a simple pass/no pass (or binary) scenario at sub-criteria level, which is then aggregated to produce a score at the criteria level and ultimately an overall score for the measure._
+
+This brief discussion note argues that the layered methodology of the IRIS solutions measure artificially constrains the number of IDPs that can exit the stock. A simple probabilistic argument can be used to explain why. Assume, for example, that the benchmark values for the first three indicators in the assessment framework were 49%, 18%, and 82%, respectively. Then the probability of a randomly selected _host community_ household performing better than the benchmark on the first indicator is 49%. Their probability of performing better than the benchmark on the first two indicators is 49% * 18% = 8.82%. And the probability of performing better than the benchmark on all three indicators is 49% * 18% * 82% = 7.23%^[Assuming no correlation between the sub-criteria indicators.]. Extend the calculation to all nine indicators in the assessment framework and it's easy to see how the probabilities become diminishingly small very quickly. The following chart illustrates how small these probabilities become in practice in the four datasets used for the simulations:
+
+```{r probs, cache = TRUE}
+prob_passing <- function(dataset) {
+  combs <- 
+    dataset |> extract_indicators() |> generate_combinations() |> slice_sample(n = 1000)
+  
+  1:nrow(combs) |> 
+    map_dbl(~filter(dataset, ID == 0) |> 
+              select(WT, all_of(as.character(combs[.,]))) |> 
+              summarize(across(-WT, weighted.mean, WT, na.rm = TRUE)) |> 
+              reduce(~.x*.y)) |> 
+    enframe(name = NULL, value = "p")
+}
+
+datasets <- 
+  list(sudan = tar_read(data_sudan), 
+       nigeria = tar_read(data_nigeria), 
+       hargeisa = tar_read(data_hargeisa), 
+       colombia = tar_read(data_colombia))
+
+probs <- datasets |> map_dfr(prob_passing, .id = "dataset")
+
+probs |> 
+  ggplot() +
+  geom_boxplot(aes(dataset, p)) +
+  scale_x_discrete(labels = str_to_sentence) +
+  scale_y_continuous(labels = scales::label_percent(accuracy=1)) +
+  coord_cartesian(ylim = c(0, .5)) +
+  labs(x = NULL, y = "Distribution across\nall possible indicator combinations", 
+       title = "Probability that a host community household\nperforms better than the benchmark on all sub-criteria") +
+  theme_minimal()
+```
+
+That is, the median probability of a host community member meeting the IRIS requirement of outperforming the benchmark value on all nine assessment sub-criteria simultaneously is less than 5% in the four contexts considered. And if the IRIS requirements to score a pass on the solutions measure are so unlikely to be met by host community members, then they are doubly so for the more vulnerable IDPs.
+
+# Putting the validity of the layered methodology to test
+
+The restrictiveness of the IRIS requirement was already apparent in the simulation results of the metric options that either fully (i.e., option #3: composite measure at the sub-criterion level, and option #4: the homogeneous cells approach) or partially (i.e., option #2: composite measure at the criterion level) comply with the requirement. It could be argued that the strict requirement of achieving a pass on all sub-criteria is necessary to avoid prematurely removing vulnerable IDP households from the stock. However, if the solutions measure is to gain acceptance by the broader statistical community, it needs to demonstrate "construct validity". Meaning that the conclusions drawn from the solutions measure should be, to some extent, consistent with those of other well-established measures of living standards and well-being. The most widely recognized one being monetary poverty which serves as a strong proxy for the overall living conditions of a household.
+
+To assess the relationship between the solutions measure and monetary poverty, the simulations were rerun on three datasets that include per capita income/expenditure data. Host community households were grouped by wealth quintile and compared in lieu of IDPs to the benchmark under the two metric options that fully comply with the IRIS requirement. If the association holds, households in the upper wealth quintiles would score better than the benchmark in larger numbers since they experience fewer vulnerabilities than the average household.
+
+```{r stats-data, results='hide'}
+tar_load(contains("welfare"))
+
+data <- 
+  tribble(~opt, ~dataset,   ~data,                 ~sim,
+          2,    "colombia", data_welfare_colombia, DS_Option2_welfare_colombia,
+          3,    "colombia", data_welfare_colombia, DS_Option3_welfare_colombia,
+          4,    "colombia", data_welfare_colombia, DS_Option4_welfare_colombia,
+          2,    "nigeria",  data_welfare_nigeria,  DS_Option2_welfare_nigeria,
+          3,    "nigeria",  data_welfare_nigeria,  DS_Option3_welfare_nigeria,
+          4,    "nigeria",  data_welfare_nigeria,  DS_Option4_welfare_nigeria,
+          2,    "sudan",    data_welfare_sudan,    DS_Option2_welfare_sudan,
+          3,    "sudan",    data_welfare_sudan,    DS_Option3_welfare_sudan,
+          4,    "sudan",    data_welfare_sudan,    DS_Option4_welfare_sudan)
+
+data <- 
+  data |> 
+  mutate(stats = map2(data, sim, 
+                      ~select(.y, Durable_Solutions) |> 
+                        unnest(Durable_Solutions) |> 
+                        left_join(.x |> filter(ID == 1) |> select(HHID, HH_WELFARE), by = "HHID") |> 
+                        mutate(exited = as.numeric(exited)) |> 
+                        group_by(HH_WELFARE) |> 
+                        summarize(exited = mean(exited, na.rm = TRUE))))
+
+data <- data |> select(-data, -sim) |> unnest(stats)
+```
+
+```{r viz-opt-3n4}
+data |> 
+  filter(opt == 3 | opt == 4) |> 
+  ggplot() +
+  geom_col(aes(as_factor(HH_WELFARE), exited, fill = dataset), position = position_dodge()) +
+  geom_vline(aes(xintercept = x), color = "grey", data = tibble(x = seq(1.5, 4.5, 1))) +
+  scale_x_discrete(labels = function(x) {case_when(x == 1 ~ "Poorest",
+                                                   x == 5 ~ "Wealthiest",
+                                                   TRUE ~ as.character(x))}) +
+  scale_y_continuous(labels = scales::label_percent(accuracy=1)) +
+  scale_fill_manual(labels = str_to_sentence,
+                    values = thematic::okabe_ito(3)) +
+  facet_wrap(vars(opt), ncol = 1, scales = "free_y",
+             labeller = as_labeller(\(x) {c("Option #2: Composite measure at the criterion level",
+                                            "Option #3: Composite measure at the sub-criterion level",
+                                            "Option #4: Homogenous-cells approach")[as.numeric(x)-1]})) +
+  labs(x = NULL,
+       y = "Average across\nall possible indicator combinations",
+       fill = NULL,
+       title = "Share of host community households\nthat perform better than the benchmark",
+       subtitle = "By wealth quintile") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+Yet results from the simulations suggest otherwise. In all three contexts, less than 5% of the wealthiest host community households meet the IRIS requirement under either metric option. Also clear from the simulations is the absence of any consistent relation between the measurement of living standards using monetary poverty and the IRIS-compliant metrics.
+
+Repeating the exercise for the partially-compliant composite measure at the criterion level results in somewhat similar findings. Households in Nigeria and Sudan continue to demonstrate no clear association between wealth and performance on the proposed IRIS metric. Menawhile, in the case of Colombia, relaxing the IRIS requirement allows the expected relation between wealth and solutions to manifest. 
+
+```{r viz-opt-2, fig.height=3}
+data |> 
+  filter(opt == 2) |> 
+  ggplot() +
+  geom_col(aes(as_factor(HH_WELFARE), exited, fill = dataset), position = position_dodge()) +
+  geom_vline(aes(xintercept = x), color = "grey", data = tibble(x = seq(1.5, 4.5, 1))) +
+  scale_x_discrete(labels = function(x) {case_when(x == 1 ~ "Poorest",
+                                                   x == 5 ~ "Wealthiest",
+                                                   TRUE ~ as.character(x))}) +
+  scale_y_continuous(labels = scales::label_percent(accuracy=1)) +
+  scale_fill_manual(labels = str_to_sentence,
+                    values = thematic::okabe_ito(3)) +
+  facet_wrap(vars(opt), ncol = 1, scales = "free_y",
+             labeller = as_labeller(\(x) {c("Option #2: Composite measure at the criterion level",
+                                            "Option #3: Composite measure at the sub-criterion level",
+                                            "Option #4: Homogenous-cells approach")[as.numeric(x)-1]})) +
+  labs(x = NULL,
+       y = "Average across\nall possible indicator combinations",
+       fill = NULL,
+       title = "Share of host community households\nthat perform better than the benchmark",
+       subtitle = "By wealth quintile") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+# Conclusions and the way forward
+
+The objective of this discussion note is to underline that the low number of exits under the metric options compliant with the IRIS requirement of achieving a pass on every single sub-criterion is because the requirement is difficult to pass by design, not due to any inherent vulnerabilities among IDP households. Holding host community members to the same standard would render virtually everyone vulnerable -- an implausible proposition that would undermine trust in the IRIS solutions measure. Moreover, a solutions measure that doesn't allow IDPs to exit the stock defeats the purpose of having a solutions measure in the first place.
+
+To advance work on the IRIS solutions measure, the task-team would have to relax, or do away with, the requirement of achieving a pass on all sub-criteria simultaneously. Relaxing the requirement to require a pass at the criterion level only ensures that the final measure remains close in spirit to the original methodology, though the simulations suggest that it will not perform equally well across different contexts (compare the results of Colombia to the other two countries). It also raises the question of how to weigh the sub-criteria within the criteria, because otherwise sub-criteria within criteria with one or two sub-criteria would have more influence on the final outcome than sub-criteria of criteria with several sub-criteria. On the other hand, removing the requirement altogether opens the door to the adoption of metric options that are highly variable and sensitive to the choice of indicators. Either way, a decision needs to be made to narrow down the choice of metrics for future consideration.
