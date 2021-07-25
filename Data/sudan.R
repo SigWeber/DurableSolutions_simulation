@@ -151,21 +151,16 @@ sudan <- sudan %>%
 # 4.1 Property restitution and compensation 
 sudan <- sudan %>% 
   mutate(
-    # # Proportion that own property left behind
-    # I9_hlp_own = C_2_6_land_legal_main_disp,
-    # 
-    # # Proportion with access to compensation mechanisms
-    # I9_hlp_access = H_2_11_legal_access_disp,
-    # 
-    # # Proportion with documentation to prove ownership
-    # I9_hlp_doc = ifelse(C_2_7_land_legal_main_disp_d<=3,1,0)
-    
-    # Proportion living in housing they legally own (same as I4_hous_ownership)
-    I9_hous_ownership = case_when(
-      is.na(C_1_6_land_legal_main) == T ~ 0,
-      C_1_6_land_legal_main == 1 ~ 1,
-      C_1_6_land_legal_main == 0 ~0,
-      TRUE ~ NA_real_)
+    # Proportion that own property left behind
+    I9_hlp_own = if_else(ID == 1, C_2_6_land_legal_main_disp, 1),
+
+    # Proportion with access to compensation mechanisms
+    I9_hlp_access = if_else(ID == 1, H_2_11_legal_access_disp, 1),
+
+    # Proportion with documentation to prove ownership
+    I9_hlp_doc = case_when(ID == 0 ~ 1,
+                           C_2_7_land_legal_main_disp_d<=3 ~ 1,
+                           TRUE ~ 0)
   )
 
 # 5.1. Documentation 

@@ -171,10 +171,7 @@ hargeisa_hh <- hargeisa_hh %>%
       case_when(
         ID == 0 ~ 1,
         ID == 1 & hargeisa120 == "Yes" ~ 1,
-        ID == 1 & str_detect(hargeisa120, "^No") ~ 0),
-    
-    # Proportion with written/registered tenure
-    I9_registered = as.numeric(str_detect(hargeisa113, "^Yes"))
+        ID == 1 & str_detect(hargeisa120, "^No") ~ 0)
   )
 
 # 5.1. Documentation 
