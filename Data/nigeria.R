@@ -233,7 +233,7 @@ nigeria  <- nigeria  %>%
     
     # Proportion with documents or access to replace missing documents if lost
     I10_doc_replace =  case_when(
-      ID == 0 & is.na(H_2_9_legal_id_disp) == T ~ 1,
+      ID == 0 ~ 1,
       H_2_9_legal_id_disp == 0 ~ 1,
       H_2_9_legal_id_disp == 1 & H_2_10_legal_id_acc_disp == 1 ~ 1,
       H_2_9_legal_id_disp == 1 & H_2_10_legal_id_acc_disp == 0 ~ 0,

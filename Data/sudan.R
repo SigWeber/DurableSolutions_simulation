@@ -3,24 +3,13 @@ library(tidyverse)
 # preparations ---------------------------------------------------------
 
 # read data
-sudan <- readxl::read_xlsx("Data/Sudan.xlsx", sheet = 3, guess_max = 15000)
-sudan_ind <- readxl::read_xlsx("Data/Sudan.xlsx", sheet = 4, guess_max = 15000)%>% 
-  select(household_id,B_3_6_hhm_edu_ever, B_3_3_hhm_edu_current,
-         B_4_2_1_emp_7d_prim,B_4_1_5_unemp_7d_dur,B_1_13_legal_id,
-         B_1_11_birth_cert_yn) %>% 
-  mutate(across(is.character,as.numeric))%>% 
-  group_by(household_id) %>% 
-  summarise_all(mean,na.rm = T)
-
-sudan <- full_join(sudan, sudan_ind)
+sudan <- readxl::read_excel("Data/Sudan.xlsx", sheet = 3, na = "NA", guess_max = 15000)
+sudan_ind <- readxl::read_excel("Data/Sudan.xlsx", sheet = 4, na = "NA", guess_max = 15000)
 
 # identify idps vs hosts and add household weights
-sudan<- sudan %>% 
-  rename(ID = migr_idp,WT = weight) %>% 
-  filter(is.na(ID)==F) %>% 
-  mutate(year_arrival = as_factor(year_arrival),
-         across(is.character,as.numeric))
-
+sudan <- sudan %>% 
+  rename(ID = migr_idp, WT = weight) %>% 
+  filter(!is.na(ID))
 
 # identify potential IASC indicators for each subcriteria -------------
 
@@ -115,30 +104,31 @@ sudan <- sudan %>%
 
 
 # 2.4 Education 
-sudan <- sudan %>% 
-  
-  # Walking distance to next school below average
-  mutate(I6_edu_dist = (C_1_26_tedu_d * 60) + C_1_26_tedu_d + (C_1_26_tedu_d / 60)) %>% 
-  mutate(I6_edu_dist = ifelse(I6_edu_dist >= mean(I6_edu_dist,na.rm=T),0,1),
+sudan <- 
+  sudan %>% 
+  mutate(
+    # Walking distance to next school below average
+    I6_edu_dist = (C_1_26_tedu_d * 60) + C_1_26_tedu_d + (C_1_26_tedu_d / 60),
+    I6_edu_dist = ifelse(I6_edu_dist >= mean(I6_edu_dist,na.rm=T),0,1))
+
+sudan_ind <- 
+  sudan_ind |> 
+  mutate(
+    # Children went to school
+    I6_ever_school = ifelse(B_3_6_hhm_edu_ever == 0,0,1),
     
-    # Households in which at least one person went to school
-    I6_ever_school = ifelse(B_3_6_hhm_edu_ever ==0,0,1),
-    
-    # Households in which at least one person currently goes to school
+    # Children currently go to school
     I6_educ_child = ifelse(B_3_3_hhm_edu_current == 0,0,1)
-    
   )
 
 # 3.1 Employment and livelihoods
-sudan <- sudan %>% 
+sudan_ind <- sudan_ind %>% 
   mutate(
-    
-    
     # Proportion engaging in any paid job
     I7_job_employ = ifelse(is.na(B_4_2_1_emp_7d_prim) ==  F,1,0),
     
     # Proportion not reporting unemployment
-    I7_job_unemploy = ifelse(is.na(B_4_1_5_unemp_7d_dur) == T,1,0)
+    I7_job_unemploy = as.numeric(B_4_1_1_hhm_job_s == 1 & B_4_1_3_hhm_available != 0)
     )
 
 # 3.2 Economic security 
@@ -161,31 +151,26 @@ sudan <- sudan %>%
 # 4.1 Property restitution and compensation 
 sudan <- sudan %>% 
   mutate(
-    # # Proportion that own property left behind
-    # I9_hlp_own = C_2_6_land_legal_main_disp,
-    # 
-    # # Proportion with access to compensation mechanisms
-    # I9_hlp_access = H_2_11_legal_access_disp,
-    # 
-    # # Proportion with documentation to prove ownership
-    # I9_hlp_doc = ifelse(C_2_7_land_legal_main_disp_d<=3,1,0)
-    
-    # Proportion living in housing they legally own (same as I4_hous_ownership)
-    I9_hous_ownership = case_when(
-      is.na(C_1_6_land_legal_main) == T ~ 0,
-      C_1_6_land_legal_main == 1 ~ 1,
-      C_1_6_land_legal_main == 0 ~0,
-      TRUE ~ NA_real_)
+    # Proportion that own property left behind
+    I9_hlp_own = if_else(ID == 1, C_2_6_land_legal_main_disp, 1),
+
+    # Proportion with access to compensation mechanisms
+    I9_hlp_access = if_else(ID == 1, H_2_11_legal_access_disp, 1),
+
+    # Proportion with documentation to prove ownership
+    I9_hlp_doc = case_when(ID == 0 ~ 1,
+                           C_2_7_land_legal_main_disp_d<=3 ~ 1,
+                           TRUE ~ 0)
   )
 
 # 5.1. Documentation 
-sudan <- sudan %>% 
+sudan_ind <- sudan_ind %>% 
   mutate(
     # Proportion with documents to prove identity 
-    I10_doc_id = ifelse(B_1_13_legal_id >0,1,0),
+    I10_doc_id = ifelse(B_1_13_legal_id == 1,1,0),
 
     # Proportion having a birth certificate
-    I10_doc_birth = ifelse(B_1_11_birth_cert_yn>0,1,0)
+    I10_doc_birth = ifelse(B_1_11_birth_cert_yn == 1, 1, 0)
     
   )
 
@@ -219,15 +204,40 @@ sudan <- sudan %>%
       I_1_16_disp_comm_loc == 6 ~ "Outside Sudan")
     )
 
+# aggregate individual data
+sudan_ind_children <- 
+  sudan_ind |> 
+  select(household_id, agegrp = B_0_1_hhm_age, starts_with("I6")) |> 
+  filter(agegrp %in% c("06 to 11", "12 to 14", "15 to 17")) |> 
+  group_by(household_id) |> 
+  summarize(across(starts_with("I6"), compose(as.numeric, any, as.logical)))
+
+sudan_ind_workingage <- 
+  sudan_ind |> 
+  select(household_id, agegrp = B_0_1_hhm_age, starts_with("I7")) |> 
+  filter(agegrp %in% c("15 to 17", "18 to 24", "24 to 49", "50 to 66")) |> 
+  group_by(household_id) |> 
+  summarize(across(starts_with("I7"), compose(as.numeric, any, as.logical)))
+
+sudan_ind_all <- 
+  sudan_ind |> 
+  select(household_id, agegrp = B_0_1_hhm_age, starts_with("I10")) |> 
+  group_by(household_id) |> 
+  summarize(across(starts_with("I10"), compose(as.numeric, any, as.logical)))
+
+sudan_ind <- list(sudan_ind_all, sudan_ind_children, sudan_ind_workingage) |> reduce(left_join)
+
+# combine household and individual data
+sudan <- sudan |> left_join(sudan_ind)
+
+# add household ID
+sudan <- sudan %>% mutate(HHID = household_id)
+
 # welfare-measure
 sudan <- sudan |> mutate(PERCAPITA = tc_imp)
 
 # select variables
-sudan <- sudan %>% select(ID, WT, starts_with("HH_"), starts_with("I"), -starts_with("I_"), PERCAPITA)
-
-# add household ID
-sudan <- sudan %>% mutate(HHID = row_number())
+sudan <- sudan %>% select(ID, WT, starts_with("HH_"), starts_with("I"), -starts_with("I_"), PERCAPITA, HHID)
 
 # final dataset ----
-rm(sudan_ind)
 sudan
