@@ -87,7 +87,7 @@ persons <-
     I6_literate = P6160 != "No",
     
     # School attendance
-    I6_school_attend = if_else(between(P6040, 5, 17), as.numeric(P8586 != "No"), NA_real_),
+    I6_school_attend = P8586 != "No",
     
     # Attending official educational establishment
     I6_school_official = P5673 == " Oficial")
@@ -156,21 +156,21 @@ colombia_ind_children <-
   select(ID, dwelling, household, age = P6040, matches("^I6")) |> 
   filter(between(age, 5, 17)) |> 
   group_by(ID, dwelling, household) |> 
-  summarize(across(matches("^I6"), compose(as.numeric, all)))
+  summarize(across(matches("^I6"), compose(as.numeric, any)))
 
 colombia_ind_workingage <- 
   persons |> 
   select(ID, dwelling, household, age = P6040, matches("^I(7|8)")) |> 
   filter(between(age, 15, 64)) |> 
   group_by(ID, dwelling, household) |> 
-  summarize(across(matches("^I(7|8)"), compose(as.numeric, all)))
+  summarize(across(matches("^I(7|8)"), compose(as.numeric, any)))
 
 colombia_ind_adults <- 
   persons |> 
   select(ID, dwelling, household, age = P6040, matches("^I(1|5|10)")) |> 
   filter(age >= 15) |> 
   group_by(ID, dwelling, household) |> 
-  summarize(across(matches("^I(1|5|10)"), compose(as.numeric, all)))
+  summarize(across(matches("^I(1|5|10)"), compose(as.numeric, any)))
 
 colombia_ind <- 
   persons |> 

@@ -222,12 +222,12 @@ hargeisa_ind_child <-
   select(age = hargeisa10, matches("^I(5|6)"), hargeisa179) |> 
   filter(between(age, 5, 17)) |> 
   group_by(hargeisa179) |> 
-  summarize(across(matches("^I(5|6)"), ~all(.==1)))
+  summarize(across(matches("^I(5|6)"), ~any(.==1)))
 
 hargeisa_ind_all <- 
   hargeisa_ind |> 
   group_by(hargeisa179) |> 
-  summarize(across(starts_with("I10"), ~all(.==1)))
+  summarize(across(starts_with("I10"), ~any(.==1)))
 
 hargeisa_ind <- left_join(hargeisa_ind_all, hargeisa_ind_child) |> mutate(across(-hargeisa179, as.numeric))
 

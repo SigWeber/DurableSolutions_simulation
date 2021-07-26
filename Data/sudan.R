@@ -210,20 +210,20 @@ sudan_ind_children <-
   select(household_id, agegrp = B_0_1_hhm_age, starts_with("I6")) |> 
   filter(agegrp %in% c("06 to 11", "12 to 14", "15 to 17")) |> 
   group_by(household_id) |> 
-  summarize(across(starts_with("I6"), compose(as.numeric, all, as.logical)))
+  summarize(across(starts_with("I6"), compose(as.numeric, any, as.logical)))
 
 sudan_ind_workingage <- 
   sudan_ind |> 
   select(household_id, agegrp = B_0_1_hhm_age, starts_with("I7")) |> 
   filter(agegrp %in% c("15 to 17", "18 to 24", "24 to 49", "50 to 66")) |> 
   group_by(household_id) |> 
-  summarize(across(starts_with("I7"), compose(as.numeric, all, as.logical)))
+  summarize(across(starts_with("I7"), compose(as.numeric, any, as.logical)))
 
 sudan_ind_all <- 
   sudan_ind |> 
   select(household_id, agegrp = B_0_1_hhm_age, starts_with("I10")) |> 
   group_by(household_id) |> 
-  summarize(across(starts_with("I10"), compose(as.numeric, all, as.logical)))
+  summarize(across(starts_with("I10"), compose(as.numeric, any, as.logical)))
 
 sudan_ind <- list(sudan_ind_all, sudan_ind_children, sudan_ind_workingage) |> reduce(left_join)
 
