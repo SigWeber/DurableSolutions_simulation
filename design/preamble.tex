@@ -19,6 +19,7 @@ $endif$
 
 \usepackage{newfloat}
 \usepackage{caption}
+\usepackage{subfig}
 \usepackage[dvipsnames*,svgnames]{xcolor}
 \usepackage{tikz}
 \newcommand{\framedbox}[2][0.96\textwidth]{
@@ -230,13 +231,16 @@ $if(title)$
 
 {
 \thispagestyle{empty}
-\vspace*{-3cm}
-\hspace*{-2.5cm}\includegraphics{design/JDC_banner.png}
-\vspace*{3cm}
-\linebreak
+%\vspace*{-3cm}
+%\hspace*{-2.5cm}\includegraphics{design/JDC_banner.png}
+%\vspace*{3cm}
+%\linebreak
 
 \begin{center}
-\setstretch{2}{\huge Towards a statistical measure for durable solutions to internal displacement: a simulation to assess indicator and metric choice}
+\setstretch{2}{\huge Towards a harmonized statistical measure for exits from the stock of internally displaced persons}
+
+\vspace*{1.5cm}
+\setstretch{1.5}{\Large Refining the composite measure for overcoming key displacement-related vulnerabilities proposed in the International Recommendations on IDP Statistics}
 
 \vspace*{1.5cm}
 
@@ -249,13 +253,16 @@ $if(title)$
 
 \vfill
 
-\begin{figure}[h]       
-    \mbox{\includegraphics[width=0.4\textwidth]{design/JDC.png}}   
-    \hspace{10px}
-    \mbox{\includegraphics[width=0.3\textwidth]{design/unhcr.png}}
-    \hspace{16px}
-    \mbox{\includegraphics[width=0.2\textwidth]{design/jips.png}}
-\end{figure}
+
+\noindent This paper was developed under the guidance of a dedicated \textit{solutions measure task team} within Subgroup 3 of the Expert Group on Refugee and IDP Statistics (EGRIS). The task team would like to express particular appreciation for leading the development of this paper to Sigrid Weber (World Bank – UNHCR Joint Data Center on Forced Displacement), Hisham Galal (UNHCR), Kristine Vegard (Joint IDP Profiling Service) and Felix Schmieding (World Bank – UNHCR Joint Data Center on Forced Displacement).
+
+%\begin{figure}[h]       
+ %   \mbox{\includegraphics[width=0.4\textwidth]{design/JDC.png}}   
+  %  \hspace{10px}
+   % \mbox{\includegraphics[width=0.3\textwidth]{design/unhcr.png}}
+    %\hspace{16px}
+    %\mbox{\includegraphics[width=0.2\textwidth]{design/jips.png}}
+% \end{figure}
 
 \let\maketitle\oldmaketitle
 \maketitle
