@@ -8,13 +8,12 @@ output:
     fig_caption: yes
     latex_engine: pdflatex
     template: design/preamble.tex
-  word_document:
-    toc: yes
 linkcolor: blue!50!black
 link-citations: yes
 geometry: margin=1in
 fontsize: 11pt
 spacing: single
+always_allow_html: true
 ---
 
 ```{r setup, include=FALSE}
@@ -1915,17 +1914,68 @@ The final sub-criterion 5.1 could be measured by using the **SDG indicator 16.9.
 \bigskip\noindent\textbf{It is suggested that EGRIS recommends the DS Library indicator 5.1.1: Target population currently in possession of valid birth certificates, national ID cards, or other personal identification documents to measure the sub-criterion 5.1. (\textit{Documentation}). }
 
 
-### Empirical performance of the recommended indicators \textcolor{orange}{-- Work-in-progress}
+## Empirical performance of the recommended indicators \textcolor{orange}{-- Work-in-progress}
 
-\textcolor{orange}{\textbf{This section is currently under development. The plan is to implement the recommended indicators as closely as possible in the 4 datasets (not all SDGs will be measureable) and to demonstrate how many IDPs exit the stock if we implement the recommendations as closely as possible. This section will be kept brief.}}
+How do the proposed indicators for each sub-criterion perform empirically? This section summarises the IDP exit from the stock that is generated if we implement the proposed indicators for each country example and each metric option. Note that the datasets do not contain *all* proposed indicators. Hence, the approach was to implement the proposed statistical indicators *as closely as possible*. 
 
+
+```{r nigeria_selected_ind}
+SDG_nigeria <- read_csv("Selected_indicators/nigeria_selected_indicators.csv") 
+knitr::kable(SDG_nigeria,caption = "\\label{tab:ind_nigeria}Average percentage of IDPs exiting the stock in Nigeria with the recommended indicators",booktabs=T, linesep="")%>%
+  kable_styling(latex_options = "HOLD_position",font_size = 10)
+  
+```
+
+
+Table \ref{tab:ind_nigeria} summarises how many IDPs exit from the stock in Nigeria for each metric option if the proposed indicators are chosen. Across the suggested indicators and all metric options, around `r round(mean(SDG_nigeria$"Percentage exiting the stock"),2)`% of the IDP households exit the stock - although this result is driven by metric options 1 and 5. Given the suggested indicators, the other metric options do not yield substantial exits from the stock. 
+
+In terms of implementation challenges, Table \ref{tab:indicators_proposed_eval} summarises how the proposed indicators were implemented in Nigeria and how difficult each indicator was to pass. For instance, around 96.5% of the IDP households report that they feel safe walking in their area (recommended SDG indicator 16.1.4). This indicator was the "easiest" to pass while only 2.35% of the IDP households live outside of slums or informal settings. The reported "difficulty to pass", however, must be understood as a relative concept. While shelter and housing might not be sufficiently durable for IDPs, this might also be the case for the host community to which the IDP households are compared. In the table, one should also note the high percentage of missingness for the proposed indicator on education. Overall, many of the proposed indicators from the SDG indicators or the Durable Solutions Library could not be fully implemented in Nigeria or had to be adapted. 
+
+\begin{table}[htpb!]
+\centering
+\footnotesize
+\caption{Presence and implementation of proposed indicators for the IRIS solutions measure in Nigeria}
+\label{tab:indicators_proposed_eval}
+\scalebox{0.9}{
+\begin{tabularx}{\textwidth}{lXXXX}
+\toprule
+ Indicator & Achievement of sub-criterion &  Implementation \\
+\midrule
+1.1 Victims of violence: SDG 16.1.4 & 96.52\% pass this indicator (0\% Missingness) & Fully implemented \\
+1.2 Freedom of movement: DS 1.4.1 &94.73 \% pass this indicator  (0\% Missingness) & Fully implemented  \\
+2.1 Food security: SDG 2.1.2 & 38.74\% pass this indicator (0.69\% Missingness) & Ordinal scale of food security rather than Rasch model; shorter reference frame of 6 months \\
+2.2 Shelter and housing: SDG 11.1.1 & 2.35\% pass this indicator (1.45\% Missingness) & No indicator for the sub-component "location of housing", security of tenure not always asked \\
+2.3 Medical services: DS 2.1.8 & 98.58\% pass this indicator (0\% Missingness) & Shorter reference frame of 6 months \\
+2.4 Education: SDG 4.1.2 & 93.75\% pass this indicator (30.98\% Missingness) & No measure of school completion/attendance: approximated with current school attendance \\
+3.1 Employment and livelihoods: SDG 8.5.2 & 82.31\% pass this indicator (0\% Missingness) & No measure of unemployment: approximated with income sources from regular work \\
+3.2 Economic security: DS 3.2.2 & 10.38\% pass this indicator (1.31\% Missingness) & Below 1.9 USD PPP 2011 poverty line used instead of national poverty line  \\
+4.1 Security of tenure: SDG 1.4.2 & 3.54\% pass this indicator (0.52\% Missingness) & Fully implemented \\
+5.1 Documentation: DS 5.1.1 & 78.41\% pas this indicator (9.64\% Missingness) & Proxied with question whether they lost documentation in displacement \\
+\bottomrule
+\end{tabularx}
+}
+\end{table}
+
+Another crucial question is whether the proposed indicators will lead to unusual numbers of exits, i.e. the results are either much higher or much lower than the exit estimates under other indicator combinations. For Nigeria, this does not seem to be the case. If we compare the point estimate of around 19.6% of exits under a full composite metric  (achieved by the proposed indicators) with the original simulations for this metric option (see Figure \ref{selected_simulation_nigeria}), one can see that the estimated exit is slightly higher than the mean but it is not an extreme outlier. This is also the case if we look into a regression-based metric option. This is first and tentative evidence that the indicator selection proposed in this paper is suitable. 
+
+```{r nigeria_comparison, fig.height=2,fig.width=5.5, fig.cap="\\label{selected_simulation_nigeria}Simulation density in Nigeria for metric option 1 and 2. Highlighted in dark green is the IDP exit from the stock under the proposed indicators."}
+gridExtra::grid.arrange(plot_density(DS_Option1_nigeria,"1: Full composite")+
+   geom_vline(aes(xintercept = 0.196),size=1.1, linetype = "dashed", color = "darkgreen"),
+
+plot_density(DS_Option5_nigeria,"5: Classifier/regression-based")+
+   geom_vline(aes(xintercept = 0.4123),size=1.1, linetype = "dashed", color = "darkgreen"),
+ncol=2)
+```
+
+ \textcolor{orange}{-- Section will be expanded for the other 3 cases as soon as I get to it. It takes a bit of time to code the indicators SDG compliant}
+ 
 ## Conclusions on challenge 2
 
 ### Summary of findings
 
 This study on the effect of indicator selection on the exit of IDPs from the stock demonstrates that the solutions measure is not particularly sensitive or volatile to the selection of one indicator over another, and this is true across countries and contexts. This provides some justification for EGRIS to make a global recommendation on the indicators that can be used to operationalize the sub-criteria of the solutions measure, and may facilitate and de-politicize the debate as EGRIS moves towards such a recommendation. The notable exception to this finding is sub-criterion 4.1., which is discussed in greater detail in the chapter below on overcoming challenge 3. The analysis shows the large potential effect introduced in practical application by the recommendation currently provided in the IRIS, which is that households that have data missing in any sub-criterion (even if "by design") should not exit the IDP stock. This issue is further discussed in the chapter below on overcoming challenge 4. Furthermore, and to a lesser degree than the above two issues, this chapter also revealed that IRIS lacks concrete suggestions for how to address the difference between data collected at the household versus data collected at the individual level. Failure to provide concrete guidance on how to aggregate individual-level data to the household level for the solutions measure can easily result in incomparability across countries and/or datasets. This issue is further discussed in the chapter below on overcoming challenge 9. Finally, the simulations generally confirmed th recommendations made in IRIS to use commonly available, standardized and high-quality indicators that maximize coverage in the IDP population. 
 
-Based on these findings and a review of the SDG indicators and the Durable Solutions Library, a suggestion for proposed indicators has been made. Table \ref{tab:indicators_proposed} specifies the proposed indicators for the IRIS solutions measure as well as a possible alternative where applicable.\footnote{\textcolor{orange}{\textbf{A full questionnaire that covers the proposed solutions indicators could be attached once we have reached consensus.}}}
+Based on these findings and a review of the SDG indicators and the Durable Solutions Library, a suggestion for proposed indicators has been made. Table \ref{tab:indicators_proposed} specifies the proposed indicators for the IRIS solutions measure as well as a possible alternative where applicable.\footnote{\textcolor{orange}{\textbf{A full questionnaire that covers the proposed solutions indicators could be attached once we have reached consensus.}}} First empirical implementations of the proposed indicators in the four displacement examples used in this paper are promising: the proposed indicators seem to generate estimates of the IDP exit from the stock in line with estimates from the universe of potential indicators.
 
 
 ### Recommendation
