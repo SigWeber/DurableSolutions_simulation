@@ -129,3 +129,31 @@ use_classifier <- function(data, sim_data, benchmark, x) {
   
   data %>% filter(ID == 1) %>% transmute(HHID, exited = IDP_prob < threshold)
 }
+
+# Option 6: Use pairwise comparisons ----------------------------------------
+use_pairwise <- function(data, sim_data, benchmark, x) {
+  idps <- data |> select(WT, as.character(sim_data[x,]))
+  hc <- benchmark |> select(WT, as.character(sim_data[x,]))
+  
+  hc <- hc |> count(across(-WT), wt = WT, name = "WT")
+  bench <-
+    cross_df(list(x = 1:nrow(hc),
+                  y = 1:nrow(hc))) |>
+    mutate(pass = map2_lgl(x, y, \(x, y) all(hc[x,1:(ncol(hc)-1)] >= hc[y,1:(ncol(hc)-1)]))) |>
+    group_by(x) |>
+    summarize(pass = weighted.mean(pass, hc$WT[y])) |>
+    summarize(pass = weighted.mean(pass, hc$WT[x])) |> 
+    pull(pass)
+  
+  idps <- idps |> count(across(-WT), wt = WT, name = "WT")
+  exits <-
+    cross_df(list(x = 1:nrow(idps),
+                  y = 1:nrow(hc))) |>
+    mutate(pass = map2_lgl(x, y, \(x, y) all(idps[x,1:(ncol(idps)-1)] >= hc[y,1:(ncol(hc)-1)]))) |>
+    group_by(x) |>
+    summarize(exited = weighted.mean(pass, hc$WT[y]) >= bench)
+  
+  data |> 
+    left_join(idps |> mutate(exited = exits$exited) |> select(-WT)) |> 
+    select(HHID, exited)
+}
