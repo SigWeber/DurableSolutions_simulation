@@ -29,13 +29,19 @@ hargeisa_hh <- hargeisa_hh %>%
       hargeisa133 == "No" ~ 0,
       hargeisa133 == "Yes" ~ 1,
       grepl("Only to some extent",hargeisa133) == T ~ 0),
+    
+    # Proportion feeling very or moderately safe walking at night or during the day
+    I1_SDG_16.1.4 = case_when(
+      hargeisa133 == "No" ~ 0,
+      hargeisa133 == "Yes" ~ 1,
+      grepl("Only to some extent",hargeisa133) == T ~ 1)
   )
 
 # 1.2. Freedom of movement
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    # Problems visiting public places
-    I2_move = case_when(
+    # Feeling free to move: approximated with visiting public places 
+    I2_DS_1.4.1 = case_when(
       hargeisa137 == "No" ~ 1,
       hargeisa137 == "Yes" ~ 0)
   )
@@ -43,8 +49,8 @@ hargeisa_hh <- hargeisa_hh %>%
 # 2.1. Food security 
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    # Inability to pay for food
-    I3_pay_food = case_when(
+    # Food Insecurity Experience Scale, approximated with ability to pay for food
+    I3_DS_2.1.2 = case_when(
       hargeisa52 == "No" ~ 1,
       hargeisa52 == "Yes" ~ 0),
     
@@ -67,24 +73,37 @@ hargeisa_hh <- hargeisa_hh %>%
       hargeisa124 == "Yes" ~ 1,
       hargeisa124 == "No" ~ 0),
     
+    # Security of tenure: Proportion being legally recognized owner of dwelling and having a formal document to proof it
+    # Proportion with documents to prove ownership of property 
+    I4_secure_tenure = case_when(
+      grepl("No, ",hargeisa113) ~ 0,
+      grepl("Yes, ",hargeisa113) ~ 1,
+      TRUE ~ NA_real_),
+    
     # Proportion having access to clean water
     I4_hous_water = ifelse(hargeisa126 == "Tank" | hargeisa126 == "Bottled/bought", 1, 0),
     
     # Proportion having flushing toilet in household
-    I4_hous_toilet = as.numeric(hargeisa109=="Yes"),
-    
-    # Proportion having bath/shower in household
-    I4_hous_bath = as.numeric(hargeisa108 == "Yes")
-  )
+    I4_hous_toilet = as.numeric(hargeisa109=="Yes"|hargeisa108 == "Yes")
+  ) 
+
+hargeisa_hh <- hargeisa_hh %>% 
+  mutate(I4_SDG_11.1.1 = 
+           ifelse(
+             rowSums(hargeisa_hh %>%  
+                       select(I4_secure_tenure,I4_hous_water,I4_hous_toilet,
+                              I4_hous_inadequat,I4_hous_overcrowd),na.rm=T) == 5, 0, 1))
 
 # 2.3 Medical services 
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    
-    # Proportion with access to essential health care when needed. 
-    I5_med_access = case_when(
+
+    # Target population who accessed essential health care services the last time they needed it in the past 12 months
+    I5_DS_2.1.8  = case_when(
+      hargeisa67 == "No" ~ 1,
       hargeisa67 == "Yes" & hargeisa73 == "Yes" ~ 1,
-      hargeisa67 == "Yes" & hargeisa73 == "No" ~ 0),
+      hargeisa67 == "Yes" & hargeisa73 == "No" ~ 0,
+      TRUE ~ NA_real_),
     
     # Births attended by skilled health personnel within 
     I5_med_birth = case_when(
@@ -107,9 +126,10 @@ hargeisa_ind <- hargeisa_ind %>%
     I6_educ_child = case_when(hargeisa36 == "Yes" ~ 1,
                               hargeisa36 == "No" ~ 0),
     
-    # Proportion children (5-17) ever attended school
-    I6_ever_school = case_when(hargeisa37 == "Yes" ~ 1,
-                               hargeisa37 == "No" ~ 0),
+    # SDG indicator 4.1.2: Completion rate (primary education): not present, 
+    # approximated with whether any household member ever went to school
+    I6_SDG_4.1.2 = case_when(hargeisa37 == "Yes" ~ 1,
+                             hargeisa37 == "No" ~ 0),
     
     # Proportion children (5-17) currently attending school
     I6_curr_school = case_when(hargeisa39 == "Yes" ~ 1,
@@ -124,14 +144,14 @@ hargeisa_ind <- hargeisa_ind %>%
 # 3.1 Employment and livelihoods
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    # Breadwinner in the family
-    I7_breadwinner = ifelse(hargeisa166 > 0, 1, 0))
+    # Unemployment: approximated with Breadwinner in the family
+    I7_SDG_8.5.2 = ifelse(hargeisa166 > 0, 1, 0))
 
 # 3.2 Economic security 
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    # Proportion capable of unexpected expenses without borrowing money
-    I8_unexpect_expense = as.numeric(hargeisa60 == "No"), 
+    # Poverty: Approximated with proportion capable of unexpected expenses without borrowing money
+    I8_SDG_1.2.1 = as.numeric(hargeisa60 == "No"), 
     
     # Proportion experiencing difficulties paying rent
     I8_rent_problems = case_when(
@@ -171,14 +191,17 @@ hargeisa_hh <- hargeisa_hh %>%
       case_when(
         ID == 0 ~ 1,
         ID == 1 & hargeisa120 == "Yes" ~ 1,
-        ID == 1 & str_detect(hargeisa120, "^No") ~ 0)
+        ID == 1 & str_detect(hargeisa120, "^No") ~ 0),
+    
+    # Security of tenure
+    I9_SDG_1.4.2 = I4_secure_tenure
   )
 
 # 5.1. Documentation 
 hargeisa_ind <- hargeisa_ind %>% 
   mutate(
-    # Proportion with documents to prove identity 
-    I10_doc_id = case_when(hargeisa42 == "Has a certificate" |
+    # DS Library indicator 5.1.1: Target population currently in possession of documentation 
+    I10_DS_5.1.1 = case_when(hargeisa42 == "Has a certificate" |
                              hargeisa44 == "Yes" |
                              hargeisa45 == "Yes" |
                              hargeisa46 == "Yes" ~ 1,
@@ -188,7 +211,7 @@ hargeisa_ind <- hargeisa_ind %>%
     I10_doc_replace =  case_when(
       hargeisa50 == "Yes" ~ 1,
       hargeisa50 == "No" ~ 0,
-      TRUE ~ I10_doc_id),
+      TRUE ~ I10_DS_5.1.1),
     
     # Proportion having a birth certificate
     I10_doc_birth = ifelse(hargeisa42 == "Has a certificate"|

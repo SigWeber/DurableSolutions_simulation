@@ -28,9 +28,29 @@ sudan <- sudan %>%
     
     # Proportion of respondents reporting an experienced crime to police
     I1_sec_rep = H_3_8_report_yn,
+    
+    # SDG_16.1.4: Proportion feeling safe walking at night or during the day
+    I1_SDG_16.1.4 = case_when(
+      H_3_4_safe_walking_night < 3 ~ 1,
+      H_3_5_safe_walking_day < 3 ~ 1,
+      H_3_4_safe_walking_night >= 3 ~ 0,
+      H_3_5_safe_walking_day >= 3 ~ 0,
+      TRUE ~ NA_real_)
   )
 
+# 1.2. Freedom of movement
+# Feeling free to move not covered in questionnaire
+
 # 2.1. Food security 
+food_insecurity_components <- c("C_4_3_nomoney", 
+                                "C_4_4_cop_lessprefrerred",
+                                "C_4_5_cop_borrow_food",
+                                "C_4_6_cop_limitportion",
+                                "C_4_7_cop_limitadult",
+                                "C_4_8_cop_reducemeals",
+                                "C_4_9_cop_sellassets", 
+                                "C_4_10_cop_sellfem")
+
 sudan <- sudan  %>% 
   mutate(
     # Proportion always able to pay for food in last 7 days
@@ -38,9 +58,15 @@ sudan <- sudan  %>%
     
     # Proportion not having to borrow money for food
     I3_no_borrow = ifelse(C_4_5_cop_borrow_food == 1,0,1)
-  )
-    
 
+  ) %>% 
+  # Food insecurity experience scale
+  # FIXME: Supposed to be a weighted Rasch model (see FAO's RM.weights package) but 
+  # unclear how to implement, here only as ordinal scale
+  mutate_at(food_insecurity_components, ~ ifelse(.>=1,1,0)) %>% 
+  # high values imply high food security
+  mutate(I3_DS_2.1.2= (8 - rowSums(.[,food_insecurity_components])))
+    
 # 2.2 Shelter and housing 
 sudan <- sudan %>% 
   mutate(
@@ -87,19 +113,34 @@ sudan <- sudan %>%
       C_1_21_toilet == 8 ~ 0,
       C_1_21_toilet == 9 ~ 1,
       TRUE ~ NA_real_
-    )
-  )
+    ),
+    
+    # Structural quality of the housing and permanency of the structure:
+    I4_hous_permanent = case_when(
+      # living in non-durable (incomplete, not intended, makeshift)
+      C_1_1_housingtype >= 11 ~ 0, 
+      C_1_1_housingtype < 11 ~ 1,
+      # squatting or living in temporary shelter by UNHCR
+      C_1_4_tenure %in% c(5,6,7,8) ~ 0,
+      C_1_4_tenure == 1000  ~ NA_real_,
+      C_1_4_tenure %in% c(1,2,3,4) ~ 1,
+      TRUE ~ NA_real_)) %>% 
+  
+  # SDG_11.1.1: Living outside of slums/informal housing
+  mutate(
+    I4_SDG_11.1.1 = ifelse(rowSums(sudan %>% select(starts_with("I4_hous")))==5,1,0))
+
 
 # 2.3 Medical services 
-
 sudan <- sudan %>% 
   
   # Proportion in below average distance to health center
   mutate(I5_med_dist = (C_1_27_thealth_d * 60) + C_1_27_thealth_h + (C_1_27_thealth_m / 60)) %>% 
   mutate(I5_med_dist = ifelse(I5_med_dist >= mean(I5_med_dist,na.rm=T),0,1),
          
-         # Proportion satisfied with health care services
-         I5_med_satis = ifelse(H_2_4_health_satisfaction > 3, 1, 0)
+         # Proportion satisfied with health care services 
+         # used as proxy for DS 2.1.8 Access to helt chare services when needed
+         I5_DS_2.1.8 = ifelse(H_2_4_health_satisfaction > 3, 1, 0)
          )
 
 
@@ -114,8 +155,10 @@ sudan <-
 sudan_ind <- 
   sudan_ind |> 
   mutate(
-    # Children went to school
-    I6_ever_school = ifelse(B_3_6_hhm_edu_ever == 0,0,1),
+    
+    # SDG indicator 4.1.2: Completion rate (primary education): not present, 
+    # approximated with whether children ever went to school
+    I6_SDG_4.1.2 = ifelse(B_3_6_hhm_edu_ever == 0,0,1),
     
     # Children currently go to school
     I6_educ_child = ifelse(B_3_3_hhm_edu_current == 0,0,1)
@@ -124,8 +167,8 @@ sudan_ind <-
 # 3.1 Employment and livelihoods
 sudan_ind <- sudan_ind %>% 
   mutate(
-    # Proportion engaging in any paid job
-    I7_job_employ = ifelse(is.na(B_4_2_1_emp_7d_prim) ==  F,1,0),
+    # Proportion engaging in any paid job (used as proxy fpr SDG 8.5.2: Unemployment)
+    I7_SDG_8.5.2 = ifelse(is.na(B_4_2_1_emp_7d_prim) ==  F,1,0),
     
     # Proportion not reporting unemployment
     I7_job_unemploy = as.numeric(B_4_1_1_hhm_job_s == 1 & B_4_1_3_hhm_available != 0)
@@ -141,7 +184,7 @@ sudan <- sudan %>%
   I8_econ_account = C_4_16_acc_mobile_money,
   
   # Proportion not being poor (190)
-  I8_poor190 = ifelse(poorPPP_190 < 0.5,1,0),
+  I8_SDG_1.2.1 = ifelse(poorPPP_190 < 0.5,1,0),
   
   # Proportion not being poor (190)
   I8_poor32 =  ifelse(poorPPP_320 < 0.5,1,0)
@@ -160,14 +203,18 @@ sudan <- sudan %>%
     # Proportion with documentation to prove ownership
     I9_hlp_doc = case_when(ID == 0 ~ 1,
                            C_2_7_land_legal_main_disp_d<=3 ~ 1,
-                           TRUE ~ 0)
+                           TRUE ~ 0),
+
+    # Security of tenure
+    I9_SDG_1.4.2 = I4_hous_ownership
+      
   )
 
 # 5.1. Documentation 
 sudan_ind <- sudan_ind %>% 
   mutate(
-    # Proportion with documents to prove identity 
-    I10_doc_id = ifelse(B_1_13_legal_id == 1,1,0),
+    # DS Library indicator 5.1.1: Target population currently in possession of documentation 
+    I10_DS_5.1.1 = ifelse(B_1_13_legal_id == 1,1,0),
 
     # Proportion having a birth certificate
     I10_doc_birth = ifelse(B_1_11_birth_cert_yn == 1, 1, 0)

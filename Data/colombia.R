@@ -30,8 +30,9 @@ persons <-
 persons <- 
   persons %>%
   mutate(
-    # Satisfaction with current level of security
-    I1_sec_satisfaction = str_detect(P1898, "([6-9]|'Totalmente satisfecho\\(a\\))"))
+    # Proportion feeling very or moderately safe walking at night or during the day:
+    # approximated with satisfaction with current level of security
+    I1_SDG_16.1.4 = str_detect(P1898, "([6-9]|'Totalmente satisfecho\\(a\\))"))
 
 dwellings <- 
   dwellings %>% 
@@ -40,15 +41,14 @@ dwellings <-
     I1_natural_disaster = transmute(., across(starts_with("P4065S"), ~.=="No")) %>% reduce(~.x&.y))
 
 # 1.2 Freedom of movement
-
 ## Not applicable...
 
 # 2.1. Food security 
 households <- 
   households %>% 
   mutate(
-    # Living above the food security line
-    I3_food_secure = PERCAPITA > 137350)
+    # Living above the food security line (approximation for DS 2.1.2)
+    I3_DS_2.1.2  = PERCAPITA > 137350)
 
 # 2.2 Shelter and housing 
 households <- 
@@ -57,8 +57,8 @@ households <-
     # Overcrowded households
     I4_overcrowding = CANT_PERSONAS_HOGAR/P5000 <= 3,
     
-    # Legally occupied dwelling
-    I4_legal_tenure = !str_detect(P5095, "(hecho|colectiva)"))
+    # Security of tenure: Proportion being legally recognized owner of dwelling and having a formal document to proof it
+    I4_secure_tenure = !str_detect(P5095, "(hecho|colectiva)"))
 
 dwellings <- 
   dwellings %>% 
@@ -73,8 +73,9 @@ dwellings <-
 persons <- 
   persons %>% 
   mutate(
-    # Satisfaction with current level of health
-    I5_health_satisfaction = str_detect(P1897, "([6-9]|'Totalmente satisfecho\\(a\\))"),
+    # Target population who accessed essential health care services the last time they needed it in the past 12 months
+    # Approximated with Satisfaction with current level of health
+    I5_DS_2.1.8 = str_detect(P1897, "([6-9]|'Totalmente satisfecho\\(a\\))"),
     
     # In possession of health insurance
     I5_health_insurance = P6090 != "No")
@@ -86,8 +87,8 @@ persons <-
     # Can read and write
     I6_literate = P6160 != "No",
     
-    # School attendance
-    I6_school_attend = P8586 != "No",
+    # SDG indicator 4.1.2: Completion rate (primary education):  School attendance
+    I6_SDG_4.1.2 = P8586 != "No",
     
     # Attending official educational establishment
     I6_school_official = P5673 == " Oficial")
@@ -102,8 +103,8 @@ persons <-
     # Employment rate
     I7_in_employment = P6240 == "Trabajando",
     
-    # Not unemployed
-    I7_not_unemployed = P6240 != "Buscando trabajo",
+    # Unemployment: Not unemployed
+    I7_SDG_8.5.2 = P6240 != "Buscando trabajo",
     
     # Employment duration - indefinite or fixed term
     I7_employment_term = P6460 == "A termino Indefinido",
@@ -119,7 +120,7 @@ households <-
   households %>% 
   mutate(
     # Living above the national poverty line
-    I8_poor = PERCAPITA > 327674,
+    I8_SDG_8.5.2 = PERCAPITA > 327674,
     
     # Written lease - reduced risk of eviction
     I8_written_lease = P3006 == "Escrito",
@@ -137,15 +138,15 @@ persons <-
     I8_income_satisfaction = str_detect(P1896, "([6-9]|'Totalmente satisfecho\\(a\\))"))
 
 # 4.1 Property restitution and compensation 
-
-## Not applicable...
+households <- households %>% 
+  mutate(I9_SDG_1.4.2 = I4_secure_tenure)
 
 # 5.1. Documentation 
 persons <- 
   persons %>% 
   mutate(
-    # In possession of identity documents
-    I10_id_doc = P1894 != "No tiene documento de identidad")
+    # DS Library indicator 5.1.1: Target population currently in possession of documentation 
+    I10_DS_5.1.1 = P1894 != "No tiene documento de identidad")
 
 # prepare dataset for simulations -----------------------------------------------
 
@@ -187,6 +188,14 @@ colombia_hh <-
 
 # merge everything into one dataset
 colombia <- left_join(colombia_hh, colombia_ind)
+
+# combine I4 indicators
+colombia <- colombia %>% 
+  mutate(
+    I4_SDG_11.1.1 = ifelse(rowSums(colombia %>% select(I4_overcrowding, I4_secure_tenure,
+                                                        I4_water, I4_sanitation))< 4, 0, 1)
+  )
+
 
 # add weighting variable
 colombia <- colombia |> left_join(persons |> count(ID, dwelling, household, wt = WT, name = "WT"))

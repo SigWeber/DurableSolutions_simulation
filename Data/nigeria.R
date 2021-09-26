@@ -1,4 +1,5 @@
 library(tidyverse)
+# library(RM.weights)
 
 # preparations ---------------------------------------------------------
 
@@ -13,7 +14,6 @@ nigeria <- nigeria %>% rename(WT = weight)
 
 # identify potential IASC indicators for each subcriteria -------------
 
-
 # 1.1 Victims of violence
 nigeria<- nigeria %>% 
   mutate(
@@ -25,6 +25,7 @@ nigeria<- nigeria %>%
       H_4_1_safe_violence == 4 ~ 0,
       H_4_1_safe_violence == 5 ~ 0,
       TRUE ~ NA_real_),
+    
     # Proportion feeling very or moderately safe walking at night
     I1_sec_night = case_when(
       H_4_2_safe_walking_night == 1 ~ 1,
@@ -33,6 +34,7 @@ nigeria<- nigeria %>%
       H_4_2_safe_walking_night == 4 ~ 0,
       H_4_2_safe_walking_night == 5 ~ 0,
       TRUE ~ NA_real_),
+    
     # Proportion feeling very or moderately safe walking during the day
     I1_sec_day = case_when(
       H_4_3_safe_walking_day == 1 ~ 1,
@@ -42,23 +44,32 @@ nigeria<- nigeria %>%
       H_4_3_safe_walking_day == 5 ~ 0,
       TRUE ~ NA_real_),
     
+    # Proportion feeling very or moderately safe walking at night or during the day
+    I1_SDG_16.1.4 = case_when(
+      H_4_2_safe_walking_night == 1 ~ 1,
+      H_4_2_safe_walking_night == 2 ~ 1,
+      H_4_3_safe_walking_day == 1 ~ 1,
+      H_4_3_safe_walking_day == 2 ~ 1,
+      H_4_3_safe_walking_day %in% 3:5 |H_4_2_safe_walking_night %in% 3:5 ~ 0,
+      TRUE ~ NA_real_),
+    
     # Proportion experiencing a security incident
-    I1_sec_inc  = ((rowSums(nigeria %>% select(contains("H_4_11")) == 1, na.rm=T) > 0) * 1),
+    I1_sec_inc  = ifelse(((rowSums(nigeria %>% select(contains("H_4_11")) == 1, na.rm=T) > 0) * 1)<= 0, 1, 0),
     
     # Proportion experiencing and reporting a security incident
-    I1_sec_rep = H_4_12_report_yn,
+    I1_sec_rep = ifelse(H_4_12_report_yn >= 1, 1, 0),
     
     # Proportion accessing formal dispute resolution mechanisms
-    I1_sec_formal = ifelse(H_4_4_dispute_resolve > 5 & H_4_4_dispute_resolve < 1000,1,0),
+    I1_sec_formal = ifelse(H_4_4_dispute_resolve > 5 & H_4_4_dispute_resolve < 1000,0,1),
     
     # Proportion finding it easy to access dispute resolution mechanisms
     I1_sec_easy = case_when(
-      H_4_6_report_access == 1 ~ 1,
-      H_4_6_report_access == 2 ~ 1,
-      H_4_6_report_access == 3 ~ 0,
-      H_4_6_report_access == 4 ~ 0,
-      H_4_6_report_access == 5 ~ 0,
-      H_4_7_report_challenge == 1 ~ 0, 
+      H_4_6_report_access == 1 ~ 0,
+      H_4_6_report_access == 2 ~ 0,
+      H_4_6_report_access == 3 ~ 1,
+      H_4_6_report_access == 4 ~ 1,
+      H_4_6_report_access == 5 ~ 1,
+      H_4_7_report_challenge == 1 ~ 1, 
       TRUE ~ NA_real_),
     
     # Proportion finding dispute resolution effective
@@ -72,52 +83,52 @@ nigeria<- nigeria %>%
       TRUE ~ NA_real_)
   )
 
-
 # 1.2. Freedom of movement
 nigeria <- nigeria %>% 
   mutate(
     # Feeling free to move 
-    I2_feel_free = H_4_1_move_free
+    I2_DS_1.4.1 = H_4_1_move_free
   )
 
 
 # 2.1. Food security 
 nigeria <- nigeria %>% 
   # Food insecurity scale
-  mutate(I3_food_insecurity_scale = rowSums(
+  # FIXME: is currently an ordinal scale rather than Rasch model (as in FAO package RM.weights)
+  mutate(I3_I3_DS_2.1.2 = (8-rowSums(
     nigeria[,c("C_4_1_nomoney","C_4_2_cop_lessprefrerred","C_4_3_cop_borrow_food",
                "C_4_4_cop_limitportion","C_4_5_cop_limitadult","C_4_6_cop_reducemeals",
-               "C_4_7_cop_sellassets", "C_4_8_cop_sellfem")], na.rm=T))
-
+               "C_4_7_cop_sellassets", "C_4_8_cop_sellfem")], na.rm=T)))
+# high values are high food security
 
 # 2.2 Shelter and housing 
 nigeria <- nigeria %>% 
   mutate(
     
-    # Proportion living in non-durable (incomplete, not intended, makeshift)
-    I4_hous_indurable = ifelse(C_1_1_housingtype >= 11,1,0),
+    # Proportion living in durable (not incomplete, intended, not makeshift)
+    I4_hous_indurable = ifelse(C_1_1_housingtype >= 11,0,1),
     
-    # Proportion living in overcrowded shelter
-    I4_hous_overcrowd = ifelse(hhdensity_sl > 1 , 1, 0),
+    # Proportion not living in overcrowded shelter
+    I4_hous_overcrowd = ifelse(hhdensity_sl > 3 , 0, 1),
     
-    # Proportion squatting
+    # Proportion not squatting
     I4_hous_squat = case_when(
-      C_1_7_tenure == 2  ~ 1,
-      C_1_7_tenure == 7  ~ 1,
-      C_1_7_tenure == 8  ~ 1,
-      C_1_7_tenure == 9  ~ 1,
+      C_1_7_tenure == 2  ~ 0,
+      C_1_7_tenure == 7  ~ 0,
+      C_1_7_tenure == 8  ~ 0,
+      C_1_7_tenure == 9  ~ 0,
       C_1_7_tenure == 1000  ~ NA_real_,
-      TRUE ~ 0), 
+      TRUE ~ 1), 
     
-    # Proportion squatting or living in temporary shelter by UNHCR
+    # Proportion not squatting or living in temporary shelter by UNHCR
     I4_hous_temporary = case_when(
-      C_1_7_tenure == 1  ~ 1,
-      C_1_7_tenure == 2  ~ 1,
-      C_1_7_tenure == 7  ~ 1,
-      C_1_7_tenure == 8  ~ 1,
-      C_1_7_tenure == 9  ~ 1,
+      C_1_7_tenure == 1  ~ 0,
+      C_1_7_tenure == 2  ~ 0,
+      C_1_7_tenure == 7  ~ 0,
+      C_1_7_tenure == 8  ~ 0,
+      C_1_7_tenure == 9  ~ 0,
       C_1_7_tenure == 1000  ~ NA_real_,
-      TRUE ~ 0), 
+      TRUE ~ 1), 
     
     # Proportion owning or renting their housing
     I4_hous_ownrent = case_when(
@@ -137,6 +148,13 @@ nigeria <- nigeria %>%
       TRUE ~ NA_real_
     ),
     
+    # Proportion with secure tenure: legally recognized owner of dwelling and having a formal document to proof it
+    I4_secure_tenure = case_when(
+      C_1_9_land_legal_main == 1 & C_1_10_land_legal_main_d %in% c(1,2) ~ 1,
+      C_1_9_land_legal_main == 1 & C_1_10_land_legal_main_d %in% 3  ~ 0,
+      C_1_9_land_legal_main == 0  ~ 0,
+      is.na(C_1_9_land_legal_main) == T ~ 0,
+      TRUE ~ NA_real_),
     
     # Proportion getting their drinking water from improved sources 
     I4_hous_water = ifelse(watersource == 1, 1,0),
@@ -144,18 +162,33 @@ nigeria <- nigeria %>%
     # Proportion facing no water obstacles
     I4_hous_waccess = ifelse(C_1_14_water_obstacle == 0,1,0),
     
-    
     # Proportion having access to improved sanitation facilities
-    I4_hous_toilet = ifelse(C_1_21_toilet%in% c(1:7,9),1,0)
+    I4_hous_toilet = ifelse(C_1_21_toilet%in% c(1:7,9),1,0),
+    
+    # Proportion living in permanent housing structurews
+    I4_hous_permanent = case_when(
+      # living in non-durable (incomplete, not intended, makeshift)
+      C_1_1_housingtype >= 11 ~ 0, 
+      C_1_1_housingtype <= 11 ~ 1, 
+      # squatting or living in temporary shelter by UNHCR
+      C_1_7_tenure %in% c(1,2,7,8,9) ~ 0,
+      C_1_7_tenure == 1000  ~ NA_real_,
+      C_1_7_tenure %in% c(3,4,5,6) ~ 1,
+      TRUE ~ NA_real_)
   )
 
+nigeria <- nigeria %>% 
+  mutate(I4_SDG_11.1.1 = 
+           ifelse(rowSums(
+             nigeria %>% select(I4_secure_tenure,I4_hous_water,
+                                I4_hous_toilet,I4_hous_permanent))==4,1,0))
 
 # 2.3 Medical services 
 nigeria <- nigeria %>% 
   mutate(
     
     # Proportion with access to essential health care when needed. 
-    I5_med_access = case_when(
+    I5_DS_2.1.8 = case_when(
       C_4_10_disease_yn == 0 ~ 1,
       C_4_10_disease_yn == 1 & C_4_12_med_yn == 1 ~ 1,
       C_4_10_disease_yn == 1 & C_4_12_med_yn == 0 ~ 0,
@@ -163,7 +196,8 @@ nigeria <- nigeria %>%
     
     # Duration to next health facility (standardized)
     I5_med_dist = (thealth_d*24) + thealth_h + (thealth_m/60)
-  )
+  ) %>% 
+  mutate(I5_med_dist = ifelse(I5_med_dist <= mean(I5_med_dist,na.rm=T),1,0))
 
 # 2.4 Education
 nigeria <- nigeria %>% 
@@ -172,29 +206,38 @@ nigeria <- nigeria %>%
     I6_edu_dist = (tedu_d*24) + tedu_h + (tedu_m/60),
     
     # Proportion satisfied with school
-    I6_edu_satis = ifelse(H_2_7_school_satisfaction %in% 1:2, 1, 0)
-  )
-
+    I6_edu_satis = ifelse(H_2_7_school_satisfaction %in% 1:2, 1, 0),
+    
+    # SDG indicator 4.1.2: Completion rate (primary education): not present, 
+    # approximated with whether any household member is going to primary school 
+    I6_SDG_4.1.2 = case_when(
+      # those that explicitly say that kids do not go to school
+      H_2_7_school_satisfaction == 0 ~ 0, 
+      # those who have not even answered question (no kids, not applicable)
+      is.na(H_2_7_school_satisfaction)==T ~ 1,
+      TRUE ~ 1)
+  ) %>% 
+  mutate(I6_edu_dist= ifelse(I6_edu_dist <= mean(I6_edu_dist,na.rm=T),1,0))
 
 # 3.1 Employment and livelihoods
 nigeria <- nigeria %>% 
   mutate(
     #  Proportion whose income is generated from wages, salaries, own business or pension
-    I7_salary = ifelse(C_5_1_lhood %in% c(4,5,8),1,0)
+    #  Proxy for unemployment (SDG indicator)
+    I7_SDG_8.5.2 = ifelse(C_5_1_lhood %in% c(1,2,3,4,5,8),1,0)
   )
-
 
 # 3.2 Economic security 
 nigeria <- nigeria %>% 
   mutate(
     # Proportion below 1.9 USD PPP 2011 Poverty Line
-    I8_poor = poor, 
+    I8_SDG_1.2.1 = ifelse(poor ==1,0,1),
     
     # Proportion Below 1.25 USD PPP 2011 poverty line
-    I8_poor125 = poor125, 
+    I8_poor125 = ifelse(poor125<= 0, 1, 0),
     
     # Proportion Below 3.1 USD PPP 2011 poverty line
-    I8_poor31 = poor31, 
+    I8_poor31 = ifelse(poor31<= 0, 1, 0),
     
     # Ratio of food vs total consumption
     I8_foodtotal = mi_cons_f/tc_imp,
@@ -207,7 +250,12 @@ nigeria <- nigeria %>%
     
     # Distance to market
     I8_market_dist = (tmarket_d*24) + tmarket_h + (tmarket_m/60)
-  )
+  ) %>% 
+  mutate(
+    I8_foodtotal= ifelse(I8_foodtotal <= mean(I8_foodtotal,na.rm=T),1,0), 
+    I8_consume = ifelse( I8_consume>= mean(I8_consume,na.rm=T),1,0),
+    I8_market_dist = ifelse(I8_market_dist <= mean(I8_market_dist,na.rm=T),1,0))
+
 
 # 4.1 Property restitution and compensation 
 nigeria <- nigeria %>% 
@@ -224,15 +272,18 @@ nigeria <- nigeria %>%
       ID == 0 ~ 1,
       ID == 1 & H_2_11_legal_access_disp == 1 ~ 1,
       ID == 1 & H_2_11_legal_access_disp == 0 ~ 0,
-      TRUE ~ NA_real_)
+      TRUE ~ NA_real_),
+    
+    # Security of tenure
+    I9_SDG_1.4.2 = I4_secure_tenure
   )
 
 # 5.1. Documentation 
 nigeria  <- nigeria  %>% 
   mutate(
     
-    # Proportion with documents or access to replace missing documents if lost
-    I10_doc_replace =  case_when(
+    # DS Library indicator 5.1.1: Target population currently in possession of documentation 
+    I10_DS_5.1.1 = case_when(
       ID == 0 ~ 1,
       H_2_9_legal_id_disp == 0 ~ 1,
       H_2_9_legal_id_disp == 1 & H_2_10_legal_id_acc_disp == 1 ~ 1,
@@ -240,7 +291,6 @@ nigeria  <- nigeria  %>%
       TRUE ~ NA_real_)
     
   )
-
 
 # prepare dataset for simulations -----------------------------------------------
 
@@ -266,45 +316,6 @@ nigeria <- nigeria |> mutate(PERCAPITA = tc_imp)
 
 # select variables
 nigeria <- nigeria %>% select(ID, starts_with("I"), -starts_with("I_"), starts_with("HH_"), PERCAPITA, WT)
-
-# unify direction of indicators: 1 for passing 
-nigeria <- nigeria %>% 
-  mutate(
-    I1_sec_saf = ifelse(I1_sec_saf >= 1, 1, 0),
-    I1_sec_night = ifelse(I1_sec_night >= 1, 1, 0),
-    I1_sec_day = ifelse(I1_sec_day >= 1, 1, 0),
-    I1_sec_inc = ifelse(I1_sec_inc <= 0, 1 ,0),
-    I1_sec_rep = ifelse(I1_sec_rep >= 1, 1, 0),
-    I1_sec_formal = ifelse(I1_sec_formal >= 1, 0, 1),
-    I1_sec_easy= ifelse(I1_sec_easy >= 1, 0, 1),
-    I1_sec_eff = ifelse(I1_sec_eff >= 1,1, 0),
-    I2_feel_free = ifelse(I2_feel_free >= 1,1,0),
-    I3_food_insecurity_scale = ifelse(I3_food_insecurity_scale <= mean(I3_food_insecurity_scale,na.rm = T),1,0), 
-    I4_hous_indurable = ifelse(I4_hous_indurable <= 0, 1, 0),
-    I4_hous_overcrowd = ifelse(I4_hous_overcrowd <= 0,1, 0),
-    I4_hous_squat = ifelse(I4_hous_squat <= 0, 1,0),
-    I4_hous_temporary = ifelse(I4_hous_temporary <= 0, 1, 0),
-    I4_hous_ownrent = ifelse(I4_hous_ownrent >= 1, 1, 0),
-    I4_land_tenure = ifelse(I4_land_tenure >= 1, 1, 0),
-    I4_hous_water = ifelse(I4_hous_water >= 1, 1, 0),
-    I4_hous_waccess = ifelse(I4_hous_waccess >= 1, 1, 0),
-    I4_hous_toilet = ifelse(I4_hous_toilet >= 1, 1, 0),
-    I5_med_access = ifelse(I5_med_access >= 1, 1, 0),
-    I5_med_dist = ifelse(I5_med_dist <= mean(I5_med_dist,na.rm=T),1,0), 
-    I6_edu_dist= ifelse(I6_edu_dist <= mean(I6_edu_dist,na.rm=T),1,0), 
-    I6_edu_satis= ifelse(I6_edu_satis >= 1, 1, 0),
-    I7_salary = ifelse(I7_salary >= 1, 1, 0),
-    I8_poor = ifelse(I8_poor <= 0, 1, 0),
-    I8_poor31  = ifelse(I8_poor31 <= 0, 1, 0),
-    I8_poor125  = ifelse(I8_poor125 <= 0, 1, 0),
-    I8_foodtotal= ifelse(I8_foodtotal <= mean(I8_foodtotal,na.rm=T),1,0), 
-    I8_consume = ifelse( I8_consume>= mean(I8_consume,na.rm=T),1,0),
-    I8_bank  = ifelse(I8_bank >= 1,1,0),  
-    I8_market_dist = ifelse(I8_market_dist <= mean(I8_market_dist,na.rm=T),1,0),
-    I9_hlp_right = ifelse(I9_hlp_right >= 1, 1, 0),
-    I9_hlp_compensation = ifelse(I9_hlp_compensation >= 1, 1, 0),
-    I10_doc_replace= ifelse(I10_doc_replace >= 1, 1, 0)
-  )
 
 # add household ID
 nigeria <- nigeria %>% mutate(HHID = row_number())
