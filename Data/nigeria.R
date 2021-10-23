@@ -95,7 +95,7 @@ nigeria <- nigeria %>%
 nigeria <- nigeria %>% 
   # Food insecurity scale
   # FIXME: is currently an ordinal scale rather than Rasch model (as in FAO package RM.weights)
-  mutate(I3_I3_DS_2.1.2 = (8-rowSums(
+  mutate(I3_DS_2.1.2 = (8-rowSums(
     nigeria[,c("C_4_1_nomoney","C_4_2_cop_lessprefrerred","C_4_3_cop_borrow_food",
                "C_4_4_cop_limitportion","C_4_5_cop_limitadult","C_4_6_cop_reducemeals",
                "C_4_7_cop_sellassets", "C_4_8_cop_sellfem")], na.rm=T)))
