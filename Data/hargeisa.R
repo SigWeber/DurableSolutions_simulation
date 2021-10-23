@@ -191,11 +191,10 @@ hargeisa_hh <- hargeisa_hh %>%
       case_when(
         ID == 0 ~ 1,
         ID == 1 & hargeisa120 == "Yes" ~ 1,
-        ID == 1 & str_detect(hargeisa120, "^No") ~ 0),
-    
-    # Security of tenure
-    I9_SDG_1.4.2 = I4_secure_tenure
-  )
+        ID == 1 & str_detect(hargeisa120, "^No") ~ 0)
+  ) %>% 
+  rename(# Security of tenure
+    I9_SDG_1.4.2 = I4_secure_tenure)
 
 # 5.1. Documentation 
 hargeisa_ind <- hargeisa_ind %>% 
