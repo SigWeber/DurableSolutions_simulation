@@ -272,11 +272,10 @@ nigeria <- nigeria %>%
       ID == 0 ~ 1,
       ID == 1 & H_2_11_legal_access_disp == 1 ~ 1,
       ID == 1 & H_2_11_legal_access_disp == 0 ~ 0,
-      TRUE ~ NA_real_),
-    
-    # Security of tenure
-    I9_SDG_1.4.2 = I4_secure_tenure
-  )
+      TRUE ~ NA_real_)
+  ) %>% 
+  rename(    # Security of tenure
+    I9_SDG_1.4.2 = I4_secure_tenure)
 
 # 5.1. Documentation 
 nigeria  <- nigeria  %>% 
