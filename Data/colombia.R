@@ -139,7 +139,7 @@ persons <-
 
 # 4.1 Property restitution and compensation 
 households <- households %>% 
-  mutate(I9_SDG_1.4.2 = I4_secure_tenure)
+  rename(I9_SDG_1.4.2 = I4_secure_tenure)
 
 # 5.1. Documentation 
 persons <- 
