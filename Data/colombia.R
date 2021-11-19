@@ -192,7 +192,7 @@ colombia <- left_join(colombia_hh, colombia_ind)
 # combine I4 indicators
 colombia <- colombia %>% 
   mutate(
-    I4_SDG_11.1.1 = ifelse(rowSums(colombia %>% select(I4_overcrowding, I4_secure_tenure,
+    I4_SDG_11.1.1 = ifelse(rowSums(colombia %>% select(I4_overcrowding, I9_SDG_1.4.2,
                                                         I4_water, I4_sanitation))< 4, 0, 1)
   )
 
