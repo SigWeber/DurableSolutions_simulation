@@ -26,7 +26,7 @@ run_simulation <- function(data, metric, ..., combinations = NULL) {
     combinations <- data %>% extract_indicators() %>% generate_combinations()
   
   # draw 10,000 combinations only - should be enough for all practical purposes
-  combinations <- combinations %>% slice_sample(n = 10000)
+  combinations <- combinations %>% slice_sample(n = 1000)
   
   # number of IDPs exiting the stock according to the chosen metric
   Durable_Solutions <- 
@@ -118,4 +118,14 @@ simulate_hclust <- function(data, method = "complete", maxdiff = 2) {
 # Option 5: Use a classifier ------------------------------------------------------------
 simulate_classifier <- function(data) {
   run_simulation(data, use_classifier)
+}
+
+# Option 6: Use pairwise ------------------------------------------------------------
+simulate_pairwise <- function(data) {
+  run_simulation(data, use_pairwise)
+}
+
+# Option 6: Use volumetric ------------------------------------------------------------
+simulate_volumetric <- function(data) {
+  run_simulation(data, use_volumetric)
 }

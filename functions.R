@@ -157,3 +157,14 @@ use_pairwise <- function(data, sim_data, benchmark, x) {
     left_join(idps |> mutate(exited = exits$exited) |> select(-WT)) |> 
     select(HHID, exited)
 }
+
+
+# Option 7: volu-metric ---------
+use_volumetric <- function(data, sim_data, benchmark, x) {
+  idps <- data |> summarize(across(as.character(sim_data[x,]), weighted.mean, WT, na.rm = TRUE))
+  hc <- benchmark |> summarize(across(as.character(sim_data[x,]), weighted.mean, WT, na.rm = TRUE))
+  
+  p <- reduce2(unlist(idps), unlist(hc), ~..1*min(..2/..3, 1), .init = 1)
+  
+  data |> transmute(HHID, exited = rbernoulli(n(), p))
+}
