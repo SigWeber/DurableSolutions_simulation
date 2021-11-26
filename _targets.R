@@ -26,6 +26,8 @@ tar_map(
   tar_target(DS_Option4, simulate_cells(data)),
   # tar_target(DS_Option4b, simulate_hclust(data)),
   tar_target(DS_Option5, simulate_classifier(data)),
+  tar_target(DS_Option6, simulate_pairwise(data)),
+  tar_target(DS_Option7, simulate_volumetric(data)),
 
   # And again without the HLP indicators
   tar_target(data_nohlp, select(data, -starts_with("I9"))),
@@ -35,6 +37,8 @@ tar_map(
   tar_target(DS_Option3_nohlp, simulate_subcriterion(data_nohlp)),
   tar_target(DS_Option4_nohlp, simulate_cells(data_nohlp)),
   tar_target(DS_Option5_nohlp, simulate_classifier(data_nohlp)),
+  tar_target(DS_Option6_nohlp, simulate_pairwise(data_nohlp)),
+  tar_target(DS_Option7_nohlp, simulate_volumetric(data_nohlp)),
 
   # Missing data
   tar_target(data_missing, mutate(data, across(matches("^I\\d+"), replace_na, 1))),
@@ -44,6 +48,8 @@ tar_map(
   tar_target(DS_Option3_missing, simulate_subcriterion(data_missing)),
   tar_target(DS_Option4_missing, simulate_cells(data_missing)),
   tar_target(DS_Option5_missing, simulate_classifier(data_missing)),
+  tar_target(DS_Option6_missing, simulate_pairwise(data_missing)),
+  tar_target(DS_Option7_missing, simulate_volumetric(data_missing)),
   
   # Welfare comparison
   tar_target(data_welfare, 
