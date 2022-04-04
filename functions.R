@@ -159,7 +159,7 @@ use_pairwise <- function(data, sim_data, benchmark, x) {
 }
 
 
-# Option 7: volu-metric ---------
+# Option 7: Use volu-metric ---------
 use_volumetric <- function(data, sim_data, benchmark, x) {
   idps <- data |> summarize(across(as.character(sim_data[x,]), weighted.mean, WT, na.rm = TRUE))
   hc <- benchmark |> summarize(across(as.character(sim_data[x,]), weighted.mean, WT, na.rm = TRUE))
@@ -167,4 +167,17 @@ use_volumetric <- function(data, sim_data, benchmark, x) {
   p <- reduce2(unlist(idps), unlist(hc), ~..1*min(..2/..3, 1), .init = 1)
   
   data |> transmute(HHID, exited = rbernoulli(n(), p))
+}
+
+# Option 8: Use eCDF ---------------
+use_ecdf <- function(data, sim_data, benchmark, x) {
+  idps <- data |> select(HHID, as.character(sim_data[x,]))
+  hc <- benchmark |> select(WT, as.character(sim_data[x,]))
+  
+  ecdf <- function(...) {
+    hh <- list(...)
+    hc |> filter(across(starts_with("I"), ~. <= hh[[cur_column()]])) |> (\(x) sum(x$WT)/sum(hc$WT))()
+  }
+  
+  idps |> transmute(HHID, exited = pmap_dbl(idps, ecdf))
 }
