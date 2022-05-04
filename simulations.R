@@ -125,7 +125,12 @@ simulate_pairwise <- function(data) {
   run_simulation(data, use_pairwise)
 }
 
-# Option 6: Use volumetric ------------------------------------------------------------
+# Option 7: Use volumetric ------------------------------------------------------------
 simulate_volumetric <- function(data) {
   run_simulation(data, use_volumetric)
+}
+
+# Option 8: Use ecdf -----------------------------------------------------------
+simulate_ecdf <- function(data) {
+  run_simulation(data, use_ecdf)
 }

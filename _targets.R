@@ -41,7 +41,7 @@ tar_map(
   tar_target(DS_Option7_nohlp, simulate_volumetric(data_nohlp)),
 
   # Missing data
-  tar_target(data_missing, mutate(data, across(matches("^I\\d+"), replace_na, 1))),
+  tar_target(data_missing, mutate(data, across(matches("^I\\d+"), replace_na, 1)) |> select(-contains("I9"))),
   tar_target(DS_Original_missing, simulate_IRIS_metric(data_missing)),
   tar_target(DS_Option1_missing, simulate_composite(data_missing)),
   tar_target(DS_Option2_missing, simulate_criterion(data_missing)),
@@ -50,6 +50,7 @@ tar_map(
   tar_target(DS_Option5_missing, simulate_classifier(data_missing)),
   tar_target(DS_Option6_missing, simulate_pairwise(data_missing)),
   tar_target(DS_Option7_missing, simulate_volumetric(data_missing)),
+  tar_target(DS_Option8_missing, simulate_ecdf(data_missing)),
   
   # Welfare comparison
   tar_target(data_welfare, 
