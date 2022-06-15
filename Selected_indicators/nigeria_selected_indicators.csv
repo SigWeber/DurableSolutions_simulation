@@ -1,0 +1,8 @@
+Metric option,IDP households exiting the stock,Percentage exiting the stock
+Pass/fail,1082,0.84
+1: Full composite,25369,19.6
+2: Composite at criterion level,1109,0.86
+3: Composite at subcriterion level,1001,0.77
+4: Homogeneous cells,6,0
+5: Classifier/regression-based,53353,41.23
+6: Empirical cumulative density,9584,7.41
