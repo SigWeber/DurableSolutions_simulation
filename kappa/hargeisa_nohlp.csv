@@ -1,0 +1,106 @@
+x,y,kappa
+Pass/fail measure,1: Full composite,0.02118661230563163
+Pass/fail measure,2: Composite at criterion level,0.27885103877686856
+1: Full composite,2: Composite at criterion level,0.1553279343643855
+Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.07059251144059521
+1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.006921228463228342
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,origin_district)",0.023729646198856688
+Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.010287805080154819
+1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.001630483373332849
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,clan)",0.004730102007551943
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,gender,clan)",-0.0011038496636665218
+Pass/fail measure,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0.004115009180154729
+1: Full composite,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0.002108383470874935
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",0.0022199268436533023
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,gender,depart_yr)",-4.442376526070834e-4
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,gender,depart_yr)",-3.990234169058774e-4
+Pass/fail measure,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.05602964968399036
+1: Full composite,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.006974410850328113
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.013362143136468418
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.18037634590047583
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",0.11785520093791295
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,origin_district,clan)",-1.7099119788463e-4
+Pass/fail measure,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.04066922771274258
+1: Full composite,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.005775635298336194
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.019038759009234935
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.10218104868819772
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.004463600589452923
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.08646236727560354
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",0.1939065249860772
+Pass/fail measure,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.010555703851395893
+1: Full composite,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.0016996148621418105
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.005107218131112956
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",-1.1545572285697332e-4
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.03069320638212586
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",0.04252546613335963
+"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (disp_type,clan,depart_yr)",-2.220727175807249e-4
+Pass/fail measure,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.09112296306169994
+1: Full composite,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.0062220176549396405
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,origin_district,clan)",0.023637670638310387
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.6520785660672065
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.06908653014415413
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",1.2247469694598112e-4
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.24281427191603003
+"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.1115105441323774
+"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,clan)",0.014212910620552324
+Pass/fail measure,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.1404212127372754
+1: Full composite,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.011442384318884936
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.03650984652626289
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.5426027535650443
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.002916674766476771
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.060959140686629026
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.11125306676821685
+"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.26474456108206884
+"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.015964130111342196
+"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (gender,origin_district,depart_yr)",0.4197986190355727
+Pass/fail measure,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.017698436096218902
+1: Full composite,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.0018552760241200982
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,clan,depart_yr)",0.004427781757795638
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (gender,clan,depart_yr)",-3.806182966986265e-4
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.09298019273678479
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.04477834773882878
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.06007545661408146
+"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.015271330072941887
+"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.26664170329188347
+"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.05388788676609026
+"4: Comparison of homogenous cells (gender,origin_district,depart_yr)","4: Comparison of homogenous cells (gender,clan,depart_yr)",0.025176311411042866
+Pass/fail measure,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.07457633179470835
+1: Full composite,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.008871476507587446
+2: Composite at criterion level,"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.032483075798972735
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.07758418358899773
+"4: Comparison of homogenous cells (disp_type,gender,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.07074771651064461
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.049907155744109546
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.2916051332471805
+"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.28612201391015696
+"4: Comparison of homogenous cells (disp_type,clan,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.10561311811427732
+"4: Comparison of homogenous cells (gender,origin_district,clan)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.11054511856253509
+"4: Comparison of homogenous cells (gender,origin_district,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.164946351149954
+"4: Comparison of homogenous cells (gender,clan,depart_yr)","4: Comparison of homogenous cells (origin_district,clan,depart_yr)",0.16240962682925106
+Pass/fail measure,4b: Algorithmic clustering,0.05673125982750807
+1: Full composite,4b: Algorithmic clustering,0.015026442997861473
+2: Composite at criterion level,4b: Algorithmic clustering,0.06880946234030379
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)",4b: Algorithmic clustering,0.019263712585292685
+"4: Comparison of homogenous cells (disp_type,gender,clan)",4b: Algorithmic clustering,0.0011952454331090718
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",4b: Algorithmic clustering,0.024013993446397645
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)",4b: Algorithmic clustering,0.007588206535888364
+"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",4b: Algorithmic clustering,0.01803288349054768
+"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",4b: Algorithmic clustering,0.003881314107318195
+"4: Comparison of homogenous cells (gender,origin_district,clan)",4b: Algorithmic clustering,0.01349560572299673
+"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",4b: Algorithmic clustering,0.014864798376515847
+"4: Comparison of homogenous cells (gender,clan,depart_yr)",4b: Algorithmic clustering,0.002410779057236086
+"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",4b: Algorithmic clustering,0.011189352170535315
+Pass/fail measure,5: Classifier/regression-based,0.013254271927935048
+1: Full composite,5: Classifier/regression-based,0.3905971473632792
+2: Composite at criterion level,5: Classifier/regression-based,0.07533310418437042
+"4: Comparison of homogenous cells (disp_type,gender,origin_district)",5: Classifier/regression-based,0.004232082924948335
+"4: Comparison of homogenous cells (disp_type,gender,clan)",5: Classifier/regression-based,7.848888659540707e-4
+"4: Comparison of homogenous cells (disp_type,gender,depart_yr)",5: Classifier/regression-based,0.003753297460753982
+"4: Comparison of homogenous cells (disp_type,origin_district,clan)",5: Classifier/regression-based,0.0032011967690330255
+"4: Comparison of homogenous cells (disp_type,origin_district,depart_yr)",5: Classifier/regression-based,0.00495578815565878
+"4: Comparison of homogenous cells (disp_type,clan,depart_yr)",5: Classifier/regression-based,4.046228235609042e-4
+"4: Comparison of homogenous cells (gender,origin_district,clan)",5: Classifier/regression-based,0.003997016072639978
+"4: Comparison of homogenous cells (gender,origin_district,depart_yr)",5: Classifier/regression-based,0.006065163334614699
+"4: Comparison of homogenous cells (gender,clan,depart_yr)",5: Classifier/regression-based,0.0010053157642535774
+"4: Comparison of homogenous cells (origin_district,clan,depart_yr)",5: Classifier/regression-based,0.006782998839000472
+4b: Algorithmic clustering,5: Classifier/regression-based,0.011633503888054477

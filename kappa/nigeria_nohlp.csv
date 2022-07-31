@@ -1,0 +1,37 @@
+x,y,kappa
+Pass/fail measure,1: Full composite,0.04684030486132669
+Pass/fail measure,2: Composite at criterion level,0.2759562300674924
+1: Full composite,2: Composite at criterion level,0.29905398023953517
+Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.029897804987085313
+1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.0013134536471678085
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.01435239496990031
+Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.03274651176724405
+1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.0018306177649555075
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.012634107331328272
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.30234201615365164
+Pass/fail measure,"4: Comparison of homogenous cells (disp_year,origin,region)",0.05273936760130672
+1: Full composite,"4: Comparison of homogenous cells (disp_year,origin,region)",0.002500291252582573
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,origin,region)",0.011533990673996743
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,origin,region)",0.23055064884872123
+"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (disp_year,origin,region)",0.209916273765369
+Pass/fail measure,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.07184704212804933
+1: Full composite,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.0026095205370370456
+2: Composite at criterion level,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.023277912625104567
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (arriv_year,origin,region)",0.11915554976706552
+"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",0.36623254412381834
+"4: Comparison of homogenous cells (disp_year,origin,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",0.3208237822146336
+Pass/fail measure,4b: Algorithmic clustering,0.11436886623486804
+1: Full composite,4b: Algorithmic clustering,0.06175249012892249
+2: Composite at criterion level,4b: Algorithmic clustering,0.08596214450917296
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",4b: Algorithmic clustering,0.015581769562196037
+"4: Comparison of homogenous cells (disp_year,arriv_year,region)",4b: Algorithmic clustering,0.007570714748705278
+"4: Comparison of homogenous cells (disp_year,origin,region)",4b: Algorithmic clustering,0.013043063826402234
+"4: Comparison of homogenous cells (arriv_year,origin,region)",4b: Algorithmic clustering,0.015202795619873817
+Pass/fail measure,5: Classifier/regression-based,0.02279510730153137
+1: Full composite,5: Classifier/regression-based,0.23216366166892255
+2: Composite at criterion level,5: Classifier/regression-based,0.14156899171718157
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",5: Classifier/regression-based,0.0013179585470538197
+"4: Comparison of homogenous cells (disp_year,arriv_year,region)",5: Classifier/regression-based,8.571698192645015e-4
+"4: Comparison of homogenous cells (disp_year,origin,region)",5: Classifier/regression-based,0.0018809194626836234
+"4: Comparison of homogenous cells (arriv_year,origin,region)",5: Classifier/regression-based,0.0011293198132933274
+4b: Algorithmic clustering,5: Classifier/regression-based,0.02873846868101101

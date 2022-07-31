@@ -1,0 +1,16 @@
+x,y,kappa
+Pass/fail measure,1: Full composite,NA
+Pass/fail measure,2: Composite at criterion level,NA
+1: Full composite,2: Composite at criterion level,NA
+Pass/fail measure,"4: Comparison of homogenous cells (house_type,placeholder_1,placeholder_2)",0
+1: Full composite,"4: Comparison of homogenous cells (house_type,placeholder_1,placeholder_2)",NA
+2: Composite at criterion level,"4: Comparison of homogenous cells (house_type,placeholder_1,placeholder_2)",NA
+Pass/fail measure,4b: Algorithmic clustering,0
+1: Full composite,4b: Algorithmic clustering,NA
+2: Composite at criterion level,4b: Algorithmic clustering,NA
+"4: Comparison of homogenous cells (house_type,placeholder_1,placeholder_2)",4b: Algorithmic clustering,NA
+Pass/fail measure,5: Classifier/regression-based,0
+1: Full composite,5: Classifier/regression-based,NA
+2: Composite at criterion level,5: Classifier/regression-based,NA
+"4: Comparison of homogenous cells (house_type,placeholder_1,placeholder_2)",5: Classifier/regression-based,NA
+4b: Algorithmic clustering,5: Classifier/regression-based,NA

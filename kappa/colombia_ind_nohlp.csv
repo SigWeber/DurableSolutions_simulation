@@ -1,0 +1,781 @@
+x,y,kappa
+Pass/fail measure,1: Full composite,0.008698158677855996
+Pass/fail measure,2: Composite at criterion level,0.0475915638936153
+1: Full composite,2: Composite at criterion level,0.5014502462293247
+Pass/fail measure,"4: Comparison of homogenous cells (gender,agegrp,marital_status)",0.004643498640691738
+1: Full composite,"4: Comparison of homogenous cells (gender,agegrp,marital_status)",0.015434933756384625
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,agegrp,marital_status)",0.03833071687074938
+Pass/fail measure,"4: Comparison of homogenous cells (gender,agegrp,adm1)",0.026572017563570163
+1: Full composite,"4: Comparison of homogenous cells (gender,agegrp,adm1)",0.06665186198507325
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,agegrp,adm1)",0.17094572566332442
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,agegrp,adm1)",0.03178863589168828
+Pass/fail measure,"4: Comparison of homogenous cells (gender,agegrp,disp_dur)",0.007872489992292895
+1: Full composite,"4: Comparison of homogenous cells (gender,agegrp,disp_dur)",0.02346586226199559
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,agegrp,disp_dur)",0.0641704826612761
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,agegrp,disp_dur)",0.04935475717657801
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,agegrp,disp_dur)",0.09301713954929565
+Pass/fail measure,"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",0.009129954822360118
+1: Full composite,"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",0.009691247457138653
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",0.020148207972923424
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",0.029103797030066846
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",0.04083662310533159
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",0.042369318536279094
+Pass/fail measure,"4: Comparison of homogenous cells (gender,agegrp,peasant)",0.003370870778405798
+1: Full composite,"4: Comparison of homogenous cells (gender,agegrp,peasant)",0.0207098255506987
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,agegrp,peasant)",0.027645006615504824
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,agegrp,peasant)",0.047659503722825236
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,agegrp,peasant)",0.04290493646935463
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,agegrp,peasant)",0.07431031327135572
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,agegrp,peasant)",0.1217818242508037
+Pass/fail measure,"4: Comparison of homogenous cells (gender,marital_status,adm1)",0.026272516473490277
+1: Full composite,"4: Comparison of homogenous cells (gender,marital_status,adm1)",0.07936269510698421
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,marital_status,adm1)",0.19955806342465485
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,marital_status,adm1)",0.060515207078214894
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,marital_status,adm1)",0.3363492205767352
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,marital_status,adm1)",0.07263549469619629
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,marital_status,adm1)",0.030347101627400303
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,marital_status,adm1)",0.032553080693362005
+Pass/fail measure,"4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.013088073310480423
+1: Full composite,"4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.042455738551755995
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.11261262113438496
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.09890685112822752
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.12299899379579114
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.2681491819946805
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.020674517557823957
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.05528329974357116
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,marital_status,disp_dur)",0.1286663885870261
+Pass/fail measure,"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.00374856843816727
+1: Full composite,"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.010637661576057783
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.023648897831538073
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.1960056274490856
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.026849450078390534
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.039134213821971804
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.14331590020794982
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.05721939957693426
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.05361603810207798
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",0.07948251158625941
+Pass/fail measure,"4: Comparison of homogenous cells (gender,marital_status,peasant)",0.00667311408233018
+1: Full composite,"4: Comparison of homogenous cells (gender,marital_status,peasant)",0.024023729856671564
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,marital_status,peasant)",0.057442567923915056
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.17023369926124055
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.05757629399588259
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.03842448021396244
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.013027201899720859
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.08493885036658569
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.08612063893363499
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.13745201693912854
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (gender,marital_status,peasant)",0.1797932526566305
+Pass/fail measure,"4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.030801471751794235
+1: Full composite,"4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.11295086562276621
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.26052734874229827
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.029530302148619684
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.24916272173799364
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.08315858578758822
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.019869341032705917
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.02628241574285424
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.24755619919820518
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.14317641763890324
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.025874402006467588
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (gender,adm1,disp_dur)",0.0654400719810431
+Pass/fail measure,"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.01942303152457947
+1: Full composite,"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.04628197460475022
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.1205826648002002
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.01633093183390892
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.3283910466215466
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.04251528911539716
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.023109804978299765
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.016781610801747296
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.28133715814857124
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.08030614910944181
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.024260490879582954
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.040852651023591084
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",0.24135637308750535
+Pass/fail measure,"4: Comparison of homogenous cells (gender,adm1,peasant)",0.022526858391165198
+1: Full composite,"4: Comparison of homogenous cells (gender,adm1,peasant)",0.07087700621652206
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,adm1,peasant)",0.17885523979761153
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.017607281924943426
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.30400881595782153
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.0625389256623933
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.025989497619418413
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.04684959445849011
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.24042813842629407
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.09633049638431841
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.029007785812052555
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.07592359025605688
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.2484820430199378
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (gender,adm1,peasant)",0.2852963729864637
+Pass/fail measure,"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.005303818358453696
+1: Full composite,"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.019686985176533747
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.044615317991713
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.02745315470267748
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.06110794965281562
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.23690244829864668
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.07721299276802131
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.026236688997152105
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.060578964168966874
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.15693450331482842
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.08657152996483487
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.03925840067355635
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.09112436222754101
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.0628421246743576
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",0.0573314945344397
+Pass/fail measure,"4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.007910113606596703
+1: Full composite,"4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.03137544029566663
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.06474162046846633
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.02944279920755472
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.06095183216964129
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.16334098556366605
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.005532651493252729
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.04833609154446884
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.05724844399428008
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.18745991722556277
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.026265669751636772
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.08548850848452635
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.09156717927601009
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.048097177814336076
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.08266797233183489
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (gender,disp_dur,peasant)",0.17812050739675903
+Pass/fail measure,"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.005675431584584959
+1: Full composite,"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.01100316900990434
+2: Composite at criterion level,"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.021803655479895923
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.01844959159043037
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.025586095267789127
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.031017067412542093
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.10058180335574061
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.19980552149612377
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.024307826943777082
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.0217553101373247
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.08045780901918427
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.08044212840971614
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.018893233279148477
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.017504322623351234
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.046335837846773205
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.044137812821997684
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",0.04878234180466798
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.01696105556033144
+1: Full composite,"4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.07706836345688618
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.19901299240799816
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.0581449881579371
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.2916435387796173
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.07984303073676494
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.030113615723857498
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.04885810151073233
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.3705089639868368
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.14185766450895387
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.04370576156339934
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.066758035148052855
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.20747305150074707
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.16075660450714013
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.19598425952686382
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.05349028613814458
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.060798294872481624
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,adm1)",0.02249478193505229
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.010335740818121912
+1: Full composite,"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.04059035504249417
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.09959231806157459
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.11616142551965747
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.09615192423732946
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.21656483056740933
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.017359545900347714
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.05186411702732965
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.10394515106165603
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.37842346944406957
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.05114063675606558
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.09871446088664891
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.11019475370663857
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.0505895228394129
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.0658376585715097
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.1037569306150876
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.10462119508847112
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.01425000118043749
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",0.12933719187726772
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.005315250570334842
+1: Full composite,"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.012102715924279823
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.024617319969251986
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.1729547758019193
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.029724417972966204
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.02446623273379483
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.08641386220752041
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.05602931094042191
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.03704253921557258
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.049086587892547336
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.18565770162089335
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.07391344046709485
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.01845271643972861
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.015426379997866774
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.022632380052067243
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.05020682052738063
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.0043938376430001595
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.04434442710009105
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.06597162239944084
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",0.08242926465822305
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.004892784912133905
+1: Full composite,"4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.02338069779154348
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.05283046906713013
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.1531820417401306
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.05151375063027301
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.038674270299732874
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.014122647572624884
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.05764077480571407
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.050462806712265496
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.06763830231629364
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.031074400462854958
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.217357247225506
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.04498434526203211
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.027011770484555574
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.054561723208672
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.03648185409648305
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.05340024773013812
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.038734431989930165
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.07727406948420984
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.1060565316846798
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,marital_status,peasant)",0.20279050279620442
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.023449170317857836
+1: Full composite,"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.11445087515695372
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.26543261845177574
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.030214419304988867
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.25493593263241904
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.0852828336045556
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.02236767905138278
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.03485615328521479
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.21466991660656493
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.14949762834352806
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.023150918334497034
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.05924176320797876
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.45485759276341375
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.15026487918193915
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.21468264065699133
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.0765045679394035
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.08268075863278565
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.01962836049495316
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.27482493980824396
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.1305830308555823
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.02345289355804161
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",0.04763545252452877
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.011711345314973974
+1: Full composite,"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.04834020834691804
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.1153361950980013
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.019727944230856713
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.32123169437206595
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.050773396419592345
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.028486367468118914
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.03226770144408572
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.18082479630642673
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.11067639599098365
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.022700378913494763
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.04674608205967941
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.1680161306354479
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.29704910430517356
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.17468675852754925
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.05355358981717106
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.060725369482242705
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.0075398290563888125
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.2973064760317483
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.08401490270519144
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.0328771343068849
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.036326498714910394
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",0.23707236371381943
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.019753991574952785
+1: Full composite,"4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.07370934582508713
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.16995503391362968
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.020003814676390796
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.3151259007768968
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.06321443368602528
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.019433423498232884
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.04529772337216353
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.2015653661768164
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.09761843156206391
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.016879024618630764
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.06551945421829576
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.1930462382525666
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.18214991749272488
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.3539937194237288
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.04265513232441607
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.06984493026594991
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.02085547410232481
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.26572765364610734
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.0853583054249341
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.02999137097777654
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.06765405138782764
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.2402023248391506
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,adm1,peasant)",0.28614129297783886
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.0033958483353314283
+1: Full composite,"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.014599464397022954
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.031125703350457855
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.02542103372214691
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.04563041762390556
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.2132274041209381
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.0811096578129826
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.037137768295948496
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.032153867924718874
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.09526454624723399
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.03685967470020707
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.016040180859403074
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.06395174488812257
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.03857728914857536
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.02957949949756186
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.29354021317115364
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.0813631497762942
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.03602246126372268
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.05012962666080761
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.12048007397361647
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.07944853030205759
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.05161654210247675
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.07803788154684875
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.05881693248524745
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",0.04330322921017534
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.011981774142785416
+1: Full composite,"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.03237551691907236
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.08469768266257985
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.02706055545661311
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.07858163606632626
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.2344328961394886
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.02966728738847194
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.07135213678577156
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.05967336591669149
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.19367008703600475
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.012071973785122503
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.04363158371041047
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.09758082196312973
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.051086896395480336
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.08381658711199015
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.1267614518000363
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.27960993857089095
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.027821673599961808
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.07866362876944766
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.20322421699880444
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.03335771059429947
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.07128072513283037
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.11012141431912677
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.06754643780881049
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.08916911717309377
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",0.1378247573621502
+Pass/fail measure,"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.0018377783378357194
+1: Full composite,"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.010246298995385855
+2: Composite at criterion level,"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.019959411639698905
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.015333878031433523
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.025470773105408306
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.028495173231418723
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.16837042376954858
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.1335093150876057
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.02041125404010919
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.01633685492302578
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.08177329645597045
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.03481397021041224
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.01772167568057616
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.015089316221851517
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.02786117645932621
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.055078804994498215
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.013983376212552925
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.15430197868431017
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.02941663171293392
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.023692792660922543
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.13433138471641454
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.0921473960608299
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.020662013906070423
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.025585986902236058
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.035544630614584294
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.09230357789006002
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",0.04915539616258191
+Pass/fail measure,"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.03331941905245895
+1: Full composite,"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.1574395401823028
+2: Composite at criterion level,"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.3442772077397309
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.04076001894608876
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.20256838666603164
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.09139934684089934
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.021120825328337027
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.0383699811036561
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.2760937005382287
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.1860843104164734
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.03219313960884152
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.07838251037267238
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.41281015979484886
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.15302868377253764
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.21326424540377803
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.07283688876044488
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.09072136411340358
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.022194008081511882
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.30421765616592034
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.1568092684078385
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.031656040763458224
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.058754762820852055
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.4602228385540744
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.1778504307204237
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.20793226527259928
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.05757269424946084
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.10555048123749769
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",0.02149983729548956
+Pass/fail measure,"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.013664496164945538
+1: Full composite,"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.06689205651285975
+2: Composite at criterion level,"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.16634943882902772
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.03465816727683345
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.2146974799524371
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.052311090125906005
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.028161071129443452
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.03667291344602178
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.44025780931180847
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.1369892479941564
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.04869263634508155
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.06886417226767522
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.17251260638861107
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.24175640255127087
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.19059555832473182
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.0637873026928036
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.0676322417772252
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.02406308248169222
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.4603913920422515
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.09071628740908586
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.042673703261710286
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.05447679118545274
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.2056288030008836
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.3165747581234235
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.19649451237159724
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.04783514956951995
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.05758048235065905
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.02445730714044506
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",0.2651718619961846
+Pass/fail measure,"4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.02806662024112505
+1: Full composite,"4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.1021922937263175
+2: Composite at criterion level,"4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.24861678720660102
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.04433982671197999
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.21163959210702968
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.052969223104137805
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.020903822504700874
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.034123853188027214
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.34217114933125653
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.128126713531877
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.036999451737360765
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.09797613236676112
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.25230090519341847
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.17245784262896074
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.3139608675819304
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.051524174372449286
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.07077701464250602
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.026401506370694976
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.33636951167708573
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.09774706035977239
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.03729692614965685
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.07719497480289529
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.24192554179132872
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.18826881954489516
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.3234247071911358
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.03413432080169855
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.07287832971827621
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.0279178119751047
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.32561411282932673
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,adm1,peasant)",0.33232341173974356
+Pass/fail measure,"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.009076739870686308
+1: Full composite,"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.035244955748118346
+2: Composite at criterion level,"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.08829856475005321
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.07274387410818073
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.09047061386132223
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.20055138678852785
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.041627924664201184
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.05359142300424946
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.10493293803646998
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.42758526951088555
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.0703947054277001
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.0856002600348308
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.11432897990756814
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.07061484534220439
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.07634806162783311
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.19922723308669346
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.11779995254157695
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.0325234762578176
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.1254180842996893
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.40143186293853483
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.08455540583615925
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.069687194808597
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.1324108180581973
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.09209438660711033
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.08290648416015332
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.1547109372020852
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.1761442792264028
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.03794218410550192
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.16528033583245086
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.12513787733571913
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",0.10982454766251837
+Pass/fail measure,"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.01193332548490065
+1: Full composite,"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.051452379278753936
+2: Composite at criterion level,"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.12060192513866673
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.06491999434884382
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.07743480245885959
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.1443089192964871
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.006977101220142136
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.05394494468543371
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.10088778815890624
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.33227076182371434
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.020510492314345985
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.14701473752483876
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.13289693896181562
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.0575295298351449
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.09433609915348655
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.10277878996579527
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.193527809203298
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.02489939410957802
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.11909017035044872
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.31319083453002244
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.03709286568566561
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.11178583457895311
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.13525944758789787
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.0810965636527151
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.11029072717750579
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.07994831629260568
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.27244884071315484
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.024977912120968004
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.18429776615546262
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.10120185104330738
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.14398196193932045
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",0.3383357380866699
+Pass/fail measure,"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.0057303615616304425
+1: Full composite,"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.01826987551791675
+2: Composite at criterion level,"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.04193871236554935
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.0804748491648357
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.04087157445529726
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.021384463965890266
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.05503195433092712
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.03407156644056099
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.05447778514009792
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.06317194715812265
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.1048480651249756
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.30304771341685327
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.03537680148530079
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.032658580993541485
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.05656425492154254
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.045575186298643544
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.033174346387065116
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.08632126373506413
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.06674839343554537
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.06536190125269016
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.15633802949791023
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.30689874098439535
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.03809962185131206
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.038682937650215896
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.06061792367436597
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.046851911918818635
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.03430498288770085
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.12722191950984216
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.05576557095984515
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.06793871870200871
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.07673551295477397
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.0835962024045401
+"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)","4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",0.10878320277920839
+Pass/fail measure,"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.021287670871615826
+1: Full composite,"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.09949415835743265
+2: Composite at criterion level,"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.24071733335814038
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.025487044418145553
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.1967560149923788
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.08219319018005156
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.021982431843128578
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.02701001277628989
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.1990190251915078
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.15045246456961595
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.02192615739480787
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.05943157272267844
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.4996895619408595
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.21813767601285103
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.22884416704032962
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.0930139313483787
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.08745665893763314
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.019802451046911706
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.22532173223606566
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.1146271744217178
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.016046506168822555
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.04473347181224832
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.5396691756804227
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.20829387537533992
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.19048567338289976
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.07822330934652795
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.10610543446962889
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.019449014414685696
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.42981208273223387
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.22748075358025813
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.2435315670819534
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.14646472336434396
+"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.1501325130080558
+"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",0.03887863411960194
+Pass/fail measure,"4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.03242313037188805
+1: Full composite,"4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.12498395828361876
+2: Composite at criterion level,"4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.29699655040342526
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.026672280229890377
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.21045107379678563
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.07785666975509882
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.021422100489580168
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.02812170603612612
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.2199497168878956
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.14020306060181081
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.022214189957180518
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.06685531014400563
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.4447650380519048
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.17246978341497737
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.28570668602412064
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.06848255237634819
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.1027425176232462
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.025055985407186288
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.21507975191006456
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.10968120797118334
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.01978342488746322
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.05002110827443184
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.42182866265827473
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.15571956343804844
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.2515602954351966
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.04897529656764856
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.12361724682235706
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.022566443899930046
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.42401867260231907
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.18943173869030197
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.3155299553480578
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.12238855640838436
+"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.15816259587882514
+"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.04312438027907275
+"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,disp_dur,peasant)",0.437318698388132
+Pass/fail measure,"4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.022034947727371575
+1: Full composite,"4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.06003745675240661
+2: Composite at criterion level,"4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.14929077578277514
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.01109326432655662
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.20169198141963643
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.03831208504303451
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.0224130827038891
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.028035345513923796
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.1660953130225715
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.09164052405814879
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.016586016153910397
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.051114218674522705
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.18327311059624393
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.2736158511361034
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.4057498786270071
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.04065822934288143
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.0643076457613592
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.029752145157164858
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.17522337683781625
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.06498459628562468
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.02000851976904501
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.04241566418751164
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.16950203676929726
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.28135575126685314
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.3799031029906186
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.03950300022872934
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.07148953339608105
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.02794909884132549
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.16997907633473408
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.21301524081071752
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.30421768880086447
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.08021367558266632
+"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.08553545950318486
+"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.04607012634328236
+"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.22424102582212774
+"4: Comparison of homogenous cells (adm1,disp_dur,peasant)","4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",0.2533227648368548
+Pass/fail measure,"4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.008202772809274466
+1: Full composite,"4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.03465573114434289
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.0702959534561292
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.005299746767129882
+"4: Comparison of homogenous cells (gender,agegrp,adm1)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.06665202199422325
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.10720948138950195
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.030486153067677272
+"4: Comparison of homogenous cells (gender,agegrp,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.04028184664183454
+"4: Comparison of homogenous cells (gender,marital_status,adm1)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.06754833995901312
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.12206616553804564
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.02633775406694086
+"4: Comparison of homogenous cells (gender,marital_status,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.040283604996403176
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.09110742344073677
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.049420409415886823
+"4: Comparison of homogenous cells (gender,adm1,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.07192140047139518
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.20591618452000085
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.2731234410551572
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.05173462508008714
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.06835003360449012
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.09575352383640034
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.029901699445951415
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.04497961324893701
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.09610101257962904
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.0687172657841251
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.08395458619437333
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.1834161727760864
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.26776275411962414
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.0423110048343303
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.09727502057769619
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.0788857493536265
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.08283208335897718
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.16138438528785967
+"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.1815754384286818
+"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.07837538020814852
+"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.10555575507338855
+"4: Comparison of homogenous cells (adm1,disp_dur,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.11861778635200364
+"4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)","4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",0.08259075065178105
+Pass/fail measure,4b: Algorithmic clustering,0.029085437482342203
+1: Full composite,4b: Algorithmic clustering,0.1386067969336029
+2: Composite at criterion level,4b: Algorithmic clustering,0.20916165383138738
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)",4b: Algorithmic clustering,0.012314966769920605
+"4: Comparison of homogenous cells (gender,agegrp,adm1)",4b: Algorithmic clustering,0.04756604550142987
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)",4b: Algorithmic clustering,0.020317370158445064
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",4b: Algorithmic clustering,0.015160834393764165
+"4: Comparison of homogenous cells (gender,agegrp,peasant)",4b: Algorithmic clustering,0.014463275563618008
+"4: Comparison of homogenous cells (gender,marital_status,adm1)",4b: Algorithmic clustering,0.052343204481340354
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)",4b: Algorithmic clustering,0.03200698434987251
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",4b: Algorithmic clustering,0.013928129386440244
+"4: Comparison of homogenous cells (gender,marital_status,peasant)",4b: Algorithmic clustering,0.014517641279214885
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)",4b: Algorithmic clustering,0.06539441745328822
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",4b: Algorithmic clustering,0.02909722295922213
+"4: Comparison of homogenous cells (gender,adm1,peasant)",4b: Algorithmic clustering,0.049492971837271166
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",4b: Algorithmic clustering,0.014238993691522895
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)",4b: Algorithmic clustering,0.020513192411402117
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",4b: Algorithmic clustering,0.01195041944870518
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)",4b: Algorithmic clustering,0.049966418555235585
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",4b: Algorithmic clustering,0.026355038943436
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",4b: Algorithmic clustering,0.013484329371507087
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)",4b: Algorithmic clustering,0.01674241511828006
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",4b: Algorithmic clustering,0.07206398730034583
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",4b: Algorithmic clustering,0.026048355859093545
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)",4b: Algorithmic clustering,0.039580945673604005
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",4b: Algorithmic clustering,0.012410252291101145
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",4b: Algorithmic clustering,0.028467878084216292
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",4b: Algorithmic clustering,0.011418789940379969
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",4b: Algorithmic clustering,0.09325758346348915
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",4b: Algorithmic clustering,0.0424943379318893
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)",4b: Algorithmic clustering,0.06424556842293028
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",4b: Algorithmic clustering,0.02212836922647044
+"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",4b: Algorithmic clustering,0.03209122527402331
+"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",4b: Algorithmic clustering,0.013555629294058055
+"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",4b: Algorithmic clustering,0.06848649041469687
+"4: Comparison of homogenous cells (adm1,disp_dur,peasant)",4b: Algorithmic clustering,0.0775669020957556
+"4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",4b: Algorithmic clustering,0.03939101785659705
+"4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",4b: Algorithmic clustering,0.027278511504127568
+Pass/fail measure,5: Classifier/regression-based,0.004523420678837259
+1: Full composite,5: Classifier/regression-based,0.22915996059772684
+2: Composite at criterion level,5: Classifier/regression-based,0.24114114390101463
+"4: Comparison of homogenous cells (gender,agegrp,marital_status)",5: Classifier/regression-based,0.002619591320342355
+"4: Comparison of homogenous cells (gender,agegrp,adm1)",5: Classifier/regression-based,0.027033802331136645
+"4: Comparison of homogenous cells (gender,agegrp,disp_dur)",5: Classifier/regression-based,0.009102809636142947
+"4: Comparison of homogenous cells (gender,agegrp,ethnic_minority)",5: Classifier/regression-based,0.001470352644116226
+"4: Comparison of homogenous cells (gender,agegrp,peasant)",5: Classifier/regression-based,0.00337486357245836
+"4: Comparison of homogenous cells (gender,marital_status,adm1)",5: Classifier/regression-based,0.02780734441025724
+"4: Comparison of homogenous cells (gender,marital_status,disp_dur)",5: Classifier/regression-based,0.02068478389831681
+"4: Comparison of homogenous cells (gender,marital_status,ethnic_minority)",5: Classifier/regression-based,7.018651742092065e-4
+"4: Comparison of homogenous cells (gender,marital_status,peasant)",5: Classifier/regression-based,0.008935605736170372
+"4: Comparison of homogenous cells (gender,adm1,disp_dur)",5: Classifier/regression-based,0.04692260302379588
+"4: Comparison of homogenous cells (gender,adm1,ethnic_minority)",5: Classifier/regression-based,0.017136196997653584
+"4: Comparison of homogenous cells (gender,adm1,peasant)",5: Classifier/regression-based,0.02809548435919234
+"4: Comparison of homogenous cells (gender,disp_dur,ethnic_minority)",5: Classifier/regression-based,0.0041162793347289325
+"4: Comparison of homogenous cells (gender,disp_dur,peasant)",5: Classifier/regression-based,0.012274159506941917
+"4: Comparison of homogenous cells (gender,ethnic_minority,peasant)",5: Classifier/regression-based,0.002901828236948656
+"4: Comparison of homogenous cells (agegrp,marital_status,adm1)",5: Classifier/regression-based,0.0309901627432575
+"4: Comparison of homogenous cells (agegrp,marital_status,disp_dur)",5: Classifier/regression-based,0.017924822485208675
+"4: Comparison of homogenous cells (agegrp,marital_status,ethnic_minority)",5: Classifier/regression-based,0.002815827946221649
+"4: Comparison of homogenous cells (agegrp,marital_status,peasant)",5: Classifier/regression-based,0.011717839694926584
+"4: Comparison of homogenous cells (agegrp,adm1,disp_dur)",5: Classifier/regression-based,0.04985338921980601
+"4: Comparison of homogenous cells (agegrp,adm1,ethnic_minority)",5: Classifier/regression-based,0.014384597999865125
+"4: Comparison of homogenous cells (agegrp,adm1,peasant)",5: Classifier/regression-based,0.029364370277543198
+"4: Comparison of homogenous cells (agegrp,disp_dur,ethnic_minority)",5: Classifier/regression-based,0.003341357189267449
+"4: Comparison of homogenous cells (agegrp,disp_dur,peasant)",5: Classifier/regression-based,0.012860939837226717
+"4: Comparison of homogenous cells (agegrp,ethnic_minority,peasant)",5: Classifier/regression-based,0.004735184903284568
+"4: Comparison of homogenous cells (marital_status,adm1,disp_dur)",5: Classifier/regression-based,0.06640626811188778
+"4: Comparison of homogenous cells (marital_status,adm1,ethnic_minority)",5: Classifier/regression-based,0.028016686492778324
+"4: Comparison of homogenous cells (marital_status,adm1,peasant)",5: Classifier/regression-based,0.0392535456917979
+"4: Comparison of homogenous cells (marital_status,disp_dur,ethnic_minority)",5: Classifier/regression-based,0.01650754941026262
+"4: Comparison of homogenous cells (marital_status,disp_dur,peasant)",5: Classifier/regression-based,0.020751205530964323
+"4: Comparison of homogenous cells (marital_status,ethnic_minority,peasant)",5: Classifier/regression-based,0.009503618919417839
+"4: Comparison of homogenous cells (adm1,disp_dur,ethnic_minority)",5: Classifier/regression-based,0.05000245510535424
+"4: Comparison of homogenous cells (adm1,disp_dur,peasant)",5: Classifier/regression-based,0.053902459360226085
+"4: Comparison of homogenous cells (adm1,ethnic_minority,peasant)",5: Classifier/regression-based,0.025604715784782347
+"4: Comparison of homogenous cells (disp_dur,ethnic_minority,peasant)",5: Classifier/regression-based,0.015794362176700435
+4b: Algorithmic clustering,5: Classifier/regression-based,0.05702772449793019

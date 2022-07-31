@@ -1,0 +1,22 @@
+x,y,kappa
+Pass/fail measure,1: Full composite,0.012723223815040123
+Pass/fail measure,2: Composite at criterion level,0.32937819091829107
+1: Full composite,2: Composite at criterion level,0.06232974785928351
+Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.03287605806413697
+1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",3.504555125107512e-4
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,origin)",0.014458755222293672
+Pass/fail measure,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.06570406038285008
+1: Full composite,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",3.88305245626518e-4
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.014668941083879769
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,arriv_year,region)",0.9047619047619048
+Pass/fail measure,"4: Comparison of homogenous cells (disp_year,origin,region)",0.01787636543602037
+1: Full composite,"4: Comparison of homogenous cells (disp_year,origin,region)",8.71674391846798e-4
+2: Composite at criterion level,"4: Comparison of homogenous cells (disp_year,origin,region)",0.005616261321226495
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (disp_year,origin,region)",-4.414906970847861e-4
+"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (disp_year,origin,region)",-5.108466179599085e-4
+Pass/fail measure,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.00841846699991377
+1: Full composite,"4: Comparison of homogenous cells (arriv_year,origin,region)",9.903878098580036e-5
+2: Composite at criterion level,"4: Comparison of homogenous cells (arriv_year,origin,region)",0.002622594014035513
+"4: Comparison of homogenous cells (disp_year,arriv_year,origin)","4: Comparison of homogenous cells (arriv_year,origin,region)",-2.2996271836947686e-4
+"4: Comparison of homogenous cells (disp_year,arriv_year,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",-1.6976394519386672e-4
+"4: Comparison of homogenous cells (disp_year,origin,region)","4: Comparison of homogenous cells (arriv_year,origin,region)",0.19989314098711014

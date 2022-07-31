@@ -1,0 +1,254 @@
+x,y,kappa
+Pass/fail measure,1: Full composite,0.7658464660510736
+Pass/fail measure,2: Composite at criterion level,1
+1: Full composite,2: Composite at criterion level,0.7520024906847727
+Pass/fail measure,"4: Comparison of homogenous cells (region,urban,head_gender)",0.22317626336442664
+1: Full composite,"4: Comparison of homogenous cells (region,urban,head_gender)",0.1609286448376886
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,urban,head_gender)",0.21885063548203898
+Pass/fail measure,"4: Comparison of homogenous cells (region,urban,years_disp)",0.37657268756821977
+1: Full composite,"4: Comparison of homogenous cells (region,urban,years_disp)",0.28040287070257286
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,urban,years_disp)",0.37158225345208384
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,urban,years_disp)",0.322503818507093
+Pass/fail measure,"4: Comparison of homogenous cells (region,urban,place_of_origin)",0.5705170620397713
+1: Full composite,"4: Comparison of homogenous cells (region,urban,place_of_origin)",0.42042164474526916
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,urban,place_of_origin)",0.5714582669225242
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,urban,place_of_origin)",0.31023993190478855
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,urban,place_of_origin)",0.3624213613135889
+Pass/fail measure,"4: Comparison of homogenous cells (region,urban,ethnic_minority)",0.1535001532157207
+1: Full composite,"4: Comparison of homogenous cells (region,urban,ethnic_minority)",0.12356782900246625
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,urban,ethnic_minority)",0.15043757506481925
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,urban,ethnic_minority)",0.3285052309075936
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,urban,ethnic_minority)",0.29608124722926565
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (region,urban,ethnic_minority)",0.18631051532086657
+Pass/fail measure,"4: Comparison of homogenous cells (region,head_gender,years_disp)",0.3991000449463688
+1: Full composite,"4: Comparison of homogenous cells (region,head_gender,years_disp)",0.3037169415752835
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,head_gender,years_disp)",0.3936323620468474
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,head_gender,years_disp)",0.2993647152367537
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,head_gender,years_disp)",0.5683739878657175
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (region,head_gender,years_disp)",0.35455701629065167
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (region,head_gender,years_disp)",0.20030575281186122
+Pass/fail measure,"4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.59643966807626
+1: Full composite,"4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.4346320770860129
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.5953260602623035
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.31259770599924946
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.3467352528622949
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.7604867772874558
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.17424067652035585
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (region,head_gender,place_of_origin)",0.3908617210639919
+Pass/fail measure,"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.19681172755296636
+1: Full composite,"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.1566884168252824
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.18813717580597702
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.4628477735872392
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.24595488956226982
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.23288334752901568
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.4425089228959698
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.3007725839504136
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (region,head_gender,ethnic_minority)",0.234176319698348
+Pass/fail measure,"4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.687043465192893
+1: Full composite,"4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.5129574989387707
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.6803195263248425
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.2792540501667639
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.4563069784556294
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.6865832779823079
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.18340397338205844
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.5283384282804283
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.7096158206307251
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (region,years_disp,place_of_origin)",0.24268318527701963
+Pass/fail measure,"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.3247047638231987
+1: Full composite,"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.25153449492345425
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.3171188273019839
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.250735795960687
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.5387230333356505
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.3252055025792062
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.27280929109871654
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.5689540382637314
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.3345459578659323
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.32341894651147135
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (region,years_disp,ethnic_minority)",0.463861445235914
+Pass/fail measure,"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.5271324323194451
+1: Full composite,"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.38474725887470623
+2: Composite at criterion level,"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.517759039789219
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.2912078611880215
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.353349262800079
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.7447415592778626
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.20616461926682605
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.33334767163076184
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.7516092091694327
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.24862281501314304
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.6884955875626012
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)",0.3664284402748192
+Pass/fail measure,"4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.16796714910599572
+1: Full composite,"4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.12609106285529975
+2: Composite at criterion level,"4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.16554005102127245
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.14890983801080399
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.22404267212494935
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.15141576853398117
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.12439102823284251
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.20603882689470476
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.1787238251790178
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.09380140101850429
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.1861807912816615
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.15187939389233301
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,years_disp)",0.14454282677652386
+Pass/fail measure,"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.41873630403130013
+1: Full composite,"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.3256071585448642
+2: Composite at criterion level,"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.415441010887939
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.18494462917573376
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.23903102700111906
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.4977222051047779
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.1419150492089215
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.2426908965655311
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.4739860719889062
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.14422393191410665
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.4285545484304651
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.1962769824317909
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.3893647194042445
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (urban,head_gender,place_of_origin)",0.1829775920698389
+Pass/fail measure,"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.06005069059428149
+1: Full composite,"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.05740686006055748
+2: Composite at criterion level,"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.053133212064366095
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.052713646839091674
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.033403452837471426
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.05528570325231471
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.06907536089053747
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.04561820499945779
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.055079899572898154
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.07507719011242661
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.05066391107437215
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.06016430933329411
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.060979073631810536
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.11583630270807621
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)",0.05940931755441662
+Pass/fail measure,"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.5413071655382311
+1: Full composite,"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.40762564631168385
+2: Composite at criterion level,"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.5350317152991592
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.2018025396058561
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.37226257259223944
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.5057481728563179
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.1376151322525634
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.3510932471359944
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.4340439064471461
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.14603323540256574
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.6053452969380511
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.2669935004059932
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.45580226667341445
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.1948693502590999
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.4765069082490127
+"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,place_of_origin)",0.03310175604510683
+Pass/fail measure,"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.12478355178404749
+1: Full composite,"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.11181623796599836
+2: Composite at criterion level,"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.11691079003906742
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.07380095134746001
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.21084443684223175
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.09756570552225036
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.2505318466333997
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.13140248916468358
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.09602356904559681
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.20617173772515401
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.13798126962817656
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.24751848712879135
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.11863484001308873
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.26548640942562934
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.11890564163237226
+"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.08500491440488211
+"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)",0.1592794260738802
+Pass/fail measure,"4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.39281903075073815
+1: Full composite,"4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.3032175151499139
+2: Composite at criterion level,"4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.38724262145840843
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.15923810618004275
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.2367059119170786
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.48618273838364573
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.16691929332585376
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.20035313033037166
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.3911944791537242
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.1754350246363868
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.4101268211912638
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.199780633815456
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.4614759734747676
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.13962280549963563
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.6071683366871266
+"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.05002474944698013
+"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.5319405761960669
+"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)","4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)",0.17661975995869028
+Pass/fail measure,"4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.5733341629454121
+1: Full composite,"4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.43371183918719947
+2: Composite at criterion level,"4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.5698217182940369
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.1930746744981896
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.3366333127546723
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.4904341603049737
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.11597396198391317
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.3731941735653669
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.5411305850446713
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.15941940158414108
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.6606539539170616
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.2884304080323152
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.47401210386044557
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.2121292388870166
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.49245607602661434
+"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.037739397379881495
+"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.6732875272114389
+"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.13602926743990995
+"4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)",0.42226612885542375
+Pass/fail measure,"4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.1448849605066012
+1: Full composite,"4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.1243695852441261
+2: Composite at criterion level,"4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.13861722575462154
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.05951752717141883
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.14942702096792645
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.12295738276297916
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.18386522954392412
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.20175242549556882
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.13131429281430979
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.20320922790912482
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.17009794439920548
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.21212006202852438
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.12703126358317315
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.42030089426579353
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.1486119004844232
+"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.14071371578338895
+"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.14925004574957507
+"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.40047085809126337
+"4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.14186737978037509
+"4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)",0.18676685903482193
+Pass/fail measure,"4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.3710032283810122
+1: Full composite,"4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.2911874913805639
+2: Composite at criterion level,"4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.3629855553484215
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.12379796957184686
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.19791801146869673
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.3960845210279799
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.16590170727314052
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.1947294139814561
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.46100114094208955
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.18680389496361466
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.40522531158082786
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.20661596267809149
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.45615531950024346
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.14698754735606842
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.5775270918758952
+"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.07053061670374837
+"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.39265723550690773
+"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.1486963943944423
+"4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.5798403952960338
+"4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.5561722691763235
+"4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)","4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)",0.18336572022449052
+Pass/fail measure,"4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.4857035454909552
+1: Full composite,"4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.3743489296129999
+2: Composite at criterion level,"4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.47549593239399435
+"4: Comparison of homogenous cells (region,urban,head_gender)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.15988644879933667
+"4: Comparison of homogenous cells (region,urban,years_disp)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.28468822462349713
+"4: Comparison of homogenous cells (region,urban,place_of_origin)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.42849054447906976
+"4: Comparison of homogenous cells (region,urban,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.13855435720213446
+"4: Comparison of homogenous cells (region,head_gender,years_disp)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.33829792563326877
+"4: Comparison of homogenous cells (region,head_gender,place_of_origin)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.4347107366227637
+"4: Comparison of homogenous cells (region,head_gender,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.18745514063403812
+"4: Comparison of homogenous cells (region,years_disp,place_of_origin)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.6289393789453402
+"4: Comparison of homogenous cells (region,years_disp,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.2859381858155231
+"4: Comparison of homogenous cells (region,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.4783094699714891
+"4: Comparison of homogenous cells (urban,head_gender,years_disp)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.15009130565765696
+"4: Comparison of homogenous cells (urban,head_gender,place_of_origin)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.3968034470361242
+"4: Comparison of homogenous cells (urban,head_gender,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.0392002870966785
+"4: Comparison of homogenous cells (urban,years_disp,place_of_origin)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.6556830794856432
+"4: Comparison of homogenous cells (urban,years_disp,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.14080967903414168
+"4: Comparison of homogenous cells (urban,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.5134034962244955
+"4: Comparison of homogenous cells (head_gender,years_disp,place_of_origin)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.6471075431811755
+"4: Comparison of homogenous cells (head_gender,years_disp,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.19017390078290095
+"4: Comparison of homogenous cells (head_gender,place_of_origin,ethnic_minority)","4: Comparison of homogenous cells (years_disp,place_of_origin,ethnic_minority)",0.48218760365610835

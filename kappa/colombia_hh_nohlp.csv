@@ -1,0 +1,16 @@
+x,y,kappa
+Pass/fail measure,1: Full composite,0.04448390682743216
+Pass/fail measure,2: Composite at criterion level,0.04305604139979162
+1: Full composite,2: Composite at criterion level,0.9501305624623146
+Pass/fail measure,"4: Comparison of homogenous cells (placeholder1,placeholder2,placeholder_3)",0
+1: Full composite,"4: Comparison of homogenous cells (placeholder1,placeholder2,placeholder_3)",0
+2: Composite at criterion level,"4: Comparison of homogenous cells (placeholder1,placeholder2,placeholder_3)",0
+Pass/fail measure,4b: Algorithmic clustering,0.02577758480253735
+1: Full composite,4b: Algorithmic clustering,0.24165489806329515
+2: Composite at criterion level,4b: Algorithmic clustering,0.22809191346170266
+"4: Comparison of homogenous cells (placeholder1,placeholder2,placeholder_3)",4b: Algorithmic clustering,0
+Pass/fail measure,5: Classifier/regression-based,-0.0024082189366865132
+1: Full composite,5: Classifier/regression-based,0.261882753285119
+2: Composite at criterion level,5: Classifier/regression-based,0.31024447446623543
+"4: Comparison of homogenous cells (placeholder1,placeholder2,placeholder_3)",5: Classifier/regression-based,0
+4b: Algorithmic clustering,5: Classifier/regression-based,0.0238069002675947
