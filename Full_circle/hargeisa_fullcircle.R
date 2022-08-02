@@ -18,14 +18,8 @@ hargeisa_hh <- hargeisa_hh |> mutate(ID = as.numeric(hargeisa1 != "Host communit
 # All indicators are coded as 1 if solution "achieved" and zero if not!!!
 
 # 1.1 Victims of violence
-
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    # Proportion experiencing a security incident
-    I1_sec_inc = case_when(
-      hargeisa127 == "No" ~ 1,
-      hargeisa127 == "Yes" ~ 0),
-    
     # Proportion feeling very or moderately safe walking at night or during the day
     I1_SDG_16.1.4 = case_when(
       hargeisa133 == "No" ~ 0,
@@ -45,9 +39,6 @@ hargeisa_hh <- hargeisa_hh %>%
 # 2.1. Food security 
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    # Number of meals per day
-    I3_meals = as.numeric(hargeisa59==3),
-
     # Food Insecurity Experience Scale (using FAO package), approximated with ability to pay for food
     I3_DS_2.1.2 = case_when(
       hargeisa52 == "No" ~ 1,
@@ -88,18 +79,7 @@ hargeisa_hh <- hargeisa_hh %>%
 # combine to one indicator 
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
-    I4_SDG_11.1.1 = ifelse(rowSums((hargeisa_hh %>% select(starts_with("SDG_"))) == 0) > 0, 0, 1),
-    
-    # Proportion having access to electricity
-    I4_hous_elect = case_when(
-      hargeisa124 == "Yes" ~ 1,
-      hargeisa124 == "No" ~ 0),
-
-    # Proportion having access to clean water
-    I4_hous_water = ifelse(hargeisa126 == "Tank" | hargeisa126 == "Bottled/bought", 1, 0),
-    
-    # Proportion having bath/shower in household
-    I4_hous_bath = as.numeric(hargeisa108 == "Yes")
+    I4_SDG_11.1.1 = ifelse(rowSums((hargeisa_hh %>% select(starts_with("SDG_"))) == 0) > 0, 0, 1)
   )
 
 # 2.3 Medical services 
@@ -111,14 +91,8 @@ hargeisa_hh <- hargeisa_hh %>%
       hargeisa67 == "No" ~ 1,
       hargeisa67 == "Yes" & hargeisa73 == "Yes" ~ 1,
       hargeisa67 == "Yes" & hargeisa73 == "No" ~ 0,
-      TRUE ~ NA_real_),
-    
-    # Births attended by skilled health personnel within 
-    I5_med_birth = case_when(
-      hargeisa93 %in% c("Doctor","Nurse/midwife") ~ 1,
-      hargeisa93 %in% c("Family member","Traditional birth attendant") ~ 0,
-      is.na(hargeisa93)~1)
-    )
+      TRUE ~ NA_real_)
+  )
 
 # 2.4 Education 
 hargeisa_ind <- hargeisa_ind %>% 
@@ -128,23 +102,8 @@ hargeisa_ind <- hargeisa_ind %>%
     # approximated with whether any household member ever went to school
     
     I6_SDG_4.1.2 = case_when(hargeisa37 == "Yes" ~ 1,
-                               hargeisa37 == "No" ~ 0),
-
-    
-        # Proportion children (5-17) is able to read
-        I6_educ_child = case_when(hargeisa36 == "Yes" ~ 1,
-                                  hargeisa36 == "No" ~ 0),
-        
-        # Proportion children (5-17) currently attending school
-        I6_curr_school = case_when(hargeisa39 == "Yes" ~ 1,
-                                   hargeisa39 == "No" ~ 0),
-    
-    # proportion children (5-17) attending secondary school
-    I6_sec_school = case_when(
-      hargeisa40 %in% c("Secondary school","University", "Vocational")~1, 
-      !is.na(hargeisa40) ~ 0)
-      )
-    
+                             hargeisa37 == "No" ~ 0)
+  )
 
 # 3.1 Employment and livelihoods
 hargeisa_hh <- hargeisa_hh %>% 
@@ -156,14 +115,7 @@ hargeisa_hh <- hargeisa_hh %>%
 hargeisa_hh <- hargeisa_hh %>% 
   mutate(
     #Poverty: Approximated with proportion capable of unexpected expenses without borrowing money
-    I8_SDG_8.5.2  = as.numeric(hargeisa60 == "No"), 
-    
-    # Proportion experiencing difficulties paying rent
-    I8_rent_problems = case_when(
-      hargeisa100 == "Owner" ~ 1,
-      hargeisa100 == "Living with relatives/friends" ~ 1,
-      hargeisa100 == "Tenant" & hargeisa101 == "Yes" ~ 0, 
-      hargeisa100 == "Tenant" & hargeisa101 == "No" ~ 1)
+    I8_unexpect_expense = as.numeric(hargeisa60 == "No"), 
     
   )
 
@@ -181,16 +133,10 @@ hargeisa_ind <- hargeisa_ind %>%
     
     # DS Library indicator 5.1.1: Target population currently in possession of documentation 
     I10_DS_5.1.1 = case_when(hargeisa42 == "Has a certificate" |
-                             hargeisa44 == "Yes" |
-                             hargeisa45 == "Yes" |
-                             hargeisa46 == "Yes" ~ 1,
-                           hargeisa47 == "Yes" ~ 0),
-    
-    # Proportion with documents or access to replace missing documents if lost
-    I10_doc_replace =  case_when(
-      hargeisa50 == "Yes" ~ 1,
-      hargeisa50 == "No" ~ 0,
-      TRUE ~ I10_DS_5.1.1),
+                               hargeisa44 == "Yes" |
+                               hargeisa45 == "Yes" |
+                               hargeisa46 == "Yes" ~ 1,
+                             hargeisa47 == "Yes" ~ 0)
     
   )
 
@@ -238,22 +184,45 @@ hargeisa <- hargeisa %>% mutate(WT = 1)
 # add household ID
 hargeisa <- hargeisa %>% rename(HHID = hargeisa179)
 
-
 # select and reorder variables
 hargeisa <- 
   hargeisa %>% 
   select(-contains("hargeisa")) |> 
   select(HHID, ID, WT,starts_with("HH_"), starts_with("I"))
 
-'%!in%' <- function(x,y)!('%in%'(x,y))
-
 # address non-applicability as non-vulnerability
 hargeisa <- hargeisa %>% 
   mutate(across(starts_with("I6"), replace_na, 1))
 
-
 # run simulations --------------------------------------------------------------
 source("simulations.R")
+
+run_simulation <- function(data, metric, ..., combinations = NULL) {
+  # divide into IDPs and benchmark
+  idps <- data %>% filter(ID == 1)
+  host_community <- data %>% filter(ID == 0)
+  
+  # identify all possible combinations
+  if (is.null(combinations))
+    combinations <- data %>% extract_indicators() %>% generate_combinations()
+  
+  # draw 500 combinations only - should be enough for all practical purposes
+  combinations <- combinations %>% slice_sample(n = 1, replace=TRUE)
+  
+  # number of IDPs exiting the stock according to the chosen metric
+  Durable_Solutions <- 
+    1:nrow(combinations) %>% 
+    furrr::future_map(metric, data = idps, benchmark = host_community, ..., sim_data = combinations)
+  
+  # result for analysis and plotting
+  combinations %>% 
+    mutate(Durable_Solutions = Durable_Solutions,
+           DS = map_dbl(Durable_Solutions, 
+                        ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)}),
+           DS_perc = map_dbl(Durable_Solutions, 
+                             ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)/sum(.$WT)}))
+}
+
 
 simulation_hargeisa <- bind_rows(
   simulate_IRIS_metric(hargeisa) %>% mutate(metric="Pass/fail"),
@@ -261,8 +230,10 @@ simulation_hargeisa <- bind_rows(
   simulate_criterion(hargeisa)%>% mutate(metric="2: Composite at criterion level"),
   simulate_subcriterion(hargeisa)%>% mutate(metric="3: Composite at subcriterion level"),
   simulate_cells(hargeisa) %>% mutate(metric="4: Homogeneous cells"),
-  simulate_classifier(hargeisa)%>% mutate(metric="5: Classifier/regression-based"))%>% 
+  simulate_classifier(hargeisa)%>% mutate(metric="5: Classifier/regression-based"),
+  simulate_ecdf(hargeisa) %>% mutate(metric="6: Empirical cumulative density"))%>% 
   select(-Durable_Solutions)
 
   
-#write_csv(simulation_hargeisa, "Preliminary_full_circle/hargeisa_full_circle.csv")
+#write_csv(simulation_hargeisa, "Full_circle/hargeisa_fullcircle.csv")
+

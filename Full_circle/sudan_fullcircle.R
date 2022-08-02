@@ -25,12 +25,8 @@ sudan <- sudan %>%
       H_3_5_safe_walking_day < 3 ~ 1,
       H_3_4_safe_walking_night >= 3 ~ 0,
       H_3_5_safe_walking_day >= 3 ~ 0,
-      TRUE ~ NA_real_),
-    
-    # Proportion not experiencing a robbery
-    I1_sec_inc = ifelse(C_6_1_shocks_yn__8 == 1, 0,1)
-    )
-
+      TRUE ~ NA_real_)
+  )
 
 
 # 1.2. Freedom of movement
@@ -61,14 +57,6 @@ sudan$I3_DS_2.1.2 <- (8-food_insecurity_components$I3_DS_2.1.2) # high values ar
 #rr <- RM.w(food_insecurity_components[,1:8],nigeria$WT)
 # pp <- prob.assign(rr, sthres = seq(-5, 5, 0.01))
 
-sudan <- sudan  %>% 
-  mutate(
-    # Proportion always able to pay for food in last 7 days
-    I3_pay_food = ifelse(C_4_3_nomoney == 1,0,1),
-    
-    # Proportion not having to borrow money for food
-    I3_no_borrow = ifelse(C_4_5_cop_borrow_food == 1,0,1)
-  )
 
 # 2.2 Shelter and housing 
 
@@ -83,7 +71,7 @@ sudan <- sudan %>%
       C_1_6_land_legal_main == 0  ~ 0,
       is.na(C_1_6_land_legal_main) == T ~ 0,
       TRUE ~ NA_real_),
-
+    
     # Access to improved water sources
     SDG_improved_water = case_when(
       C_1_8_water_home == 1 ~ 1,
@@ -130,22 +118,18 @@ sudan <- sudan %>%
       C_1_4_tenure %in% c(5,6,7,8) ~ 0,
       C_1_4_tenure == 1000  ~ NA_real_,
       C_1_4_tenure %in% c(1,2,3,4) ~ 1,
-    TRUE ~ NA_real_),
+      TRUE ~ NA_real_),
     
     # Sufficient living area: Proportion of households in which not more than three people share the same habitable room
     SDG_sufficient_space = ifelse(household_size/C_1_3_slrooms_n<3, 1, 0)
   )
 
-
-
 # combine to one indicator 
 sudan <- sudan  %>% 
   mutate(
-    I4_SDG_11.1.1 = ifelse(rowSums((sudan %>% select(starts_with("SDG_"))) == 0) > 0, 0, 1),
-    
-    # Proportion living in housing/shelter  that is not overcrowded (< X persons per room)
-    I4_hous_overcrowd = ifelse(household_size/3 > C_1_3_slrooms_n, 0, 1)
+    I4_SDG_11.1.1 = ifelse(rowSums((sudan %>% select(starts_with("SDG_"))) == 0) > 0, 0, 1)
   )
+
 
 # 2.3 Medical services 
 sudan <- sudan %>% 
@@ -164,10 +148,7 @@ sudan_ind <-
   # approximated with whether children ever went to school
   mutate(
     # Children went to school
-    I6_SDG_4.1.2  = ifelse(B_3_6_hhm_edu_ever == 0,0,1),
-    
-    # Children currently go to school
-    I6_educ_child = ifelse(B_3_3_hhm_edu_current == 0,0,1)
+    I6_SDG_4.1.2  = ifelse(B_3_6_hhm_edu_ever == 0,0,1)
   )
 
 
@@ -176,11 +157,7 @@ sudan_ind <-sudan_ind %>%
   mutate(
     
     # Unemployment rate:  Proportion engaging in any paid job
-    I7_SDG_8.5.2= ifelse(is.na(B_4_2_1_emp_7d_prim) ==  F,1,0),
-    
-    # Proportion not reporting unemployment
-    I7_job_unemploy = as.numeric(B_4_1_1_hhm_job_s == 1 & B_4_1_3_hhm_available != 0)
-    
+    I7_SDG_8.5.2= ifelse(is.na(B_4_2_1_emp_7d_prim) ==  F,1,0)
   )
 
 
@@ -188,20 +165,10 @@ sudan_ind <-sudan_ind %>%
 sudan <- sudan %>% 
   mutate(
     # Poverty:  Proportion not being poor (190)
-    I8_SDG_8.5.2  = ifelse(poorPPP_190 < 0.5,1,0),
-    
-    # Mobile money account
-    I8_econ_account = C_4_16_acc_mobile_money,
-    
-    
-    # Proportion not being poor (190)
-    I8_poor32 =  ifelse(poorPPP_320 < 0.5,1,0)) %>% 
-    
-    #Above mean access to market (distance)
-    mutate(I8_econ_market = (C_1_25_tmarket_d * 60) + C_1_25_tmarket_h + (C_1_25_tmarket_m / 60)) %>% 
-      mutate(I8_econ_market = ifelse(I8_econ_market >= mean(I8_econ_market,na.rm=T),0,1))
+    I8_SDG_8.5.2  = ifelse(poorPPP_190 < 0.5,1,0)
+  )
 
-         
+
 # 4.1 Property restitution and compensation /security of tenure
 sudan <- sudan %>% 
   mutate(
@@ -287,9 +254,42 @@ sudan <- sudan %>% select(ID, WT, starts_with("HH_"), starts_with("I"), -starts_
 sudan <- sudan %>% 
   mutate(across(matches("I6_|I7_|I10_|I9_"), replace_na, 1))
 
+# check missingness in household cell characteristics
+sudan <- sudan |> 
+  mutate(HH_year_o_farrival = ifelse(is.na(HH_year_o_farrival)==T, "Unknown year of arrival",HH_year_o_farrival),
+         HH_times_displaced = ifelse(is.na(HH_times_displaced)==T,"Unknown number of displacements",as.character(HH_times_displaced)),
+         HH_arrived_with = ifelse(is.na(HH_arrived_with)==T,"Unknown group of arrival",HH_arrived_with),
+         HH_community_location = ifelse(is.na(HH_community_location)==T,"Unknown community location",HH_community_location))
 
 # run simulations --------------------------------------------------------------
 source("simulations.R")
+
+run_simulation <- function(data, metric, ..., combinations = NULL) {
+  # divide into IDPs and benchmark
+  idps <- data %>% filter(ID == 1)
+  host_community <- data %>% filter(ID == 0)
+  
+  # identify all possible combinations
+  if (is.null(combinations))
+    combinations <- data %>% extract_indicators() %>% generate_combinations()
+  
+  # draw 500 combinations only - should be enough for all practical purposes
+  combinations <- combinations %>% slice_sample(n = 1, replace=TRUE)
+  
+  # number of IDPs exiting the stock according to the chosen metric
+  Durable_Solutions <- 
+    1:nrow(combinations) %>% 
+    furrr::future_map(metric, data = idps, benchmark = host_community, ..., sim_data = combinations)
+  
+  # result for analysis and plotting
+  combinations %>% 
+    mutate(Durable_Solutions = Durable_Solutions,
+           DS = map_dbl(Durable_Solutions, 
+                        ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)}),
+           DS_perc = map_dbl(Durable_Solutions, 
+                             ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)/sum(.$WT)}))
+}
+
 
 simulation_sudan <- bind_rows(
   simulate_IRIS_metric(sudan) %>% mutate(metric="Pass/fail"),
@@ -297,7 +297,8 @@ simulation_sudan <- bind_rows(
   simulate_criterion(sudan)%>% mutate(metric="2: Composite at criterion level"),
   simulate_subcriterion(sudan)%>% mutate(metric="3: Composite at subcriterion level"),
   simulate_cells(sudan) %>% mutate(metric="4: Homogeneous cells"),
-  simulate_classifier(sudan)%>% mutate(metric="5: Classifier/regression-based"))%>% 
+  simulate_classifier(sudan)%>% mutate(metric="5: Classifier/regression-based"),
+  simulate_ecdf(sudan) %>% mutate(metric="6: Empirical cumulative density"))%>% 
   select(-Durable_Solutions)
 
-#write_csv(simulation_sudan, "Preliminary_full_circle/sudan_fullcircle.csv")
+#write_csv(simulation_sudan, "Full_circle/sudan_fullcircle.csv")

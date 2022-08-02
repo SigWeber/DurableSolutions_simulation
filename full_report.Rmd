@@ -103,23 +103,26 @@ The *International Recommendations on IDP Statistics* (IRIS), developed by the *
 After revisiting the conceptual framework for the solutions measure set out in the IRIS, the paper identifies 9 methodological challenges that remain to allow the IRIS solutions measure to be fully applicable in statistical production. The paper then makes concrete recommendations for how EGRIS can refine and further mature the solutions measure to become a fully workable statistical instrument. 
 
 +	Challenge 1: Selection of a statistical metric
-    + *Summary*: Different metric options are available to implement the two IRIS requirements that IDP households (1) meet each of the 10 sub-criteria capturing the overcoming of key displacement-related vulnerabilities and that IDP households are (2) compared to a benchmark population. The available metric options range from (1) a full composite index, (2) a composite metric at the criterion level, (3) a composite index at sub-criterion level, (4) a homogeneous cell approach to (5) a regression-based approach. Metric options that fully implement the requirement to pass IDP households on each sub-criterion (options 3+4) yield very little exits from the stock while options that average across all sub-criteria yield a higher number of exits (options 1+5). Option 2 requires further development to be made fully applicable. 
-    + *Recommendation*: EGRIS should not consider a composite index at the sub-criterion level or a regression-based approach. A composite measure at the criterion level and a homogeneous cell approach require further investigation. A full composite index can only be considered if EGRIS clearly standardizes the set of indicators to make an assessment and identifies if any sub-criteria must be passed (e.g. freedom to move).
+    + *Summary*: Different metric options are available to implement the two IRIS requirements that IDP households (1) meet each of the 10 sub-criteria capturing the overcoming of key displacement-related vulnerabilities and that IDP households are (2) compared to a benchmark population. The available metric options range from (1) a full composite index, (2) a composite metric at the criterion level, (3) a composite index at sub-criterion level, (4) a homogeneous cell approach, (5) a regression-based approach to (6) a cumulative distribution approach. Metric options that fully implement the requirement to pass IDP households on each sub-criterion (options 3+4) yield very little exits from the stock while options that average across all sub-criteria yield a higher number of exits (options 1, 5, 6). Option 2 requires further development to be made fully applicable. 
+    + *Recommendation*: EGRIS should not consider a composite index at the sub-criterion level (data needs to high) or a regression-based approach (not easy to compare). A composite measure at the criterion level and a homogeneous cell approach require further investigation but the homogeneous cell approach is likely to not work well in practice. A full composite index can only be considered if EGRIS clearly standardizes the set of indicators to make an assessment and identifies if any sub-criteria must be passed (e.g. freedom to move). If feasible for national statistical offices, an alternative is also to concentrate on the empirical cumulative distribution. 
 + Challenge 2: Selection of statistical indicators
     + *Summary*: The simulations show that the indicator selection, i.e. the question which indicators to choose to measure the 10 sub-criteria,  matters less for the overall exit from the IDP stock than identifying a metric to combine the different indicators. Nevertheless, missing data, problems to aggregate to the household level, and non-applicability of indicators can create differences in the exit from the IDP stock, suggesting a need to standardize. 
-    + *Recommendation*: It is suggested that EGRIS standardizes the indicators to operationalize the 10 sub-criteria as much as possible to increase comparability across contexts, relying on a selection of the SDG indicators and the Durable Solutions Library indicators.
+    + *Recommendation*: It is suggested that EGRIS standardizes the indicators to operationalize the 10 sub-criteria as much as possible to increase comparability across contexts, relying on a selection of the SDG indicators and the Durable Solutions Library indicators. This note proposes a selection of indicators.
+
+\newpage
+
 + Challenge 3: The property restitution and compensation sub-criterion
     + *Summary*: Out of the ten sub-criteria currently specified in the IRIS solutions measure, the sub-criterion *4.1 Property restitution and compensation* stands out as particularly restrictive in terms of allowing any exits from the IDP stock due to the fact that restitution or compensation mechanisms exist only in a very limited number of cases across the world. A direct implication of this is that the IRIS solutions measure, as it currently stands, will barely allow any exits from the IDP stock in practice.
     + *Recommendation*: It is suggested that the focus on HLP restitution is reinterpreted as security of tenure for the solutions measure. This would require re-labeling the sub-criterion and operationalizing it in a way that does not fully overlap with sub-criterion 2.2.
 + Challenge 4: Dealing with missing data
-    + *Summary*: IRIS posits that no assessment can be made and thus that households should remain in the IDP stock if data is missing for any of the solution measure’s sub-criteria. This is problematic given that a sizeable proportion of households – almost a third of households across our simulations - are affected by missing data. In the vast majority of cases, this data is missing “by design”, i.e. for perfectly valid reasons such as a household without children not being asked about current school attendance of children. 
+    + *Summary*: IRIS posits that no assessment can be made and thus that households should remain in the IDP stock if data is missing for any of the solution measure’s sub-criteria. This is problematic given that a sizeable proportion of households – almost a third of households across the simulations - are affected by missing data. In the vast majority of cases, this data is missing “by design”, i.e. for perfectly valid reasons such as a household without children not being asked about current school attendance of children. 
     + *Recommendation* For data missing “by design”, the IRIS recommendation should be adjusted and it should be clarified that missing data due to valid skip patterns and non-applicability should be interpreted as the absence of vulnerability in that particular indicator.
 +	Challenge 5: Data aggregation to the household level
-    + *Summary*: Related to the problem of missing data is the fact that some of the sub-criteria are more naturally measured on the individual-level than the household-level. To make a meaningful assessment of the household-level exit of IDPs from the overall stock, it should be made clear how data collected from individual respondents can be aggregated to the household level. Potential aggregation rules are a pass for all household members or if at least one member achieves a pass.
+    + *Summary*: Related to the problem of missing data is the fact that some of the sub-criteria are more naturally measured on the individual-level than the household-level. To make a meaningful assessment of the household-level exit of IDPs from the overall stock, it should be made clear how data collected from individual respondents can be aggregated to the household level. Potential aggregation rules are a pass if all household members or if at least one member achieves a pass.
     + *Recommendation*: It is recommended that the IRIS should be adjusted and a specification should be added to explain how each sub-criterion should be aggregated to the household level.
 +	Challenge 6-9: 
     + *Summary*: Beyond the challenges assessed in this report, the IRIS also has to address how to deal with statistical uncertainty in the target/benchmark values (challenge 6), how to define the final comparator population (challenge 7), how to factor assistance into the solutions measure (challenge 8) and how to deal with changing benchmark values over time (challenge 9).
-    + *Recommendation*: It is recommended to revisit these problems once more clarity on challenges 1-5 is achieved. This can include methodological analyses on the difference between low, best, and high estimates of IDP exits from the stock (to address challenge 6), the difference between host community and national averages in the same displacement contexts (to address challenge 7), and the change in IDP exits over time in panel data (to address challenge 9). 
+    + *Recommendation*: It is recommended to revisit these problems once more clarity on challenges 1-5 is achieved. This can include methodological analyses on the difference between low, best, and high estimates of IDP exits from the stock (to address challenge 6), the difference between host community and national averages in the same displacement contexts (to address challenge 7), and the change in IDP exits over time in panel data (to address challenge 9). Regarding the challenge of how to define the comparator population, a nationally representative benchmark is favorable compared to host community benchmarks. 
     
 \newpage
 
@@ -366,7 +369,9 @@ The current measure described in IRIS does not allow for a meaningful comparison
 
 ### Option 1: An actual composite metric across all criteria
 
-The approach currently outlined in IRIS is described therein as a "composite" measure, which strictly speaking it is not, considering that a single indicator per sub-criterion is implicitly assumed and a pass needs to be achieved in each sub-criterion/indicator. One option to explore that aligns with the contextualized approach would be to redefine the overall framework as an actual composite index. A composite index groups together indicators across all criteria to one score (see an illustration in Table \ref{tab:option1}). This household level index could then be more readily compared to the average value of the same composite index in the comparator population. The shortcoming of this approach is that a household may be taken out of the IDP stock despite underperformance on a specific key criterion or sub-criterion (which is a deviation from the IRIS requirement that a pass needs to be achieved at the sub-criterion level). 
+The approach currently outlined in IRIS is referred to as "composite" measure but an actual composite measure sums up indicators to one score. Because IRIS prescribes that a pass needs to be achieved in each sub-criterion/indicator and a single indicator per sub-criterion is implicitly assumed, the current IRIS solutions measure is strictly speaking not a composite measure. 
+
+Hence, one option to explore that aligns with the contextualized approach would be to redefine the overall framework as an actual composite index. A composite index groups together indicators across all criteria to one score (see an illustration in Table \ref{tab:option1}). This household level index could then be more readily compared to the average value of the same composite index in the comparator population. The shortcoming of this approach is that a household may be taken out of the IDP stock despite underperformance on a specific key criterion or sub-criterion (which is a deviation from the IRIS requirement that a pass needs to be achieved at the sub-criterion level).\footnote{One way to address this shortcoming could be to create a "hybrid" composite measure. For example, one could imagine a full composite index for the criteria 2, 3 and 5 while the more rights-based criteria 1 (freedom to move) and 4 (Property restitution) are scored as a pass or no pass.} 
 
 \begin{table}[!htp]
 \caption{\label{tab:option1}Option 1: A full composite metric for all sub-criteria}
@@ -395,9 +400,13 @@ Household A & 1.1 Victims of violence & Indicator 1.1.a & 1\\
 \end{tabular}
 \end{table}
 
+\newpage
+
 ### Option 2: A set of composite indices at the criterion level
 
-Rather than construct a single index across all criteria, one could define composite indices for each criterion (see Table \ref{tab:option2}). For example, the composite index for the criterion on *2. Adequate standard of living* could consist of four or more equally weighted indicators corresponding to the four related sub-criteria (*2.1. Food security, 2.2 Shelter and housing, 2.3 Medical services, 2. 4 Education*). A household could then score values of 0-4 on this sub-criterion index (or 0%, 25%, 50%, 75%, 100%). This score can be compared with a distribution average in the comparator population for the same composite index. As with option 1 above, this would constitute a deviation from IRIS, which explicitly states that a pass needs to be achieved at the sub-criterion level; under this option a household may be taken out of the IDP stock despite underperformance on a specific sub-criterion. In order to construct an index in each criterion, at least 2 binary indicators per criterion would be required, but more would be recommended. A small number of indicators per criterion would result in a cruder measure, thereby barely overcoming challenge 1 (as we will still be comparing discrete values – e.g. 0;1;2 in the case of 2 indicators for a given criterion - with a continuous distribution average; so for a given household to perform on par or better than the benchmark, it would be irrelevant whether the benchmark valuer was, say, 0.1 or 0.9 – in either case the household in question would need to score a 1 to achieve a pass on this criterion). Assuming at least 3 indicators per each of the 5 criteria (and 4 indicators in the case of criterion 2, in alignment with its 4 sub-criteria), this would result in an overall computation based on at least 16 indicators.
+Rather than construct a single index across all criteria, one could define composite indices for each criterion (see Table \ref{tab:option2}). For example, the composite index for the criterion on *2. Adequate standard of living* could consist of four or more equally weighted indicators corresponding to the four related sub-criteria (*2.1. Food security, 2.2 Shelter and housing, 2.3 Medical services, 2. 4 Education*). A household could then score values of 0-4 on this sub-criterion index (or 0%, 25%, 50%, 75%, 100%). This score can be compared with a distribution average in the comparator population for the same composite index. As with option 1 above, this would constitute a deviation from IRIS, which explicitly states that a pass needs to be achieved at the sub-criterion level; under this option a household may be taken out of the IDP stock despite underperformance on a specific sub-criterion. 
+
+In order to construct an index in each criterion, at least 2 binary indicators per criterion would be required, but more would be recommended. A small number of indicators per criterion would result in a cruder measure, thereby barely overcoming challenge 1 (as we will still be comparing discrete values – e.g. 0;1;2 in the case of 2 indicators for a given criterion - with a continuous distribution average; so for a given household to perform on par or better than the benchmark, it would be irrelevant whether the benchmark valuer was, say, 0.1 or 0.9 – in either case the household in question would need to score a 1 to achieve a pass on this criterion). Assuming at least 3 indicators per each of the 5 criteria (and 4 indicators in the case of criterion 2, in alignment with its 4 sub-criteria), this would result in an overall computation based on at least 16 indicators.
 
 \begin{table}[!htpb]
 \caption{\label{tab:option2}Option 2: A composite metric at the criterion level}
@@ -406,37 +415,41 @@ Rather than construct a single index across all criteria, one could define compo
 \scalebox{0.9}{
 \begin{tabularx}{\textwidth}{lXXllX}
 \toprule
- & Criterion & Sub-criteria & Indicator & Composite & Comparison to benchmark \\
+ & Criterion & Sub-criteria & Indicator & Composite & Comparison to benchmark (population average) \\
 \midrule
-Household A & \multirow{3}{\hsize}{1. Safety and security} & \multirow{2}{\hsize}{1.1 Victims of violence} & Indicator 1.1.a & 2/3 & 1.9 (Pass)\\
-& & & Indicator 1.1.b &   &  \\
+Household A & \multirow{3}{\hsize}{1. Safety and security} & \multirow{2}{\hsize}{1.1 Victims of violence} & Indicator 1.1.a & 2/3 & 1.9 (Pass because \\
+& & & Indicator 1.1.b &   & 2 > 1.9)\\
 & & 1.2 Freedom of movement & Indicator 1.2.a & & \\
 \midrule
- & \multirow{4}{\hsize}{2. Adequate standard of living}  & 2.1 Food security & Indicator 2.1.a & 3/4 & 3.5 (No pass)\\
- & & 2.2 Shelter and housing & Indicator 2.2.a & & \\
+ & \multirow{4}{\hsize}{2. Adequate standard of living}  & 2.1 Food security & Indicator 2.1.a & 3/4 & 3.5 (No pass because \\
+ & & 2.2 Shelter and housing & Indicator 2.2.a &  & 3 < 3.5) \\
  & & 2.3 Medical services & Indicator 2.3.a & & \\
  & & 2.4 Education & Indicator 2.4.a & & \\
  \midrule
- &  \multirow{3}{\hsize}{3. Access to livelihoods} & \multirow{2}{\hsize}{3.1 Employment and livelihoods} & Indicator 3.1.a & 2/3 & 1.9 (Pass) \\
- & & & Indicator 3.1.b &   &  \\
+ &  \multirow{3}{\hsize}{3. Access to livelihoods} & \multirow{2}{\hsize}{3.1 Employment and livelihoods} & Indicator 3.1.a & 2/3 & 1.9 (Pass because \\
+ & & & Indicator 3.1.b &   &  2 > 1.9)  \\
  & & 3.2 Economic security & Indicator 3.2.a & & \\
  \midrule
- &  \multirow{3}{\hsize}{4. Restoration of housing, land and property} & \multirow{3}{\hsize}{4.1 Property restitution and compensation} & Indicator 4.1.a & 1/3 & 0.9 (Pass)\\
-  & & & Indicator 4.1.b &   &  \\
+ &  \multirow{3}{\hsize}{4. Restoration of housing, land and property} & \multirow{3}{\hsize}{4.1 Property restitution and compensation} & Indicator 4.1.a & 1/3 & 0.9 (Pass because \\
+  & & & Indicator 4.1.b &   & 1 > 0.9) \\
    & & & Indicator 4.1.c &   &  \\
- & \multirow{3}{\hsize}{5. Access to documentation} & \multirow{3}{\hsize}{5.1 Documentation} & Indicator 5.1.a & 0/3 & 0.9 (No pass)\\
-   & & & Indicator 5.1.b &   &  \\
+ & \multirow{3}{\hsize}{5. Access to documentation} & \multirow{3}{\hsize}{5.1 Documentation} & Indicator 5.1.a & 0/3 & 0.9 (No pass because \\
+   & & & Indicator 5.1.b &   &  0 < 0.9)  \\
    & & & Indicator 5.1.c &   &  \\
  \midrule
-& \multicolumn{5}{>{\hsize=\dimexpr4\hsize+6\tabcolsep+3\arrayrulewidth\relax}X}{\textbf{Decision:} The household has not overcome displacement as the composite index for some criteria is lower than the benchmark.}\\
+& \multicolumn{5}{>{\hsize=\dimexpr4\hsize+6\tabcolsep+3\arrayrulewidth\relax}X}{\textbf{Decision:} The household has not overcome displacement-related vulnerabilities as the composite index for some criteria is lower than the benchmark.}\\
 \bottomrule
 \end{tabularx}
 }
 \end{table}
 
+\newpage
+
 ### Option 3: A set of composite sub-indices at the sub-criterion level
 
-Very similar to the second approach, one could define composite indices within each sub-criterion (see Table \ref{tab:option3}). For example, the composite index for sub-criterion *2.1 Food security* could be associated with 3 equally weighted binary indicators. A household could then score values of 0-3 on this sub-criterion index (or 0%, 33%, 66%, 100%). This score can be compared with a distribution average in the comparator population for the same composite index. The major difference between this option and options 1&2 above is that this option would not constitute a methodological deviation from IRIS, in that it would ensure that a pass is achieved at the sub-criterion level for a household to be taken out of the IDP stock. However, there is a serious feasibility issue with this option. As with the preceding option, at least 2 binary indicators are required per sub-criterion to construct an index, but more would be recommended. A small number of indicators per sub-criterion would result in a cruder measure, thereby barely overcoming challenge 1 (as we will still be comparing discrete values – e.g. 0;1;2 in the case of 2 indicators for a given sub-criterion - with a continuous distribution average; so for a given household to perform on par or better than the benchmark, it would be irrelevant whether the benchmark valuer was, say, 0.1 or 0.9 – in either case the household in question would need to score a 1 to achieve a pass on this criterion). Assuming at least 3 indicators per each of the 10 sub-criteria, this would result in an overall computation based on at least 30 indicators – which appears overly burdensome for widespread application. 
+Very similar to the second approach, one could define composite indices within each sub-criterion (see Table \ref{tab:option3}). For example, the composite index for sub-criterion *2.1 Food security* could be associated with 3 equally weighted binary indicators. A household could then score values of 0-3 on this sub-criterion index (or 0%, 33%, 66%, 100%). This score can be compared with a distribution average in the comparator population for the same composite index. The major difference between this option and options 1&2 above is that this option would not constitute a methodological deviation from IRIS, in that it would ensure that a pass is achieved at the sub-criterion level for a household to be taken out of the IDP stock. 
+
+However, there is a serious feasibility issue with this option. As with the preceding option, at least 2 binary indicators are required per sub-criterion to construct an index, but more would be recommended. A small number of indicators per sub-criterion would result in a cruder measure, thereby barely overcoming challenge 1 (as we will still be comparing discrete values – e.g. 0;1;2 in the case of 2 indicators for a given sub-criterion - with a continuous distribution average; so for a given household to perform on par or better than the benchmark, it would be irrelevant whether the benchmark valuer was, say, 0.1 or 0.9 – in either case the household in question would need to score a 1 to achieve a pass on this criterion). Assuming at least 3 indicators per each of the 10 sub-criteria, this would result in an overall computation based on at least 30 indicators – which appears overly burdensome for widespread application. 
 
 \begin{table}[!htbp]
 \caption{\label{tab:option3}Option 3: A composite metric at the sub-criterion level}
@@ -492,10 +505,13 @@ Household A & \multirow{3}{\hsize}{1.1 Victims of violence} & Indicator 1.1.a & 
 }
 \end{table}
 
+\newpage
 
 ### Option 4: Comparison of homogeneous cells: 
 
-Rather than trying to create a continuous indicator value at the household level through composite indices as in the first three options, an alternative approach could be to divide the IDP population into small homogeneous "cells" – for example by location of displacement, area of habitual residence and year of arrival (see Table \ref{tab:option4}). Even if selecting just one indicator per sub-criterion (i.e. 10 indicators for the measure overall), for each cell an average value could be calculated which subsequently can be compared against the distribution average in the comparator benchmark. The decision whether displacement has ended is no longer made on the individual household level but on the cell level. If an IDP cell has achieved a durable solution in comparison to the benchmark, all IDPs in this group are taken out of the stock of IDPs. If the cell has not achieved a durable solution, all IDPs remain as IDPs in the stock. The advantage of this option is that it is the only one to truly overcome challenge 1 and fully deliver to the contextualized approach proposed by IRIS, in that it would be comparing continuous cell values with benchmark continuous values. The shortcoming of this option is that the aggregate results may depend heavily on the criteria chosen for dividing IDP populations into cells. A strong assumption of homogeneity in the cells is necessary.
+Rather than trying to create a continuous indicator value at the household level through composite indices as in the first three options, an alternative approach could be to divide the IDP population into small homogeneous "cells" – for example by location of displacement, area of habitual residence and year of arrival (see Table \ref{tab:option4}). Even if selecting just one indicator per sub-criterion (i.e. 10 indicators for the measure overall), for each cell an average proportion achieving a pass could be calculated which subsequently can be compared against the distribution average in the comparator benchmark. The decision whether displacement has ended is no longer made on the individual household level but on the cell level. If an IDP cell has achieved a durable solution in comparison to the benchmark, all IDPs in this group are taken out of the stock of IDPs. If the cell has not achieved a durable solution, all IDPs remain as IDPs in the stock. 
+
+The advantage of this option is that it is the only one to truly overcome challenge 1 and fully deliver to the contextualized approach proposed by IRIS, in that it would be comparing continuous cell values with benchmark continuous values. The shortcoming of this option is that the aggregate results may depend heavily on the criteria chosen for dividing IDP populations into cells. A strong assumption of homogeneity in the cells is necessary.
 
 
 \begin{table}[!htp]
@@ -506,7 +522,7 @@ Rather than trying to create a continuous indicator value at the household level
 \begin{tabularx}{\textwidth}{XXlXX}
 \toprule
  & Sub-criteria & Indicator & Percentages in cell Z & Benchmark comparison \\
-\midrule\multirow{10}{\hsize}{Household A is classified into cell Z (e.g. current location, area of origin and year of arrival} & 1.1 Victims of violence & Indicator 1.1.a & 29\% & 28\% (Pass) \\
+\midrule\multirow{10}{\hsize}{Cell Zcomposed of different IDP households (e.g. based on current location, area of origin and year of arrival } & 1.1 Victims of violence & Indicator 1.1.a & 29\% pass indicator in cell Z & 28\% pass indicator in population  (Pass) \\
  & 1.2 Freedom of movement & Indicator 1.2.a & 26\% & 25\% (Pass) \\
  & 2.1 Food security & Indicator 2.1.a & 2.2\% & 2\% (Pass) \\
  & 2.2 Shelter and housing & Indicator 2.2.a & 19\% & 19\% (Pass) \\
@@ -536,9 +552,13 @@ Many data collections in contexts of forced displacement use key informant inter
   \label{box:IOM}
 \end{story}
 
+\newpage
+
 ### Option 5: Classifier/regression-based approach
 
-Another option for the solutions measure could be to take a regression-based approach in which the 10 sub-criteria are used as covariates to predict whether a household should still be classified as an IDP household or not (see Table \ref{tab:option5}). A probabilistic classifier, such as a logistic regression, would estimate whether an IDP household is distinct from the host community (i.e. high probability to be an IDP) or whether an IDP household is very similar to households in the host community (i.e. low probability to be an IDP). Important decisions to make before implementing this option are which classifier to select, how to select probability cut-off points to determine whether a specific household is similar to IDPs or to hosts, and how to deal with sample imbalance in the data. While this approach would overcome the challenge of comparing IDP households with host community households, this approach needs further clarifications and is not sensible to underperformance on specific indicators. 
+Another option for the solutions measure could be to take a regression-based approach in which the 10 sub-criteria are used as covariates to predict whether a household should still be classified as an IDP household or not (see Table \ref{tab:option5}). A probabilistic classifier, such as a logistic regression, would estimate whether an IDP household is distinct from the host community (i.e. high probability to be an IDP) or whether an IDP household is very similar to households in the host community (i.e. low probability to be an IDP). 
+
+Important decisions to make before implementing this option are which classifier to select, how to select probability cut-off points to determine whether a specific household is similar to IDPs or to hosts, and how to deal with sample imbalance in the data. While this approach would overcome the challenge of comparing IDP households with host community households, this approach needs further clarifications and is not sensible to underperformance on specific indicators. 
 
 \begin{table}[!htp]
 \caption{\label{tab:option5}Option 5: A classifier/regression-based approach}
@@ -549,16 +569,16 @@ Another option for the solutions measure could be to take a regression-based app
 \toprule
  & Sub-criteria & Indicator & & Regression weights \\
 \midrule
-Household A & 1.1 Victims of violence & Indicator 1.1.a & 1 & -1.58\\
- & 1.2 Freedom of movement & Indicator 1.2.a & 1 & -0.04\\
- & 2.1 Food security & Indicator 2.1.a & 1 & 1.59\\
- & 2.2 Shelter and housing & Indicator 2.2.a & 1 & -2.24\\
- & 2.3 Medical services & Indicator 2.3.a & 1 & 0.48 \\
- & 2.4 Education & Indicator 2.4.a & 0 & 4.48\\
- & 3.1 Employment and livelihoods & Indicator 3.1.a & 0 & 6.72\\
- & 3.2 Economic security & Indicator 3.2.a & 0 & 2.13\\
- & 4.1 Property restitution and compensation & Indicator 4.1.a & 1 & 4.32\\
- & 5.1 Documentation & Indicator 5.1.a & 1 & -0.22\\
+Household A & 1.1 Victims of violence & Indicator 1.1.a & 1 Pass & -1.58\\
+ & 1.2 Freedom of movement & Indicator 1.2.a & 1 Pass & -0.04\\
+ & 2.1 Food security & Indicator 2.1.a & 1 Pass & 1.59\\
+ & 2.2 Shelter and housing & Indicator 2.2.a & 1 Pass & -2.24\\
+ & 2.3 Medical services & Indicator 2.3.a & 1 Pass & 0.48 \\
+ & 2.4 Education & Indicator 2.4.a & 0 No Pass & 4.48\\
+ & 3.1 Employment and livelihoods & Indicator 3.1.a & 0 No Pass & 6.72\\
+ & 3.2 Economic security & Indicator 3.2.a & 0 No Pass & 2.13\\
+ & 4.1 Property restitution and compensation & Indicator 4.1.a & 1 Pass & 4.32\\
+ & 5.1 Documentation & Indicator 5.1.a & 1 Pass & -0.22\\
 \midrule
  & \multicolumn{2}{l}{\rule{0pt}{1em}Predicted probability for household (e.g. logit transformed)} &  & 0.439 \\
   & \multicolumn{2}{l}{\rule{0pt}{1em}Cut-off point} &  & 0.5 \\
@@ -571,10 +591,12 @@ Household A & 1.1 Victims of violence & Indicator 1.1.a & 1 & -1.58\\
 
 ### Option 6: Empirical cumulative distribution approach
 
-Another approach is to focus on the multidimensional empirical cumulative distribution (eCDF). In line with IRIS, the general idea remains that an IDP household A is less vulnerable than another household if household A has overcome all vulnerabilities that the comparison household has overcome. The empirical cumulative distribution then describes the share of households that are more vulnerable than a given household. For example (also conceptually displayed in Figure \ref{fig:ecdf}), imagine that a household A has overcome 7 of the 10 displacement-related vulnerabilities. Given the distribution of vulnerabilities in the comparator population, we can say that around 82.5% of the comparator households have not yet overcome all of these vulnerabilities. The 82.5% are hence the share of host community households that are more vulnerable than the example IDP household A. This share also describes the probability that the IDP household A is less vulnerable than a "randomly selected" or average household. In the example, the probability that household A is less vulnerable that the average comparator household is high, with over 80%. While previous metric options provide a clear-cut decision whether a specific household exits the stock or not, this metric generates a probability that a given IDP household is less vulnerable than the average comparator household. To then calculate exits from the stock for aggregated statistics, one can calculate the average (weighted) probability of overcoming displacement-related vulnerabilities across all IDP households in comparison to the host community. Although conceptually more complex, the metric option incorporates the logic of IRIS by comparing IDPs to the comparator population while the requirement of achieving a pass pass on all indicators is implicitly incorporated into the definition of the multivariate cumulative distribution function. 
+Another approach is to focus on the multidimensional empirical cumulative distribution (eCDF). In line with IRIS, the general idea remains that an IDP household A is less vulnerable than another household if household A has overcome all vulnerabilities that the comparison household has overcome. The empirical cumulative distribution then describes the share of households that are more vulnerable than a given household. For example (also conceptually displayed in Figure \ref{fig:ecdf}), imagine that a household A has overcome 7 of the 10 displacement-related vulnerabilities. Given the distribution of vulnerabilities in the comparator population, we can say that around 82.5% of the comparator households have not yet overcome all of these vulnerabilities. The 82.5% are hence the share of host community households that are more vulnerable than the example IDP household A. This share also describes the probability that the IDP household A is less vulnerable than a "randomly selected" or average household. In the example, the probability that household A is less vulnerable that the average comparator household is high, with over 80%. 
+
+While previous metric options provide a clear-cut decision whether a specific household exits the stock or not, this metric generates a probability that a given IDP household is less vulnerable than the average comparator household. To then calculate exits from the stock for aggregated statistics, one can calculate the average (weighted) probability of overcoming displacement-related vulnerabilities across all IDP households in comparison to the host community. Although conceptually more complex, the metric option incorporates the logic of IRIS by comparing IDPs to the comparator population while the requirement of achieving a pass on all indicators is implicitly incorporated into the definition of the multivariate cumulative distribution function. 
 
 \bigskip
-```{r ecdf, fig.cap="Empirical cumulative distribution", fig.width=7, fig.height=4, out.width="70%"}
+```{r ecdf, fig.cap="Empirical cumulative distribution", fig.width=7, fig.height=4, out.width="60%"}
 set.seed(1234)
 minVal <- 0
 maxVal <- 10
@@ -648,8 +670,7 @@ distribution \\
 
 \checkmark Complies with principle that a pass is required in each sub-criterion \\
 \textcolor{orange}{O} Implements probability rather than strict decision\\
-\textcolor{red}{X} Complexity, requires familiarity with eCDF \\~\\
-
+\textcolor{red}{X} Complexity, requires familiarity with eCDF \\
 \end{tabular}
 \end{minipage}
 }
@@ -696,7 +717,7 @@ run_OLS <- function(data){
 
 ```
 
-The IDP profiling in Hargeisa covered a total of `r sum(data_hargeisa$ID)` IDP households that could be compared directly to their hosts. In the following sections, we simulate how many IDP households would exit the stock if we apply the different metric options 1-6 on different indicators of vulnerability. As a reference, a pass/fail measure that does not compare IDPs with comparator households exits on average `r round(mean(DS_Original_hargeisa$DS),2)` IDP households from the stock in Hargeisa. On average across all simulated indicators and 6 metric options, `r round(DS_mean_hargeisa,2)` IDP households overcome their vulnerabilities and exit the IDP stock. This corresponds to an average of `r round(DS_perc_mean_hargeisa*100,2)`% of the sampled IDP population in Hargeisa. The low exit numbers are largely a result of the fact that IDP households could not be assessed as the IRIS recommends that no assessment should take place if data is missing on at least one of the 10 sub-criteria (on average this applies to `r round(mean(missing_har$missing)*100,2)`% of households across the indicator combinations). This note will discuss the challenge of missing data in subsequent sections. 
+The IDP profiling in Hargeisa covered a total of `r sum(data_hargeisa$ID)` IDP households that could be compared directly to their hosts. In the following sections, we simulate how many IDP households would exit the stock if we apply the different metric options 1-6 on different indicators of vulnerability. As a reference, a pass/fail measure that does not compare IDPs with comparator households exits on average `r round(mean(DS_Original_hargeisa$DS),2)` IDP households from the stock in Hargeisa. On average across all simulated indicators and 6 metric options, `r round(DS_mean_hargeisa,2)` IDP households overcome their vulnerabilities and exit the IDP stock. This corresponds to an average of `r round(DS_perc_mean_hargeisa*100,2)`% of the sampled IDP population in Hargeisa. The low exit numbers are largely a result of the fact that IDP households could not be assessed as the IRIS recommends in paragraph 168 that no assessment should take place if data is missing on at least one of the 10 sub-criteria (on average this applies to `r round(mean(missing_har$missing)*100,2)`% of households across the indicator combinations). This note will discuss the challenge of missing data in subsequent sections. 
 
 Table \ref{tab:HAR_metric} summarizes the key findings related to the range of IDP households that exit the stock across all metrics (how much variation there is in results), and how important the choice of individual indicators is in each approach. The table also provides the mean number of IDP households exiting the stock. Overall, very few exits from the stock are possible in the Hargeisa context. As elaborated later, this is to some extent an effect of data missingness and the available indicators for *4.1 Property restitution and compensation*, which are hard to pass for IDP households. It should be noted that a composite measure at the sub-criterion level yields no exits from the stock, independent of the chosen indicators. A full composite index across all 10 sub-criteria and a regression-based approach generate the highest possible exits from the IDP stock, dependent on the indicator set chosen. 
 
@@ -1045,7 +1066,8 @@ knitr::kable(SUD_metric, "latex",
 
 Figure \ref{fig:density_sudan} displays the performance of the different metric options in density plots. The plots make clear that - in the case of Sudan - many metric options yield no substantial exits from the IDP stock because the benchmark to pass all sub-criteria is very high. Only full composite indices and regression-based approaches classify a substantial proportion of the IDP households as having overcome displacement-related vulnerabilities. 
 
-```{r  density_plots_sudan, fig.cap="\\label{fig:density_sudan}Density of simulations for all possible metrics (Sudan)", fig.width = 7, fig.height= 5.5, out.width="80%"}
+\bigskip
+```{r  density_plots_sudan, fig.cap="\\label{fig:density_sudan}Density of simulations for all possible metrics (Sudan)", fig.width = 7, fig.height= 5.5, out.width="80%",fig.pos="htpb!"}
 
 (plot_density(DS_Original_sudan, "Pass/fail measure") + 
     plot_density( DS_Option1_sudan,"1: Full composite"))/
@@ -1057,6 +1079,7 @@ Figure \ref{fig:density_sudan} displays the performance of the different metric 
   
 ```
 
+\newpage
 
 ## Simulation results for Colombia (DANE 2019)
 
@@ -1136,7 +1159,7 @@ knitr::kable(COL_metric, "latex",
 
 
 
- \begin{story}[htbp!]
+ <!-- \begin{story}[htbp!]
   \framedbox{
   \footnotesize
 \textbf{Inter-rater agreement between metric options at the household level} 
@@ -1202,7 +1225,7 @@ metric_pairs_col<- read_csv("kappa/kappa_col.csv") %>%
 metric_pairs_col 
 #ggsave(metric_pairs_col, filename= "plots/metric_pairs_col.png",width=7,height=7)
 ```
-
+-->
 
 ## Overall feasibility and application of metric options
 
@@ -1246,9 +1269,9 @@ Option 1, a composite metric across all criteria, has shown high variability in 
 
 Option 2, a composite measure at the criterion level, has merits as it is not overly sensitive to the choice of indicators in the composite metrics at the criterion level. However, it is necessary to define enough indicators for each criterion to ensure that the indices are not too crude. This increases the data demands to implement these options. Furthermore, EGRIS would have to provide further details on the weighting of different indicators and criteria. More evidence on the performance across different displacement contexts may also be needed.
 
-Option 3, a composite measure at the criterion level, is based on a similar approach as option 2 but is focused on indices on the sub-criterion level. This yielded no to very little variation in the results as very few IDPs were classified as exiting the stock. Moreover, option 3 will often be infeasible in practical terms as the datasets used simply do not contain enough indicators to fully implement indices at the sub-criterion level. Option 3 is a very hard bar to pass for IDP households to be able to exit the stock.
+Option 3, a composite measure at the sub-criterion level, is based on a similar approach as option 2 but is focused on indices on the sub-criterion level. This yielded no to very little variation in the results as very few IDPs were classified as exiting the stock. Moreover, option 3 will often be infeasible in practical terms as the datasets used simply do not contain enough indicators to fully implement indices at the sub-criterion level. Option 3 is a very hard bar to pass for IDP households to be able to exit the stock.
 
-The simulations also assessed whether a division of the IDP stock into sub-groups that can then be compared to the host population may be a feasible option (option 4). On the one hand, the homogeneous cell approach is easy to implement, comes with manageable data needs, is relatively straightforward to communicate, and does not appear overly sensitive to indicator choice. On the other hand, it might be sensitive to how the IDP population is divided into cells. This assessment did not find any stark differences between different ways of dividing the IDP stock into cells. Nevertheless, more analysis is needed to be sure and clear guidance would need to be developed by EGRIS for producers of IDP statistics on how to segment the population under analysis into smaller cells while maintaining cross-context comparability. Another disadvantage of the homogeneous cells approach is that the bar for IDP cells to exit the stock is very high by design.
+The simulations also assessed whether a division of the IDP stock into sub-groups that can then be compared to the host population may be a feasible option (option 4). On the one hand, the homogeneous cell approach is easy to implement, comes with manageable data needs, is relatively straightforward to communicate, and does not appear overly sensitive to indicator choice. On the other hand, it might be sensitive to how the IDP population is divided into cells. This assessment did not find any stark differences between different ways of dividing the IDP stock into cells. Nevertheless, more analysis is needed to be sure and clear guidance would need to be developed by EGRIS for producers of IDP statistics on how to segment the population under analysis into smaller cells while maintaining cross-context comparability. Another disadvantage of the homogeneous cells approach is that the bar for IDP cells to exit the stock is very high by design, making it difficult to envision a practical implementation.
 
 A regression-based approach classifying IDP households as being more similar or dissimilar with other IDP households and the host community is highly sensitive to the indicator selection, with the highest variability across indicator combinations. Similar to option 1, it is not necessarily advisable to use one regression-based approach because: (a) it violates the IRIS principle that all sub-criteria must be met, (b) it is sensitive to the indicator selection, and (c) it might be difficult to compare different displacement situations. This option requires further methodological work to assess how the choice of a probability cut-off point, and the choice of a classifying framework affect the results. Further work is also needed to investigate how the regression coefficients for the 10 different sub-criteria may vary across contexts and how this affects the comparability between countries and displacement situations. Application of this option might be challenging for some National Statistical Offices.
 
@@ -1753,7 +1776,7 @@ COL <- data.frame(
 knitr::kable(COL,"latex", booktabs = TRUE,
              linesep = "",
              row.names = F,
-             col.names = gsub("[.]", " ", names(NIG)),
+             col.names = gsub("[.]", " ", names(COL)),
              caption= "\\label{tab:COL}Average relevance of indicator choice across metrics (Colombia)") %>%
   kable_styling(latex_options = "HOLD_position", font_size=10)%>%
   column_spec(1, width = "8.5em") %>% 
@@ -1912,7 +1935,7 @@ With the **DS Library indicator 2.1.7: Target population who accessed essential 
 
 The last sub-criterion to capture adequate standards of living is 2.4. Across the empirical datasets in this analysis, access to education is captured by varying indicators from the ability to write and read, the proportion of school-age children in primary/secondary school, distance to the next education facility to school completion rates. More than seven different operationalizations can be found across the four datasets. 
 
-Access to education is the most closely covered by **SDG indicator 4.1.1: Proportion of children and young people (a) in grades 2/3; (b) at the end of primary; and (c) at the end of lower secondary achieving at least a minimum proficiency level in (i) reading and (ii) mathematics**. Despite being one of the 12 priority SDG indicators recommended for disaggregation by forced displacement status, the implementation of this indicator in survey-based data collections is lengthy and often feasible. Moreover, while standard modules are available for children in grades 2/3 there is no standard survey module available for children at the end of primary or lower secondary. The difficulties of collecting this data means that the SDG reporting is usually based on large-scale national learning assessments in schools that cannot be linked back to individual IDP households.     
+Access to education is the most closely covered by **SDG indicator 4.1.1: Proportion of children and young people (a) in grades 2/3; (b) at the end of primary; and (c) at the end of lower secondary achieving at least a minimum proficiency level in (i) reading and (ii) mathematics**. Despite being one of the 12 priority SDG indicators recommended for disaggregation by forced displacement status, the implementation of this indicator in survey-based data collections is lengthy and often not feasible. Moreover, while standard modules are available for children in grades 2/3 there is no standard survey module available for children at the end of primary or lower secondary. The difficulties of collecting this data means that the SDG reporting is usually based on large-scale national learning assessments in schools that cannot be linked back to individual IDP households.     
 
 An alternative indicator could be the **SDG indicator 4.1.2: Completion rate (primary education, lower secondary education, upper secondary education)**. The advantage of this SDG indicator is that there are minimal data requirements that are typically collected in survey rosters. On the downside, the indicator does not account for variation in the quality of schooling or learning outcome. Furthermore, children do not count as vulnerable until they reach an age in which they should have completed specific education levels and the indicator is hence lagged. An additional challenge stems from the fact that the completion rate is partially dependent on the pre-displacement access to education and may hence be less informative for a solutions analysis. As the SDG indicator focuses on three outcomes (primary, lower secondary and upper secondary education), it makes sense to limit this to primary school completion for the purpose of the solution measure. 
 
@@ -1926,7 +1949,7 @@ Indicators in the DS Library heavily focus on school attendance in primary and s
 
 Three relevant SDG indicators could be used to measure sub-criterion 3.1. The most direct choice could be the **SDG indicator 8.5.2: Unemployment rate*  **, which is also included in the DS Library and prioritized as one amongst 12 SDG indicators to be disaggregated by forced displacement status. The indicator is commonly collected in most household surveys. At the same time, this operationalization could be criticized for not comprehensively capturing unmet demands for work (i.e. other forms of underutilization, in particular time-based underemployment and "discouragedness" of working-age persons that are no longer counted into the unemployment rate due to having given up their job search), and the quality of available work opportunities. 
 
-Alternative SDG indicators should be discussed briefly: **SDG indicator 8.3.1: Proportion of informal employment in total employment** is equally one of the 12 priority SDG indicators for disaggregation by migratory status and measures the quality of work to some extent. However, the statistical definition of formality may not be applicable in many forced displacement contexts. In many developing countries, informal employments by global definitions make up the vast majority of employments. The next alternative SDG indicator is **SDG indicator 8.5.1: Average hourly earnings of employees**, which may come closest to measuring the quality of work conditions but requires the administration of a lengthy labor income module. 
+Alternative SDG indicators should be discussed briefly: **SDG indicator 8.3.1: Proportion of informal employment in total employment** is equally one of the 12 priority SDG indicators for disaggregation by migratory status and measures the quality of work to some extent. However, the statistical definition of formality may not be applicable in many forced displacement contexts. In many developing countries, informal employment by global definitions makes up the vast majority of employment. The next alternative SDG indicator is **SDG indicator 8.5.1: Average hourly earnings of employees**, which may come closest to measuring the quality of work conditions but requires the administration of a lengthy labor income module. 
 
 The DS Library also includes further indicators for employment centering around agricultural vs non-agricultural employment, self-employment, occupation types, underemployment, seasonal employment and child labor. However, describing what constitutes a solution and the overcoming of displacement-related vulnerabilities are not straightforward for a range of these indicators and some are not applicable to the whole IDP population but only to a subset. 
 
@@ -1986,30 +2009,20 @@ SDG <- bind_rows(
   read_csv("Selected_indicators/sudan_selected_indicators.csv")%>% mutate(country="El Fasher"),
   read_csv("Selected_indicators/colombia_selected_indicators.csv")%>% mutate(country="Colombia")
 ) %>% 
-  mutate(`Percentage exiting the stock`=`Percentage exiting the stock`/100) %>% 
-  mutate(status = "Exit from the stock")
+  mutate(`Percentage remaining in the stock`=100-`Percentage exiting the stock`)
 
-SDG_2 <- bind_rows(
-  read_csv("Selected_indicators/hargeisa_selected_indicators.csv") %>% mutate(country="Hargeisa"),
-  read_csv("Selected_indicators/nigeria_selected_indicators.csv")%>% mutate(country="Nigeria"),
-  read_csv("Selected_indicators/sudan_selected_indicators.csv")%>% mutate(country="El Fasher"),
-  read_csv("Selected_indicators/colombia_selected_indicators.csv")%>% mutate(country="Colombia")
-) %>% 
-  mutate(`Percentage exiting the stock`=1-(`Percentage exiting the stock`/100)) %>% 
-  mutate(status = "Remain in the stock")
-
-ggplot(data=rbind(SDG,SDG_2) %>% filter(`Metric option`!= "Pass/fail") |> 
-         mutate(`Metric option` = ifelse(`Metric option`=="3: Composite at subcriterion level",
-                                         "3: Composite at \nsubcriterion level",`Metric option`)))+
-  geom_bar(aes(y=`Percentage exiting the stock`,x="",fill=status),stat = "identity")+
+SDG <- SDG |> 
+  pivot_longer(cols=c(3,5)) %>% filter(`Metric option`!= "Pass/fail")|> 
+  mutate(name = ifelse(name== "Percentage exiting the stock", "% exit","% remain")) |> 
+  mutate(`Metric option` = ifelse(`Metric option`=="3: Composite at subcriterion level",
+                                  "3: Composite at \nsubcriterion level",`Metric option`))
+      
+ggplot(data= SDG)+
+  geom_bar(aes(y=value,x="",fill=name),stat = "identity")+
   facet_grid(country~`Metric option`)+ 
-  ylim(0,1)+coord_polar("y", start=0)+
+  ylim(0,100)+coord_polar("y", start=0)+
   scale_fill_manual(values = c("dodgerblue3","lightgray")) +
-  geom_text(data=SDG %>% filter(`Metric option`!= "Pass/fail") |> 
-         mutate(`Metric option` = ifelse(`Metric option`=="3: Composite at subcriterion level",
-                                         "3: Composite at \nsubcriterion level",`Metric option`)),aes(
-    y = `Percentage exiting the stock`, x=-1,
-    label= round(`Percentage exiting the stock`*100,2)), size=3.5) +
+  geom_text(data=SDG |> filter(name=="% exit"), aes(y = value, x=-1,label= round(value,2)), size=3.5) +
   theme_bw()+
   xlab("")+
   theme(legend.position = "none",
@@ -2224,9 +2237,9 @@ missing_summary <- missing_data %>% group_by(dataset) %>% summarize(missing = me
 ```
 
 
-As seen in the chapters above on overcoming challenges 1 and 2, a key problem in applying the IRIS solutions measure in practice is that IRIS posits that *"[t]here may be situations where data are not available for all criteria or sub-criteria. In this case the composite measure cannot be fully implemented and a complete assessment cannot be made about whether or [not] the population has overcome key-displacement related vulnerabilities"* (IRIS, para. 168). In other words, IDP households remain in the stock if data is missing on one of the 10 sub-criteria. This strict approach may exclude sizeable portions of the IDP population from ever being assessed for durable solutions. On average across the simulations, `r scales::label_percent(accuracy = .01)(mean(missing_summary$missing))` of IDP households cannot be assessed and remain in the IDP stock because of definitional issues rather than specific vulnerabilities (see Figure \ref{fig:na} for a country-level break down). In the country examples used in this report, the problem is particularly severe for Sudan, Hargeisa and Colombia. 
+As seen in the chapters above on overcoming challenges 1 and 2, a key problem in applying the IRIS solutions measure in practice is that IRIS posits that *"[t]here may be situations where data are not available for all criteria or sub-criteria. In this case the composite measure cannot be fully implemented and a complete assessment cannot be made about whether or [not] the population has overcome key-displacement related vulnerabilities"* (IRIS, para. 168). In other words, IDP households remain in the stock if data is missing on one of the 10 sub-criteria. This strict approach may exclude sizeable portions of the IDP population from ever being assessed for durable solutions. On average across the simulations, `r scales::label_percent(accuracy = .01)(mean(missing_summary$missing))` of IDP households cannot be assessed and remain in the IDP stock because of definitional issues rather than specific vulnerabilities. In the country examples used in this report, the problem is particularly severe for Sudan, Hargeisa and Colombia. 
 
-```{r missing_data_plots, out.width="80%", fig.cap="\\label{fig:na}Distribution of missing data across indicator combinations: Plot shows what percentage of IDP household (x axis) has migging data for what percentage of the simulations (y axis)"}
+```{r missing_data_plots, out.width="80%", fig.cap="\\label{fig:na}Distribution of missing data across indicator combinations: Plot shows what percentage of IDP household (x axis) has migging data for what percentage of the simulations (y axis)",eval=F}
 
 missing_data %>% 
   ggplot() + 
@@ -2245,7 +2258,7 @@ missing_data %>%
 
 ## Data missingness due to design and non-response
 
-Missing values normally enter survey datasets through one of two channels: (i) *by design*, i.e. when a question is not administered to a certain respondent based on the questionnaire’s skip-logic; and (ii) *due to (item) non-response*, which happens when the respondent declines to answer a certain question for any reason. The former is a common design feature of most survey datasets and not a technical problem per se. The latter can be a source of bias if the likelihood of non-response is systematically correlated with individual characteristics, but the scale of item non-response is negligible in most cases. Yet, IRIS makes no distinction between the two even though 4 of the 10 solutions measure assessment criteria introduce missing values into the assessment by design (see Table \ref{tab:missing}). For example, a questionnaire skips questions around education for childless IDP households since their educational vulnerability is undefined.  
+Missing values normally enter survey datasets through one of two channels: (i) *by design*, i.e. when a question is not administered to a certain respondent based on the questionnaire’s skip-logic; and (ii) *due to (item) non-response*, which happens when the respondent declines to answer a certain question for any reason. The former is a common design feature of most survey datasets and not a technical problem per se. The latter can be a source of bias if the likelihood of non-response is systematically correlated with individual characteristics, but the scale of item non-response is negligible in most cases. Yet, IRIS makes no explicit distinction between the two even though 4 of the 10 solutions measure assessment criteria introduce missing values into the assessment by design (see Table \ref{tab:missing}).^[In the process of developing the IRIS, the report "Statistical Measuring of Overcoming Internal Displacement-Related Vulnerabilities" already outlines the distinction between missingness by design and non-response but this has not been incorporated into the main recommendations.] For example, a questionnaire skips questions around education for childless IDP households since their educational vulnerability is undefined.  
 
 \begin{table}[!htp]
 \caption{\label{tab:missing}Data missingness by design in the solutions measure}
@@ -2276,7 +2289,7 @@ Having established that missing data impedes the application of the IRIS solutio
 + The most basic approach is to conduct **complete case analysis**. This entails maintaining the IRIS approach of only assessing households with no missing information while extrapolating the share of assessed IDPs exiting the stock to the full IDP population. While the approach is conceptually simple and stays true to the wording of the IRIS, the validity of the calculation rests on the assumption that the data are missing completely at random – i.e., that the characteristics of households with missing data are no different from those for whom complete data is available. This is clearly not the case here where questionnaire skip-logic creates missing data patterns that vary systematically based on respondent household characteristics. 
 + A variation of the complete-case analysis, which is only applicable for the homogeneous cell approach, is **available-case analysis**. One could calculate cell-wise indicator averages based on the households with non-missing data for the respective indicator only. This means that different indicators will be calculated based on different subsets of households within each cell thereby allowing households with missing data to exit the stock if the whole cell performs better on average than the host population benchmarks. The downside of this method is that it only works for a single metric option and makes the same missing at random assumption as complete-case analysis. 
 + The third option to deal with missing data is **imputation** or the idea to infer plausible values for missing data points which could have been observed were the data not missing. Imputation comes with its own set of challenges. First is whether to impute the missing raw survey data or the derived binary solutions indicator. If the former, there is nothing FDP-specific about the procedure to justify its standardization in IRIS and the issue is best left for NSOs to apply the methods they deem appropriate. Second, how would the uncertainty introduced by the imputation process be reflected in the final estimate of IDPs exiting the stock? Third, and most importantly, is the difficulty of interpreting implausible imputations. To continue with the running example, what would it mean to impute a "no pass" on the education criterion for a childless household? Another challenge with imputation is that it adds analytical complexity, which will make the solutions measure more difficult to apply for low-capacity NSOs.
-+ Finally, EGRIS may simply opt to **reinterpret missing values as the absence of vulnerability**. The idea finds justification in the fact that a household with no school-aged children cannot experience education-related vulnerabilities. This is essentially a reversal of the IRIS approach: whereas IRIS can be seen as implicitly replacing missing data points with a "no pass" to prevent IDP households from exiting the stock, this approach would basically assign IDP households a "pass" on the missing indicators to allow them to be assessed on the other indicators for which data is available. 
++ Finally, EGRIS may simply opt to **reinterpret missing values as the absence of vulnerability**. The idea finds justification in the fact that a household with no school-aged children cannot experience education-related vulnerabilities. This is essentially a reversal of the IRIS approach: whereas IRIS can be seen as implicitly replacing missing data points with a "no pass" to prevent IDP households from exiting the stock, this approach would basically assign IDP households a "pass" on the missing indicators to allow them to be assessed on the other indicators for which data is available. This redefinition should focus only on missigness by design. 
 
 ## Simulations on the problem of missing data
 
@@ -2427,7 +2440,7 @@ IRIS posits that no assessment can be made and thus that households should remai
 
 ### Recommendation 
 
-For data missing "by design", the IRIS recommendation should be adjusted and it should instead be clarified that missing data due to valid skip patterns and non-applicability should be interpreted as the absence of vulnerability in that particular indicator.
+For data missing "by design", the IRIS recommendation should be adjusted and it should instead be clarified that missing data due to valid skip patterns and non-applicability should be interpreted as the absence of vulnerability in that particular indicator. Missingness because of other reasons (e.g. household refuses to answer or questions were not asked/ indicator not collected) should not automatically be treated as lack of vulnerability. 
 
 # Overcoming challenge 5: Data aggregation from the individual to the household level
 
@@ -2471,6 +2484,9 @@ There are different ways in which data can be aggregated from the individual to 
 While many more options for data aggregation from the individual to the household level are available than the four outlined here, the most relevant choice in the context of the solutions measure is likely between the choice that all applicable individuals in a household must pass a sub-criterion and at least one individual must pass a sub-criterion because these aggregation rules are meaningful for binary indicators. 
 
 For the simulations, the choice was made to use the "at least one" rule across all indicators when an aggregation was necessary. However, this choice has a potentially big impact on the percentage of households meeting a certain sub-criterion. To illustrate this, Table \ref{aggr_harg} lists the 8 possible indicators for the sub-criteria on health, education and documentation that were aggregated from the individual level to the household level in the case of Hargeisa. For these indicators, the table shows the percentage of households that would pass this sub-criterion when an at least one rule is used or an all must pass rule. For example, while around 55% of households have at least one adult with access to ID documentation, only around 6.4 % of households possess ID documentation for all members of the household. Given these stark differences in the performance of households depending on the aggregation rule, it is crucial that EGRIS provides clear guidance for data producers. 
+
+To make a more systematic comparison, Figure \ref{fig:density_aggregation} displays the density of simulations in blue when only one household member must pass the subcriterion. In gray, the same graph displays the simulations and the resulting exits from the IDP stock if all household members must pass the subcriterion to overcome a vulnerability related to displacement. In the data setup used in these simulations, the differences between the two data aggregation rules is not very strong. This is likely due to the fact that data missingness affects the results. 
+
 
 ```{r hargeisa_aggregation_example}
 source("Data/hargeisa.R")
@@ -2715,8 +2731,6 @@ hargeisa_ind %>%
   kable_styling(latex_options = "HOLD_position",font_size = 10)
 ```
 
-To make a more systematic comparison, Figure \ref{fig:density_aggregation} displays the density of simulations in blue when only one household member must pass the subcriterion. In gray, the same graph displays the simulations and the resulting exits from the IDP stock if all household members must pass the subcriterion to overcome a vulnerability related to displacement. In the data setup used in these simulations, the differences between the two data aggregation rules is not very strong. This is likely due to the fact that data missingness affects the results. 
-
 On the one hand, an "all must pass" rule is stricter, leading to a lower estimate of IDP exits from the stock in the case of a full composite or regression-based metric in Hargeisa. On the other hand, the rule that one person must pass may still suffer from missing data issues, leading to less exits from the IDP stock under this rule in the case of regression-based estimates in Sudan or Colombia. Overall, the rule that all individuals must pass appears to be stricter and less easily implementable in practice. 
 
 ```{r at-least-one-vs-all, fig.cap="\\label{fig:density_aggregation}Density of simulations when aggregating to the household level with an all must pass or one must pass rule", fig.width=7,fig.height=9}
@@ -2764,17 +2778,40 @@ As outlined in the section on the state of play on the "IRIS solutions measure",
 
 ## Overcoming challenge 6: Statistical uncertainty in the target/benchmark values
 
-As highlighted earlier, the sixth challenge is that each comparator value in the host community or the national average will come with statistical uncertainty, i.e. there is a confidence interval around the comparator point estimate. While some data collections on IDPs and their progress towards solutions will yield relatively precise estimates and can be compared to precise estimates in comparator populations, other data collections or displacement contexts may only have information available with higher uncertainty as this heavily depends on sample sizes, variation in responses, and data collection processes. 
+The sixth challenge is that each comparator value in the host community or the national average will come with statistical uncertainty, i.e. there is a confidence interval around the comparator point estimate. While some data collections on IDPs and their progress towards solutions will yield relatively precise estimates and can be compared to precise estimates in comparator populations, other data collections or displacement contexts may only have information available with higher uncertainty as this heavily depends on sample sizes, variation in responses, and data collection processes. For example, when a national average from a representative large-scale survey is used as a benchmark, the point estimate of the benchmark values may be more precise than estimates generated from a smaller host community sample. 
 
-As the solutions measure currently stands, there is no clear guidance how to account for this statistical uncertainty when IDP households are compared to the benchmark. In terms of scope for EGRIS to provide recommendations, it may be advisable that the Expert Group highlights considerations for statistical uncertainty prominently in the recommendations while giving practical and more detailed guidance on accounting for uncertainty in the Compilers' Manual.
+As the solutions measure currently stands, there is no clear guidance on how to account for this statistical uncertainty when IDP households are compared to the benchmark. In terms of scope for EGRIS to provide recommendations, it may be advisable that the Expert Group highlights considerations for statistical uncertainty prominently in the recommendations while giving practical and more detailed guidance on accounting for uncertainty in the Compilers' Manual. Reporting on statistical uncertainty is not only important to better understand what the "true" size of the exit from the IDP stock is. Statistical uncertainty is also an indication of the quality of official statistics and can help to identify displacement contexts where better and more targeted solutions assessments are required.
 
-A range of computationally demanding options are available to deal with statistical uncertainty (e.g. resampling techniques). However, in the context of the solutions measure, the scope for multi-step procedures to deal with statistical uncertainty may be limited. A reasonable proposition could be to recommend the use of the point estimate in the comparator population as the main reported benchmark to compare IDP populations with hosts/the national average. In addition, and depending on the local capacity, EGRIS could recommend that producers of official statistics use the lower bound and upper bound of the confidence interval around the benchmark estimate to provide not only one "best estimate" of IDP exits but a "lower and higher estimate" as well to embrace the reality of statistical uncertainty. Once challenges 1 to 4 have been addressed, further methodological work with the use of well-sampled data collections could help to provide evidence on the scale of the difference between lower, best and highest estimate in the context of the solutions measure.  
+A range of computationally demanding options are available to deal with statistical uncertainty (e.g. resampling techniques). However, in the context of the solutions measure, the scope for multi-step procedures to deal with statistical uncertainty is limited by the capacity of producers of official statistics. Reasonable suggestions can include to conduct statistical hypothesis testing to assess if the mean value in the IDP population and the benchmark population are significantly different from one another. Depending on the local capacity, it may also make sense to recommend that producers of official statistics use the lower bound and upper bound of the confidence interval around the benchmark estimate to provide not only one "best estimate" of IDP exits but a "lower and higher estimate". More complex resampling techniques to deal with statistical uncertainty seem less realistic to recommend. 
+
+Each of the proposed metric options may require slightly different strategies to deal with uncertainty in the estimate of IDP exits from the stock. These strategies are summarised in Table \ref{tab:uncertainty-strategies}. To sum up the table, while composite metrics for all criteria, at criterion level, or at sub-criterion level may allow for comparisons of upper and lower estimates of the IDP stock (based on variance in the samples), the metric options 4 and 5 (homogeneous cells and regression-based approaches) can directly incorporate statistical uncertainty by drawing confidence intervals around the estimates. For the option to use an empirical cumulative distribution, confidence intervals are commonly generated by drawing subsamples from the data, making this more challenging. Overall, accounting for uncertainty is the most natural and easy to implement in the case of regression-based approaches and a comparison of homogeneous cells. 
+
+
+\begin{table}[htp!]
+\centering
+\footnotesize
+\caption{Strategies to deal with statistical uncertainty in the available metric options}
+\label{tab:uncertainty-strategies}
+\begin{tabularx}{\textwidth}{sX}
+\toprule
+Metric option & Strategy to deal with statistical uncertainty \\
+\midrule
+Composite measure across all criteria, across criteria and across subcriteria &  To account for statistical uncertainty in composite indices, one would first calculate the mean estimate of the composite index for the full benchmark population. For example, for a composite measure at the criterion level, one would calculate the mean value amongst the host community for each composite index under each criterion. In a second step, one would then calculate the standard deviation of this composite index for this population. While the population mean constitutes our "best estimate", we can use the mean and the population standard deviation, to then calculate the 95\% confidence interval around the mean composite index. This would give us a “lower estimate” and a higher "estimate". Following this, we would compare individual IDP households no longer simply against the best estimate, but we would also benchmark households against the lower and higher estimate. This provides the opportunity to account for the fact that the benchmark value comes with statistical uncertainty. This can be done for one index across all criteria, but can also be applied to multiple composite indices at the criterion or sub-criterion level. \\
+Comparison of homogeneous cells & In the case of a homogeneous cells approach, one could calculate not only the confidence intervals around the mean of the benchmark population but also the confidence intervals around the mean of the homogeneous cells. This allows us to compare the lowest estimate in a homogeneous cell of IDP households with the lowest estimate in the benchmark population. At the same time, we can compare the best and the highest estimate in the IDP households in one cell to the best and highest estimate in the benchmark population. Again, this would result in three estimates of the IDP exit to account for statistical uncertainty in our measurement. \\
+Classifier/regression-based approach & In a regression-based framework, each prediction whether an IDP household is closer to the other IDP households or closer to the host community comes with statistical uncertainty. The regression produces a confidence interval around the prediction that can be used to estimate a low and high estimate of the exit from the IDP stock. \\
+Empirical cumulative distribution &  In the framework of an empirical cumulative distribution, a common way to produce uncertainty estimates is to use some for of resampling or bootstrapping. In other words, instead of just calculating the exit from the IDP stock for the whole sample, one could do this for randomly selected subsamples. After repeating the calculations on various samples of the data, one can generate the mean exit from the stock as well as the high and low estimate based on the distribution of IDP exits from the stock across the various samples.  \\ 
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Once challenges 1 to 4 have been addressed, further methodological work with the use of well-sampled data collections could help to provide evidence on the scale of the difference between lower, best and highest estimate in the context of the solutions measure.
+
 
 ## Overcoming challenge 7:  Definition of the final comparator population 
 
-Regarding the challenge to define the final comparator population, the IRIS points out that *"for the purpose of official statistics, and because it is the approach often taken in this context, it is recommended that the general/national population is used as the comparison group when deciding on the targets or thresholds for scoring each sub-criteria" and that the average of the general/national population is used as the target"*. This recommendations is very relevant as information about the general population is more often available and simplifies analysis.^[Using the national average also lifts the burden of finding a definition for host communities that is applicable across contexts] The simulations in Colombia, which were based on a comparison of IDPs to the national average rather than the host community (as in the other simulated datasets), show that this is a feasible endeavour. 
+Regarding the challenge to define the final comparator population, the IRIS points out that *"for the purpose of official statistics, and because it is the approach often taken in this context, it is recommended that the general/national population is used as the comparison group when deciding on the targets or thresholds for scoring each sub-criteria" and that the average of the general/national population is used as the target"*. This recommendations is very relevant as information about the general population is more often available and simplifies analysis.^[Using the national average also lifts the burden of finding a definition for host communities that is applicable across contexts.] The simulations in Colombia, which were based on a comparison of IDPs to the national average rather than the host community (as in the other simulated datasets), show that this is a feasible endeavour. 
 
-Nevertheless, further methodological work could assess if in the same displacement context, using a national average vs a host community average yields statistically significant differences in the estimate of the IDP exit. Such methodological work would help EGRIS to shape detailed guidance in the Compliers' Manual on how to produce reliable estimates when no national average is available or estimations based on the host community are more feasible.  
+Nevertheless, further methodological work could assess if in the same displacement context, using a national average vs a host community average yields statistically significant differences in the estimate of the IDP exit. Such methodological work would help EGRIS to shape detailed guidance in the Compliers' Manual on how to produce reliable estimates when no national average is available or estimations based on the host community are more feasible. In general, the way forward is to focus on a representative sample of the national population as best possible benchmark.   
 
 
 ## Overcoming challenge 8: Factor assistance into the solutions measure
@@ -2790,14 +2827,86 @@ At this stage, it is not clear to what extent the empirical shifts in benchmark 
 
 # Going "full circle": a final round of analysis implementing all of the above recommendations
 
-\textcolor{red}{XXX UNDER DEVELOPMENT XXX}
+The *International Recommendations on IDP statistics* (IRIS) provide an important framework to capture when a country's stock of IDPs can be reduced. The fundamental idea that IDP households can be taken out of the stock for statistical purposes when they overcome key displacement-related vulnerabilities and perform as well or even better than the national average or the host community is important. However, more work is needed to develop a fully applicable statistical measure for solutions. This report summarises key methodological challenges that should be addressed before a solutions measure can be applied by producers of official statistics. 
 
-\bigskip
-\noindent\textcolor{orange}{The idea for the final section is to implement the simulations one more time with 1.  a focus on the metric options 2-4 rather than all, 2. a reduced number of indicators that align most closely to the selected SDG/DS indicators, 3. a redefined hlp criterion, 4. data missigness as non-vulnerability, and 5. clearer data aggregation. We would just quickly show the familiar reduced simulation densities and make a summary statement on next steps. This is yet to be implemented. }
+The main challenges are certainly how to implement a feasible measure that allows comparisons between IDPs and a comparator population while also ensuring that IDP households overcome key dimensions of vulnerability. Next to the selection of an appropriate metric - such as various composite indices, a comparison of population cells, regression-based approaches or approaches based on empirical cumulative distributions - feasible statistical indicators must be chosen. Other challenges include how to deal with rights-based indicators, missing data, and data aggregation to the household level. Finally, more methodological work is needed to understand how statistical uncertainty, the definition of the comparator population, assistance to IDPs and changing benchmarks over time affect the estimates of a solutions measure. 
+
+This report demonstrates the empirical performance of different metric options and indicators to propose possible ways forward. It is recommended that EGRIS provides clear suggestions how to implement the solutions measure. Further methodological work on a composite measure at the criterion level or a homogeneous cells approach is important. Alternative metric options would be to use a full composite index or a cumulative empirical distribution. The report also proposes indicators to standardize the measurement of the solutions measure across contexts, heavily relying on the SDG indicators and the Durable Solutions Indicator Library. 
+
+One key challenge is to develop a solutions measure that actually works and allows for substantial exits from the IDP stock for statistical purposes. The simulations in this report demonstrate that it is important to reframe housing, land and property access as tenure security, to treat missing data by design as non-vulnerability, and to aggregate data from individuals to the household level in a sensible way. These steps are important to allow sizeable exits from the IDP stock and make the solutions measure applicable. 
+
+To provide some evidence on whether these recommendations improve estimates of the IDP exit from the stock, Figure \ref{fig:fullcircle} shows the results when the recommendations are implemented as far as possible. In the figure, the data was manipulated ...
+
++ ... to implement the recommended indicators, 
++ ... to reframe access to HLP compensation as tenure security, 
++ ... to define missing data by design as non-vulnerability, 
++ ... to aggregate individual level data to the household by a "one must pass" rule.
+
+Compared to previous simulations, the recommended steps lead to higher and more realistic estimates of the exit from the IDP stock for statistical purposes. For example, under the approach to focus on the empirical distribution, up to 27% of the Colombian IDP population can be taken out of the stock for statistical purposes while only about 13% achieve this in Hargeisa and only 6% in El Fasher. These final simulations, implementing the full circle of recommendations, demonstrate that the composite measure at the sub-criterion level and the homogeneous cell approach leads to very minimal exits from the IDP stock and cannot reasonably produce reliable estimates of the exit from the IDP stock. However, approaches such as the full composite across or the empirical cumulative density could be a feasible step forward. 
+
+```{r fullcircle, fig.cap="Percentage of IDPs exiting the stock if all recommendations are implemented", fig.width=8.4,fig.height=7}
+
+# read data
+full<- bind_rows(
+  read_csv("Full_circle/hargeisa_fullcircle.csv") %>% mutate(country="Hargeisa"),
+  read_csv("Full_circle/nigeria_fullcircle.csv")%>% mutate(country="Nigeria"),
+  read_csv("Full_circle/sudan_fullcircle.csv")%>% mutate(country="El Fasher"),
+  read_csv("Full_circle/colombia_fullcircle.csv")%>% mutate(country="Colombia")
+) %>%
+  group_by(metric, country) |> 
+  summarise(across(starts_with("DS"),mean,na.rm=T))
+            
+# make pretty for plotting
+full <- full |> 
+  mutate(DS_perc = DS_perc*100,
+         DS_perc_stay = 100-DS_perc)
+
+full <- full |> 
+  pivot_longer(cols=c(4,5)) %>% filter(metric != "Pass/fail")|> 
+  mutate(metric= ifelse(metric=="3: Composite at subcriterion level",
+                                  "3: Composite at \nsubcriterion level",metric))
+      
+ggplot(data= full)+
+  geom_bar(aes(y=value,x="",fill=name),stat = "identity")+
+  facet_grid(country~metric)+ 
+  ylim(0,100)+coord_polar("y", start=0)+
+  scale_fill_manual(values = c("dodgerblue3","lightgray")) +
+  geom_text(data=full |> filter(name=="DS_perc"), aes(y = value, x=-1,label= round(value,2)), size=3.5) +
+  theme_bw()+
+  xlab("")+
+  theme(legend.position = "none",
+        text=element_text(size=7),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+```
+
+Further methodological work could assess the remaining challenges in the solutions measure or implement the suggested indicators in various country-examples to produce better estimates of the exit from IDP stock for other countries and over time. EGRIS may want to consider standardising the selection of indicators in particular as a feasible next step while more methodological evidence is gathered. Lastly, it is crucial to discuss the feasibility of the proposed metric and indicator options with the producers of official statistics, such as National Statistical Offices, to get a sense where further evidence and guidelines are necessary. Based on the recommendations in this report, box \ref{box:box-end} summarises the practical steps that are needed to move from data on the socio-economic conditions of IDPs to an estimate of the exit from the IDP stock as initial guideline for National Statistical Offices that try to implement the IRIS recommendations for the solutions measure. 
+
+\begin{story}[ht]
+  \framedbox{
+\begin{enumerate}
+\item Develop a sampling frame to generate a representative sample of IDPs and the national population (or host community if the national population cannot be surveyed).
+\item Develop a questionnaire that includes and adjusts the recommended statistical indicators for the solutions measure and clearly identifies IDPs in line with IRIS.
+\item Collect survey data from IDPs and the national population.
+\item Clean the data and implement the different statistical indicators (e.g. based on guidelines in the SDG metadata): unless otherwise specified, the statistical indicators are implemented with 0 (not overcame) and 1 (overcame vulnerability). 
+\item Define missing data by design as non-applicability to reduce missing values and allow comparison.
+\item Aggregated data to the household level with the rule that one of the household members has to overcome the displacement-related vulnerability (unless otherwise specified).
+\item Split the data into the comparator population and the IDP population.
+\item Generate estimates of the proportion of the comparator population that overcomes the different vulnerabilities and indicators. 
+\item Compare the IDP households with the comparator values (depending on different metric options) to generate the proportion of IDP households exiting the stock. 
+\end{enumerate}
+  }
+  \caption[]{Step-by-step guide: work flow to estimate exits from the IDP stock}
+  \label{box:box-end}
+\end{story}
 
 
 \newpage
 \appendix
+
+\newpage
 
 # Annexes
 
@@ -3132,7 +3241,7 @@ without eating for a whole day because of a lack of money or other resources?
     + [*Access to improved water:*] What is the main source of drinking water for members of your household? 
         (1) Piped water
             - Piped into dwelling
-            - Piped into compoind, yard or plot
+            - Piped into compound, yard or plot
             - Piped to neighbour
             - Public tap/ standpipe
             - Borehole or tubewell

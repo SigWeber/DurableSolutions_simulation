@@ -1,12 +1,8 @@
-# library(RM.weights)
 library(tidyverse)
-
 
 # preparations ---------------------------------------------------------
 
 # read data
-# sorry for setting the wd so ugly, work in progres :-D 
-#setwd("C:/Users/sigri/Dropbox/DurableSolutions_simulation")
 nigeria <- read_csv("Data/Nigeria.csv", guess_max = 10000)
 
 # identify idps vs hosts
@@ -15,6 +11,7 @@ nigeria <- nigeria %>% rename(ID = migr_idp)
 # add household weights
 nigeria <- nigeria %>% rename(WT = weight)
 
+
 # identify potential IASC indicators for each subcriteria -------------
 
 # All indicators are coded as 1 if solution "achieved" and zero if not!!!
@@ -22,18 +19,6 @@ nigeria <- nigeria %>% rename(WT = weight)
 # 1.1 Victims of violence
 nigeria<- nigeria %>% 
   mutate(
-    # Proportion feeling very or moderately safe
-    I1_sec_saf = case_when(
-      H_4_1_safe_violence == 1 ~ 1,
-      H_4_1_safe_violence == 2 ~ 1,
-      H_4_1_safe_violence == 3 ~ 0,
-      H_4_1_safe_violence == 4 ~ 0,
-      H_4_1_safe_violence == 5 ~ 0,
-      TRUE ~ NA_real_),
-    
-    # Proportion experiencing a security incident
-    I1_sec_inc  = ((rowSums(nigeria %>% select(contains("H_4_11")) == 1, na.rm=T) == 0) * 1),
-
     # Proportion feeling very or moderately safe walking at night or during the day
     I1_SDG_16.1.4 = case_when(
       H_4_2_safe_walking_night == 1 ~ 1,
@@ -41,9 +26,7 @@ nigeria<- nigeria %>%
       H_4_3_safe_walking_day == 1 ~ 1,
       H_4_3_safe_walking_day == 2 ~ 1,
       H_4_3_safe_walking_day %in% 3:5 |H_4_2_safe_walking_night %in% 3:5 ~ 0,
-      TRUE ~ NA_real_)
-    )
-
+      TRUE ~ NA_real_))
 
 # 1.2. Freedom of movement
 nigeria <- nigeria %>% 
@@ -107,33 +90,13 @@ nigeria <- nigeria %>%
     
     # Sufficient living area: Proportion of households in which not more than three people share the same habitable room
     SDG_sufficient_space = ifelse(hhdensity > 3 ,0, 1)
-    )
-    
+  )
+
 
 # combine to one indicator 
 nigeria <- nigeria %>% 
   mutate(
-    I4_SDG_11.1.1 = ifelse(rowSums((nigeria %>% select(starts_with("SDG_"))) == 0) > 0, 0, 1), 
-    
-    # Proportion living in non-durable (incomplete, not intended, makeshift)
-    I4_hous_indurable = ifelse(C_1_1_housingtype >= 11,0,1),
-    
-    # Proportion living in overcrowded shelter
-    I4_hous_overcrowd = ifelse(hhdensity_sl > 1 , 0, 1),
-    
-    # Proportion squatting or living in temporary shelter by UNHCR
-    I4_hous_temporary = case_when(
-      C_1_7_tenure == 1  ~ 0,
-      C_1_7_tenure == 2  ~ 0,
-      C_1_7_tenure == 7  ~ 0,
-      C_1_7_tenure == 8  ~ 0,
-      C_1_7_tenure == 9  ~ 0,
-      C_1_7_tenure == 1000  ~ NA_real_,
-      TRUE ~ 1), 
-    
-    # Proportion facing no water obstacles
-    I4_hous_waccess = ifelse(C_1_14_water_obstacle == 0,1,0)
-
+    I4_SDG_11.1.1 = ifelse(rowSums((nigeria %>% select(starts_with("SDG_"))) == 0) > 0, 0, 1)
   )
 
 
@@ -147,9 +110,8 @@ nigeria <- nigeria %>%
       C_4_10_disease_yn == 1 & C_4_12_med_yn == 1 ~ 1,
       C_4_10_disease_yn == 1 & C_4_12_med_yn == 0 ~ 0,
       TRUE ~ NA_real_)
-    
   )
-    
+
 
 # 2.4 Education
 nigeria <- nigeria %>% 
@@ -157,11 +119,8 @@ nigeria <- nigeria %>%
     
     # SDG indicator 4.1.2: Completion rate (primary education): not present, 
     # approximated with whether any household member is going to primary school 
-    I6_SDG_4.1.2 = case_when(
-      H_2_7_school_satisfaction == 0 ~ 0,
-      is.na(H_2_7_school_satisfaction)== T ~ 1,
-      H_2_7_school_satisfaction > 0 ~ 1,
-      TRUE~NA_real_)
+    I6_SDG_4.1.2 = ifelse(H_2_7_school_satisfaction == 0, 0, 1)
+    
   )
 
 
@@ -170,10 +129,8 @@ nigeria <- nigeria %>%
   mutate(
     
     # Unemployment proxied with those who generate income from work
-    I7_SDG_8.5.2 = ifelse(C_5_1_lhood %in% c(1,2,3,4,5,8),1,0),
     
-    #  Proportion whose income is generated from wages, salaries, own business or pension
-    I7_salary = ifelse(C_5_1_lhood %in% c(4,5,8),1,0)
+    I7_SDG_8.5.2 = ifelse(C_5_1_lhood %in% c(1,2,3,4,5,8),1,0)
   )
 
 
@@ -181,24 +138,9 @@ nigeria <- nigeria %>%
 nigeria <- nigeria %>% 
   mutate(
     #Poverty
-    I8_SDG_8.5.2 = ifelse(poor ==1,0,1),
+    I8_SDG_8.5.2 = ifelse(poor ==1,0,1)
+  )
 
-    # Proportion Below 1.25 USD PPP 2011 poverty line
-    I8_poor125 = ifelse(poor125==1,0,1), 
-    
-    # Proportion Below 3.1 USD PPP 2011 poverty line
-    I8_poor31 = ifelse(poor31==1,0,1),
-    
-    # Ratio of food vs total consumption
-    I8_foodtotal = ifelse((mi_cons_f/tc_imp)<= mean((mi_cons_f/tc_imp),na.rm=T),1,0), 
-    
-    # Proportion consuming more than average
-    I8_consume = ifelse((tc_imp / mean(tc_imp, na.rm = T))>= mean((tc_imp / mean(tc_imp, na.rm = T)),na.rm=T),1,0),
-    
-    # Proportion having a bank account
-    I8_bank = C_4_15_bank_account
-    )
-    
 
 # 4.1 Property restitution and compensation /security of tenure
 nigeria <- nigeria %>% 
@@ -218,9 +160,8 @@ nigeria  <- nigeria  %>%
       H_2_9_legal_id_disp == 1 & H_2_10_legal_id_acc_disp == 1 ~ 1,
       H_2_9_legal_id_disp == 1 & H_2_10_legal_id_acc_disp == 0 ~ 0,
       TRUE ~ NA_real_)
-
+    
   )
-
 
 # prepare dataset for simulations -----------------------------------------------
 
@@ -244,9 +185,47 @@ nigeria <- nigeria %>% select(ID, starts_with("I"), -starts_with("I_"), starts_w
 # add household ID
 nigeria <- nigeria %>% mutate(HHID = row_number())
 
+# address non-applicability as non-vulnerability
+nigeria <- nigeria %>% 
+  mutate(across(matches("I6_"), replace_na, 1))
+
+# remove missing values in household characterisitcs
+nigeria <- nigeria |>
+  mutate(HH_disp_year=ifelse(is.na(HH_disp_year)==T,2014,HH_disp_year),
+         HH_arriv_year=ifelse(is.na(HH_arriv_year)==T,2014,HH_arriv_year),
+         HH_origin=ifelse(is.na(HH_origin)==T,"Same state",HH_origin)
+  )
+
 
 # run simulations --------------------------------------------------------------
 source("simulations.R")
+
+run_simulation <- function(data, metric, ..., combinations = NULL) {
+  # divide into IDPs and benchmark
+  idps <- data %>% filter(ID == 1)
+  host_community <- data %>% filter(ID == 0)
+  
+  # identify all possible combinations
+  if (is.null(combinations))
+    combinations <- data %>% extract_indicators() %>% generate_combinations()
+  
+  # draw 500 combinations only - should be enough for all practical purposes
+  combinations <- combinations %>% slice_sample(n = 1, replace=TRUE)
+  
+  # number of IDPs exiting the stock according to the chosen metric
+  Durable_Solutions <- 
+    1:nrow(combinations) %>% 
+    furrr::future_map(metric, data = idps, benchmark = host_community, ..., sim_data = combinations)
+  
+  # result for analysis and plotting
+  combinations %>% 
+    mutate(Durable_Solutions = Durable_Solutions,
+           DS = map_dbl(Durable_Solutions, 
+                        ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)}),
+           DS_perc = map_dbl(Durable_Solutions, 
+                             ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)/sum(.$WT)}))
+}
+
 
 simulation_nigeria <- bind_rows(
   simulate_IRIS_metric(nigeria) %>% mutate(metric="Pass/fail"),
@@ -254,7 +233,9 @@ simulation_nigeria <- bind_rows(
   simulate_criterion(nigeria)%>% mutate(metric="2: Composite at criterion level"),
   simulate_subcriterion(nigeria)%>% mutate(metric="3: Composite at subcriterion level"),
   simulate_cells(nigeria) %>% mutate(metric="4: Homogeneous cells"),
-  simulate_classifier(nigeria)%>% mutate(metric="5: Classifier/regression-based"))%>% 
+  simulate_classifier(nigeria)%>% mutate(metric="5: Classifier/regression-based"),
+  simulate_ecdf(nigeria) %>% mutate(metric="6: Empirical cumulative density"))%>% 
   select(-Durable_Solutions)
 
-#write_csv(simulation_nigeria, "Preliminary_full_circle/nigeria_full_circle.csv")
+
+#write_csv(simulation_nigeria, "Full_circle/nigeria_fullcircle.csv")

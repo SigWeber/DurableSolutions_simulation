@@ -36,12 +36,6 @@ persons <- persons %>%
     # approximated with satisfaction with current level of security
     I1_SDG_16.1.4 = str_detect(P1898, "([6-9]|'Totalmente satisfecho\\(a\\))"))
 
-dwellings <- 
-  dwellings %>% 
-  mutate(
-    # Experienced natural disaster in last 12 months
-    I1_natural_disaster = transmute(., across(starts_with("P4065S"), ~.=="No")) %>% reduce(~.x&.y))
-
 
 # 1.2 Freedom of movement
 ## Not applicable...
@@ -64,8 +58,8 @@ households <- households %>%
     # Structural quality of housing and location: no indicator present on hazardious zones, housing on garbage or in high industrial pollution area
     
     #Structural quality of the housing and permanency of the structure:
- #   SDG_permanency 
- 
+    #   SDG_permanency 
+    
     # Sufficient living area: Proportion of households in which not more than three people share the same habitable room
     I4_SDG_sufficient_space = CANT_PERSONAS_HOGAR/P5000 <= 3
   )
@@ -86,57 +80,28 @@ persons <-
   mutate(
     # Target population who accessed essential health care services the last time they needed it in the past 12 months
     # Approximated with Satisfaction with current level of health
-    I5_DS_2.1.8 = str_detect(P1897, "([6-9]|'Totalmente satisfecho\\(a\\))"),
-    
-    # In possession of health insurance
-    I5_health_insurance = P6090 != "No")
+    I5_DS_2.1.8 = str_detect(P1897, "([6-9]|'Totalmente satisfecho\\(a\\))"))
 
 # 2.4 Education
 persons <- 
   persons %>% 
   mutate(
     # SDG indicator 4.1.2: Completion rate (primary education):  School attendance
-    I6_SDG_4.1.2 = P8586 != "No", 
-    
-    # Can read and write
-    I6_literate = P6160 != "No")
+    I6_SDG_4.1.2 = P8586 != "No")
 
 # 3.1 Employment and livelihoods
 persons <- 
   persons %>% 
   mutate(
     # Unemployment: Not unemployed
-    I7_SDG_8.5.2 = P6240 != "Buscando trabajo", 
-    
-    # Labor force participation rate
-    I7_lfs_pax = P6240 == "Trabajando" | P6240 == "Buscando trabajo",
-    
-    # Employment rate
-    I7_in_employment = P6240 == "Trabajando",
-    
-    # Unsafe working conditions
-    I7_unsafe_job = is.na(P1709S12),
-    
-    # Job satisfaction
-    I7_job_satisfaction = str_detect(P1899, "([6-9]|'Totalmente satisfecho\\(a\\))"))
-
+    I7_SDG_8.5.2 = P6240 != "Buscando trabajo")
 
 # 3.2 Economic security
 households <- 
   households %>% 
   mutate(
     # Living above the national poverty line
-    I8_SDG_8.5.2 = PERCAPITA > 327674, 
-
-    # Not defaulting on utility bills
-    I8_default_on_bills = is.na(P5016S5))
-
-persons <- 
-  persons %>% 
-  mutate(
-    # Satisfaction with current level of income
-    I8_income_satisfaction = str_detect(P1896, "([6-9]|'Totalmente satisfecho\\(a\\))"))
-
+    I8_SDG_8.5.2 = PERCAPITA > 327674)
 
 # 4.1 Property restitution and compensation 
 households <- households %>% 
@@ -148,8 +113,6 @@ persons <-
   mutate(
     # DS Library indicator 5.1.1: Target population currently in possession of documentation 
     I10_DS_5.1.1 = P1894 != "No tiene documento de identidad")
-
-
 
 
 # prepare dataset for simulations -----------------------------------------------
@@ -245,6 +208,31 @@ colombia <- colombia %>%
 # run simulations --------------------------------------------------------------
 source("simulations.R")
 
+run_simulation <- function(data, metric, ..., combinations = NULL) {
+  # divide into IDPs and benchmark
+  idps <- data %>% filter(ID == 1)
+  host_community <- data %>% filter(ID == 0)
+  
+  # identify all possible combinations
+  if (is.null(combinations))
+    combinations <- data %>% extract_indicators() %>% generate_combinations()
+  
+  # draw 500 combinations only - should be enough for all practical purposes
+  combinations <- combinations %>% slice_sample(n = 1, replace=TRUE)
+  
+  # number of IDPs exiting the stock according to the chosen metric
+  Durable_Solutions <- 
+    1:nrow(combinations) %>% 
+    furrr::future_map(metric, data = idps, benchmark = host_community, ..., sim_data = combinations)
+  
+  # result for analysis and plotting
+  combinations %>% 
+    mutate(Durable_Solutions = Durable_Solutions,
+           DS = map_dbl(Durable_Solutions, 
+                        ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)}),
+           DS_perc = map_dbl(Durable_Solutions, 
+                             ~left_join(., data, by = "HHID") %>% {sum(.$exited*.$WT, na.rm = TRUE)/sum(.$WT)}))
+}
 
 simulation_colombia <- bind_rows(
   simulate_IRIS_metric(colombia) %>% mutate(metric="Pass/fail"),
@@ -252,8 +240,9 @@ simulation_colombia <- bind_rows(
   simulate_criterion(colombia)%>% mutate(metric="2: Composite at criterion level"),
   simulate_subcriterion(colombia)%>% mutate(metric="3: Composite at subcriterion level"),
   simulate_cells(colombia) %>% mutate(metric="4: Homogeneous cells"),
-  simulate_classifier(colombia)%>% mutate(metric="5: Classifier/regression-based"))%>% 
+  simulate_classifier(colombia)%>% mutate(metric="5: Classifier/regression-based"),
+  simulate_ecdf(colombia) %>% mutate(metric="6: Empirical cumulative density"))%>% 
   select(-Durable_Solutions)
 
-#write_csv(simulation_colombia, "Preliminary_full_circle/colombia_full_circle.csv")
+#write_csv(simulation_colombia, "Full_circle/colombia_fullcircle.csv")
 
